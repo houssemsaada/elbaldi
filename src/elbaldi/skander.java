@@ -5,15 +5,10 @@
  */
 package elbaldi;
 
-
-public class Elbaldi {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-      
-      
-    }
+/**
+ *
+ * @author MSI
+ */
+public class skander {
     
 }
