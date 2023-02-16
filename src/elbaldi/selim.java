@@ -5,27 +5,12 @@
  */
 package elbaldi;
 
-import elbaldi.models.promotion;
-import elbaldi.models.question;
-import elbaldi.models.quiz;
-import elbaldi.services.PromotionCRUD;
-import elbaldi.services.QuestionCRUD;
-import elbaldi.services.QuizCRUD;
-import java.time.LocalDate;
-
 /**
  *
- * @author houss
+ * @author selim
  */
-public class Elbaldi {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-//----------------------------Module QUIZ-----------------------------
+public class selim {
+    //----------------------------Module QUIZ-----------------------------
 
 
         
@@ -87,5 +72,4 @@ public class Elbaldi {
           
 }
     }
-    
-
+}
