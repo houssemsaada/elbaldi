@@ -22,7 +22,7 @@ import java.sql.SQLException;
  *
  * @author belkn
  */
-public class Elbaldi {
+public class sami {
 
     /**
       * @param args the command line arguments
