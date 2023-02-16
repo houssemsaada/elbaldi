@@ -38,7 +38,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
              ps.executeUpdate();
             System.out.println("Bonplan ajouté");
         } catch (SQLException ex) {
-            ex.printStackTrace();                    
+        System.out.println("Bonplan non  ajouté");                    
         }   
     }
     
@@ -50,7 +50,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             st.executeUpdate(req);
             System.out.println("Bonplan updated !");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           System.out.println("Bonplan non updated !");
         }
     }
     

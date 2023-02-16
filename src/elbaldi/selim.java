@@ -9,7 +9,9 @@ package elbaldi;
  *
  * @author selim
  */
+
 public class selim {
+    /*
     //----------------------------Module QUIZ-----------------------------
 
 
@@ -71,5 +73,6 @@ public class selim {
               // System.out.println(pc2.filtreBytaux(0.25f));
           
 }
-    }
+*/
+    
 }

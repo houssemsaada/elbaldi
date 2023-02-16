@@ -40,7 +40,7 @@ public class panierCRUD implements panierInterfaceCRUD {
                 ps.executeUpdate();
                 System.out.println("panier ajouté!!!");
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                System.out.println("panier non ajouté!!!");
             }
         } else {
             try {
@@ -53,7 +53,7 @@ public class panierCRUD implements panierInterfaceCRUD {
                 ps.executeUpdate();
                 System.out.println("panier ajouté!!!");
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                 System.out.println("panier non ajouté!!!");
             }
         }
     }
@@ -72,7 +72,7 @@ public class panierCRUD implements panierInterfaceCRUD {
             ps.executeUpdate();
             System.out.println("panier updated !");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           System.out.println("panier non updated !");
         }
     }
 
@@ -84,7 +84,7 @@ public class panierCRUD implements panierInterfaceCRUD {
             st.executeUpdate(req);
             System.out.println("panier deleted !");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           System.out.println("panier non deleted !");
         }
     }
 

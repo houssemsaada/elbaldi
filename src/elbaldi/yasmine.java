@@ -15,7 +15,7 @@ import elbaldi.services.ProduitCRUD;
  * @author USER
  */
 public class yasmine {
-    
+   /* 
     /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,11 +30,12 @@ public class yasmine {
  * @author houss
  */
 public class Elbaldi {
+    
 
     /**
      * @param args the command line arguments
      */
-
+/*
         
         // TODO code application logic here
          //ajouter categorie
@@ -124,10 +125,10 @@ public class Elbaldi {
 
         
        
-       
+      */
         
     }
     
 }
 
-}
+

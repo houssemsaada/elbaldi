@@ -5,14 +5,9 @@
  */
 package elbaldi.interfaces;
 
-<<<<<<< HEAD
 import elbaldi.models.Utilisateur;
 import java.sql.SQLException;
 import java.util.*;
-=======
-import elbaldi.models.quiz;
-import java.util.List;
->>>>>>> origin/selim
 
 
 /**
@@ -36,20 +31,3 @@ public interface InterfaceCRUD  <T>{
     
     
 
-=======
- * @author selim
- */
-public interface InterfaceCRUD {
-   
-    // class QuizCRUD
-    
-    public void ajouterQuiz(quiz q) ;
-    public void modifierquiz(quiz q) ;
-    public void supprimerquiz(int id) ;
-    public List<quiz> afficherQuiz();
-    public quiz getById(int id);
-    public List<quiz> filtreByDifficulte(String difficulte);
-    
-    
-}
->>>>>>> origin/selim

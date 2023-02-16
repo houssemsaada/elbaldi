@@ -5,7 +5,7 @@
  */
 package elbaldi.services;
 
-import elbaldi.interfaces.InterfaceCRUD;
+import elbaldi.interfaces.InterfaceCRUDQ;
 import elbaldi.models.quiz;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author selim
  */
-public class QuizCRUD implements InterfaceCRUD{
+public class QuizCRUD implements InterfaceCRUDQ{
     
     Connection conn = MyConnection.getInstance().getConn();
    
