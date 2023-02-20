@@ -37,7 +37,12 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             ps.setInt(6, B.getId_user());
              ps.executeUpdate();
             System.out.println("Bonplan ajouté");
+<<<<<<< HEAD
         } catch (SQLException ex) {ex.printStackTrace();                    
+=======
+        } catch (SQLException ex) {
+        System.out.println("Bonplan non  ajouté");                    
+>>>>>>> 3edb8855f3d933cf5e03db51dbbf6747b4369a2f
         }   
     }
     
@@ -49,7 +54,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             st.executeUpdate(req);
             System.out.println("Bonplan updated !");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           System.out.println("Bonplan non updated !");
         }
     }
     
