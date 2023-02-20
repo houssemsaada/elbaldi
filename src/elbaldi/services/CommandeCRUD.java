@@ -6,6 +6,8 @@
 package elbaldi.services;
 
 import elbaldi.interfaces.commandeInterfaceCRUD;
+import elbaldi.models.Role;
+import elbaldi.models.Utilisateur;
 import elbaldi.models.commande;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
@@ -33,7 +35,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 String req = "INSERT INTO `commande` (`id_cmd`,`id_user`, `etat`, `date_cmd`) VALUES (?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, c.getId_cmd());
-                ps.setInt(2, c.getId_user());
+                ps.setInt(2, c.getU1().getid_user());
                 ps.setString(3, c.getEtat());
                 ps.setDate(4, c.getDate_cmd());
                 ps.executeUpdate();
@@ -45,7 +47,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
             try {
                 String req = "INSERT INTO `commande` (`id_user`, `etat`, `date_cmd`) VALUES (?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
-                ps.setInt(1, c.getId_user());
+                ps.setInt(1, c.getU1().getid_user());
                 ps.setString(2, c.getEtat());
                 ps.setDate(3, c.getDate_cmd());
                 ps.executeUpdate();
@@ -63,7 +65,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, c.getEtat());
             ps.setDate(2, c.getDate_cmd());
-            ps.setInt(3, c.getId_user());
+            ps.setInt(3, c.getU1().getid_user());
             ps.setInt(4, c.getId_cmd());
             ps.executeUpdate();
             System.out.println("commande updated !");
@@ -73,9 +75,9 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
     }
 
     @Override
-    public void supprimerCommande(int id_cmd) {
+    public void supprimerCommande(commande c) {
         try {
-            String req = "DELETE FROM `commande` WHERE id_cmd = " + id_cmd;
+            String req = "DELETE FROM `commande` WHERE id_cmd = " + c.getId_cmd();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("commande deleted !");
@@ -93,13 +95,32 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
 
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
+                Utilisateur u = new Utilisateur();
                 commande c = new commande();
                 c.setId_cmd(RS.getInt(1));
                 c.setEtat(RS.getString(2));
                 c.setDate_cmd(RS.getDate(3));
-                c.setId_user(RS.getInt(4));
+
+                String filter = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, RS.getInt(4));
+                ResultSet rr = pss.executeQuery();
+                while (rr.next()) {
+                    u.setid_user(rr.getInt(1));
+                    u.setNom(rr.getString(2));
+                    u.setPrenom(rr.getString(3));
+                    u.setEmail(rr.getString(4));
+                    u.setDateNaissance(rr.getString(5));
+                    u.setNumTel(rr.getInt(6));
+                    u.setVille(rr.getString(7));
+                    u.setLogin(rr.getString(8));
+                    u.setMdp(rr.getString(9));
+                    u.setRole(Role.valueOf(rr.getString(10)));
+                }
+                c.setU1(u);
                 list.add(c);
             }
+          
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -117,10 +138,29 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
                 commande c = new commande();
+                Utilisateur u = new Utilisateur();
+
                 c.setId_cmd(RS.getInt(1));
                 c.setEtat(RS.getString(2));
                 c.setDate_cmd(RS.getDate(3));
-                c.setId_user(RS.getInt(4));
+
+                String filter = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, RS.getInt(4));
+                ResultSet rr = pss.executeQuery();
+                while (rr.next()) {
+                    u.setid_user(rr.getInt(1));
+                    u.setNom(rr.getString(2));
+                    u.setPrenom(rr.getString(3));
+                    u.setEmail(rr.getString(4));
+                    u.setDateNaissance(rr.getString(5));
+                    u.setNumTel(rr.getInt(6));
+                    u.setVille(rr.getString(7));
+                    u.setLogin(rr.getString(8));
+                    u.setMdp(rr.getString(9));
+                    u.setRole(Role.valueOf(rr.getString(10)));
+                }
+                c.setU1(u);
                 commandes.add(c);
             }
         } catch (SQLException ex) {
@@ -138,10 +178,29 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 commande c = new commande();
-                c.setId_cmd(rs.getInt("id_cmd"));
-                c.setId_user(rs.getInt("id_user"));
-                c.setEtat(rs.getString("etat"));
-                c.setDate_cmd(rs.getDate("date_cmd"));
+                Utilisateur u = new Utilisateur();
+
+                c.setId_cmd(rs.getInt(1));
+                c.setEtat(rs.getString(2));
+                c.setDate_cmd(rs.getDate(3));
+                String filter = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, rs.getInt(4));
+                ResultSet rr = pss.executeQuery();
+                while (rr.next()) {
+                    u.setid_user(rr.getInt(1));
+                    u.setNom(rr.getString(2));
+                    u.setPrenom(rr.getString(3));
+                    u.setEmail(rr.getString(4));
+                    u.setDateNaissance(rr.getString(5));
+                    u.setNumTel(rr.getInt(6));
+                    u.setVille(rr.getString(7));
+                    u.setLogin(rr.getString(8));
+                    u.setMdp(rr.getString(9));
+                    u.setRole(Role.valueOf(rr.getString(10)));
+                }
+                c.setU1(u);
+
                 commandes.add(c);
             }
         } catch (SQLException ex) {
@@ -151,24 +210,43 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
     }
 
     @Override
-    public List<commande> filtreByuser(int id_user) {
+    public List<commande> filtreByuser(Utilisateur u1) {
         List<commande> commandes = new ArrayList<>();
-    try {
-        String query = "SELECT * FROM commande WHERE id_user = ?";
-        PreparedStatement ps = conn.prepareStatement(query);
-        ps.setInt(1, id_user);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            commande c = new commande();
-            c.setId_cmd(rs.getInt("id_cmd"));
-            c.setId_user(rs.getInt("id_user"));
-            c.setEtat(rs.getString("etat"));
-            c.setDate_cmd(rs.getDate("date_cmd"));
-            commandes.add(c);
+        try {
+            String query = "SELECT * FROM commande WHERE id_user = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, u1.getid_user());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                commande c = new commande();
+                Utilisateur u = new Utilisateur();
+
+                c.setId_cmd(rs.getInt(1));
+                c.setEtat(rs.getString(2));
+                c.setDate_cmd(rs.getDate(3));
+                String filter = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, u1.getid_user());
+                ResultSet rr = pss.executeQuery();
+                while (rr.next()) {
+                    u.setid_user(rr.getInt(1));
+                    u.setNom(rr.getString(2));
+                    u.setPrenom(rr.getString(3));
+                    u.setEmail(rr.getString(4));
+                    u.setDateNaissance(rr.getString(5));
+                    u.setNumTel(rr.getInt(6));
+                    u.setVille(rr.getString(7));
+                    u.setLogin(rr.getString(8));
+                    u.setMdp(rr.getString(9));
+                    u.setRole(Role.valueOf(rr.getString(10)));
+                }
+                c.setU1(u);
+
+                commandes.add(c);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    }
-    return commandes;
+        return commandes;
     }
 }

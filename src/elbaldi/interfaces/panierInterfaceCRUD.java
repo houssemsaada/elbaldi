@@ -4,15 +4,25 @@
  * and open the template in the editor.
  */
 package elbaldi.interfaces;
+
+import elbaldi.models.Utilisateur;
 import java.util.List;
 import elbaldi.models.panier;
+import elbaldi.models.produit;
+
 /**
  *
  * @author houss
  */
 public interface panierInterfaceCRUD {
-    public void ajouterPanier(panier p) ; 
-    public void modifierPanier(panier p);
-    public void supprimerPanier(int id_panier) ;
+
+    public void ajouterPanier(panier p);
+
+    public void modifierPanier(panier p , produit p1);
+
+    public void supprimerPanier(panier p);
+
     public List<panier> afficherPanier();
-}   
+
+    public List<panier> filtreByuser(Utilisateur u1);
+}

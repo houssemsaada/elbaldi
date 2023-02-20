@@ -26,6 +26,10 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
+    public Utilisateur(int id_user) {
+        this.id_user = id_user;
+    }
+    
     public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp, Role role) {
         this.id_user = id_user;
         this.nom = nom;

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package elbaldi.interfaces;
+import elbaldi.models.Utilisateur;
 import java.util.List;
 import elbaldi.models.commande;
 import java.sql.Date;
@@ -15,10 +16,10 @@ import java.sql.Date;
 public interface commandeInterfaceCRUD {
     public void ajouterCommande(commande c) ; 
     public void modifierCommande(commande c);
-    public void supprimerCommande(int id_cmd) ;
+    public void supprimerCommande(commande c) ;
     public List<commande> afficherCommande();
     public List<commande> filtreByDate(Date date_commande);
     public List<commande> sortCommandesByDate();
-    public List<commande> filtreByuser(int id_user);
+    public List<commande> filtreByuser(Utilisateur u1);
 
 }

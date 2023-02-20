@@ -6,6 +6,8 @@
 package elbaldi.services;
 
 import elbaldi.interfaces.livraisonInterfaceCRUD;
+import elbaldi.models.Role;
+import elbaldi.models.Utilisateur;
 import elbaldi.models.commande;
 import elbaldi.models.livraison;
 import elbaldi.utils.MyConnection;
@@ -28,13 +30,13 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
     Connection conn = MyConnection.getInstance().getConn();
 
     @Override
-    public void ajouterLivraison(livraison l, commande c) {
+    public void ajouterLivraison(livraison l) {
         if (l.getId_livraison() != 0) {
             try {
                 String req = "INSERT INTO `livraison` (`id_livraison`,`id_cmd`, `status_livraison`, `adresse_livraison`, `date_livraison`) VALUES (?,?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, l.getId_livraison());
-                ps.setInt(2, c.getId_cmd());
+                ps.setInt(2, l.getC1().getId_cmd());
                 ps.setString(3, l.getStatus_livraison());
                 ps.setString(4, l.getAdresse_livraison());
                 ps.setDate(5, l.getDate_livraison());
@@ -47,7 +49,7 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             try {
                 String req = "INSERT INTO `livraison` (`id_cmd`, `status_livraison`, `adresse_livraison`, `date_livraison`) VALUES (?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
-                ps.setInt(1, c.getId_cmd());
+                ps.setInt(1, l.getC1().getId_cmd());
                 ps.setString(2, l.getStatus_livraison());
                 ps.setString(3, l.getAdresse_livraison());
                 ps.setDate(4, l.getDate_livraison());
@@ -61,11 +63,11 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
     }
 
     @Override
-    public void modifierLivraison(livraison l, commande c) {
+    public void modifierLivraison(livraison l) {
         try {
             String req = "UPDATE `livraison` SET `id_cmd` = ?,`status_livraison` = ?, `adresse_livraison` = ? , `date_livraison` = ? WHERE id_livraison   = ? ";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setInt(1, c.getId_cmd());
+            ps.setInt(1, l.getC1().getId_cmd());
             ps.setString(2, l.getStatus_livraison());
             ps.setString(3, l.getAdresse_livraison());
             ps.setDate(4, l.getDate_livraison());
@@ -78,9 +80,9 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
     }
 
     @Override
-    public void supprimerLivraison(int id_livraison) {
+    public void supprimerLivraison(livraison l) {
         try {
-            String req = "DELETE FROM `livraison` WHERE id_livraison = " + id_livraison;
+            String req = "DELETE FROM `livraison` WHERE id_livraison = " + l.getId_livraison();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("livraison deleted !");
@@ -98,10 +100,40 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
 
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
-
+                 Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
+                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                l.setId_cmd(RS.getInt(2));
+                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, RS.getInt(2));
+                ResultSet rc = pss.executeQuery();
+                while (rc.next()) {
+                   
+                    
+                    c.setId_cmd(rc.getInt(1));
+                    c.setEtat(rc.getString(2));
+                    c.setDate_cmd(rc.getDate(3));
+
+                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                    PreparedStatement psu = conn.prepareStatement(filter2);
+                    psu.setInt(1, rc.getInt(4));
+                    ResultSet ru = psu.executeQuery();
+                    while (ru.next()) {
+                        u.setid_user(ru.getInt(1));
+                        u.setNom(ru.getString(2));
+                        u.setPrenom(ru.getString(3));
+                        u.setEmail(ru.getString(4));
+                        u.setDateNaissance(ru.getString(5));
+                        u.setNumTel(ru.getInt(6));
+                        u.setVille(ru.getString(7));
+                        u.setLogin(ru.getString(8));
+                        u.setMdp(ru.getString(9));
+                        u.setRole(Role.valueOf(ru.getString(10)));
+                    }
+                    c.setU1(u);
+                }
+                l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
                 l.setDate_livraison(RS.getDate(5));
@@ -116,70 +148,163 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
 
     @Override
     public List<livraison> filtreByDate(Date date_livraison) {
-        List<livraison> livraisons = new ArrayList<>();
+        List<livraison> list = new ArrayList<>();
         try {
             String fil = "SELECT * FROM livraison WHERE date_livraison = ?";
             PreparedStatement ps = conn.prepareStatement(fil);
             ps.setDate(1, date_livraison);
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
+                Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
+                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                l.setId_cmd(RS.getInt(2));
+                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, RS.getInt(2));
+                ResultSet rc = pss.executeQuery();
+                while (rc.next()) {
+                   
+                    
+                    c.setId_cmd(rc.getInt(1));
+                    c.setEtat(rc.getString(2));
+                    c.setDate_cmd(rc.getDate(3));
+
+                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                    PreparedStatement psu = conn.prepareStatement(filter2);
+                    psu.setInt(1, rc.getInt(4));
+                    ResultSet ru = psu.executeQuery();
+                    while (ru.next()) {
+                        u.setid_user(ru.getInt(1));
+                        u.setNom(ru.getString(2));
+                        u.setPrenom(ru.getString(3));
+                        u.setEmail(ru.getString(4));
+                        u.setDateNaissance(ru.getString(5));
+                        u.setNumTel(ru.getInt(6));
+                        u.setVille(ru.getString(7));
+                        u.setLogin(ru.getString(8));
+                        u.setMdp(ru.getString(9));
+                        u.setRole(Role.valueOf(ru.getString(10)));
+                    }
+                    c.setU1(u);
+                }
+                l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
                 l.setDate_livraison(RS.getDate(5));
-                livraisons.add(l);
+                list.add(l);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return livraisons;
+        return list;
     }
 
     @Override
     public List<livraison> sortlivraisonByDate() {
-        List<livraison> livraisons = new ArrayList<>();
+        List<livraison> list = new ArrayList<>();
         try {
             String query = "SELECT * FROM livraison ORDER BY date_livraison DESC";
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
+                Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
+                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                l.setId_cmd(RS.getInt(2));
+                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, RS.getInt(2));
+                ResultSet rc = pss.executeQuery();
+                while (rc.next()) {
+                   
+                    
+                    c.setId_cmd(rc.getInt(1));
+                    c.setEtat(rc.getString(2));
+                    c.setDate_cmd(rc.getDate(3));
+
+                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                    PreparedStatement psu = conn.prepareStatement(filter2);
+                    psu.setInt(1, rc.getInt(4));
+                    ResultSet ru = psu.executeQuery();
+                    while (ru.next()) {
+                        u.setid_user(ru.getInt(1));
+                        u.setNom(ru.getString(2));
+                        u.setPrenom(ru.getString(3));
+                        u.setEmail(ru.getString(4));
+                        u.setDateNaissance(ru.getString(5));
+                        u.setNumTel(ru.getInt(6));
+                        u.setVille(ru.getString(7));
+                        u.setLogin(ru.getString(8));
+                        u.setMdp(ru.getString(9));
+                        u.setRole(Role.valueOf(ru.getString(10)));
+                    }
+                    c.setU1(u);
+                }
+                l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
                 l.setDate_livraison(RS.getDate(5));
-                livraisons.add(l);
+                list.add(l);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return livraisons;
+        return list;
     }
 
     @Override
-    public List<livraison> filtreBycommande(commande c) {
-        List<livraison> livraisons = new ArrayList<>();
+    public List<livraison> filtreBycommande(commande c1) {
+        List<livraison> list = new ArrayList<>();
         try {
             String query = "SELECT * FROM livraison WHERE id_cmd = ?";
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, c.getId_cmd());
+            ps.setInt(1, c1.getId_cmd());
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
+               Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
+                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                l.setId_cmd(RS.getInt(2));
+                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setInt(1, RS.getInt(2));
+                ResultSet rc = pss.executeQuery();
+                while (rc.next()) {
+                   
+                    
+                    c.setId_cmd(rc.getInt(1));
+                    c.setEtat(rc.getString(2));
+                    c.setDate_cmd(rc.getDate(3));
+
+                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
+                    PreparedStatement psu = conn.prepareStatement(filter2);
+                    psu.setInt(1, rc.getInt(4));
+                    ResultSet ru = psu.executeQuery();
+                    while (ru.next()) {
+                        u.setid_user(ru.getInt(1));
+                        u.setNom(ru.getString(2));
+                        u.setPrenom(ru.getString(3));
+                        u.setEmail(ru.getString(4));
+                        u.setDateNaissance(ru.getString(5));
+                        u.setNumTel(ru.getInt(6));
+                        u.setVille(ru.getString(7));
+                        u.setLogin(ru.getString(8));
+                        u.setMdp(ru.getString(9));
+                        u.setRole(Role.valueOf(ru.getString(10)));
+                    }
+                    c.setU1(u);
+                }
+                l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
                 l.setDate_livraison(RS.getDate(5));
-                livraisons.add(l);
+                list.add(l);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return livraisons;
+        return list;
     }
 
 }

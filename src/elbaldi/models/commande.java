@@ -7,31 +7,33 @@ package elbaldi.models;
 
 import java.time.LocalDate;
 
-import java.sql.Date ; 
+import java.sql.Date;
+
 /**
  *
  * @author houss
  */
 public class commande {
 
-    private int id_cmd, id_user;
+    private int id_cmd;
     private String etat;
-    private Date  date_cmd;
+    private Date date_cmd;
+    private Utilisateur u1 ;
 
     //constructeur par defaut
     public commande() {
     }
     //constructeur parametre 
 
-    public commande(int id_user, String etat, Date  date_cmd) {
-        this.id_user = id_user;
+    public commande(Utilisateur u1, String etat, Date date_cmd) {
+        this.u1 = u1;
         this.etat = etat;
         this.date_cmd = date_cmd;
     }
 
-    public commande(int id_cmd, int id_user, String etat, Date  date_cmd) {
+    public commande(int id_cmd, Utilisateur u1, String etat, Date date_cmd) {
         this.id_cmd = id_cmd;
-        this.id_user = id_user;
+        this.u1 = u1;
         this.etat = etat;
         this.date_cmd = date_cmd;
     }
@@ -41,8 +43,8 @@ public class commande {
         return id_cmd;
     }
 
-    public int getId_user() {
-        return id_user;
+    public Utilisateur getU1() {
+        return u1;
     }
 
     public String getEtat() {
@@ -58,8 +60,8 @@ public class commande {
         this.id_cmd = id_cmd;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setU1(Utilisateur u1) {
+        this.u1 = u1;
     }
 
     public void setEtat(String etat) {
@@ -72,7 +74,7 @@ public class commande {
 
     @Override
     public String toString() {
-        return "commande{" + "id_cmd=" + id_cmd + ", id_user=" + id_user + ", etat=" + etat + ", date_cmd=" + date_cmd + '}';
+        return "commande{" + "id_cmd=" + id_cmd + ", user=" + u1 + ", etat=" + etat + ", date_cmd=" + date_cmd + '}';
     }
 
 }
