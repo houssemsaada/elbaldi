@@ -17,12 +17,13 @@ import elbaldi.models.produit;
 public interface panierInterfaceCRUD {
 
     public void ajouterPanier(panier p);
+    public void ajouterProdPanier(panier p,produit p1,int quantite);
 
     public void modifierPanier(panier p , produit p1);
 
     public void supprimerPanier(panier p);
 
-    public List<panier> afficherPanier();
+    public void afficherPanier();
 
     public List<panier> filtreByuser(Utilisateur u1);
 }

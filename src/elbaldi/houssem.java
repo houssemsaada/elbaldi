@@ -39,7 +39,7 @@ public class houssem {
         categorie c1 = new categorie(2, "art");
         CategorieCRUD categ = new CategorieCRUD();
         // categ.ajouterCategorie(c1);
-        produit p1 = new produit("f03", "tableau", "tableau artistique", "zzz", 45.1f, 0.3f, 55.5f, 2, 1, 2);
+        produit p1 = new produit("f04");
         ProduitCRUD prod = new ProduitCRUD();
         // prod.ajouterProduit(p1);
 //---------------------- module commande--------------------------------------------------------------------        
@@ -67,12 +67,13 @@ public class houssem {
         //System.out.println(liv.sortlivraisonByDate());
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
-        panier pan1 = new panier(p1,u1, 5, 5, 22);
+        panier pan1 = new panier(15,p1,u1, 5, 5, 22);
         panierCRUD pan = new panierCRUD();
        // pan.ajouterPanier(pan1);
+       //pan.ajouterProdPanier(pan1, p1,10);
         //pan.modifierPanier(pan1);
         //pan.supprimerPanier(3);
-        //System.out.println(pan.afficherPanier());
-        System.out.println(pan.filtreByuser(u1));
+        pan.afficherPanier();
+        //System.out.println(pan.filtreByuser(u1));
     }
 }
