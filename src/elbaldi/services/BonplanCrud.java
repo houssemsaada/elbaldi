@@ -37,8 +37,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             ps.setInt(6, B.getId_user());
              ps.executeUpdate();
             System.out.println("Bonplan ajouté");
-        } catch (SQLException ex) {
-            ex.printStackTrace();                    
+        } catch (SQLException ex) {ex.printStackTrace();                    
         }   
     }
     
@@ -82,7 +81,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
 
     
     
-    @Override
+    /*@Override
     public void supprimerbonplan(int id) {
         try {
             String req = "DELETE FROM `bonplan` WHERE id_bonplan = " + id;
@@ -94,7 +93,12 @@ public class BonplanCrud implements InterfaceBonplanCrud {
         }
     }
     
-    
+    */
+
+    @Override
+    public void supprimerbonplan(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     }

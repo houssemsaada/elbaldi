@@ -31,6 +31,15 @@ public class bonplan {
         this.id_user = id_user;
     }
 
+    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan) {
+        this.id_bonplan = id_bonplan;
+        this.titre_bonplan = titre_bonplan;
+        this.description_bonplan = description_bonplan;
+        this.type_bonplan = type_bonplan;
+        this.image_bonplan = image_bonplan;
+    }
+    
+
     public int getId_bonplan() {
         return id_bonplan;
     }
