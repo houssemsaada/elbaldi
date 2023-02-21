@@ -21,6 +21,9 @@ public class produit {
     public produit(){
         
     }
+    public produit(String ref_produit){
+        this.ref_produit=ref_produit;
+    }
 
     public produit(String ref_produit, String libelle, String description, String image, float prix_vente, int quantite,categorie categoriee) {
         this.ref_produit = ref_produit;
