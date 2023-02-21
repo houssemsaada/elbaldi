@@ -9,12 +9,12 @@ import java.util.List;
 
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public interface InterfaceProduitCRUD {
     public void ajouterProduit(produit p);
     public void modifierProduit(produit p);
-    public void supprimerProduit(String ref_produit) ;
+    public void supprimerProduit(produit pr) ;
     public List<produit> afficherProduit();
     public produit getByRefProduit(String ref);
     public List<produit> filtreByPrixVente(float min, float max);

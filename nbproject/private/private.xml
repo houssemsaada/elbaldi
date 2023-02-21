@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/selim.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/utils/MyConnection.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/QuizCRUD.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/interfaces/InterfaceCRUD.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/Role.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/Reservation.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/UtilisateurCRUD.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/commentaire.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/categorie.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/CategorieCRUD.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/elbaldi.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,20 +10,23 @@ import static elbaldi.models.Role.client;
 import elbaldi.services.*;
 import java.sql.Date;
 import java.sql.SQLException;
+import static java.sql.Timestamp.valueOf;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public class elbaldi {
      /**
      * @param args the command line arguments
      * @throws java.sql.SQLException
      */
-    public static void main(String[] args) throws SQLException {
-        
-        
+    public static void main(String[] args) throws SQLException, ParseException {
+        /*
+       /* 
          System.out.println("-------------------------------------------------------------------------------");
          System.out.println("                              PARTIE UTILISATEUR");
          System.out.println("-------------------------------------------------------------------------------");
@@ -31,13 +34,13 @@ public class elbaldi {
        
        
       
-        Utilisateur u1 = new Utilisateur("ben mahmoud", "khaled","test@test","10/16/2000",2345564,"tunis","test","test",client);
+        Utilisateur u1 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
         
         uti.ajouterUtlisateur(u1);
-        uti.supprimerUtilisateur(2423);
-        Utilisateur mod = new Utilisateur("testttt", "test","test@test","10/16/2000",2345564,"tunis","test","test",client);
-        uti.modifierUtilisateur(mod,2424);
+        uti.supprimerUtilisateur(2459);
+        Utilisateur mod = new Utilisateur(2460,"abc", "test","test@test","10/16/2000",2345564,"tunis","test","test",client);
+        uti.modifierUtilisateur(mod, mod.getid_user());
       
         System.out.println( uti.afficherUtilisateur());
         
@@ -65,107 +68,124 @@ public class elbaldi {
          System.out.println(rec.getReclamationByID(2433)); 
         System.out.println(rec.Filter_Reclamation("10/16/2000", "tunis"));
         
-                
+          */     
         
         System.out.println("-------------------------------------------------------------");
-        System.out.println("----------------Module Produits et categories ----------------");
+        System.out.println("----------------Gestion des categories ----------------");
         System.out.println("-------------------------------------------------------------");
-         categorie c1 = new categorie(2, "art");
-         categorie c2 = new categorie(3, "art et culture");
-         CategorieCRUD categ = new CategorieCRUD();
-         categ.ajouterCategorie(c1);
-         categ.ajouterCategorie(c2);
+        CategorieCRUD categ = new CategorieCRUD();
+        categorie c1 = new categorie( "test","ttttt");
+        
+        //ajouter categorie 
+        categ.ajouterCategorie(c1);
+        
+        //afficher categories
+        System.out.println(categ.affichercategorie());
+        
+        //Récupérer une categorie existante avec un  id categorie existant
+        categorie c = categ.getCategorieById(1); 
          
-         System.out.println("--------La liste des categories apres l'ajout----------- ");
-        //afficher la liste des categories
-        System.out.println(categ.affichercategorie());
-        
-        //ajouter produit
-        produit p1 = new produit("f03","tableau","tableau artistique","zzz",45.1f,0.3f,55.5f,2,1,2);
-        produit p2 = new produit("f04","piano","musique","zdd",45.1f,0.3f,55.5f,3,1,2);
-        ProduitCRUD prod = new ProduitCRUD();
-        
-        prod.ajouterProduit(p1);
-        prod.ajouterProduit(p2);
-        System.out.println("------------La liste des produits apres l'ajout------------- ");
-
-        //afficher la liste des produits
-        System.out.println(prod.afficherProduit());
-        
-         //modifier categorie
-        categorie c = categ.getCategorieById(2); //Récupérer une categorie existante avec un  id categorie existant
-       c.setNom_categorie("fan _modif"); //Modifier le nom de categorie
-       categ.modifierCategorie(c); //Appeler la méthode pour mettre à jour la categorie
-        //afficher categorie apres modification
-        System.out.println("-------------La liste des categories apres modification-------------");
-        System.out.println(categ.affichercategorie());
-        
-        //modifier produit
-       produit p = prod.getByRefProduit("f02"); //Récupérer un produit existant avec une référence de produit existante
-       p.setLibelle("tableau de yasmine"); //Modifier le libellé de produit
-       prod.modifierProduit(p); //Appeler la méthode pour mettre à jour le produit
-       //afficher produit apres modification
-        System.out.println("---------------La liste des produits  apres modification------------- ");
-        System.out.println(prod.afficherProduit());
-        //recuperer categorie par id categorie
-       System.out.println("La categorie dont l'id donnee en parametre ");
-
-       System.out.println(categ.getCategorieById(2));
-        
-       System.out.println("----------------Le produit dont la reference donnee en parametre-------- ");
-
-       //recuperer produit par reference produit
-       System.out.println(prod.getByRefProduit("f01"));
-       
-        
-       System.out.println("----------------La liste des produits qui ont un prix de ventre entre la valeur min et max------- ");
-
-       //filtrer les produits par prix de vente entre une valeur maximale et minimale 
-       System.out.println(prod.filtreByPrixVente(55.0f, 55.5f));
-        
-       System.out.println("-----La liste des produits qui ont la quantite superieure a la quantite donnee en parametre------- ");
-
-       // filtrer les produits par quantite (on affiche les prooduits qui on ont une quantite superieure a la quantite donnee en parametre 
-       System.out.println(prod.filtrerProduitParQuantite(3));
-       
-       System.out.println("-------La liste des categories par nom de categorie------ ");
-
-       //filtrer les categorie par nom de categorie 
-       System.out.println(categ.filtrerCategorie("art"));
+        c.setNom_categorie("testmodif"); //Modifier le nom de categorie
+        categ.modifierCategorie(c); //Appeler la méthode pour mettre à jour la categorie
+                
+        //filtrer les categorie par nom de categorie 
+       System.out.println(categ.filtrerCategorie("testmodif"));
        
        //supprimer categorie
+        //categ.supprimerCategorie(c1);
         
-        //categ.supprimerCategorie(1);
-        System.out.println("------La liste des categories apres suppression------- ");
-
-        System.out.println(categ.affichercategorie());
         
-        //supprimer produit 
+         System.out.println("-------------------------------------------------------------");
+        System.out.println("----------------Gestion des Produits ----------------");
+        System.out.println("-------------------------------------------------------------");
         
-       // prod.supprimerProduit("f01");
-        System.out.println("-------La liste des produits  apres suppression----- ");
-
+         ProduitCRUD prod = new ProduitCRUD();  
+         //categorie c2 = new categorie( 2,"test","ttttt");
+        //ajouter produit
+        produit p1 = new produit("64","tableautest","rrrrr aaaaaa","zzz",45.5f,5,categ.getCategorieById(1));
+        prod.ajouterProduit(p1);
+        
+        //afficher
         System.out.println(prod.afficherProduit());
         
+        //recuperer produit par reference produit
+       System.out.println(prod.getByRefProduit("TUN6190090"));
+        
+        //modifier produit
+        
+        //Récupérer un produit existant avec une référence de produit existante
+        //Modifier le libellé de produit
+       prod.modifierProduit(p1); //Appeler la méthode pour mettre à jour le produit       
+
+       //filtrer les produits par prix de vente entre une valeur maximale et minimale 
+       System.out.println(prod.filtreByPrixVente(45.0f, 55.5f));
+        
+
+       // filtrer les produits par quantite
+       System.out.println(prod.filtrerProduitParQuantite(3));
+       
+        //supprimer produit 
+        //prod.supprimerProduit(p1);
+       
+         System.out.println("-------------------------------------------------------------");
+        System.out.println("----------------Gestion des commentaires ----------------");
+        System.out.println("-------------------------------------------------------------");
+        
+        
+
+        Utilisateur u2 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
+        UtilisateurCRUD uti = new UtilisateurCRUD();
+        uti.ajouterUtlisateur(u2);
+        //ajouter commentaire
+        commentaireCRUD comment = new commentaireCRUD();
+        commentaire commentaire1 = new commentaire("aaaa",p1,uti.getUserByID(1));
+        comment.ajouterCommentaire(commentaire1);
+        
+        //modifier commentaire 
+        commentaire cmm = comment.getCommentaireById(42); 
+        cmm.setContenu("eeeeee"); //Modifier le contenu de commentaire
+        comment.modifierCommentaire(cmm); //Appeler la méthode pour mettre à jour le commentaire
+    
+        
+        //supprimer commentaire
+        //comment.supprimerCommentaire(comment.getCommentaireById(17));
+        
+        //afficher commentaires 
+        System.out.println(comment.afficherCommentaire());
+        //Date
+        String date_commentai = "2023-02-18";
+        Date date_comment = Date.valueOf(date_commentai);
+      System.out.println(comment.filterParDate(date_comment));
+      //afficher commentaire par article 
+      System.out.println(comment.getCommentairesByArticle(p1));
+      
+      
+      
+        
+        /*
+        
+         System.out.println("-------------------------------------------------------------");
+        System.out.println("----------------Module quiz et promotions ----------------");
+        System.out.println("-------------------------------------------------------------");
         
       //----------------------------Module QUIZ-----------------------------
 
-
+/*
         
         quiz q1= new quiz("facile",0,1,1);
         QuizCRUD qu= new QuizCRUD();
         //Ajout d'un Quiz 
                   qu.ajouterQuiz(q1);
         //Modification d'un Quiz          
-                  qu.modifierquiz(q1);
+                  //qu.modifierquiz(q1);
         //Suppression d'un Quiz 
                  //qu.supprimerquiz(4);
         //Affichage d'un Quiz 
-                System.out.println( qu.afficherQuiz());
+                //System.out.println( qu.afficherQuiz());
         //Get By Id 
                //System.out.println(qu.getById(2));
         //Filtre By difficulte
-               System.out.println(qu.filtreByDifficulte("Moyenne"));
+             //  System.out.println(qu.filtreByDifficulte("Moyenne"));
         
         
 //-----------------------------Module Question------------------------------------------------               
@@ -176,90 +196,102 @@ public class elbaldi {
        //Ajout d'une Question      
                   qq.ajouterQuestion(qq1);
        //Modification d'une Question    
-                  qq.modifierquestion(qq1);   
+                 // qq.modifierquestion(qq1);   
        //Suppression d'une Question  
                  //qq.supprimerquestion(3);
        //Affichage d'une Question 
-                 System.out.println( qq.afficherQuestion());
+                // System.out.println( qq.afficherQuestion());
        //Get By Id 
-                System.out.println(qq.getById(2));
+                //System.out.println(qq.getById(2));
        //Filtre By difficulte
-                 System.out.println(qq.filtreByDifficulte("difficile"));
-    
+                // System.out.println(qq.filtreByDifficulte("difficile"));
+    */
 
-                
+   /*             
 //-----------------------------Module Promotion---------------------------------------------------                 
                 
       // créer un objet Promotion
-          promotion prom1 = new promotion("TYIBF67", 0.25f, LocalDate.of(2023, 3, 1), LocalDate.of(2023, 3, 21));
+          promotion prom1 = new promotion(21,"yyyyyy", 0.25f, LocalDate.of(2023, 3, 1), LocalDate.of(2023, 3, 21));
      // appeler la méthode pour ajouter la promotion
           PromotionCRUD pc2 = new PromotionCRUD();
   
          //Ajout d'une Promotion
-                 pc2.ajouterpromotion(prom1);
+                // pc2.ajouterpromotion(prom1);
          //Modification d'une Promotion        
-                pc2.modifierpromotion(prom1);
+              //  pc2.modifierpromotion(prom1);
          //Suppression d'une Promotion 
-                //pc2.supprimerpromotion(2);
+                pc2.supprimerpromotion(21);
          //Affichage d'une Promotion
                System.out.println( pc2.afficherpromotion());
          //Get By Id 
               System.out.println(pc2.getById(4));
          //Filtre By difficulte
               System.out.println(pc2.filtreBytaux(0.25f));
+     
+       
+     //----------------------------------------------------------------------------------------------------------/
               
-              
+         System.out.println("-------------------------------------------------------------");
+        System.out.println("----------------Module commandes et livraison  ----------------");
+        System.out.println("-------------------------------------------------------------");
               
           
-        String date_comm = "2023-02-10";
+        String date_comm = "2024-02-14";
         Date date_com = Date.valueOf(date_comm);
         String date_liv = "2023-02-18";
         Date date_livr = Date.valueOf(date_liv);
 //---------------------- module commande--------------------------------------------------------------------        
-        commande com1 = new commande(6,1, "delic", date_com);
+        commande com1 = new commande(2460, "anunule", date_com);
         CommandeCRUD comm = new CommandeCRUD();
-         comm.ajouterCommande(com1);
-         comm.modifierCommande(com1);
-        //comm.supprimerCommande(1);
-         System.out.println( comm.afficherCommande());
-         System.out.println(comm.filtreByDate(date_com));
-         System.out.println(comm.sortCommandesByDate());
-         System.out.println(comm.filtreByuser(2));
+        // comm.ajouterCommande(com1);
+         //comm.modifierCommande(com1);
+        //comm.supprimerCommande(9);
+        // System.out.println( comm.afficherCommande());
+         //System.out.println(comm.filtreByDate(date_com));
+         //System.out.println(comm.sortCommandesByDate());
+        // System.out.println(comm.filtreByuser(2));
 //----------------------module livraison--------------------------------------------------------------------        
-        livraison l1 = new livraison(22, "cbon", "tozeuur", date_livr, com1);
+   /*   livraison l1 = new livraison(24, "cbon", "tozeuur", date_livr, com1);
         livraisonCRUD liv = new livraisonCRUD();
-                liv.ajouterLivraison(l1, com1);
-        liv.modifierLivraison(l1, com1);
+              //  liv.ajouterLivraison(l1, com1);
+        //liv.modifierLivraison(l1, com1);
         //liv.supprimerLivraison(6);
         System.out.println(liv.afficherLivraison());
-        System.out.println(liv.filtreByDate(date_livr));
-        System.out.println(liv.sortlivraisonByDate());
-        //System.out.println(liv.filtreBycommande(c1));
+       // System.out.println(liv.filtreByDate(date_livr));
+        //System.out.println(liv.sortlivraisonByDate());
+        //System.out.println(liv.filtreBycommande(c1)); */
 //----------------------module panier------------------------------------------------------------------------
-        panier pan1 = new panier("f03",5,5,22);
+/*     
+panier pan1 = new panier("f03",5,5,22);
         panierCRUD pan = new panierCRUD();
         pan.ajouterPanier(pan1);
         pan.modifierPanier(pan1);
         //pan.supprimerPanier(3);
         System.out.println(pan.afficherPanier());
+        */
+        /*
+         System.out.println("-------------------------------------------------------------");
+        System.out.println("----------------Module evenements ----------------");
+        System.out.println("-------------------------------------------------------------");
         
         
-        System.out.println("----------Module Evenements------------ ");
+        
         
        EvenementServices es = new EvenementServices();
         
-        Evenement e1= new Evenement(10, "amen", "ssdddes", "15-10-2021", "19-10-2023", "100dt");
-         es.ajouter(e1);
+        Evenement e1= new Evenement(23, 8, "skander", "public", "15-10-2021", "19-10-2023", "100dt");
+        // es.ajouter(e1);
          es.supprimer(e1);
         System.out.println(es.recuperer(e1));   
         
-        
-         System.out.println("----------Module BonPlan------------ ");
+         System.out.println("-------------------------------------------------------------");
+        System.out.println("----------------Module Bonplan ----------------");
+        System.out.println("-------------------------------------------------------------");
         
          //---------------------------------------------------------Crud Bonplan-------------------------------------------------------------------------------//
         //ajout bonplan
         // MyConnection conn = MyConnection.getInstance();
-        bonplan bp = new bonplan(12,"Tunis","darjeld","resto","img",1);
+        bonplan bp = new bonplan(25,"Tunis","darjeld","resto","img",1);
         BonplanCrud per = new BonplanCrud();
         per.ajouterBonplan(bp);
        
@@ -267,9 +299,9 @@ public class elbaldi {
        
          //Modifier bonplan
             //MyConnection conn = MyConnection.getInstance();
-               bonplan bp1 = new bonplan(10,"Tunis","darjeld","resto","img",1);
+               bonplan bp1 = new bonplan(25,"beja","darjeld","resto","img",1);
                //BonplanCrud per = new BonplanCrud();
-              per.modifierBonplan(bp);
+              per.modifierBonplan(bp1);
        
        
        
@@ -286,7 +318,7 @@ public class elbaldi {
               //MyConnection conn = MyConnection.getInstance();
                     bonplan bp3 = new bonplan(10,"Tunis","darjeld","resto","img",1);
                     //BonplanCrud per = new BonplanCrud();
-                   //per.supprimerbonplan(2);
+                   per.supprimerbonplan(25);
          
          
          
@@ -337,6 +369,6 @@ public class elbaldi {
          //System.out.println(res1.filtreByDate(datefiltre));
          //ou bien
          System.out.println(res1.filtreByDate(Date.valueOf("2023-02-15")));
-        
+      */  
     }
 }

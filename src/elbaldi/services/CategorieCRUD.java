@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public class CategorieCRUD implements InterfaceCategorieCRUD {
     Connection conn = MyConnection.getInstance().getConn();
@@ -26,11 +26,12 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     @Override
     public void ajouterCategorie(categorie c) {
        try {
-            String req = "INSERT INTO `categorie`(`id_categorie`, `nom_categorie`) VALUES (?,?)";
+            String req = "INSERT INTO `categorie`(`nom_categorie`,`Description`) VALUES (?,?)";
             PreparedStatement ps=conn.prepareStatement(req);
           
-            ps.setInt(1,c.getId_categorie());
-            ps.setString(2,c.getNom_categorie());
+            //ps.setInt(1,c.getId_categorie());
+            ps.setString(1,c.getNom_categorie());
+            ps.setString(2,c.getDescription());
             ps.executeUpdate();
             System.out.println("categorie ajoutee avec succes");
         } catch (SQLException ex) {
@@ -41,7 +42,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     @Override
     public void modifierCategorie(categorie c) {
         try {
-            String req = "UPDATE `categorie` SET `nom_categorie` = '" + c.getNom_categorie() + "' WHERE `categorie`.`id_categorie` = " + c.getId_categorie();
+            String req = "UPDATE `categorie` SET `nom_categorie` = '" + c.getNom_categorie()  + "', `Description` = '" + c.getDescription()+ "' WHERE `categorie`.`id_categorie` = " + c.getId_categorie();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("categorie updated !");
@@ -51,9 +52,9 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     }
 
     @Override
-    public void supprimerCategorie(int id) {
+    public void supprimerCategorie(categorie c) {
           try {
-            String req = "DELETE FROM `categorie` WHERE id_categorie = " + id;
+            String req = "DELETE FROM `categorie` WHERE id_categorie = " + c.getId_categorie();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Categorie deleted !");
@@ -74,6 +75,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
              categorie c = new categorie();
              c.setId_categorie(RS.getInt("id_categorie"));
              c.setNom_categorie(RS.getString(2));
+             c.setDescription(RS.getString(3));
              list.add(c);
             }
         } catch (SQLException ex) {
@@ -95,6 +97,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
             c = new categorie();
             c.setId_categorie(rs.getInt("id_categorie"));
             c.setNom_categorie(rs.getString("nom_categorie"));
+            c.setDescription(rs.getString("Description"));
         }
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
@@ -112,6 +115,7 @@ public List<categorie> filtrerCategorie(String nomCategorie) {
             categorie c = new categorie();
             c.setId_categorie(rs.getInt("id_categorie"));
             c.setNom_categorie(rs.getString("nom_categorie"));
+            c.setDescription(rs.getString("Description"));
             list.add(c);
         }
     } catch (SQLException ex) {

@@ -7,43 +7,38 @@ package elbaldi.models;
 
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public class produit {
     private String ref_produit;
     private String libelle;
     private String description;
     private String image;
-    private float prix_achat;
-    private float marge;
     private float prix_vente;
     private int quantite;
-    private int id_user;
-    private int id_categorie;
+    private categorie categoriee;
 
     public produit(){
         
     }
 
-    public produit(String ref_produit, String libelle, String description, String image, float prix_achat, float marge, float prix_vente, int quantite, int id_user, int id_categorie) {
+    public produit(String ref_produit, String libelle, String description, String image, float prix_vente, int quantite,categorie categoriee) {
         this.ref_produit = ref_produit;
         this.libelle = libelle;
         this.description = description;
         this.image = image;
-        this.prix_achat = prix_achat;
-        this.marge = marge;
         this.prix_vente = prix_vente;
         this.quantite = quantite;
-        this.id_user = id_user;
-        this.id_categorie = id_categorie;
+        this.categoriee=categoriee;
+       
     }
 
     public String getRef_produit() {
-        return ref_produit;
+        return "TUN61900"+ref_produit;
     }
 
     public void setRef_produit(String ref_produit) {
-        this.ref_produit = ref_produit;
+       this.ref_produit = ref_produit;
     }
 
     public String getLibelle() {
@@ -70,21 +65,7 @@ public class produit {
         this.image = image;
     }
 
-    public float getPrix_achat() {
-        return prix_achat;
-    }
-
-    public void setPrix_achat(float prix_achat) {
-        this.prix_achat = prix_achat;
-    }
-
-    public float getMarge() {
-        return marge;
-    }
-
-    public void setMarge(float marge) {
-        this.marge = marge;
-    }
+   
 
     public float getPrix_vente() {
         return prix_vente;
@@ -101,28 +82,20 @@ public class produit {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
-
-    public int getId_user() {
-        return id_user;
+    
+    public categorie getCategoriee() {
+        return categoriee;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
-
-    public int getId_categorie() {
-        return id_categorie;
-    }
-
-    public void setId_categorie(int id_categorie) {
-        this.id_categorie = id_categorie;
+    public void setCategoriee(categorie categoriee) {
+        this.categoriee = categoriee;
     }
 
     @Override
     public String toString() {
-        return "produit{" + "ref_produit=" + ref_produit + ", libelle=" + libelle + ", description=" + description + ", image=" + image + ", prix_achat=" + prix_achat + ", marge=" + marge + ", prix_vente=" + prix_vente + ", quantite=" + quantite + ", id_user=" + id_user + ", id_categorie=" + id_categorie + '}';
+        return "produit{" + "ref_produit=" + ref_produit + ", libelle=" + libelle + ", description=" + description + ", image=" + image + ", prix_vente=" + prix_vente + ", quantite=" + quantite + ", categoriee=" + categoriee + '}';
     }
-    
+   
     
     
 }

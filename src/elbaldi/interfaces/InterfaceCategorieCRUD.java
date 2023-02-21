@@ -8,12 +8,12 @@ import elbaldi.models.categorie;
 import java.util.List;
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public interface InterfaceCategorieCRUD {
     public void ajouterCategorie(categorie c);
     public void modifierCategorie(categorie c);
-    public void supprimerCategorie(int id) ;
+    public void supprimerCategorie(categorie c) ;
     public List<categorie> affichercategorie();
     public categorie getCategorieById(int id);
     public List<categorie> filtrerCategorie(String nomCategorie);
