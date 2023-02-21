@@ -100,39 +100,11 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
 
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
-                 Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
-                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
-                PreparedStatement pss = conn.prepareStatement(filter);
-                pss.setInt(1, RS.getInt(2));
-                ResultSet rc = pss.executeQuery();
-                while (rc.next()) {
-                   
-                    
-                    c.setId_cmd(rc.getInt(1));
-                    c.setEtat(rc.getString(2));
-                    c.setDate_cmd(rc.getDate(3));
-
-                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
-                    PreparedStatement psu = conn.prepareStatement(filter2);
-                    psu.setInt(1, rc.getInt(4));
-                    ResultSet ru = psu.executeQuery();
-                    while (ru.next()) {
-                        u.setid_user(ru.getInt(1));
-                        u.setNom(ru.getString(2));
-                        u.setPrenom(ru.getString(3));
-                        u.setEmail(ru.getString(4));
-                        u.setDateNaissance(ru.getString(5));
-                        u.setNumTel(ru.getInt(6));
-                        u.setVille(ru.getString(7));
-                        u.setLogin(ru.getString(8));
-                        u.setMdp(ru.getString(9));
-                        u.setRole(Role.valueOf(ru.getString(10)));
-                    }
-                    c.setU1(u);
-                }
+                CommandeCRUD comm = new CommandeCRUD();
+                int id_cmd = RS.getInt(2);
+                commande c = comm.filtreByid(id_cmd);
                 l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
@@ -155,39 +127,13 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             ps.setDate(1, date_livraison);
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
-                Utilisateur u = new Utilisateur();
-                livraison l = new livraison();
-                commande c = new commande();
-                l.setId_livraison(RS.getInt(1));
-                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
-                PreparedStatement pss = conn.prepareStatement(filter);
-                pss.setInt(1, RS.getInt(2));
-                ResultSet rc = pss.executeQuery();
-                while (rc.next()) {
-                   
-                    
-                    c.setId_cmd(rc.getInt(1));
-                    c.setEtat(rc.getString(2));
-                    c.setDate_cmd(rc.getDate(3));
 
-                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
-                    PreparedStatement psu = conn.prepareStatement(filter2);
-                    psu.setInt(1, rc.getInt(4));
-                    ResultSet ru = psu.executeQuery();
-                    while (ru.next()) {
-                        u.setid_user(ru.getInt(1));
-                        u.setNom(ru.getString(2));
-                        u.setPrenom(ru.getString(3));
-                        u.setEmail(ru.getString(4));
-                        u.setDateNaissance(ru.getString(5));
-                        u.setNumTel(ru.getInt(6));
-                        u.setVille(ru.getString(7));
-                        u.setLogin(ru.getString(8));
-                        u.setMdp(ru.getString(9));
-                        u.setRole(Role.valueOf(ru.getString(10)));
-                    }
-                    c.setU1(u);
-                }
+                livraison l = new livraison();
+
+                l.setId_livraison(RS.getInt(1));
+                CommandeCRUD comm = new CommandeCRUD();
+                int id_cmd = RS.getInt(2);
+                commande c = comm.filtreByid(id_cmd);
                 l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
@@ -208,39 +154,11 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
-                Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
-                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
-                PreparedStatement pss = conn.prepareStatement(filter);
-                pss.setInt(1, RS.getInt(2));
-                ResultSet rc = pss.executeQuery();
-                while (rc.next()) {
-                   
-                    
-                    c.setId_cmd(rc.getInt(1));
-                    c.setEtat(rc.getString(2));
-                    c.setDate_cmd(rc.getDate(3));
-
-                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
-                    PreparedStatement psu = conn.prepareStatement(filter2);
-                    psu.setInt(1, rc.getInt(4));
-                    ResultSet ru = psu.executeQuery();
-                    while (ru.next()) {
-                        u.setid_user(ru.getInt(1));
-                        u.setNom(ru.getString(2));
-                        u.setPrenom(ru.getString(3));
-                        u.setEmail(ru.getString(4));
-                        u.setDateNaissance(ru.getString(5));
-                        u.setNumTel(ru.getInt(6));
-                        u.setVille(ru.getString(7));
-                        u.setLogin(ru.getString(8));
-                        u.setMdp(ru.getString(9));
-                        u.setRole(Role.valueOf(ru.getString(10)));
-                    }
-                    c.setU1(u);
-                }
+                CommandeCRUD comm = new CommandeCRUD();
+                int id_cmd = RS.getInt(2);
+                commande c = comm.filtreByid(id_cmd);
                 l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));
@@ -262,39 +180,11 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             ps.setInt(1, c1.getId_cmd());
             ResultSet RS = ps.executeQuery();
             while (RS.next()) {
-               Utilisateur u = new Utilisateur();
                 livraison l = new livraison();
-                commande c = new commande();
                 l.setId_livraison(RS.getInt(1));
-                String filter = "SELECT *  FROM commande WHERE `id_cmd`= ?";
-                PreparedStatement pss = conn.prepareStatement(filter);
-                pss.setInt(1, RS.getInt(2));
-                ResultSet rc = pss.executeQuery();
-                while (rc.next()) {
-                   
-                    
-                    c.setId_cmd(rc.getInt(1));
-                    c.setEtat(rc.getString(2));
-                    c.setDate_cmd(rc.getDate(3));
-
-                    String filter2 = "SELECT *  FROM utilisateur WHERE `id_user`= ?";
-                    PreparedStatement psu = conn.prepareStatement(filter2);
-                    psu.setInt(1, rc.getInt(4));
-                    ResultSet ru = psu.executeQuery();
-                    while (ru.next()) {
-                        u.setid_user(ru.getInt(1));
-                        u.setNom(ru.getString(2));
-                        u.setPrenom(ru.getString(3));
-                        u.setEmail(ru.getString(4));
-                        u.setDateNaissance(ru.getString(5));
-                        u.setNumTel(ru.getInt(6));
-                        u.setVille(ru.getString(7));
-                        u.setLogin(ru.getString(8));
-                        u.setMdp(ru.getString(9));
-                        u.setRole(Role.valueOf(ru.getString(10)));
-                    }
-                    c.setU1(u);
-                }
+                CommandeCRUD comm = new CommandeCRUD();
+                int id_cmd = RS.getInt(2);
+                commande c = comm.filtreByid(id_cmd);
                 l.setC1(c);
                 l.setStatus_livraison(RS.getString(3));
                 l.setAdresse_livraison(RS.getString(4));

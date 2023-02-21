@@ -21,5 +21,6 @@ public interface commandeInterfaceCRUD {
     public List<commande> filtreByDate(Date date_commande);
     public List<commande> sortCommandesByDate();
     public List<commande> filtreByuser(Utilisateur u1);
+    public commande filtreByid(int id_cmd);
 
 }

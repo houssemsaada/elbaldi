@@ -23,7 +23,7 @@ public interface panierInterfaceCRUD {
 
     public void supprimerPanier(panier p);
 
-    public void afficherPanier();
+    public List<panier> afficherPanier();
 
     public List<panier> filtreByuser(Utilisateur u1);
 }
