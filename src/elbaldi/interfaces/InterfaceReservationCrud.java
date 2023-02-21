@@ -19,6 +19,7 @@ public interface InterfaceReservationCrud {
     public void modifierReservation(Reservation R);
     public List<Reservation> afficherReservation();
     public void supprimerReservation(int id);
+    public Reservation getReservationById(int id);
     public List<Reservation> filtreByDate(Date date_reservation);
 }
 

@@ -6,6 +6,7 @@
 package elbaldi.interfaces;
 
 import elbaldi.models.bonplan;
+import elbaldi.models.produit;
 import java.util.List;
 
 
@@ -18,4 +19,6 @@ public interface InterfaceBonplanCrud {
    public void modifierBonplan(bonplan B);
    public List<bonplan> afficherBonplan();
    public void supprimerbonplan(int id);
+    public bonplan getByIdBonplan(int id);
+     public List<bonplan> filtreByType(String type_bonplan);
 }

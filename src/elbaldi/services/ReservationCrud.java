@@ -7,6 +7,7 @@ package elbaldi.services;
 import elbaldi.interfaces.InterfaceReservationCrud;
 import elbaldi.models.Reservation;
 import elbaldi.models.bonplan;
+import elbaldi.models.categorie;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.Date;
@@ -91,6 +92,32 @@ public class ReservationCrud implements InterfaceReservationCrud {
             System.out.println("reservation supprimée");
         }
     }
+    
+    
+    
+    
+    @Override
+    public Reservation getReservationById(int id) {
+    Reservation RSV = null;
+    try {
+        String req = "SELECT * FROM Reservation WHERE id_reservation = '" + id +"'";
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        if (rs.next()) {
+             RSV= new Reservation();
+             RSV.setId_reservation(rs.getInt("id_reservation"));
+             RSV.setNombre_personnes(rs.getInt("nombre_personnes"));
+             RSV.setDate_reservation(rs.getDate("date_reservation"));
+             RSV.setId_bonplan(rs.getInt("id_bonplan"));
+             RSV.setId_user(rs.getInt("id_user"));
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return RSV;
+    
+    } 
+    
     
     @Override
     public List<Reservation> filtreByDate(Date date_reservation) {
