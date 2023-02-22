@@ -17,8 +17,8 @@ import java.util.List;
 public interface InterfaceReservationCrud {
     public void ajouterReservation(Reservation R);
     public void modifierReservation(Reservation R);
-    public List<Reservation> afficherReservation();
     public void supprimerReservation(int id);
+    public List<Reservation> afficherReservation();
     public Reservation getReservationById(int id);
     public List<Reservation> filtreByDate(Date date_reservation);
 }

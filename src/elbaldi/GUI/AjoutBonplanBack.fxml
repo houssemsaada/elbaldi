@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AjoutBonplanBackController">
+   <children>
+      <Label layoutX="115.0" layoutY="102.0" text="Titre bonplan" />
+      <Label layoutX="96.0" layoutY="152.0" text="Description bonplan" />
+      <Label layoutX="99.0" layoutY="199.0" prefHeight="18.0" prefWidth="102.0" text="Type bonplan" />
+      <Label layoutX="114.0" layoutY="258.0" prefHeight="18.0" prefWidth="71.0" text="Image :" />
+      <TextField fx:id="titreBP" layoutX="255.0" layoutY="98.0" />
+      <TextField fx:id="descriptionBP" layoutX="254.0" layoutY="148.0" />
+      <TextField fx:id="typeBp" layoutX="256.0" layoutY="196.0" />
+      <Button fx:id="Ajout" layoutX="176.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Ajouter" />
+      <ListView fx:id="imageBP" layoutX="242.0" layoutY="251.0" prefHeight="77.0" prefWidth="174.0" />
+      <Button fx:id="insérer" layoutX="473.0" layoutY="277.0" mnemonicParsing="false" text="Insérer" />
+      <Label layoutX="23.0" layoutY="22.0" prefHeight="35.0" prefWidth="218.0" text="Ajouter Bon-plan" textFill="#ea0d0d">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="annuler" layoutX="369.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
+   </children>
+</AnchorPane>

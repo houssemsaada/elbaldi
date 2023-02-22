@@ -23,7 +23,7 @@ public class elbaldi {
      */
     public static void main(String[] args) throws SQLException {
         
-        
+       
          System.out.println("-------------------------------------------------------------------------------");
          System.out.println("                              PARTIE UTILISATEUR");
          System.out.println("-------------------------------------------------------------------------------");
@@ -35,7 +35,7 @@ public class elbaldi {
         UtilisateurCRUD uti = new UtilisateurCRUD();
         
         uti.ajouterUtlisateur(u1);
-        uti.supprimerUtilisateur(2423);
+       /* uti.supprimerUtilisateur(2423);
         Utilisateur mod = new Utilisateur("testttt", "test","test@test","10/16/2000",2345564,"tunis","test","test",client);
         uti.modifierUtilisateur(mod,2424);
       
@@ -44,9 +44,9 @@ public class elbaldi {
         System.out.println(uti.getUserByID(2433)); 
         System.out.println(uti.Filter_utilisateur("nom", "test"));
         
+      */  
         
-        
-     //-----------------------------------------------------------------------------------------------------------------------------------------
+     /*//-----------------------------------------------------------------------------------------------------------------------------------------
          System.out.println("-------------------------------------------------------------------------------");
          System.out.println("                             PARTIE RECLAMATION");
          System.out.println("-------------------------------------------------------------------------------");
@@ -253,90 +253,177 @@ public class elbaldi {
          es.supprimer(e1);
         System.out.println(es.recuperer(e1));   
         
+        */
+         
         
-         System.out.println("----------Module BonPlan------------ ");
+         System.out.println("-------------------------------------------------------------------------------");
+         System.out.println("                              Module Bonplan");
+         System.out.println("-------------------------------------------------------------------------------");
+       
         
-         //---------------------------------------------------------Crud Bonplan-------------------------------------------------------------------------------//
-        //ajout bonplan
-        // MyConnection conn = MyConnection.getInstance();
-        bonplan bp = new bonplan(12,"Tunis","darjeld","resto","img",1);
+        //ajouter bonplan
+        Utilisateur u3 = new Utilisateur("Nour", "chebi","nourchebi@esprit.tn","10/16/2000",2345564,"tunis","test","test",client);
+        UtilisateurCRUD uti1 = new UtilisateurCRUD();
+        uti1.ajouterUtlisateur(u3);
+        
+       
         BonplanCrud per = new BonplanCrud();
-        per.ajouterBonplan(bp);
+        bonplan bp1 = new bonplan("Tunis","darjeld","resto","img",uti1.getUserByID(2482)); 
+        //bonplan bp1 = new bonplan("Tunis","darjeld","resto","img",u3)); 
+        per.ajouterBonplan(bp1);
        
-       
-       
-         //Modifier bonplan
-            //MyConnection conn = MyConnection.getInstance();
-               bonplan bp1 = new bonplan(10,"Tunis","darjeld","resto","img",1);
-               //BonplanCrud per = new BonplanCrud();
-              per.modifierBonplan(bp);
-       
-       
-       
+     
         //afficher bonplan
-             //MyConnection conn = MyConnection.getInstance();
-                  //bonplan bp2 = new bonplan(10,"Tunis","darjeld","resto","img",1);
-                 //BonplanCrud per = new BonplanCrud();
-                System.out.println(per.afficherBonplan());
+           System.out.println(per.afficherBonplan());
          
-         
+        //modifier bonplan
+        bonplan pb1 = per.getByIdBonplan(2482);
+        pb1.setTitre_bonplan("musee"); //Modifier le contenu d
+        per.modifierBonplan(pb1); //Appeler la méthode pour mettre à jour le commentaire
+        
        
-         
+       //Modifier bonplan
+       //Récupérer un bonplan que j'ai deja avec son id  
+       //bonplan pb1 = per.getByIdBonplan(12); 
+       //Modifier le titre de bonplan qui porte l'id que j'ai mentionné 
+       //pb1.setTitre_bonplan("Hotel africa jade"); 
+       //faire appel à la méthode pour faire la mise à jour du mon bonplan
+       //per.modifierBonplan(pb1); 
+       //afficher le bon bon plan apres modification du titre 
+       //System.out.println("---------------affichage des bons plans après modification------------- ");
+       //System.out.println(per.afficherBonplan());
+       
+
         //supprimer bonplan
-              //MyConnection conn = MyConnection.getInstance();
-                    bonplan bp3 = new bonplan(10,"Tunis","darjeld","resto","img",1);
-                    //BonplanCrud per = new BonplanCrud();
-                   //per.supprimerbonplan(2);
+        //per.supprimerbonplan(2482);
          
-         
-         
-         
-       
-        //ajout reservation
-        java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
-        Reservation reservation = new Reservation(2, 3, date, 3, 1);
+      System.out.println("-------------------------------------------------------------------------------------------------");
+       /*
+         //ajout reservation
+        java.sql.Date date2 = new java.sql.Date(new java.util.Date().getTime());
+       // Reservation r01 = new Reservation(3, date2,"annule", 3, 1);
+        Reservation r02 = new Reservation(12, date2,"confirme", 5, 2459);
         ReservationCrud res1 = new ReservationCrud();
-        res1.ajouterReservation(reservation);
-         
-     
-       
-         
-         //modifier reservation
-        //java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
-        //Reservation reservation = new Reservation(10, 3, date, 3, 20);
-        //ReservationCrud res1 = new ReservationCrud();
-        res1.modifierReservation(reservation);
-     
-       
-       
+        //res1.ajouterReservation(r01);
+        res1.ajouterReservation(r02); 
+        */
+
+        //ajout reservation
          
          
-       //afficher reservation
-        //java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
-        //Reservation reservation = new Reservation(45, 3, date, 3, 20);
-        //ReservationCrud res1 = new ReservationCrud();
-       
-       System.out.println(res1.afficherReservation());
-       
-     
-       
-       
-   
-         
-         
+        Utilisateur u5 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
+        UtilisateurCRUD uti5 = new UtilisateurCRUD();
+        uti5.ajouterUtlisateur(u5);
+        
+        bonplan bonp1 = new bonplan("Tunis","darjeld","resto","img",u5); 
+        
+        java.sql.Date date3 = new java.sql.Date(new java.util.Date().getTime());
+        Reservation rss= new Reservation( 20, date3, "confirme", per.getByIdBonplan(28), uti5.getUserByID(2466));
+        
+        ReservationCrud rscc = new ReservationCrud();
+        rscc.ajouterReservation(rss);
+        
+        
+        
+        //afficher reservation
+        System.out.println(rscc.afficherReservation());
+        
+        
+        //modifier reservation
+        Reservation rr= rscc.getReservationById(16);
+        rr.setStatut_reservation("annulee");
+        rscc.modifierReservation(rr);
+        
         //supprimer reservation
-        //java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
-        //Reservation reservation = new Reservation(1, 3, date, 3, 20);
-        //ReservationCrud res1 = new ReservationCrud();
-       // res1.supprimerReservation(1);
-         
+       rscc.supprimerReservation(17);
+        
+        
+        
+  
+       
+       
+        
+        
+        /*
+         //afficher reservation
+        //System.out.println(res1.afficherReservation());
+
+        
+
+       //Modifier reservation
+       //Récupérer une reservation que j'ai deja avec son id  
+       //Reservation rs01 = res1.getReservationById(14);
+       //Modifier le statut de reservation qui porte l'id que j'ai mentionné 
+       //rs01.setStatut_reservation("en attente");
+       //faire appel à la méthode pour faire la mise à jour du mon bonplan
+       //res1.modifierReservation(rs01);
+       //afficher la reservation apres modification du statut 
+       //System.out.println("---------------affichage des bons plans après modification------------- ");
+       //System.out.println(res1.afficherReservation());
+       
+     
+       
+       
+        //supprimer reservation
+    
+        // res1.supprimerReservation(1);
+          
        
        
        // filtreByDate
-         Date datefiltre = Date.valueOf("2023-02-15");
+         //Date datefiltre = Date.valueOf("2023-02-15");
          //System.out.println(res1.filtreByDate(datefiltre));
          //ou bien
-         System.out.println(res1.filtreByDate(Date.valueOf("2023-02-15")));
+        // System.out.println(res1.filtreByDate(Date.valueOf("2023-02-15")));
         
+    }
+    */
+      
+        System.out.println("-------------------------------------------------------------------------------------------------");
+        
+        
+         //ajout avis
+         
+         
+        Utilisateur u4 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
+        UtilisateurCRUD uti2 = new UtilisateurCRUD();
+        uti2.ajouterUtlisateur(u4);
+        
+        
+        bonplan bonp = new bonplan("Tunis","darjeld","resto","img",u4); 
+        //BonplanCrud per = new BonplanCrud();
+        
+      
+        java.sql.Date date2 = new java.sql.Date(new java.util.Date().getTime());
+        avis avv= new avis( 3.5f, date2, uti2.getUserByID(2480),per.getByIdBonplan(5));
+        AvisCrud avc = new AvisCrud();
+        avc.ajouterAvis(avv);
+        //avc.ajouterAvis(av1);
+   
+        
+        //afficher avis
+        System.out.println(avc.afficherAvis());
+        
+       /* 
+        //modifier avis
+        avis n=avc.getAvisById(19);
+        n.setNote_avis(3.2f);
+        avc.modifierAvis(n); */
+        
+        //supprimer avis 
+       //avc.supprimerAvis(28); 
+         
+        
+        
+        
+      
+       
+       
+       
+        
+        
+      
+       
+       
     }
 }

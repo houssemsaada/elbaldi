@@ -3,22 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/Mainclass.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/elbaldi.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/ReservationCrud.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/AvisCrud.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/Reservation.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AjoutBonplan.fxml</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/interfaces/InterfaceBonplanCrud.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/bonplan.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AjoutBonplanController.java</file>
-=======
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/selim.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/utils/MyConnection.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/QuizCRUD.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/interfaces/InterfaceCRUD.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/Role.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/Reservation.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/UtilisateurCRUD.java</file>
->>>>>>> 3edb8855f3d933cf5e03db51dbbf6747b4369a2f
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/avis.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/interfaces/InterfaceReservationCrud.java</file>
         </group>
     </open-files>
 </project-private>

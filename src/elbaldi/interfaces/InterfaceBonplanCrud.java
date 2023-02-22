@@ -7,6 +7,7 @@ package elbaldi.interfaces;
 
 import elbaldi.models.bonplan;
 import elbaldi.models.produit;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @author user
  */
 public interface InterfaceBonplanCrud {
-   public void ajouterBonplan(bonplan B);
+   public void ajouterBonplan(bonplan B) throws SQLException;
    public void modifierBonplan(bonplan B);
    public List<bonplan> afficherBonplan();
    public void supprimerbonplan(int id);
