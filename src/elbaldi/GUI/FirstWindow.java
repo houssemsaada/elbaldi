@@ -27,11 +27,11 @@ public class FirstWindow extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = root=FXMLLoader.load(getClass().getResource("AjouterProduitBack.fxml"));
-            
+            //Parent root = root=FXMLLoader.load(getClass().getResource("CategorieBack.fxml"));
+            Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Ajouter Catégorie !");
+            primaryStage.setTitle("Gestion Catégories ");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

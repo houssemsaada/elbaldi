@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="624.0" prefWidth="805.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="elbaldi.GUI.ProduitFrontController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="1050.0" style="-fx-background-color: #ffefd9;">
+         <children>
+            <ImageView fitHeight="449.0" fitWidth="798.0" layoutX="251.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/ressources/images/page1.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #ffefd9; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #7eccc6;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <ScrollPane fx:id="scroll" layoutX="261.0" layoutY="156.0" prefHeight="337.0" prefWidth="782.0" stylesheets="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/gestion/style.css">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+         <effect>
+            <DropShadow color="#1b1eeb" />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -24,7 +24,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     Connection conn = MyConnection.getInstance().getConn();
 
     @Override
-    public void ajouterCategorie(categorie c) {
+    public void ajouterCategorie(categorie c) throws SQLException {
        try {
             String req = "INSERT INTO `categorie`(`nom_categorie`,`Description`) VALUES (?,?)";
             PreparedStatement ps=conn.prepareStatement(req);
@@ -40,9 +40,9 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     }
 
     @Override
-    public void modifierCategorie(categorie c) {
+    public void modifierCategorie(categorie c ,int id) throws SQLException {
         try {
-            String req = "UPDATE `categorie` SET `nom_categorie` = '" + c.getNom_categorie()  + "', `Description` = '" + c.getDescription()+ "' WHERE `categorie`.`id_categorie` = " + c.getId_categorie();
+            String req = "UPDATE `categorie` SET `nom_categorie` = '" + c.getNom_categorie()  + "', `Description` = '" + c.getDescription()+ "' WHERE `categorie`.`id_categorie` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("categorie updated !");
@@ -50,9 +50,10 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
             System.out.println(ex.getMessage());
         }
     }
+    
 
     @Override
-    public void supprimerCategorie(categorie c) {
+    public void supprimerCategorie(categorie c) throws SQLException {
           try {
             String req = "DELETE FROM `categorie` WHERE id_categorie = " + c.getId_categorie();
             Statement st = conn.createStatement();
@@ -64,7 +65,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     }
 
     @Override
-    public List<categorie> affichercategorie() {
+    public List<categorie> affichercategorie() throws SQLException{
           List<categorie> list = new ArrayList<>();
         try {
             String req = "Select * from categorie";
@@ -87,7 +88,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     }
     
     @Override
-    public categorie getCategorieById(int id) {
+    public categorie getCategorieById(int id) throws SQLException {
     categorie c = null;
     try {
         String req = "SELECT * FROM categorie WHERE id_categorie = " + id;
@@ -105,7 +106,7 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
     return c;
 }
  @Override
-public List<categorie> filtrerCategorie(String nomCategorie) {
+public List<categorie> filtrerCategorie(String nomCategorie) throws SQLException{
     List<categorie> list = new ArrayList<>();
     try {
         String req = "SELECT * FROM categorie WHERE nom_categorie like '%" + nomCategorie + "%'";

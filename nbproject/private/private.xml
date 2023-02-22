@@ -4,9 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/categorie.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackModifier.fxml</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/FirstWindow.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackModifierController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitItemController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/elbaldi.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitFrontController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitFront.fxml</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/produit.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/CategorieCRUD.java</file>
-            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/elbaldi.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackAjoutController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBack.fxml</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/style.css</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitItem.fxml</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/interfaces/InterfaceCategorieCRUD.java</file>
         </group>
     </open-files>
 </project-private>

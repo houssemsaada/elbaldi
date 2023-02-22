@@ -86,7 +86,7 @@ public class elbaldi {
         categorie c = categ.getCategorieById(1); 
          
         c.setNom_categorie("testmodif"); //Modifier le nom de categorie
-        categ.modifierCategorie(c); //Appeler la méthode pour mettre à jour la categorie
+        categ.modifierCategorie(c,1); //Appeler la méthode pour mettre à jour la categorie
                 
         //filtrer les categorie par nom de categorie 
        System.out.println(categ.filtrerCategorie("testmodif"));
