@@ -35,12 +35,34 @@ public class panierCRUD implements panierInterfaceCRUD {
     public void ajouterPanier(panier p) {
         if (p.getId_panier() != 0) {
             try {
-                String req = "INSERT INTO `panier` (`id_panier`,`id_user`, `nombre_article`,`total_panier`) VALUES (?,?,?,?)";
+                String req = "INSERT INTO `panier` (`id_panier`,`id_user`) VALUES (?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, p.getId_panier());
                 ps.setInt(2, p.getU1().getid_user());
-                ps.setInt(3, p.getNombre_article());
-                ps.setFloat(4, p.getTotal_panier());
+                // list des produits pour calculer le nombre d'article et le somme 
+//                List<produit> list_p = new ArrayList<>();
+//                String produitfilter = "SELECT *  FROM panier_produit WHERE `id_panier`= ?";
+//                PreparedStatement psp = conn.prepareStatement(produitfilter);
+//                psp.setInt(1, p.getId_panier());
+//                ResultSet rp = psp.executeQuery();
+//                while (rp.next()) {
+//                    int quantite = rp.getInt(3);
+//                    String filter = "SELECT *  FROM produit WHERE `ref_produit`= ?";
+//                    PreparedStatement pss = conn.prepareStatement(filter);
+//                    pss.setString(1, rp.getString(2));
+//                    ResultSet rr = pss.executeQuery();
+//                    while (rr.next()) {
+//                        produit p1 = new produit();
+//                        p1.setRef_produit(rr.getString(1));
+//                        p1.setPrix_vente(rr.getFloat(7));
+//                        p1.setQuantite(quantite);
+//                        list_p.add(p1);
+//                    }
+//                    p.setList(list_p);
+//                }
+//                int numarticle = p.numArticle(list_p);
+//                float somme = p.sommePanier(list_p);
+
                 ps.executeUpdate();
                 System.out.println("panier ajouté!!!");
             } catch (SQLException ex) {
@@ -61,7 +83,20 @@ public class panierCRUD implements panierInterfaceCRUD {
             }
         }
     }
-
+@Override
+    public void supprimerProdPanier(panier p,produit prod) {
+        try {
+            String req = "DELETE FROM `panier_produit` WHERE `id_panier` = ? AND `ref_produit` = ?" ;
+                PreparedStatement ps = conn.prepareStatement(req);
+                ps.setInt(1, p.getId_panier());
+                ps.setString(2, prod.getRef_produit());
+            ps.executeUpdate();
+            System.out.println("produit supprimé de panier !");
+        } catch (SQLException ex) {
+            System.out.println("produit non supprimé de panier !");
+            System.out.println(ex.getMessage());
+        }
+    }
     @Override
     public void ajouterProdPanier(panier p, produit p1, int quantite) {
         try {
@@ -72,6 +107,7 @@ public class panierCRUD implements panierInterfaceCRUD {
             ps.setInt(3, quantite);
             ps.executeUpdate();
             System.out.println("produit ajouté au panier!!!");
+
         } catch (SQLException ex) {
             System.out.println("produit non ajouté au panier!!!");
             System.out.println(ex.getMessage());
@@ -79,19 +115,44 @@ public class panierCRUD implements panierInterfaceCRUD {
     }
 
     @Override
-    public void modifierPanier(panier p, produit p1) {
+    public void modifierPanier(panier p) {
         try {
-            String req = "UPDATE `panier` SET `ref_produit` = ?, `nombre_article` = ? , `quantite_produit` = ?, `total_panier` = ? WHERE id_panier  = ? ";
+            String req = "UPDATE `panier` SET `id_user` = ?, `nombre_article` = ? , `total_panier` = ? WHERE id_panier  = ? ";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setString(1, p1.getRef_produit());
-            ps.setInt(2, p.getNombre_article());
-            ps.setFloat(4, p.getTotal_panier());
-            ps.setInt(5, p.getId_panier());
+            ps.setInt(1, p.getU1().getid_user());
+            ps.setInt(4, p.getId_panier());
+                // list des produits pour calculer le nombre d'article et le somme 
+                List<produit> list_p = new ArrayList<>();
+                String produitfilter = "SELECT *  FROM panier_produit WHERE `id_panier`= ?";
+                PreparedStatement psp = conn.prepareStatement(produitfilter);
+                psp.setInt(1, p.getId_panier());
+                ResultSet rp = psp.executeQuery();
+                while (rp.next()) {
+                    int quantite = rp.getInt(3);
+                    String filter = "SELECT *  FROM produit WHERE `ref_produit`= ?";
+                    PreparedStatement pss = conn.prepareStatement(filter);
+                    pss.setString(1, rp.getString(2));
+                    ResultSet rr = pss.executeQuery();
+                    while (rr.next()) {
+                        produit p1 = new produit();
+                        p1.setRef_produit(rr.getString(1));
+                        p1.setPrix_vente(rr.getFloat(7));
+                        p1.setQuantite(quantite);
+                        list_p.add(p1);
+                    }
+                    p.setList(list_p);
+                }
+                int numarticle = p.numArticle(list_p);
+                float somme = p.sommePanier(list_p);
+
+            ps.setInt(2, numarticle);
+            ps.setFloat(3, somme);
 
             ps.executeUpdate();
             System.out.println("panier updated !");
         } catch (SQLException ex) {
             System.out.println("panier non updated !");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -128,7 +189,7 @@ public class panierCRUD implements panierInterfaceCRUD {
                 ResultSet rp = psp.executeQuery();
 
                 while (rp.next()) {
-                    
+
                     //produit;
 //                    ProduitCRUD prod = new ProduitCRUD();
 //                    String ref = rp.getString(2);
@@ -155,10 +216,10 @@ public class panierCRUD implements panierInterfaceCRUD {
                 }
                 //utilisateur
                 UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = RS.getInt(3);
+                int user_id = RS.getInt(2);
                 Utilisateur u = uti.getUserByID(user_id);
                 p.setU1(u);
-                int  numarticle=p.numArticle(list_p);
+                int numarticle = p.numArticle(list_p);
                 p.setNombre_article(numarticle);
                 float somme = p.sommePanier(list_p);
                 p.setTotal_panier(somme);
@@ -190,7 +251,7 @@ public class panierCRUD implements panierInterfaceCRUD {
                 ResultSet rp = psp.executeQuery();
 
                 while (rp.next()) {
-                    
+
                     //produit;
 //                    ProduitCRUD prod = new ProduitCRUD();
 //                    String ref = rp.getString(2);
@@ -217,18 +278,80 @@ public class panierCRUD implements panierInterfaceCRUD {
                 }
                 //utilisateur
                 UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = RS.getInt(3);
+                int user_id = RS.getInt(2);
                 Utilisateur u = uti.getUserByID(user_id);
                 p.setU1(u);
-
-                p.setNombre_article(RS.getInt(4));
-                p.setTotal_panier(RS.getFloat(5));
+                int numarticle = p.numArticle(list_p);
+                p.setNombre_article(numarticle);
+                float somme = p.sommePanier(list_p);
+                p.setTotal_panier(somme);
                 list.add(p);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return list;
+    }
+
+    @Override
+    public panier filtreByidPanier(int pan) {
+        panier p = new panier();
+        try {
+            String query = "SELECT * FROM panier WHERE id_panier = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, pan);
+            ResultSet RS = ps.executeQuery();
+            while (RS.next()) {
+                List<produit> list_p = new ArrayList<>();
+
+                p.setId_panier(RS.getInt(1));
+                // list des produits
+                String produitfilter = "SELECT *  FROM panier_produit WHERE `id_panier`= ?";
+                PreparedStatement psp = conn.prepareStatement(produitfilter);
+                psp.setInt(1, RS.getInt(1));
+                ResultSet rp = psp.executeQuery();
+
+                while (rp.next()) {
+
+                    //produit;
+//                    ProduitCRUD prod = new ProduitCRUD();
+//                    String ref = rp.getString(2);
+                    int quantite = rp.getInt(3);
+//                    produit proda = prod.getByRefProduit(ref);
+//                    produitMap.put(quantite, proda);
+                    // list_p.add(produit);
+                    String filter = "SELECT *  FROM produit WHERE `ref_produit`= ?";
+                    PreparedStatement pss = conn.prepareStatement(filter);
+                    pss.setString(1, rp.getString(2));
+                    ResultSet rr = pss.executeQuery();
+                    while (rr.next()) {
+                        produit p1 = new produit();
+                        p1.setRef_produit(rr.getString(1));
+                        p1.setLibelle(rr.getString(2));
+                        p1.setDescription(rr.getString(3));
+                        p1.setImage(rr.getString(4));
+                        p1.setPrix_vente(rr.getFloat(7));
+                        p1.setQuantite(quantite);
+                        p1.setId_categorie(rr.getInt(10));
+                        list_p.add(p1);
+                    }
+                    p.setList(list_p);
+                }
+                //utilisateur
+                UtilisateurCRUD uti = new UtilisateurCRUD();
+                int user_id = RS.getInt(2);
+                Utilisateur u = uti.getUserByID(user_id);
+                p.setU1(u);
+                int numarticle = p.numArticle(list_p);
+                p.setNombre_article(numarticle);
+                float somme = p.sommePanier(list_p);
+                p.setTotal_panier(somme);
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return p;
     }
 
 }

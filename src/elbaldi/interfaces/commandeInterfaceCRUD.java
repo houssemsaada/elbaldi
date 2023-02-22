@@ -15,7 +15,7 @@ import java.sql.Date;
  */
 public interface commandeInterfaceCRUD {
     public void ajouterCommande(commande c) ; 
-    public void modifierCommande(commande c);
+    public void modifierCommande(commande c,commande c2);
     public void supprimerCommande(commande c) ;
     public List<commande> afficherCommande();
     public List<commande> filtreByDate(Date date_commande);

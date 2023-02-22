@@ -9,6 +9,7 @@ import elbaldi.interfaces.commandeInterfaceCRUD;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
 import elbaldi.models.commande;
+import elbaldi.models.panier;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.Date;
@@ -32,10 +33,10 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
     public void ajouterCommande(commande c) {
         if (c.getId_cmd() != 0) {
             try {
-                String req = "INSERT INTO `commande` (`id_cmd`,`id_user`, `etat`, `date_cmd`) VALUES (?,?,?,?)";
+                String req = "INSERT INTO `commande` (`id_cmd`,`id_panier`, `etat`, `date_cmd`) VALUES (?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, c.getId_cmd());
-                ps.setInt(2, c.getU1().getid_user());
+                ps.setInt(2, c.getPan().getId_panier());
                 ps.setString(3, c.getEtat());
                 ps.setDate(4, c.getDate_cmd());
                 ps.executeUpdate();
@@ -45,9 +46,9 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
             }
         } else {
             try {
-                String req = "INSERT INTO `commande` (`id_user`, `etat`, `date_cmd`) VALUES (?,?,?)";
+                String req = "INSERT INTO `commande` (`id_panier`, `etat`, `date_cmd`) VALUES (?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
-                ps.setInt(1, c.getU1().getid_user());
+                ps.setInt(1, c.getPan().getId_panier());
                 ps.setString(2, c.getEtat());
                 ps.setDate(3, c.getDate_cmd());
                 ps.executeUpdate();
@@ -59,14 +60,15 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
     }
 
     @Override
-    public void modifierCommande(commande c) {
+    public void modifierCommande(commande c,commande c2) {
         try {
-            String req = "UPDATE `commande` SET `etat` = ?, `date_cmd` = ? , `id_user` = ? WHERE id_cmd  = ? ";
+            String req = "UPDATE `commande` SET `etat` = ?, `date_cmd` = ? , `id_panier` = ?, `id_cmd` = ? WHERE id_cmd  = ? ";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setString(1, c.getEtat());
-            ps.setDate(2, c.getDate_cmd());
-            ps.setInt(3, c.getU1().getid_user());
-            ps.setInt(4, c.getId_cmd());
+            ps.setString(1, c2.getEtat());
+            ps.setDate(2, c2.getDate_cmd());
+            ps.setInt(3, c2.getPan().getId_panier());
+            ps.setInt(4, c2.getId_cmd());
+            ps.setInt(5, c.getId_cmd());
             ps.executeUpdate();
             System.out.println("commande updated !");
         } catch (SQLException ex) {
@@ -98,12 +100,13 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
 
                 commande c = new commande();
                 c.setId_cmd(RS.getInt(1));
-                c.setEtat(RS.getString(2));
-                c.setDate_cmd(RS.getDate(3));
-                UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = RS.getInt(4);
-                Utilisateur u = uti.getUserByID(user_id);
-                c.setU1(u);
+                c.setEtat(RS.getString(3));
+                c.setDate_cmd(RS.getDate(4));
+                
+                panierCRUD pc = new panierCRUD();
+                int pan_id = RS.getInt(2);
+                panier pan = pc.filtreByidPanier(pan_id);
+                c.setPan(pan);
                 list.add(c);
             }
 
@@ -126,13 +129,13 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 commande c = new commande();
 
                 c.setId_cmd(RS.getInt(1));
-                c.setEtat(RS.getString(2));
-                c.setDate_cmd(RS.getDate(3));
+                c.setEtat(RS.getString(3));
+                c.setDate_cmd(RS.getDate(4));
 
-                UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = RS.getInt(4);
-                Utilisateur u = uti.getUserByID(user_id);
-                c.setU1(u);
+                panierCRUD pc = new panierCRUD();
+                int pan_id = RS.getInt(2);
+                panier pan = pc.filtreByidPanier(pan_id);
+                c.setPan(pan);
                 commandes.add(c);
             }
         } catch (SQLException ex) {
@@ -152,13 +155,13 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
 
 
                 c.setId_cmd(RS.getInt(1));
-                c.setEtat(RS.getString(2));
-                c.setDate_cmd(RS.getDate(3));
+                c.setEtat(RS.getString(3));
+                c.setDate_cmd(RS.getDate(4));
 
-                UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = RS.getInt(4);
-                Utilisateur u = uti.getUserByID(user_id);
-                c.setU1(u);
+                panierCRUD pc = new panierCRUD();
+                int pan_id = RS.getInt(2);
+                panier pan = pc.filtreByidPanier(pan_id);
+                c.setPan(pan);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -177,12 +180,12 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 commande c = new commande();
 
                 c.setId_cmd(rs.getInt(1));
-                c.setEtat(rs.getString(2));
-                c.setDate_cmd(rs.getDate(3));
-                UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = rs.getInt(4);
-                Utilisateur u = uti.getUserByID(user_id);
-                c.setU1(u);
+                c.setEtat(rs.getString(3));
+                c.setDate_cmd(rs.getDate(4));
+                panierCRUD pc = new panierCRUD();
+                int pan_id = rs.getInt(2);
+                panier pan = pc.filtreByidPanier(pan_id);
+                c.setPan(pan);;
 
                 commandes.add(c);
             }
@@ -204,12 +207,12 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 commande c = new commande();
 
                 c.setId_cmd(rs.getInt(1));
-                c.setEtat(rs.getString(2));
-                c.setDate_cmd(rs.getDate(3));
-                UtilisateurCRUD uti = new UtilisateurCRUD();
-                int user_id = rs.getInt(4);
-                Utilisateur u = uti.getUserByID(user_id);
-                c.setU1(u);
+                c.setEtat(rs.getString(3));
+                c.setDate_cmd(rs.getDate(4));
+               panierCRUD pc = new panierCRUD();
+                int pan_id = rs.getInt(2);
+                panier pan = pc.filtreByidPanier(pan_id);
+                c.setPan(pan);
 
                 commandes.add(c);
             }

@@ -19,11 +19,13 @@ public interface panierInterfaceCRUD {
     public void ajouterPanier(panier p);
     public void ajouterProdPanier(panier p,produit p1,int quantite);
 
-    public void modifierPanier(panier p , produit p1);
+    public void modifierPanier(panier p);
 
     public void supprimerPanier(panier p);
 
     public List<panier> afficherPanier();
 
     public List<panier> filtreByuser(Utilisateur u1);
+    public panier filtreByidPanier(int pan) ;
+    public void supprimerProdPanier(panier p,produit prod);
 }

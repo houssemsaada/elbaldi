@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class panier {
 
-    private int id_panier, nombre_article, quantite;
+    private int id_panier, nombre_article;
     List<produit> list;
     private Utilisateur u1;
     private float total_panier;
@@ -22,6 +22,16 @@ public class panier {
     public panier() {
     }
     ///constructeur parametre 
+
+    public panier(int id_panier) {
+        this.id_panier = id_panier;
+    }
+    
+
+    public panier(int id_panier, Utilisateur u1) {
+        this.id_panier = id_panier;
+        this.u1 = u1;
+    }
 
     public panier(Utilisateur u1, int nombre_article, float total_panier) {
         this.u1 = u1;
@@ -50,12 +60,7 @@ public class panier {
         this.total_panier = total_panier;
     }
 
-    public panier(int id_panier, int quantite, List<produit> list, Utilisateur u1) {
-        this.id_panier = id_panier;
-        this.quantite = quantite;
-        this.list = list;
-        this.u1 = u1;
-    }
+
 
     //getters
     public int getId_panier() {
@@ -70,9 +75,6 @@ public class panier {
         return list;
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
 
     public float getTotal_panier() {
         return total_panier;
@@ -91,9 +93,6 @@ public class panier {
         this.list = list;
     }
 
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
-    }
 
     public void setNombre_article(int nombre_article) {
         this.nombre_article = nombre_article;
@@ -109,7 +108,7 @@ public class panier {
 
     @Override
     public String toString() {
-        return "panier{" + "id_panier=" + id_panier +"\n"+ " nombre_article=" + nombre_article +"\n"+ ", produits=" + list +"\n"+ ", utilisateur=" + u1 +"\n"+ ", total_panier=" + total_panier + '}'+"\n";
+        return "panier{" +"\n" + "id_panier=" + id_panier +"\n"+ " nombre_article=" + nombre_article +"\n"+ ", produits=" + list +"\n"+ ", utilisateur=" + u1 +"\n"+ ", total_panier=" + total_panier + '}'+"\n";
     }
 
     public int numArticle(List<produit> list) {

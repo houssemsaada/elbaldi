@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="elbaldi.GUI.DetailscommandeController">
+   <children>
+      <Label layoutX="80.0" layoutY="73.0" text="user" />
+      <Label layoutX="80.0" layoutY="183.0" text="etat" />
+      <Label layoutX="80.0" layoutY="306.0" text="date" />
+      <TextField fx:id="tduser" editable="false" layoutX="218.0" layoutY="69.0" prefHeight="82.0" prefWidth="364.0" />
+      <TextField fx:id="tfetat" editable="false" layoutX="226.0" layoutY="188.0" prefHeight="82.0" prefWidth="355.0" />
+      <TextField fx:id="tfdate" editable="false" layoutX="226.0" layoutY="302.0" prefHeight="70.0" prefWidth="355.0" />
+   </children>
+</AnchorPane>

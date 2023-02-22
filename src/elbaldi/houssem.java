@@ -43,8 +43,8 @@ public class houssem {
         ProduitCRUD prod = new ProduitCRUD();
         // prod.ajouterProduit(p1);
 //---------------------- module commande--------------------------------------------------------------------        
-        commande com1 = new commande(128, u2, "aaaaaa", date_com);
-        commande com2 = new commande(129, u2, "aaaaaa", date_com);
+        //     commande com1 = new commande(128, pan1, "aaaaaa", date_com);
+        //     commande com2 = new commande(129, pan1, "aaaaaa", date_com);
 
         CommandeCRUD comm = new CommandeCRUD();
         //comm.ajouterCommande(com2);
@@ -55,8 +55,8 @@ public class houssem {
         //System.out.println(comm.sortCommandesByDate());
         // System.out.println(comm.filtreByuser(u2));
 //----------------------module livraison--------------------------------------------------------------------        
-        livraison l1 = new livraison("le", "nabeul", date_livr, com1);
-        livraison l2 = new livraison("le", "nabeul", date_livr, com2);
+        //   livraison l1 = new livraison("le", "nabeul", date_livr, com1);
+        //  livraison l2 = new livraison("le", "nabeul", date_livr, com2);
 
         livraisonCRUD liv = new livraisonCRUD();
         //liv.ajouterLivraison(l2);
@@ -67,13 +67,14 @@ public class houssem {
         //System.out.println(liv.sortlivraisonByDate());
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
-        panier pan1 = new panier(u1);
+        panier pan1 = new panier(16, u2);
         panierCRUD pan = new panierCRUD();
         //pan.ajouterPanier(pan1);
-       //pan.ajouterProdPanier(pan1, p1,10);
-        //pan.modifierPanier(pan1);
+        //pan.ajouterProdPanier(pan1, p1,10);
+        //pan.supprimerProdPanier(pan1,p1) ; 
+        // pan.modifierPanier(pan1);
         //pan.supprimerPanier(3);
-        System.out.println(pan.afficherPanier());
+        //System.out.println(pan.afficherPanier());
         //System.out.println(pan.filtreByuser(u1));
     }
 }

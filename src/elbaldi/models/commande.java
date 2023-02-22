@@ -18,22 +18,23 @@ public class commande {
     private int id_cmd;
     private String etat;
     private Date date_cmd;
-    private Utilisateur u1 ;
 
+    private panier pan ; 
+    
     //constructeur par defaut
     public commande() {
     }
     //constructeur parametre 
 
-    public commande(Utilisateur u1, String etat, Date date_cmd) {
-        this.u1 = u1;
+    public commande(panier pan, String etat, Date date_cmd) {
+        this.pan = pan;
         this.etat = etat;
         this.date_cmd = date_cmd;
     }
 
-    public commande(int id_cmd, Utilisateur u1, String etat, Date date_cmd) {
+    public commande(int id_cmd, panier pan, String etat, Date date_cmd) {
         this.id_cmd = id_cmd;
-        this.u1 = u1;
+        this.pan = pan;
         this.etat = etat;
         this.date_cmd = date_cmd;
     }
@@ -43,9 +44,11 @@ public class commande {
         return id_cmd;
     }
 
-    public Utilisateur getU1() {
-        return u1;
+    public panier getPan() {
+        return pan;
     }
+    
+
 
     public String getEtat() {
         return etat;
@@ -60,9 +63,11 @@ public class commande {
         this.id_cmd = id_cmd;
     }
 
-    public void setU1(Utilisateur u1) {
-        this.u1 = u1;
+    public void setPan(panier pan) {
+        this.pan = pan;
     }
+
+ 
 
     public void setEtat(String etat) {
         this.etat = etat;
@@ -74,7 +79,9 @@ public class commande {
 
     @Override
     public String toString() {
-        return "commande{" + "id_cmd=" + id_cmd + ", user=" + u1 + ", etat=" + etat + ", date_cmd=" + date_cmd + '}';
+        return "commande{" + "id_cmd=" + id_cmd + ", etat=" + etat + ", date_cmd=" + date_cmd + ", panier =" + pan + '}';
     }
+
+
 
 }
