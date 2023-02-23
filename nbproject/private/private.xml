@@ -5,17 +5,26 @@
         <group>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/commentaire.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/AjouterProduitBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/AjouterProduitBack.fxml</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/categorie.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/FirstWindow.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackModifierController.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/commentaireCRUD.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/ProduitCRUD.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitItemController.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/elbaldi.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitFront2.fxml</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/produit.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CommentaireBack.fxml</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CommentaireBackController.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ModifierProduitBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/CategorieCRUD.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackAjoutController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitFront2Controller.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitDetailsController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/interfaces/InterfaceProduitCRUD.java</file>
         </group>
     </open-files>
 </project-private>

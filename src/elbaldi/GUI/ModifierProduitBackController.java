@@ -43,7 +43,7 @@ import javafx.stage.FileChooser;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ModifierProduitBackController implements Initializable {
 
@@ -61,8 +61,6 @@ public class ModifierProduitBackController implements Initializable {
     private Button annulerfx;
     @FXML
     private ComboBox<categorie> categoriefx;
-    @FXML
-    private Button back;
     @FXML
     private TextField reffx;
     @FXML
@@ -89,9 +87,7 @@ public class ModifierProduitBackController implements Initializable {
 
      
     public void setProduit(produit p) {
-        //System.out.println(idChambre);
-        produitP = p;
-       // ProduitCRUD cs = new ProduitCRUD();
+         produitP = p;
         this.img.setAccessibleText(produitP.getImage());    
         this.prixfx.setText(produitP.getPrix_vente() + "");
         this.reffx.setText(produitP.getRef_produit());
@@ -101,29 +97,12 @@ public class ModifierProduitBackController implements Initializable {
         categoriefx.getSelectionModel().select(produitP.getCategoriee());
  
     }
-  
-
-    /**
-     * Initializes the controller class.
-     */
-//       public void setProduit() throws SQLException   {
-//        
-//        ProduitCRUD cs = new ProduitCRUD();
-//        produitP = cs.getByRefProduit(Refproduit);
-//        this.img.setAccessibleText(produitP.getImage());    
-//        this.prixfx.setText(produitP.getPrix_vente() + "");
-//        this.reffx.setText(produitP.getRef_produit());
-//        this.descriptionfx.setText(produitP.getDescription());
-//        this.libellefx.setText(produitP.getLibelle());
-//        this.quantitefx.setText(produitP.getQuantite()+ "");
-//        categoriefx.getSelectionModel().select(produitP.getCategoriee());
-//    }
-       
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         ListerCategorie();
-        // TODO
+  
      insérer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -161,7 +140,7 @@ public class ModifierProduitBackController implements Initializable {
                 
                 int q = Integer.parseInt(quantitefx.getText());
                 float prixx = Float.parseFloat(prixfx.getText());
-                 //categorie catego = categoriefx.getSelectionModel().getSelectedItem();
+                 
                
                  categorie c = categoriefx.getSelectionModel().getSelectedItem();
 
@@ -229,56 +208,10 @@ public class ModifierProduitBackController implements Initializable {
         categoriefx.setItems(list);
     }
 
-    @FXML
-    private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("ProduitBack.fxml"));
-        Parent root = loader.load();
-        back.getScene().setRoot(root);
-    }
+   
     
 
     }    
-
-    
-
-//    private void modifierProduit(ActionEvent event) throws IOException  {
-//         ProduitCRUD produitcrud = new ProduitCRUD();
-//                //  Hotel h = hotel.getSelectionModel().getSelectedItem();
-//
-//                
-//                categorie catego = categoriefx.getSelectionModel().getSelectedItem();
-//                
-//                float prixx = Float.parseFloat(prixfx.getText());
-//                int quantitee = Integer.parseInt(quantitefx.getText());
-//                
-//                
-//                //System.out.println(vssmm+""+typee+""+""+statu+""+prix+""+numero+"");
-//                produit pr = new produit(reffx.getText(),libellefx.getText(),descriptionfx.getText(), selectedfile.getName(),prixx,quantitee,catego);
-//                       
-//
-//                System.out.println(pr);
-//
-//                try {
-////System.out.println("222222");
-//                    produitcrud.modifierProduit(pr);
-//                     FXMLLoader loader = new FXMLLoader();
-//                        loader.setLocation(getClass().getResource("ProduitBack.fxml"));
-//                        Parent root = loader.load();
-//                        Modifierfx.getScene().setRoot(root);
-//
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(ModifierProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-////                Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
-////                alert0.setTitle("information Dialog");
-////                alert0.setHeaderText(null);
-////                alert0.setContentText("Votre modification est enregistrée avec succes ");
-////                alert0.show();
-////                ((Node) event.getSource()).getScene().getWindow().hide();
-//
-//            }
     
     
 

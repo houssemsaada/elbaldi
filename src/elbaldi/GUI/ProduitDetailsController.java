@@ -37,7 +37,7 @@ import javafx.util.Callback;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ProduitDetailsController implements Initializable {
 

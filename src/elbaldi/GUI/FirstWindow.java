@@ -20,15 +20,16 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public class FirstWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) {
         try {
-            //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitBack.fxml"));
-            Parent root = root=FXMLLoader.load(getClass().getResource("CategorieBack.fxml"));
+            
+            //Parent root = root=FXMLLoader.load(getClass().getResource("CategorieBack.fxml"));
+            Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
             //Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
             //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
             Scene scene = new Scene(root);

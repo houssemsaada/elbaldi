@@ -58,7 +58,6 @@
                </font>
             </Label>
             <ComboBox fx:id="categoriefx" layoutX="429.0" layoutY="405.0" prefHeight="25.0" prefWidth="172.0" />
-            <Button fx:id="back" layoutX="13.0" layoutY="19.0" mnemonicParsing="false" onAction="#back" text="Back" />
             <TextField fx:id="reffx" layoutX="429.0" layoutY="86.0" onMouseClicked="#prefixe" prefHeight="31.0" prefWidth="174.0" />
             <TextField fx:id="libellefx" layoutX="428.0" layoutY="132.0" prefHeight="31.0" prefWidth="174.0" />
             <Label layoutX="239.0" layoutY="343.0" prefHeight="27.0" prefWidth="106.0" text="Quantite:">

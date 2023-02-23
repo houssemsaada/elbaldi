@@ -23,15 +23,15 @@
                         <Font name="Arial Black" size="33.0" />
                      </font>
                   </Label>
-                  <Button fx:id="ajouterP" layoutX="38.0" layoutY="252.0" mnemonicParsing="false" onAction="#ajouterprod" prefHeight="31.0" prefWidth="200.0" text="Ajouter un produit" />
-                  <Button fx:id="deleteP" layoutX="38.0" layoutY="310.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Supprimer un produit" />
-                  <Button fx:id="showP" layoutX="38.0" layoutY="372.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Afficher produits" />
-                  <TableView fx:id="tableP" layoutX="260.0" layoutY="178.0" prefHeight="261.0" prefWidth="498.0">
+                  <Button fx:id="ajouterP" layoutX="31.0" layoutY="455.0" mnemonicParsing="false" onAction="#ajouterprod" prefHeight="31.0" prefWidth="200.0" text="Ajouter un produit" />
+                  <Button fx:id="deleteP" layoutX="250.0" layoutY="455.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Supprimer un produit" />
+                  <Button fx:id="showP" layoutX="467.0" layoutY="455.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Rafraîchir" />
+                  <TableView fx:id="tableP" layoutX="33.0" layoutY="178.0" prefHeight="261.0" prefWidth="715.0">
                      <columns>
-                        <TableColumn fx:id="ref" prefWidth="116.0" text="Réference" />
-                        <TableColumn fx:id="libelle" prefWidth="125.0" text="Libelle" />
-                        <TableColumn fx:id="prix" prefWidth="118.0" text="Prix" />
-                        <TableColumn fx:id="img" prefWidth="138.0" text="Image" />
+                        <TableColumn fx:id="ref" prefWidth="145.0" text="Réference" />
+                        <TableColumn fx:id="libelle" prefWidth="184.0" text="Libelle" />
+                        <TableColumn fx:id="prix" prefWidth="163.0" text="Prix" />
+                        <TableColumn fx:id="img" prefWidth="222.0" text="Image" />
                      </columns>
                   </TableView>
                   <Button fx:id="detailsfx" layoutX="667.0" layoutY="139.0" mnemonicParsing="false" onAction="#details" text="Details" />

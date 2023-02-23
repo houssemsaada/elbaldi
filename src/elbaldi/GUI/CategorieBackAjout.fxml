@@ -32,7 +32,6 @@
                </font>
             </Label>
             <TextArea fx:id="descriptionC" layoutX="329.0" layoutY="214.0" prefHeight="77.0" prefWidth="172.0" />
-            <Button fx:id="back" layoutX="19.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" text="Back" />
             <Button fx:id="annuler" layoutX="344.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
             <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="718.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true">
                <image>

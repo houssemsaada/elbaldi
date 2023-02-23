@@ -62,7 +62,7 @@ public class categorie  {
 
     @Override
     public String toString() {
-        return "categorie{" + "id_categorie=" + id_categorie + ", nom_categorie=" + nom_categorie + ", Description=" + Description + '}';
+        return nom_categorie ;
     }
 
     

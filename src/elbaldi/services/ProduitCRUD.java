@@ -102,6 +102,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
 
         return list;
     }
+      
     @Override
     public produit getByRefProduit (String ref) throws SQLException {
         //produit p = new produit();
@@ -175,6 +176,32 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
              int categorieId = RS.getInt(7);
              categorie categoriee = categorieCRUD.getCategorieById(categorieId);
              p.setCategoriee(categoriee);
+            list.add(p);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return list;
+}
+    @Override
+   public List<produit> filtreByCategorie(int idCategorie) throws SQLException {
+    List<produit> list = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM produit WHERE id_categorie = ?";
+        PreparedStatement ps = conn.prepareStatement(req);
+        ps.setInt(1, idCategorie);
+        ResultSet RS = ps.executeQuery();
+        while (RS.next()) {
+            produit p = new produit();
+            p.setRef_produit(RS.getString(1));
+            p.setLibelle(RS.getString(2));
+            p.setDescription(RS.getString(3));
+            p.setImage(RS.getString(4));
+            p.setPrix_vente(RS.getFloat(5));
+            p.setQuantite(RS.getInt(6));
+            CategorieCRUD categorieCRUD = new CategorieCRUD();
+            categorie categoriee = categorieCRUD.getCategorieById(idCategorie);
+            p.setCategoriee(categoriee);
             list.add(p);
         }
     } catch (SQLException ex) {

@@ -7,7 +7,6 @@ package elbaldi.GUI;
 
 import elbaldi.models.categorie;
 import elbaldi.services.CategorieCRUD;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -16,10 +15,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -29,7 +26,7 @@ import javafx.scene.layout.Pane;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class CategorieBackModifierController implements Initializable {
 
@@ -39,8 +36,6 @@ public class CategorieBackModifierController implements Initializable {
     private TextField nom;
     @FXML
     private TextArea descriptionC;
-    @FXML
-    private Button back;
     @FXML
     private Button annuler;
     public static categorie categ;
@@ -60,7 +55,7 @@ public class CategorieBackModifierController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
          updateCat.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -98,12 +93,6 @@ public class CategorieBackModifierController implements Initializable {
         });
     }    
 
-    @FXML
-    private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("CategorieBack.fxml"));
-        Parent root = loader.load();
-        back.getScene().setRoot(root);
-    }
+   
     
 }

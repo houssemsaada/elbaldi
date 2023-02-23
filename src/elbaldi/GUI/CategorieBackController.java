@@ -7,7 +7,6 @@ package elbaldi.GUI;
 
 import elbaldi.models.categorie;
 import elbaldi.services.CategorieCRUD;
-import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,11 +26,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -39,7 +36,7 @@ import javafx.util.Callback;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class CategorieBackController implements Initializable {
 
@@ -99,7 +96,7 @@ public class CategorieBackController implements Initializable {
                 }
             }
         });
-        // TODO
+      
     } 
      public void tableInit() {
 
@@ -136,13 +133,15 @@ public class CategorieBackController implements Initializable {
         
 
     }
+    
+    
 
     @FXML
     private void ajouterCateg(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("CategorieBackAjout.fxml"));
         Parent root = loader.load();
-        // AjoutP.getScene().setRoot(root);
+        
 
         CategorieBackAjoutController cb = loader.getController();
  
@@ -151,7 +150,7 @@ public class CategorieBackController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
           try {
-            // PrixT.setCellValueFactory(new PropertyValueFactory<>("PrixTotal"));
+           
             Afficher();
         } catch (SQLException ex) {
             Logger.getLogger(CategorieBackAjoutController.class.getName()).log(Level.SEVERE, null, ex);
@@ -224,7 +223,7 @@ public class CategorieBackController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Vous devez selectionner une promotion");
+            alert.setContentText("Vous devez selectionner une categorie");
             alert.show();
         }
  }

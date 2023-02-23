@@ -16,12 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ProduitItemController implements Initializable {
 
@@ -34,7 +34,18 @@ public class ProduitItemController implements Initializable {
     private Button detailsfx;
     @FXML
     private Label libellefx;
-    private produit produit;
+    private produit produit1;
+    @FXML
+    private AnchorPane dest;
+    private String Refproduit;
+    
+       public String getRefProduit() {
+        return Refproduit;
+    }
+
+    public void setRefProduit(String Refproduit) {
+        this.Refproduit = Refproduit;
+    }
 
     /**
      * Initializes the controller class.
@@ -43,14 +54,14 @@ public class ProduitItemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
      
     }
-    
-       public void setData(produit pr) {
-        this.produit = pr;
-        this.libellefx.setText(produit.getLibelle());
-        this.prixfx.setText(String.valueOf(produit.getPrix_vente()));
+    public void setData(produit dest) {
+        this.produit1 = dest;
+        Refproduit=dest.getRef_produit();
+        this.libellefx.setText(produit1.getLibelle());
+        this.prixfx.setText(produit1.getPrix_vente()+" ");
 //        Image img = new Image(getClass().getResourceAsStream("..\\..\\..\\..\\..\\..\\Desktop\\1.png"));
 //        image.setImage(img);
-        File f = new File(" C:\\Users\\USER\\Desktop\\3CRUD\\elbaldi\\src\\Ressources\\" + produit.getImage());
+        File f = new File("C:\\xampp\\htdocs\\images\\" + produit1.getImage());
 
         imagefx.setImage(new Image(f.toURI().toString()));
 

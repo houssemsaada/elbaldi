@@ -24,7 +24,7 @@
             <Button fx:id="ajouterC" layoutX="38.0" layoutY="213.0" mnemonicParsing="false" onAction="#ajouterCateg" prefHeight="31.0" prefWidth="200.0" text="Ajouter une  catégorie" />
             <Button fx:id="updateC" layoutX="38.0" layoutY="271.0" mnemonicParsing="false" onAction="#updateCateg" prefHeight="31.0" prefWidth="200.0" text="Modifier une catégorie" />
             <Button fx:id="deleteC" layoutX="38.0" layoutY="328.0" mnemonicParsing="false" onAction="#SupCateg" prefHeight="31.0" prefWidth="200.0" text="Supprimer une catégorie" />
-            <Button fx:id="showC" layoutX="38.0" layoutY="388.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Afficher une catégorie" />
+            <Button fx:id="showC" layoutX="38.0" layoutY="388.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Rafraîchir" />
             <TableView fx:id="tableC" layoutX="260.0" layoutY="178.0" prefHeight="261.0" prefWidth="498.0">
                <columns>
                   <TableColumn fx:id="nom" prefWidth="221.0" text="Nom catégorie" />

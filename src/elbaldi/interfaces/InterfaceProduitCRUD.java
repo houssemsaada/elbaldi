@@ -20,4 +20,5 @@ public interface InterfaceProduitCRUD {
     public produit getByRefProduit(String ref) throws SQLException;
     public List<produit> filtreByPrixVente(float min, float max) throws SQLException;
     public List<produit> filtrerProduitParQuantite(int quantite) throws SQLException;
+    public List<produit> filtreByCategorie(int idCategorie) throws SQLException ;
 }
