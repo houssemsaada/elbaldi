@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #18314F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherEvenementController">
+   <children>
+      <Label layoutX="83.0" layoutY="14.0" prefHeight="34.0" prefWidth="197.0" text="Afficher Evenement " textFill="#ea9999">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="83.0" layoutY="87.0" prefHeight="511.0" prefWidth="769.0">
+         <content>
+            <GridPane fx:id="gridpane" prefHeight="514.0" prefWidth="771.0" style="-fx-background-color: #DCDCDC;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="179.20001831054688" minHeight="10.0" prefHeight="179.20001831054688" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="188.8" minHeight="10.0" prefHeight="188.8" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="184.00001220703126" minHeight="3.8000091552734716" prefHeight="132.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="145.60001220703128" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="145.60001220703128" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="retour_btn" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#retournerHome" text="Retour" />
+   </children>
+</AnchorPane>
