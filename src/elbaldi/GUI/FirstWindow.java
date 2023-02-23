@@ -28,8 +28,8 @@ public class FirstWindow extends Application {
     public void start(Stage primaryStage) {
         try {
             //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitBack.fxml"));
-            //Parent root = root=FXMLLoader.load(getClass().getResource("CategorieBack.fxml"));
-            Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
+            Parent root = root=FXMLLoader.load(getClass().getResource("CategorieBack.fxml"));
+            //Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
             //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
             Scene scene = new Scene(root);
             

@@ -65,6 +65,16 @@ public class CategorieBackController implements Initializable {
     private Button deleteC;
     @FXML
     private Button showC;
+    @FXML
+    private Button Home;
+    @FXML
+    private Button categorie;
+    @FXML
+    private Button produit;
+    @FXML
+    private Button comm;
+    @FXML
+    private Button btnSignout;
     /**
      * Initializes the controller class.
      */
@@ -218,6 +228,33 @@ public class CategorieBackController implements Initializable {
             alert.show();
         }
  }
+
+    @FXML
+    private void catt(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("CategorieBack.fxml"));
+        Parent root = loader.load();
+        categorie.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("ProduitBack.fxml"));
+        Parent root = loader.load();
+        produit.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void commen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("CommentaireBack.fxml"));
+        Parent root = loader.load();
+        comm.getScene().setRoot(root);
+    }
   
 
 }

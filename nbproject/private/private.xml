@@ -4,11 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/models/commentaire.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/AjouterProduitBackController.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/FirstWindow.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackModifierController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/commentaireCRUD.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/elbaldi.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackController.java</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CommentaireBack.fxml</file>
             <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CommentaireBackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/services/commentaireCRUD.java</file>
-            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ModifierProduitBackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/CategorieBackAjoutController.java</file>
+            <file>file:/C:/Users/USER/Desktop/3CRUD/elbaldi/src/elbaldi/GUI/ProduitDetailsController.java</file>
         </group>
     </open-files>
 </project-private>

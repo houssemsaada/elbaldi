@@ -228,6 +228,14 @@ public class ModifierProduitBackController implements Initializable {
         categoriefx.setItems(null);
         categoriefx.setItems(list);
     }
+
+    @FXML
+    private void back(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ProduitBack.fxml"));
+        Parent root = loader.load();
+        back.getScene().setRoot(root);
+    }
     
 
     }    

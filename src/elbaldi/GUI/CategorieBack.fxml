@@ -16,9 +16,9 @@
    <children>
       <Pane fx:id="pnlOverview" layoutX="252.0" layoutY="-3.0" prefHeight="581.0" prefWidth="784.0" style="-fx-background-color: #ffff;">
          <children>
-            <Label layoutX="57.0" layoutY="25.0" prefHeight="35.0" prefWidth="162.0" text="Catégorie" textFill="#a20812">
+            <Label layoutX="57.0" layoutY="25.0" prefHeight="50.0" prefWidth="404.0" text="Gestion Catégorie " textFill="#a20812">
                <font>
-                  <Font size="33.0" />
+                  <Font name="Arial Black" size="33.0" />
                </font>
             </Label>
             <Button fx:id="ajouterC" layoutX="38.0" layoutY="213.0" mnemonicParsing="false" onAction="#ajouterCateg" prefHeight="31.0" prefWidth="200.0" text="Ajouter une  catégorie" />
@@ -31,6 +31,11 @@
                   <TableColumn fx:id="desc" prefWidth="276.0" text="Description" />
                </columns>
             </TableView>
+            <ImageView fitHeight="49.0" fitWidth="68.0" layoutX="730.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Logo.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <VBox alignment="TOP_CENTER" prefHeight="581.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
@@ -47,7 +52,7 @@
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/ressources/images/icons8_Home_32px.png" />
+                        <Image url="@../../Ressources/accueil.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -61,11 +66,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="Profil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Profil">
+            <Button fx:id="categorie" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#catt" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Catégories">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/ressources/images/icons8_Person_32px.png" />
+                        <Image url="@../../Ressources/categorisation.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -73,11 +78,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="Reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Reclamation">
+            <Button fx:id="produit" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#prodd" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Produits">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/ressources/images/icons8_Open_Envelope_32px.png" />
+                        <Image url="@../../Ressources/colis.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -85,11 +90,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="Reservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Réservation">
+            <Button fx:id="comm" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#commen" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Commentaires">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/ressources/images/icons8_Slider__32px.png" />
+                        <Image url="@../../Ressources/discuter.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -101,7 +106,7 @@
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/Escapade_3A5-Meryem/Escapade_3A5-Meryem/escapade/Escapade/src/view/ressources/images/icons8_Sign_Out_32px.png" />
+                        <Image url="@../../Ressources/se-deconnecter.png" />
                      </image>
                   </ImageView>
                </graphic>

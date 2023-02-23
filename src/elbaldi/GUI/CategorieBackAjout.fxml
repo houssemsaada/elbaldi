@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -9,45 +8,37 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CategorieBackAjoutController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CategorieBackAjoutController">
    <children>
-      <VBox prefHeight="548.0" prefWidth="174.0">
-         <children>
-            <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Downloads/324646054_1654585858290596_609799792680534605_n.png" />
-               </image>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="50.0" />
-               </VBox.margin>
-            </ImageView>
-         </children>
-      </VBox>
-      <Pane fx:id="pnlOverview" layoutX="204.0" layoutY="2.0" prefHeight="548.0" prefWidth="793.0" >
+      <Pane fx:id="pnlOverview" layoutY="2.0" prefHeight="548.0" prefWidth="769.0" style="-fx-background-color: #ffff;">
          <children>
             <Label layoutX="244.0" layoutY="14.0" prefHeight="35.0" prefWidth="256.0" text="Ajouter catégorie" textFill="#e10a0a">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Arial Black" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="Ajout" layoutX="152.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Ajouter" />
-            <Label layoutX="104.0" layoutY="148.0" prefHeight="27.0" prefWidth="155.0" text="Nom catégorie:">
+            <Button fx:id="Ajout" layoutX="141.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Ajouter" />
+            <Label layoutX="122.0" layoutY="148.0" prefHeight="27.0" prefWidth="155.0" text="Nom catégorie:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="nom" layoutX="310.0" layoutY="146.0" prefHeight="25.0" prefWidth="174.0" />
-            <Label layoutX="104.0" layoutY="239.0" prefHeight="27.0" prefWidth="174.0" text="Description:">
+            <TextField fx:id="nom" layoutX="328.0" layoutY="147.0" prefHeight="25.0" prefWidth="174.0" />
+            <Label layoutX="152.0" layoutY="237.0" prefHeight="27.0" prefWidth="174.0" text="Description:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionC" layoutX="311.0" layoutY="214.0" prefHeight="77.0" prefWidth="172.0" />
-            <Button fx:id="back" layoutX="42.0" layoutY="16.0" mnemonicParsing="false" text="Back" />
-            <Button fx:id="annuler" layoutX="383.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
+            <TextArea fx:id="descriptionC" layoutX="329.0" layoutY="214.0" prefHeight="77.0" prefWidth="172.0" />
+            <Button fx:id="back" layoutX="19.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Button fx:id="annuler" layoutX="344.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
+            <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="718.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Logo.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

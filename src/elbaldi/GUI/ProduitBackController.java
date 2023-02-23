@@ -48,8 +48,6 @@ public class ProduitBackController implements Initializable {
     @FXML
     private Button ajouterP;
     @FXML
-    private Button updateP;
-    @FXML
     private Button deleteP;
     @FXML
     private Button showP;
@@ -57,12 +55,6 @@ public class ProduitBackController implements Initializable {
     private Button detailsfx;
     @FXML
     private Button Home;
-    @FXML
-    private Button Profil;
-    @FXML
-    private Button Reclamation;
-    @FXML
-    private Button Reservation;
     @FXML
     private Button btnSignout;
     @FXML
@@ -78,6 +70,12 @@ public class ProduitBackController implements Initializable {
     
     public static produit produitB;
      ObservableList<produit> obl = FXCollections.observableArrayList();
+    @FXML
+    private Button categorie;
+    @FXML
+    private Button produits;
+    @FXML
+    private Button commentaires;
 
     /**
      * Initializes the controller class.
@@ -244,5 +242,32 @@ public class ProduitBackController implements Initializable {
         Parent root = loader.load();
         Home.getScene().setRoot(root);
     
+    }
+
+    @FXML
+    private void categg(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("CategorieBack.fxml"));
+        Parent root = loader.load();
+        categorie.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("ProduitBack.fxml"));
+        Parent root = loader.load();
+        produits.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void commen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("CommentaireBack.fxml"));
+        Parent root = loader.load();
+        commentaires.getScene().setRoot(root);
     }
     }
