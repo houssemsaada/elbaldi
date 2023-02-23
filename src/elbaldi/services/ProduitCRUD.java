@@ -25,7 +25,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
     
     Connection conn = MyConnection.getInstance().getConn();
     @Override
-    public void ajouterProduit(produit p) {
+    public void ajouterProduit(produit p) throws SQLException{
            try {
             String req = "INSERT INTO `produit`(`ref_produit`, `libelle`, `description`, `image`, `prix_vente`, `quantite`, `id_categorie`) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps=conn.prepareStatement(req);
@@ -47,7 +47,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
 
 
     @Override
-    public void modifierProduit(produit p) {
+    public void modifierProduit(produit p) throws SQLException {
         try {
             String req = "UPDATE `produit` SET `libelle` = '" + p.getLibelle() 
                     + "', `description` = '" + p.getDescription()+ "', `image` = '" + p.getImage()
@@ -63,9 +63,9 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
     }
 
     @Override
-    public void supprimerProduit(produit pr) {
+    public void supprimerProduit(String ref) throws SQLException {
           try {
-            String req = "DELETE FROM `produit` WHERE `ref_produit` = '" + pr.getRef_produit() + "'";
+            String req = "DELETE FROM `produit` WHERE `ref_produit` = '" + ref + "'";
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Produit deleted !");
@@ -75,7 +75,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
     }
 
     @Override
-    public List<produit> afficherProduit() {
+    public List<produit> afficherProduit() throws SQLException{
          List<produit> list = new ArrayList<>();
         try {
             String req = "Select * from produit";
@@ -103,7 +103,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
         return list;
     }
     @Override
-    public produit getByRefProduit(String ref) {
+    public produit getByRefProduit (String ref) throws SQLException {
         //produit p = new produit();
         produit p = null;
         //String reff="TUN61900"+ref;
@@ -130,7 +130,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
         return p;
     }
    @Override
-    public List<produit> filtreByPrixVente(float min, float max) {
+    public List<produit> filtreByPrixVente(float min, float max) throws SQLException {
         List<produit> list = new ArrayList<>();
         try {
             String req = "SELECT * FROM produit WHERE prix_vente BETWEEN " + min + " AND " + max;
@@ -156,7 +156,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
         return list;
     }
     @Override 
-    public List<produit> filtrerProduitParQuantite(int quantite) {
+    public List<produit> filtrerProduitParQuantite(int quantite) throws SQLException {
     List<produit> list = new ArrayList<>();
     try {
         String req = "Select * from produit where quantite >= ?";

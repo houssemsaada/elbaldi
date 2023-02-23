@@ -5,6 +5,12 @@
  */
 package elbaldi.models;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author Yasmine
@@ -17,6 +23,7 @@ public class produit {
     private float prix_vente;
     private int quantite;
     private categorie categoriee;
+     private ImageView imgview;
 
     public produit(){
         
@@ -36,8 +43,19 @@ public class produit {
        
     }
 
+    public produit(String ref_produit, String libelle, String description, float prix_vente, int quantite,categorie categoriee ) {
+        this.ref_produit = ref_produit;
+        this.libelle = libelle;
+        this.description = description;
+        this.prix_vente = prix_vente;
+        this.quantite = quantite;
+        this.categoriee=categoriee;
+        
+    }
+
     public String getRef_produit() {
-        return "TUN61900"+ref_produit;
+        //return "TUN61900"+ref_produit;
+         return ref_produit;
     }
 
     public void setRef_produit(String ref_produit) {
@@ -66,8 +84,18 @@ public class produit {
 
     public void setImage(String image) {
         this.image = image;
+        
+    }
+ public ImageView getImgview() {
+        return imgview;
     }
 
+    public void setImgview(ImageView imgview) {
+        this.imgview = imgview;
+        imgview.setFitHeight(100);
+        imgview.setFitWidth(100);
+        imgview.setPreserveRatio(false);
+    }
    
 
     public float getPrix_vente() {
@@ -98,6 +126,38 @@ public class produit {
     public String toString() {
         return "produit{" + "ref_produit=" + ref_produit + ", libelle=" + libelle + ", description=" + description + ", image=" + image + ", prix_vente=" + prix_vente + ", quantite=" + quantite + ", categoriee=" + categoriee + '}';
     }
+    public static List<produit> generateImageViews(List<produit> produits) {
+        List<produit> liste = new ArrayList<produit>();
+
+          for (produit pro : produits) {
+            File f = new File("C:\\xampp\\htdocs\\images\\" + pro.getImage());
+            pro.setImgview(new ImageView(new Image(f.toURI().toString())));
+            liste.add(pro);
+        }
+        return liste;
+    }
+    public static ArrayList<produit> generateImageViews(ArrayList<produit> produits) {
+        ArrayList<produit> liste = new ArrayList<produit>();
+
+        for (produit pro : produits) {
+            File f = new File("C:\\xampp\\htdocs\\images\\" + pro.getImage());
+            pro.setImgview(new ImageView(new Image(f.toURI().toString())));
+            liste.add(pro);
+        }
+        return liste;
+    }
+    public static produit generateImageViews(produit pro) {
+
+        produit p;
+
+        File f = new File("C:\\xampp\\htdocs\\images\\" + pro.getImage());
+        pro.setImgview(new ImageView(new Image(f.toURI().toString())));
+        p = pro;
+
+        return p;
+    }
+
+
    
     
     

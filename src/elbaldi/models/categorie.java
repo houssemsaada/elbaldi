@@ -18,6 +18,11 @@ public class categorie  {
     public categorie(){
     
     }
+
+    public categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
+    }
+    
     public categorie(int id_categorie, String nom_categorie,String Description) {
         this.id_categorie = id_categorie;
         this.nom_categorie = nom_categorie;

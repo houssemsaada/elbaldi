@@ -158,7 +158,9 @@ public class CategorieBackController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CategorieBackModifier.fxml"));
             Parent root = loader.load();
             CategorieBackModifierController FM = loader.getController();
-            FM.setCategorie(c);
+           FM.setCategorie(c);
+         
+           
                try {
             
             Afficher();

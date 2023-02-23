@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AjouterProduitBackController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ModifierProduitBackController">
    <children>
-      <Pane fx:id="pnlOverview" layoutY="-1.0" prefHeight="580.0" prefWidth="793.0" >
+      <Pane fx:id="pnlOverview" prefHeight="589.0" prefWidth="803.0">
          <children>
-            <Label layoutX="269.0" layoutY="17.0" text="Ajouter Produit" textFill="#b91010">
+            <Label layoutX="269.0" layoutY="17.0" text="Modifier Produit" textFill="#b91010">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="Ajouterfx" layoutX="94.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Ajouter" />
+            <Button fx:id="Modifierfx" layoutX="94.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Modifier" />
             <Label layoutX="16.0" layoutY="63.0" prefHeight="27.0" prefWidth="155.0" text="Réference ">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
