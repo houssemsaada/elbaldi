@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AcceuilClientController">
+   <children>
+      <VBox layoutX="6.0" layoutY="8.0" prefHeight="400.0" prefWidth="161.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="99.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressource/elbaldi.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets left="35.0" right="10.0" top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" style="-fx-background-color: #d00d0d;" text="Acceuil" textFill="#1b1a1a" />
+            <Button fx:id="fxquiz" mnemonicParsing="false" onAction="#click" prefHeight="25.0" prefWidth="162.0" style="-fx-background-color: #d00d0d;" text="QUIZ" textFill="#0d0d0d" />
+            <Button mnemonicParsing="false" prefHeight="14.0" prefWidth="161.0" style="-fx-background-color: #d00d0d;" text="Déconnexion" textFill="#171717" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

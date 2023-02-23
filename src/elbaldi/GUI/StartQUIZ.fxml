@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="elbaldi.GUI.StartQUIZController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.StartQUIZController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="-24.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Text layoutX="253.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUIZ" textAlignment="CENTER">
+            <Text fill="#ff0505" layoutX="181.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue au QUIZ !" textAlignment="CENTER" wrappingWidth="241.0">
                <font>
-                  <Font size="23.0" />
+                  <Font name="Arial Black" size="23.0" />
                </font>
             </Text>
-            <ImageView fitHeight="170.0" fitWidth="292.0" layoutX="159.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fximage" fitHeight="183.0" fitWidth="328.0" layoutX="181.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/Culture-Tunisie-langues-religions-cuisine.jpg" />
+                  <Image url="@../../Ressource/sidi.PNG" />
                </image>
             </ImageView>
-            <Button fx:id="fixdemarrez" layoutX="274.0" layoutY="311.0" mnemonicParsing="false" text="démarrez quiz" />
+            <Button fx:id="fixdemarrez" layoutX="272.0" layoutY="361.0" mnemonicParsing="false" text="Commencer" />
+            <Label layoutX="65.0" layoutY="98.0" prefHeight="46.0" prefWidth="538.0" text="                Découvrez votre niveau de culture tunisienne avec les&#10;                    quiz d'El Baldi  et bénéficiez d'une réduction!!!&#10;" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
+      
    </children>
 </AnchorPane>

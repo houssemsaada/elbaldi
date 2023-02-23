@@ -21,7 +21,7 @@
       <Text layoutX="281.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text fill="#e11818" layoutX="92.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="90%  Score " textAlignment="CENTER" wrappingWidth="378.53076171875">
          <font>
-            <Font name="Arial Black" size="24.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
       <Text layoutX="58.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanner ce code QR et bénifissiez d'une réduction">
@@ -29,9 +29,9 @@
             <Font name="Arial Black" size="17.0" />
          </font>
       </Text>
-      <ImageView fitHeight="107.0" fitWidth="162.0" layoutX="228.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="107.0" fitWidth="162.0" layoutX="215.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Downloads/téléchargement.png" />
+            <Image url="@../../Ressource/téléchargement.png" />
          </image>
       </ImageView>
    </children>

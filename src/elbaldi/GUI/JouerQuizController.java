@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -52,12 +53,15 @@ public class JouerQuizController implements Initializable {
     
     @FXML
     private Button fixsuivante;
-    
-    
+
+    @FXML
+    private Label numerofx;
+
     private ArrayList<question> questions; // Liste de questions
     private int currentQuestionIndex; // Index de la question courante
     private ArrayList<String> reponsesUtilisateur; // Liste des réponses de l'utilisateur
-
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Récupérer les 4 questions à partir de la source de données
@@ -65,10 +69,11 @@ public class JouerQuizController implements Initializable {
         question c = new question();
         questions = new ArrayList<>();
         
-        questions.add(qc.getById(84));
-        questions.add(qc.getById(67));
-        questions.add(qc.getById(3));
-        questions.add(qc.getById(4));
+        questions.add(qc.getById(90));
+        questions.add(qc.getById(91));
+        questions.add(qc.getById(92));
+        questions.add(qc.getById(93));
+         questions.add(qc.getById(94));
        
  
         // Mélanger la liste de questions
@@ -81,6 +86,10 @@ public class JouerQuizController implements Initializable {
         // Afficher la première question
         
         afficherQuestion();
+        int numQuestionn = 1 ;
+            int totalQuestions = questions.size();
+            numerofx.setText("Question 1/" + totalQuestions );
+        
     }
 
     @FXML
@@ -108,6 +117,9 @@ public class JouerQuizController implements Initializable {
         if (currentQuestionIndex < questions.size() -1) {  
             currentQuestionIndex++;
             afficherQuestion();
+            int numQuestion = currentQuestionIndex+1 ;
+            int totalQuestions = questions.size();
+            numerofx.setText("Question "+ numQuestion +"/" + totalQuestions );
         } 
         else if (currentQuestionIndex == questions.size()-1) {
                 // Afficher la classe ScoreControlleur pour afficher le score

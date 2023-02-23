@@ -30,103 +30,34 @@ public class FirstWindow extends Application {
    
     @Override
     public void start(Stage primaryStage)  {
-        /*
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("AjouterQuestion.fxml"));
        
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Ajouter Question");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());        }
-    }*/
-       /*
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("ModifierQuestion.fxml"));
-       
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Modifier Question");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());        }
-    }*/
-    
-       /*
-    Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("SupprimerQuestion.fxml"));
-       
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Supprimer Question");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());        }
-    }*/
-        
-   /*
-      Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("AfficherQuestion.fxml"));
-       
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Afficher Question");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());  }} 
-
-    */
-      /*Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("StartQuiz.fxml"));
-       
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Jouer Quiz");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());  }} */
-   
-      /*Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("Modifierpromotion.fxml"));
-       
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Afficher Question");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());  }} */
      
-    Parent root;
+    /*Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
        
         
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Afficher Question");
+        primaryStage.setTitle("Afficher le module Quiz et promotion");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());  }} 
+            System.out.println(ex.getMessage());  }} **/
+    
+    Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Acceuil Client.fxml"));
+       
+        
+        Scene scene = new Scene(root);
+        
+        primaryStage.setTitle("Afficher le module Quiz et promotion");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());  }}
+    
     
     public static void main(String[] args) {
         launch(args);
