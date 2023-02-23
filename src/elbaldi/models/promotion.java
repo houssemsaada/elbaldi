@@ -5,6 +5,7 @@
  */
 package elbaldi.models;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -16,13 +17,18 @@ public class promotion {
     private int id_promotion;
     private String code_promo;
     private float taux;
-   private LocalDate date_debut;
-    private LocalDate date_fin;
+    private Date date_debut;
+    private Date date_fin;
     
     public promotion() {
     }
 
-    public promotion(int id_promotion, String code_promo, float taux, LocalDate date_debut, LocalDate date_fin) {
+    public promotion(int id_promotion) {
+        this.id_promotion = id_promotion;
+    }
+
+    
+    public promotion(int id_promotion, String code_promo, float taux, Date date_debut, Date date_fin) {
         this.id_promotion = id_promotion;
         this.code_promo = code_promo;
         this.taux = taux;
@@ -30,15 +36,13 @@ public class promotion {
         this.date_fin = date_fin;
     }
 
-    public promotion(String code_promo, float taux, LocalDate date_debut, LocalDate date_fin) {
+    public promotion(String code_promo, float taux, Date date_debut, Date date_fin) {
         this.code_promo = code_promo;
         this.taux = taux;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
 
-    
-    
     public int getId_promotion() {
         return id_promotion;
     }
@@ -63,31 +67,28 @@ public class promotion {
         this.taux = taux;
     }
 
-    public LocalDate getDate_debut() {
+    public Date getDate_debut() {
         return date_debut;
     }
 
-    public void setDate_debut(LocalDate date_debut) {
+    public void setDate_debut(Date date_debut) {
         this.date_debut = date_debut;
     }
 
-    public LocalDate getDate_fin() {
+    public Date getDate_fin() {
         return date_fin;
     }
 
-    public void setDate_fin(LocalDate date_fin) {
+    public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
     }
 
-    
     @Override
     public String toString() {
         return "promotion{" + "id_promotion=" + id_promotion + ", code_promo=" + code_promo + ", taux=" + taux + ", date_debut=" + date_debut + ", date_fin=" + date_fin + '}';
     }
     
     public boolean isValid() {
-        return date_debut.isBefore(date_fin);
+        return date_debut.before(date_fin);
     }
 }
-
-

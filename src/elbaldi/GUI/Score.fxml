@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ScoreController">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="58.0" layoutY="170.0" lineSpacing="6.0" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="QUIZ COMPLETED SUCCESSFULLY" textAlignment="CENTER" wrappingWidth="446.990234375">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="226.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congrats!">
+         <font>
+            <Font name="Arial Black" size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="281.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fill="#e11818" layoutX="92.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="90%  Score " textAlignment="CENTER" wrappingWidth="378.53076171875">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="58.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanner ce code QR et bénifissiez d'une réduction">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="107.0" fitWidth="162.0" layoutX="228.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Downloads/téléchargement.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

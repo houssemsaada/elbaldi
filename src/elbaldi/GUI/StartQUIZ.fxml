@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="elbaldi.GUI.StartQUIZController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-24.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="253.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUIZ" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="170.0" fitWidth="292.0" layoutX="159.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/Culture-Tunisie-langues-religions-cuisine.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="fixdemarrez" layoutX="274.0" layoutY="311.0" mnemonicParsing="false" text="démarrez quiz" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

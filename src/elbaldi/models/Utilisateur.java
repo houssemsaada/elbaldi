@@ -26,6 +26,12 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
+    public Utilisateur(int id_user) {
+        this.id_user = id_user;
+    }
+
+    
+    
     public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp, Role role) {
         this.id_user = id_user;
         this.nom = nom;
@@ -38,6 +44,19 @@ public class Utilisateur {
         this.mdp = mdp;
         this.role = role;
     }
+
+    public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+        this.login = login;
+        this.mdp = mdp;
+    }
+    
 
     public Utilisateur(String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp, Role role) {
         this.nom = nom;

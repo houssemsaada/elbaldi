@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AfficherQuizController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="43.0" layoutY="58.0" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <ListView fx:id="promotionListView" layoutX="-51.0" layoutY="14.0" prefHeight="383.0" prefWidth="653.0" />
+               </children>
+            </AnchorPane>
+            <Text fx:id="fxafficherquiz" layoutX="175.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher Quiz " textAlignment="CENTER" wrappingWidth="217.314453125">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="backfix" layoutX="34.0" layoutY="24.0" mnemonicParsing="false" onAction="#goback" text="&lt;-  Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AdminController">
+   <children>
+      <VBox layoutY="215.0" prefHeight="268.0" prefWidth="171.0">
+         <children>
+            <ComboBox fx:id="Promotionfix" onAction="#select" prefHeight="25.0" prefWidth="175.0" promptText="Promotion" />
+            <ComboBox fx:id="Questionfix" onAction="#choisir" prefHeight="25.0" prefWidth="173.0" promptText="Question" />
+            <ComboBox fx:id="quizfix" onAction="#selectquiz" prefHeight="25.0" prefWidth="182.0" promptText="Quiz" />
+         </children>
+      </VBox>
+      <Label layoutX="33.0" layoutY="8.0" text="Admin" textFill="#f20c0c">
+         <font>
+            <Font name="Arial Black" size="31.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="115.0" fitWidth="129.0" layoutX="33.0" layoutY="62.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../../../../../Downloads/elbaldi.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

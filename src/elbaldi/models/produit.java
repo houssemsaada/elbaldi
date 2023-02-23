@@ -38,6 +38,13 @@ public class produit {
         this.id_categorie = id_categorie;
     }
 
+    public produit(String libelle, float prix_achat) {
+        this.libelle = libelle;
+        this.prix_achat = prix_achat;
+    }
+    
+    
+
     public String getRef_produit() {
         return ref_produit;
     }

@@ -32,8 +32,8 @@ public class PromotionCRUD implements InterfaceCRUDpromotion {
         
         ps.setString(1, p.getCode_promo());
         ps.setFloat(2, p.getTaux());
-        ps.setDate(3, java.sql.Date.valueOf(p.getDate_debut()));
-        ps.setDate(4, java.sql.Date.valueOf(p.getDate_fin()));
+        ps.setDate(3, p.getDate_debut());
+        ps.setDate(4,p.getDate_fin());
             
         ps.executeUpdate();
             
@@ -57,8 +57,8 @@ public void modifierpromotion(promotion p) {
        PreparedStatement ps = conn.prepareStatement(req);
         ps.setString(1, p.getCode_promo());
         ps.setFloat(2, p.getTaux());
-        ps.setDate(3, java.sql.Date.valueOf(p.getDate_debut()));
-        ps.setDate(4, java.sql.Date.valueOf(p.getDate_fin()));
+        ps.setDate(3,(p.getDate_debut()));
+        ps.setDate(4,(p.getDate_fin()));
         ps.setInt(5, p.getId_promotion());
         ps.executeUpdate();
         System.out.println("promotion modifiée !");
@@ -96,8 +96,9 @@ public void modifierpromotion(promotion p) {
          promotion p = new promotion();
          p.setId_promotion(RS.getInt("id_promotion"));
          p.setCode_promo(RS.getString(2));
-        p.setDate_debut(RS.getDate("date_debut").toLocalDate());
-          p.setDate_fin(RS.getDate("date_fin").toLocalDate());
+         p.setTaux(RS.getFloat("taux"));
+        p.setDate_debut(RS.getDate("date_debut"));
+          p.setDate_fin(RS.getDate("date_fin"));
          
          
          listpromotion.add(p);
@@ -122,8 +123,8 @@ public void modifierpromotion(promotion p) {
             p.setId_promotion(rs.getInt("id_promotion"));
             p.setCode_promo(rs.getString("code_promo"));
             p.setTaux(rs.getFloat("taux"));
-            p.setDate_debut(rs.getDate("date_debut").toLocalDate());
-             p.setDate_fin(rs.getDate("date_fin").toLocalDate());
+            p.setDate_debut(rs.getDate("date_debut"));
+             p.setDate_fin(rs.getDate("date_fin"));
             
         }
     } catch (SQLException ex) {
@@ -147,8 +148,8 @@ public void modifierpromotion(promotion p) {
            
             p.setCode_promo(rs.getString("code_promo"));
             p.setTaux(rs.getFloat("taux"));
-            p.setDate_debut(rs.getDate("date_debut").toLocalDate());
-            p.setDate_fin(rs.getDate("date_fin").toLocalDate());
+            p.setDate_debut(rs.getDate("date_debut"));
+            p.setDate_fin(rs.getDate("date_fin"));
             
             list.add(p);
         }

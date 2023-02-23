@@ -7,6 +7,7 @@ package elbaldi.services;
 
 import elbaldi.interfaces.InterfaceCRUDquestion;
 import elbaldi.models.question;
+import elbaldi.models.quiz;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ import java.util.List;
 public class QuestionCRUD implements InterfaceCRUDquestion{
      Connection conn = MyConnection.getInstance().getConn();
    
-     @Override
+      @Override
      public void ajouterQuestion(question qq) {
     try { 
         String req = "INSERT INTO `question`(`difficulte`, `questionn`, `reponse1`, `reponse2`, `reponse3`, `solution`,`id_quiz`) VALUES (?,?,?,?,?,?,?)" ;
@@ -35,10 +36,11 @@ public class QuestionCRUD implements InterfaceCRUDquestion{
         ps.setString(4, qq.getReponse2());
         ps.setString(5, qq.getReponse3());
         ps.setString(6, qq.getSolution());
-        ps.setInt(7, qq.getId_quiz());
+        ps.setInt(7, qq.getquiz().getId_quiz());
             
         ps.executeUpdate();
             
+       
         System.out.println("Question ajoutée!!!");
     } catch (SQLException ex) {
         System.out.println("Question non ajoutée");                  
@@ -57,7 +59,7 @@ public void modifierquestion(question qq) {
         ps.setString(4, qq.getReponse2());
         ps.setString(5, qq.getReponse3());
         ps.setString(6, qq.getSolution()); 
-        ps.setInt(7, qq.getId_quiz());
+        ps.setInt(7, qq.getquiz().getId_quiz());
       
         ps.setInt(8, qq.getId_question());
         ps.executeUpdate();
@@ -96,10 +98,15 @@ public void modifierquestion(question qq) {
          qq.setReponse2(RS.getString(5));
          qq.setReponse3(RS.getString(6));
          qq.setSolution(RS.getString(7));
-         qq. setId_quiz(RS.getInt(8));
+         QuizCRUD qc = new  QuizCRUD();
+         int quiz_id = RS.getInt(8);
+         quiz q = qc.getById(quiz_id);
+         qq.setquiz(q);
+             
          
          listquestion.add(qq);
         }
+        
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
@@ -124,8 +131,13 @@ public void modifierquestion(question qq) {
             qq.setReponse2(rs.getString("reponse2"));
             qq.setReponse3(rs.getString("reponse3"));
             qq.setSolution(rs.getString("solution"));
-            qq.setId_quiz(rs.getInt("id_quiz"));
+            QuizCRUD qc = new  QuizCRUD();
+             int quiz_id = rs.getInt(8);
+            quiz q = qc.getById(quiz_id);
+            qq.setquiz(q);
         }
+       
+        
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
@@ -149,7 +161,10 @@ public void modifierquestion(question qq) {
             qq.setReponse2(rs.getString("reponse2"));
             qq.setReponse3(rs.getString("reponse3"));
             qq.setSolution(rs.getString("solution"));
-            qq.setId_quiz(rs.getInt("id_quiz"));
+            QuizCRUD qc = new  QuizCRUD();
+         int quiz_id = rs.getInt(8);
+         quiz q = qc.getById(quiz_id);
+         qq.setquiz(q);
             list.add(qq);
         }
     } catch (SQLException ex) {
@@ -157,5 +172,5 @@ public void modifierquestion(question qq) {
     }
 
     return list;
-}
+   }
 }

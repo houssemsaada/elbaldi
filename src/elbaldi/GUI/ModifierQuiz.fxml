@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.gui.ModifierQuizController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="20.0" layoutY="20.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="164.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Quiz" textAlignment="CENTER" wrappingWidth="217.314453125">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="12.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté" />
+            <Text layoutX="21.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score" />
+            <Text layoutX="6.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_promotion" />
+            <Button fx:id="ModifierQuiz" layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#Modifier_Quiz" text="Modifier Quiz" />
+            <TextField fx:id="fxdifficulte" layoutX="90.0" layoutY="137.0" />
+            <TextField fx:id="fxscore" layoutX="90.0" layoutY="188.0" />
+            <TextField fx:id="fxid_promotion" layoutX="89.0" layoutY="254.0" />
+            <Text layoutX="324.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_user" textAlignment="CENTER" wrappingWidth="79.0" />
+            <TextField fx:id="fxid_user" layoutX="417.0" layoutY="188.0" />
+            <Text layoutX="16.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id_quiz" />
+            <TextField fx:id="fxid_quiz" layoutX="89.0" layoutY="91.0" />
+            <Button fx:id="backfix" layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#goback" text="&lt;-  Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
