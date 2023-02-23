@@ -9,11 +9,18 @@ import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
 import elbaldi.models.question;
 import elbaldi.models.quiz;
+import elbaldi.services.PromotionCRUD;
 import elbaldi.services.QuestionCRUD;
 import elbaldi.services.QuizCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +28,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -51,6 +60,8 @@ public class ModifierquestionController implements Initializable {
     private TextField fxquiz;
     @FXML
     private Button modifierquestionfx;
+    @FXML
+    private ListView<question> listview;
 
     /**
      * Initializes the controller class.
@@ -58,6 +69,42 @@ public class ModifierquestionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        QuestionCRUD a= new QuestionCRUD();
+        List<question> questions = a.afficherQuestion();
+        ObservableList<question> observableList = FXCollections.observableArrayList(questions);
+        listview.setItems(observableList);
+       listview.setCellFactory(questionListView -> new questionListViewCell());
+
+       listview.setOnMouseClicked(e -> {
+            question selectedQuestion = listview.getSelectionModel().getSelectedItem();
+            if ( selectedQuestion != null) {
+                // Récupérer les valeurs de l'objet Promotion sélectionné
+                int idQuestion =  selectedQuestion.getId_question();
+                String questionn =  selectedQuestion.getQuestionn();
+                String Difficulté =  selectedQuestion.getDifficulte();
+                String Reponse1 =  selectedQuestion.getReponse1();
+                String Reponse2 =  selectedQuestion.getReponse2();
+                String Reponse3 =  selectedQuestion.getReponse3();
+                 String Solution =  selectedQuestion.getSolution();
+                int idQuiz =  selectedQuestion.getquiz().getId_quiz();
+
+               
+
+                // Mettre à jour les champs de texte avec les valeurs récupérées
+                fxidquestion.setText(String.valueOf(idQuestion));
+                fxquestion.setText(questionn);
+                fxdifficulte.setText(Difficulté);
+                fxreponse1.setText(Reponse1);
+                fxreponse2.setText(Reponse2);
+                fxreponse3.setText(Reponse3);
+                fxsolutionn.setText(Solution);
+                fxquiz.setText(String.valueOf(idQuiz));
+              
+                
+                ;
+            }
+        });
+    
     }    
 
     @FXML
@@ -78,20 +125,59 @@ public class ModifierquestionController implements Initializable {
 
     @FXML
     private void modifierquestion(ActionEvent event) {
-      int id_question = Integer.parseInt(fxidquestion.getText());
-      String question = fxquestion.getText();
-      String difficulte = fxdifficulte.getText();
-      String Reponse1 = fxreponse1.getText();
-      String Reponse2 = fxreponse2.getText();
-      String Reponse3 = fxreponse3.getText();
-      String solution = fxsolutionn.getText(); 
-     quiz id_quiz = new quiz();
-     id_quiz.setId_quiz(Integer.parseInt(fxquiz.getText()));
-     
-    
-    question q = new question(id_question, difficulte, question, Reponse1,Reponse2, Reponse3, solution, id_quiz);
-    QuestionCRUD qc = new QuestionCRUD();
-    qc.modifierquestion(q);
+                int idQuestion =  Integer.parseInt(fxidquestion.getText());
+                String questionn =   fxquestion.getText();
+                String Difficulté =  fxdifficulte.getText();
+                String Reponse1 =  fxreponse1.getText();
+                String Reponse2 =  fxreponse2.getText();
+                String Reponse3 = fxreponse3.getText();
+               
+                String Solution = fxsolutionn.getText();
+                quiz idQuiz = new quiz();
+                 idQuiz.setId_quiz(Integer.parseInt(fxquiz.getText()));
+
+    // Mettre à jour la promotion sélectionnée
+    QuestionCRUD a = new QuestionCRUD();
+    question question = new question(idQuestion, questionn , Difficulté ,Reponse1, Reponse2,Reponse3,Solution,idQuiz);
+    a.modifierquestion(question);
+
+    // Rafraîchir la liste des promotions
+    List<question> questions = a.afficherQuestion();
+    ObservableList<question> observableList = FXCollections.observableArrayList(questions);
+    listview.setItems(observableList);
     }
+        
+        
+         private class questionListViewCell extends ListCell<question> {
+
+        protected void updateItem(question question, boolean empty) {
+            super.updateItem(question, empty);
+            if (empty || question == null) {
+                setText(null);
+            } else {
+                 setText(String.format("ID Question: %d\n",question.getId_question()) 
+                    +String.format("- Difficulté: %s\n", question.getDifficulte())
+                    + String.format("- Question: %s\n", question.getQuestionn())
+                    + String.format("- Réponse1: %s\n",question.getReponse1())
+                    + String.format("- Réponse2: %s\n",question.getReponse2())
+                    + String.format("- Réponse3: %s\n",question.getReponse3())
+                    + String.format("- Solution: %s\n", question.getSolution())
+                    + String.format("- id quiz: %d\n", question.getquiz().getId_quiz()));
+            setStyle("-fx-font-size: 12pt; -fx-font-weight: bold;");
+            }
+        }}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
     
 }

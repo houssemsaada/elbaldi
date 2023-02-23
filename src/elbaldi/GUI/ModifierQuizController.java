@@ -7,11 +7,16 @@ package elbaldi.gui;
 
 import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
+import elbaldi.models.question;
 import elbaldi.models.quiz;
+import elbaldi.services.QuestionCRUD;
 import elbaldi.services.QuizCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +24,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -43,6 +50,8 @@ public class ModifierQuizController implements Initializable {
     private TextField fxid_quiz;
     @FXML
     private Button backfix;
+    @FXML
+    private ListView<quiz> listview;
 
     /**
      * Initializes the controller class.
@@ -50,6 +59,37 @@ public class ModifierQuizController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        QuizCRUD a= new QuizCRUD();
+        List<quiz> quizs = a.afficherQuiz();
+        ObservableList<quiz> observableList = FXCollections.observableArrayList(quizs);
+        listview.setItems(observableList);
+       listview.setCellFactory(questionListView -> new quizListViewCell());
+
+       listview.setOnMouseClicked(e -> {
+            quiz selectedQuestion = listview.getSelectionModel().getSelectedItem();
+            if ( selectedQuestion != null) {
+                // Récupérer les valeurs de l'objet Promotion sélectionné
+                int idquiz =  selectedQuestion.getId_quiz();  
+                String Difficulté =  selectedQuestion.getDifficulte();
+                int score =  selectedQuestion.getScore();  
+                int iduser =  selectedQuestion.getuser().getid_user();  
+                int idpromotion =  selectedQuestion.getpromotion().getId_promotion();
+
+    
+
+                // Mettre à jour les champs de texte avec les valeurs récupérées
+                fxid_quiz.setText(String.valueOf(idquiz));
+                fxdifficulte.setText(Difficulté);
+                fxscore.setText(String.valueOf(score));
+                fxid_promotion.setText(String.valueOf(idpromotion));
+               
+                fxid_user.setText(String.valueOf(iduser));
+              
+                
+                ;
+            }
+        });
+    
     }    
 
     @FXML
@@ -66,6 +106,14 @@ public class ModifierQuizController implements Initializable {
     quiz q = new quiz(id_quiz,difficulte,score,id_promotionn,id_user);
     QuizCRUD qc = new QuizCRUD();
     qc.modifierquiz(q);
+    
+   
+
+    // Rafraîchir la liste des promotions
+    List<quiz> quizs = qc.afficherQuiz();
+    ObservableList<quiz> observableList = FXCollections.observableArrayList(quizs);
+    listview.setItems(observableList);
+
     }
 
     @FXML
@@ -83,5 +131,21 @@ public class ModifierQuizController implements Initializable {
         ex.printStackTrace();
     }
     }
-    
+     private class quizListViewCell extends ListCell<quiz> {
+
+        protected void updateItem(quiz quiz, boolean empty) {
+            super.updateItem(quiz, empty);
+            if (empty || quiz == null) {
+                setText(null);
+            } else {
+                 setText(String.format("ID Quiz: %d\n",quiz.getId_quiz()) 
+                    +String.format("- Difficulté: %s\n", quiz.getDifficulte())
+                    + String.format("- Score: %d\n", quiz.getScore())
+                    + String.format("- id_promotion: %d\n",quiz.getpromotion().getId_promotion())
+                    
+                    + String.format("- id user: %d\n", quiz.getuser().getid_user()));
+            setStyle("-fx-font-size: 12pt; -fx-font-weight: bold;");
+            }
+        }}
+        
 }

@@ -12,7 +12,7 @@
          <children>
             <AnchorPane id="AnchorPane" layoutX="43.0" layoutY="58.0" prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <ListView fx:id="promotionListView" layoutX="-51.0" layoutY="14.0" prefHeight="383.0" prefWidth="653.0" />
+                  <ListView fx:id="listview" layoutX="-51.0" layoutY="14.0" prefHeight="383.0" prefWidth="653.0" />
                </children>
             </AnchorPane>
             <Text fx:id="fxafficherquiz" layoutX="175.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher Quiz " textAlignment="CENTER" wrappingWidth="217.314453125">

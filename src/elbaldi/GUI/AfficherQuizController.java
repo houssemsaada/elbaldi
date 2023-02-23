@@ -1,5 +1,6 @@
 package elbaldi.GUI;
 
+import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
 import elbaldi.models.question;
 import elbaldi.models.quiz;
@@ -34,16 +35,38 @@ public class AfficherQuizController implements Initializable {
     private Text fxafficherquiz;
     @FXML
     private Button backfix;
+    
     @FXML
-    private ListView<quiz> promotionListView;
+    private ListView<quiz> listview;
 
+    
+     private class quizListViewCell extends ListCell<quiz> {
+
+        protected void updateItem(quiz quiz, boolean empty) {
+            super.updateItem(quiz, empty);
+            if (empty || quiz == null) {
+                setText(null);
+            } else {
+                 setText(String.format("ID Quiz: %d\n",quiz.getId_quiz()) 
+                    +String.format("- Difficulté: %s\n", quiz.getDifficulte())
+                    + String.format("- Score: %d\n", quiz.getScore())
+                    + String.format("- id_promotion: %s\n",quiz.getpromotion())
+                    
+                    + String.format("- id user: %s\n", quiz.getuser()));
+            setStyle("-fx-font-size: 12pt; -fx-font-weight: bold;");
+            }
+        }}
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       // TODO
         QuizCRUD a= new QuizCRUD();
         List<quiz> quizs = a.afficherQuiz();
         ObservableList<quiz> observableList = FXCollections.observableArrayList(quizs);
-        promotionListView.setItems(observableList);
-        promotionListView.setCellFactory(promotionListView -> new PromotionListViewCell());
+        listview.setItems(observableList);
+       listview.setCellFactory(questionListView -> new quizListViewCell());
+
+     
     }
 
     @FXML
@@ -60,21 +83,4 @@ public class AfficherQuizController implements Initializable {
         }
     }
 
-    private class PromotionListViewCell extends ListCell<quiz> {
-
-        @Override
-        protected void updateItem(quiz quiz, boolean empty) {
-            super.updateItem(quiz, empty);
-            if (empty || quiz == null) {
-                setText(null);
-            } else {
-                setText(String.format("ID Quiz: %d\n", quiz.getId_quiz())
-                    + String.format("- Difficulté: %s\n", quiz.getDifficulte())
-                    + String.format("- Score: %d\n", quiz.getScore())
-                    + String.format("- ID Promotion: %d\n", quiz.getpromotion().getId_promotion())
-                    + String.format("- ID Utilisateur: ", quiz.getuser()));
-                setStyle("-fx-font-size: 12pt; -fx-font-weight: bold;");
-            }
-        }
-    }
 }

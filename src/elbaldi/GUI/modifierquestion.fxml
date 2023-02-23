@@ -2,34 +2,36 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ModifierquestionController">
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ModifierquestionController">
    <children>
-      <Button fx:id="backfx" layoutX="40.0" layoutY="32.0" mnemonicParsing="false" onAction="#goBack" text="&lt;-  Back" />
+      <Button fx:id="backfx" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" onAction="#goBack" text="&lt;-  Back" />
       <Label layoutX="272.0" layoutY="34.0" prefHeight="22.0" prefWidth="168.0" text="Modifier Question">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="99.0" text="Id_question" />
-      <Label layoutX="40.0" layoutY="154.0" text="Question" />
-      <Label layoutX="40.0" layoutY="200.0" text="Difficulté" />
-      <Label layoutX="36.0" layoutY="250.0" text="Réponse 1" />
-      <Label layoutX="40.0" layoutY="312.0" text="Réponse 2" />
-      <Label layoutX="334.0" layoutY="116.0" text="Réponse 3" />
-      <Label layoutX="334.0" layoutY="183.0" text="Solution" />
-      <Label layoutX="336.0" layoutY="271.0" text="Id_Quiz" />
-      <TextField fx:id="fxidquestion" layoutX="123.0" layoutY="95.0" />
-      <TextField fx:id="fxquestion" layoutX="123.0" layoutY="150.0" />
-      <TextField fx:id="fxdifficulte" layoutX="123.0" layoutY="196.0" />
-      <TextField fx:id="fxreponse1" layoutX="123.0" layoutY="245.0" />
-      <TextField fx:id="fxreponse2" layoutX="123.0" layoutY="308.0" />
-      <TextField fx:id="fxreponse3" layoutX="416.0" layoutY="112.0" />
-      <TextField fx:id="fxsolutionn" layoutX="416.0" layoutY="179.0" />
-      <TextField fx:id="fxquiz" layoutX="416.0" layoutY="267.0" />
-      <Button fx:id="modifierquestionfx" layoutX="344.0" layoutY="346.0" mnemonicParsing="false" onAction="#modifierquestion" text="Modifier Question" />
+      <Label layoutX="176.0" layoutY="196.0" text="Id_question" />
+      <Label layoutX="491.0" layoutY="253.0" text="Question" />
+      <Label layoutX="91.0" layoutY="253.0" text="Difficulté" />
+      <Label layoutX="87.0" layoutY="324.0" text="Réponse 1" />
+      <Label layoutX="294.0" layoutY="324.0" text="Réponse 2" />
+      <Label layoutX="451.0" layoutY="196.0" text="Réponse 3" />
+      <Label layoutX="283.0" layoutY="253.0" text="Solution" />
+      <Label layoutX="506.0" layoutY="324.0" text="Id_Quiz" />
+      <TextField fx:id="fxidquestion" layoutX="143.0" layoutY="221.0" />
+      <TextField fx:id="fxquestion" layoutX="440.0" layoutY="281.0" />
+      <TextField fx:id="fxdifficulte" layoutX="41.0" layoutY="281.0" />
+      <TextField fx:id="fxreponse1" layoutX="41.0" layoutY="353.0" />
+      <TextField fx:id="fxreponse2" layoutX="248.0" layoutY="353.0" />
+      <TextField fx:id="fxreponse3" layoutX="410.0" layoutY="221.0" />
+      <TextField fx:id="fxsolutionn" layoutX="230.0" layoutY="281.0" />
+      <TextField fx:id="fxquiz" layoutX="451.0" layoutY="353.0" />
+      <Button fx:id="modifierquestionfx" layoutX="266.0" layoutY="402.0" mnemonicParsing="false" onAction="#modifierquestion" text="Modifier Question" />
+      <ListView fx:id="listview" layoutX="1.0" layoutY="57.0" prefHeight="137.0" prefWidth="674.0" />
    </children>
 </AnchorPane>

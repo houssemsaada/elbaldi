@@ -7,11 +7,14 @@ package elbaldi.gui;
 
 
 import elbaldi.models.question;
+import elbaldi.models.quiz;
 import elbaldi.services.QuestionCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +24,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -34,18 +39,95 @@ import javafx.stage.Stage;
 public class AfficherQuestionController implements Initializable {
 
     @FXML
-    private VBox fxvbox;
-    @FXML
     private Button backfix;
+    @FXML
+    private ListView<question> listview;
 
     /**
      * Initializes the controller class.
      */
+    
+     private class questionListViewCell extends ListCell<question> {
+
+        @Override
+        protected void updateItem(question question, boolean empty) {
+            super.updateItem(question, empty);
+            if (empty || question == null) {
+                setText(null);
+            } else {
+                 setText(String.format("ID Question: %d\n",question.getId_question()) 
+                    +String.format("- Difficulté: %s\n", question.getDifficulte())
+                    + String.format("- Question: %s\n", question.getQuestionn())
+                    + String.format("- Réponse1: %s\n",question.getReponse1())
+                    + String.format("- Réponse2: %s\n",question.getReponse2())
+                    + String.format("- Réponse3: %s\n",question.getReponse3())
+                    + String.format("- Solution: %s\n", question.getSolution())
+                    + String.format("- id quiz: %s\n", question.getquiz()));
+            setStyle("-fx-font-size: 12pt; -fx-font-weight: bold;");
+            }
+        }}
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        QuestionCRUD a= new QuestionCRUD();
+        List<question> questions = a.afficherQuestion();
+        ObservableList<question> observableList = FXCollections.observableArrayList(questions);
+        listview.setItems(observableList);
+       listview.setCellFactory(questionListView -> new questionListViewCell());
+
+       listview.setOnMouseClicked(e -> {
+            question selectedQuestion = listview.getSelectionModel().getSelectedItem();
+            if ( selectedQuestion != null) {
+                // Récupérer les valeurs de l'objet Promotion sélectionné
+                int idQuestion =  selectedQuestion.getId_question();
+                String questionn =  selectedQuestion.getQuestionn();
+                String Difficulté =  selectedQuestion.getDifficulte();
+                String Reponse1 =  selectedQuestion.getReponse1();
+                String Reponse2 =  selectedQuestion.getReponse2();
+                String Reponse3 =  selectedQuestion.getReponse3();
+                 String Solution =  selectedQuestion.getSolution();
+                quiz idQuiz =  selectedQuestion.getquiz();
+
+               
+
+               
+                
+                ;
+            }
+        });
+    
+       
         
         
-         // Retrieve all questions from the database
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         /*// Retrieve all questions from the database
     QuestionCRUD qc = new QuestionCRUD();
     List<question> questions = qc.afficherQuestion();
 
@@ -63,7 +145,7 @@ public class AfficherQuestionController implements Initializable {
             Separator separator = new Separator(Orientation.HORIZONTAL);
         separator.setPrefHeight(10);
         fxvbox.getChildren().addAll(questionLabel, separator);
-    }
+    }*/
 }
 
     @FXML
@@ -85,9 +167,11 @@ public class AfficherQuestionController implements Initializable {
 
 
 
+        
+        
 
         }
-    
+
     
          
     
