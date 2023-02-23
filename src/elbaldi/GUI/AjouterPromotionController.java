@@ -24,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -74,11 +75,34 @@ public class AjouterPromotionController implements Initializable {
         } catch (ParseException ex) {
             System.out.println("le format de la date est incorrecte!! dd/MM/YYYY");
         }
+        
+        if (date_debut.after(date_fin)) {
+    // La date de début est après la date de fin, afficher une alerte
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Erreur de date");
+    alert.setHeaderText(null);
+    alert.setContentText("La date de début doit être avant la date de fin.");
+
+    alert.showAndWait();
+    return;
+}
+
     
    
     promotion p = new promotion(code_promo,taux,date_debut,date_fin);
     PromotionCRUD qc = new PromotionCRUD();
     qc.ajouterpromotion(p);
+    
+   // Créer une alerte
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Promotion ajoutée");
+    alert.setHeaderText(null);
+    alert.setContentText("La promotion a été ajoutée avec succès.");
+
+    // Afficher l'alerte
+    alert.showAndWait();
+     
+    
     }
 
     @FXML
@@ -97,4 +121,7 @@ public class AjouterPromotionController implements Initializable {
     }
     }
     
+    
+    
+     
 }

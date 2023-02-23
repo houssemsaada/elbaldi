@@ -9,8 +9,10 @@ package elbaldi.gui;
 import elbaldi.models.question;
 import elbaldi.models.quiz;
 import elbaldi.services.QuestionCRUD;
+import elbaldi.services.QuizCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +20,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
@@ -45,7 +49,7 @@ public class AjouterQuestionController implements Initializable {
     @FXML
     private TextField fxsolution;
     @FXML
-    private TextField fxid_quiz;
+    private ComboBox<quiz> fxid_quiz;
     @FXML
     private Button backfix;
 
@@ -56,25 +60,48 @@ public class AjouterQuestionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        QuizCRUD quizCRUD = new QuizCRUD();
+    List<quiz> quizList = quizCRUD.afficherQuiz();
+    fxid_quiz.getItems().addAll(quizList);
+    
+   
+}
 
+
+        
+    
     @FXML
-    private void ajouter_Question(ActionEvent event) {
-    String difficulte = fxdifficulte.getText();
+    private void ajouter(ActionEvent event) {
+    
+  String difficulte = fxdifficulte.getText();
     String questionn = fxquestion.getText();
     String reponse1 = fxreponse1.getText();
     String reponse2 = fxreponse2.getText();
     String reponse3 = fxreponse3.getText();
     String solution = fxsolution.getText(); 
-    quiz id_quiz = new quiz();
-    id_quiz.setId_quiz(Integer.parseInt(fxid_quiz.getText()));
+    /// Récupérer le quiz sélectionné
+    quiz selectedQuiz = fxid_quiz.getSelectionModel().getSelectedItem();
+    int selectedQuizId = selectedQuiz.getId_quiz();
+    // Créer l'objet question avec le quiz sélectionné
     
-    question q = new question(difficulte,questionn,reponse1,reponse2,reponse3,solution,id_quiz);
-    QuestionCRUD qc = new QuestionCRUD();
-    qc.ajouterQuestion(q);
-    }
+   
+        question qt = new question(difficulte,questionn,reponse1,reponse2,reponse3,solution,selectedQuiz);
+        QuestionCRUD qcr = new QuestionCRUD();
+        qcr.ajouterQuestion(qt);
+      
 
+  
+
+    // Afficher une alerte en fonction de l'état de l'ajout
+    
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès");
+        alert.setHeaderText(null);
+        alert.setContentText("La question a été ajoutée avec succès.");
+        alert.showAndWait();
+        
+   
+}
     @FXML
     private void goBack(ActionEvent event) {
        
@@ -92,6 +119,7 @@ public class AjouterQuestionController implements Initializable {
     }
 }
 
+    
     }
     
 

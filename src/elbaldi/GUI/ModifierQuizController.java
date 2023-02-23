@@ -9,8 +9,10 @@ import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
 import elbaldi.models.question;
 import elbaldi.models.quiz;
+import elbaldi.services.PromotionCRUD;
 import elbaldi.services.QuestionCRUD;
 import elbaldi.services.QuizCRUD;
+import elbaldi.services.UtilisateurCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -23,7 +25,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -43,22 +48,24 @@ public class ModifierQuizController implements Initializable {
     @FXML
     private TextField fxscore;
     @FXML
-    private TextField fxid_promotion;
+    private ComboBox<promotion> fxid_promotion;
     @FXML
-    private TextField fxid_user;
-    @FXML
-    private TextField fxid_quiz;
+    private ComboBox<Utilisateur> fxid_user;
     @FXML
     private Button backfix;
     @FXML
     private ListView<quiz> listview;
+    @FXML
+    private Label fxid_quiz;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        
+        
         QuizCRUD a= new QuizCRUD();
         List<quiz> quizs = a.afficherQuiz();
         ObservableList<quiz> observableList = FXCollections.observableArrayList(quizs);
@@ -69,7 +76,7 @@ public class ModifierQuizController implements Initializable {
             quiz selectedQuestion = listview.getSelectionModel().getSelectedItem();
             if ( selectedQuestion != null) {
                 // Récupérer les valeurs de l'objet Promotion sélectionné
-                int idquiz =  selectedQuestion.getId_quiz();  
+            int idquiz =  selectedQuestion.getId_quiz();  
                 String Difficulté =  selectedQuestion.getDifficulte();
                 int score =  selectedQuestion.getScore();  
                 int iduser =  selectedQuestion.getuser().getid_user();  
@@ -78,34 +85,66 @@ public class ModifierQuizController implements Initializable {
     
 
                 // Mettre à jour les champs de texte avec les valeurs récupérées
-                fxid_quiz.setText(String.valueOf(idquiz));
+               fxid_quiz.setText(String.valueOf(idquiz));
                 fxdifficulte.setText(Difficulté);
                 fxscore.setText(String.valueOf(score));
-                fxid_promotion.setText(String.valueOf(idpromotion));
+                //fxid_promotion.setText(String.valueOf(idpromotion));
                
-                fxid_user.setText(String.valueOf(iduser));
+                //fxid_user.setText(String.valueOf(iduser));
+                 fxid_promotion.setValue(selectedQuestion.getpromotion());
+                 fxid_user.setValue(selectedQuestion.getuser());
               
                 
                 ;
             }
         });
     
+       // Charger la liste des promotions dans le ComboBox a partir de la base de donée
+        PromotionCRUD pc = new PromotionCRUD();
+        List<promotion> promotions = pc.afficherpromotion();
+        ObservableList<promotion> observableListPromotion = FXCollections.observableArrayList(promotions);
+        fxid_promotion.setItems(observableListPromotion);
+       
+        // Charger la liste des utilisateurs dans le ComboBox a partir de la base de donée
+        UtilisateurCRUD uc = new UtilisateurCRUD();
+        List<Utilisateur> utilisateurs = uc.afficherUtilisateur();
+        ObservableList<Utilisateur> observableListUtilisateurs = FXCollections.observableArrayList(utilisateurs);
+        fxid_user.setItems(observableListUtilisateurs);
+       
     }    
 
     @FXML
     private void Modifier_Quiz(ActionEvent event) {
+        
+        if (fxdifficulte.getText().isEmpty() || fxscore.getText().isEmpty() || fxid_promotion.getValue()== null || fxid_user.getValue()== null) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Il faut sélectionner les champs à modifier!!!");
+        alert.showAndWait();
+        return;
+    }
+        
+        
+        
      int id_quiz = Integer.parseInt(fxid_quiz.getText());
      String difficulte = fxdifficulte.getText();
-     int score = Integer.parseInt(fxscore.getText());
-     promotion id_promotionn = new promotion();
-    id_promotionn.setId_promotion(Integer.parseInt(fxid_promotion.getText()));
+     int score = Integer.parseInt(fxscore.getText());     
+     promotion id_promotionn = fxid_promotion.getValue();
+    Utilisateur id_user = fxid_user.getValue();
+   
     
-    Utilisateur id_user = new Utilisateur();
-    id_user.setid_user(Integer.parseInt(fxid_user.getText()));
     
-    quiz q = new quiz(id_quiz,difficulte,score,id_promotionn,id_user);
+    
+    quiz q = new quiz(id_quiz,difficulte,score,id_promotionn,id_user );
     QuizCRUD qc = new QuizCRUD();
     qc.modifierquiz(q);
+    
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Modification de Quiz");
+      alert.setHeaderText(null);
+      alert.setContentText("Le quiz a été modifiée avec succès !");
+      alert.showAndWait();
+    
     
    
 
@@ -118,8 +157,6 @@ public class ModifierQuizController implements Initializable {
 
     @FXML
     private void goback(ActionEvent event) {
-        // Redirection vers BrouillonController
-    // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
     FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
     try {
         Parent root = loader.load();
@@ -138,7 +175,7 @@ public class ModifierQuizController implements Initializable {
             if (empty || quiz == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Quiz: %d\n",quiz.getId_quiz()) 
+                 setText(String.format("ID Quiz: %d\n",quiz.getId_quiz())
                     +String.format("- Difficulté: %s\n", quiz.getDifficulte())
                     + String.format("- Score: %d\n", quiz.getScore())
                     + String.format("- id_promotion: %d\n",quiz.getpromotion().getId_promotion())

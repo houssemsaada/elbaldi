@@ -65,8 +65,8 @@ public class JouerQuizController implements Initializable {
         question c = new question();
         questions = new ArrayList<>();
         
-        questions.add(qc.getById(1));
-        questions.add(qc.getById(2));
+        questions.add(qc.getById(84));
+        questions.add(qc.getById(67));
         questions.add(qc.getById(3));
         questions.add(qc.getById(4));
        

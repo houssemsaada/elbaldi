@@ -20,6 +20,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -88,12 +90,36 @@ public class SupprimerPromotionController implements Initializable {
 
     @FXML
     private void supprimer(ActionEvent event) {
+    if (fxiid.getText().isEmpty() || fxcodee.getText().isEmpty() || fxtauux.getText().isEmpty() || fxdebutt.getText().isEmpty() || fxfinn.getText().isEmpty()) {
+     
+Alert alert = new Alert(AlertType.WARNING);
+alert.setTitle("Avertissement");
+alert.setHeaderText(null);
+alert.setContentText("Veuillez sélectionner une promotion à supprimer !");
+alert.showAndWait();
+return;
+}
+        
+        
+        
+        
          // Récupérer la promotion sélectionnée
     promotion selectedPromotion = list.getSelectionModel().getSelectedItem();
     if (selectedPromotion != null) {
         // Supprimer la promotion
         PromotionCRUD a = new PromotionCRUD();
         a.supprimerpromotion(selectedPromotion.getId_promotion());
+        
+        //Alerte 
+           Alert alert = new Alert(AlertType.INFORMATION);
+alert.setTitle("Suppression de promotion");
+alert.setHeaderText(null);
+alert.setContentText("La promotion a été supprimée avec succès !");
+alert.showAndWait();
+    
+        
+        
+        
 
         // Rafraîchir la liste des promotions
         List<promotion> promotions = a.afficherpromotion();

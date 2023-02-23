@@ -22,6 +22,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -94,6 +96,17 @@ public class Modifierpromotion implements Initializable {
 
     @FXML
     private void modifier_promo(ActionEvent event) {
+           // Vérifier si l'admin a selectionné les champs à modifier 
+    if (id.getText().isEmpty() || promo.getText().isEmpty() || taux.getText().isEmpty() || debut.getText().isEmpty() || fin.getText().isEmpty()) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Il faut sélectionner les champs à modifier!!!");
+        alert.showAndWait();
+        return;
+    }
+        
+ 
+        
          // Récupérer les valeurs des champs de texte
     int idPromotion = Integer.parseInt(id.getText());
     String codePromo = promo.getText();
@@ -117,6 +130,14 @@ public class Modifierpromotion implements Initializable {
     promotion promotion = new promotion(idPromotion, codePromo, tauxx, dateDebut, dateFin);
     a.modifierpromotion(promotion);
 
+    Alert alert = new Alert(AlertType.INFORMATION);
+alert.setTitle("Modification de promotion");
+alert.setHeaderText(null);
+alert.setContentText("La promotion a été modifiée avec succès !");
+alert.showAndWait();
+    
+    
+    
     // Rafraîchir la liste des promotions
     List<promotion> promotions = a.afficherpromotion();
     ObservableList<promotion> observableList = FXCollections.observableArrayList(promotions);

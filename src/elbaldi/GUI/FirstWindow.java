@@ -89,9 +89,9 @@ public class FirstWindow extends Application {
             System.out.println(ex.getMessage());  }} 
 
     */
-     /* Parent root;
+      /*Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("JouerQuiz.fxml"));
+            root = FXMLLoader.load(getClass().getResource("StartQuiz.fxml"));
        
         
         Scene scene = new Scene(root);

@@ -27,7 +27,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -57,7 +59,7 @@ public class ModifierquestionController implements Initializable {
     @FXML
     private TextField fxsolutionn;
     @FXML
-    private TextField fxquiz;
+    private ComboBox<quiz> fxquiz;
     @FXML
     private Button modifierquestionfx;
     @FXML
@@ -85,8 +87,9 @@ public class ModifierquestionController implements Initializable {
                 String Reponse1 =  selectedQuestion.getReponse1();
                 String Reponse2 =  selectedQuestion.getReponse2();
                 String Reponse3 =  selectedQuestion.getReponse3();
-                 String Solution =  selectedQuestion.getSolution();
-                int idQuiz =  selectedQuestion.getquiz().getId_quiz();
+                String Solution =  selectedQuestion.getSolution();
+                quiz qu = selectedQuestion.getquiz();
+               // int idQuiz =  selectedQuestion.getquiz().getId_quiz();
 
                
 
@@ -98,13 +101,22 @@ public class ModifierquestionController implements Initializable {
                 fxreponse2.setText(Reponse2);
                 fxreponse3.setText(Reponse3);
                 fxsolutionn.setText(Solution);
-                fxquiz.setText(String.valueOf(idQuiz));
+                //fxquiz.setText(String.valueOf(idQuiz));
+               fxquiz.setValue(qu);
               
                 
                 ;
             }
         });
     
+           // Charger la liste des promotions dans le ComboBox
+        QuizCRUD pc = new QuizCRUD();
+        List<quiz> quizs = pc.afficherQuiz();
+        ObservableList<quiz> observableListquiz = FXCollections.observableArrayList(quizs);
+        fxquiz.setItems(observableListquiz);
+       
+       
+       
     }    
 
     @FXML
@@ -125,6 +137,21 @@ public class ModifierquestionController implements Initializable {
 
     @FXML
     private void modifierquestion(ActionEvent event) {
+        
+         if (fxquestion.getText().isEmpty() || fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getValue() ==null) {
+     
+                  Alert alert = new Alert(Alert.AlertType.WARNING);
+                  alert.setTitle("Avertissement");
+                  alert.setHeaderText(null);
+                  alert.setContentText("Veuillez sélectionner la question à modifier !");
+                  alert.showAndWait();
+                  return;
+}
+    
+        
+        
+        
+        
                 int idQuestion =  Integer.parseInt(fxidquestion.getText());
                 String questionn =   fxquestion.getText();
                 String Difficulté =  fxdifficulte.getText();
@@ -133,13 +160,20 @@ public class ModifierquestionController implements Initializable {
                 String Reponse3 = fxreponse3.getText();
                
                 String Solution = fxsolutionn.getText();
-                quiz idQuiz = new quiz();
-                 idQuiz.setId_quiz(Integer.parseInt(fxquiz.getText()));
+                quiz quiz = fxquiz.getValue();
+               // quiz idQuiz = new quiz();
+                //idQuiz.setId_quiz(Integer.parseInt(fxquiz.getText()));
 
     // Mettre à jour la promotion sélectionnée
     QuestionCRUD a = new QuestionCRUD();
-    question question = new question(idQuestion, questionn , Difficulté ,Reponse1, Reponse2,Reponse3,Solution,idQuiz);
+    question question = new question(idQuestion, questionn , Difficulté ,Reponse1, Reponse2,Reponse3,Solution,quiz);
     a.modifierquestion(question);
+    
+     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+     alert.setTitle("Modification de la question");
+     alert.setHeaderText(null);
+     alert.setContentText("La question a été modifiée avec succès !");
+     alert.showAndWait();
 
     // Rafraîchir la liste des promotions
     List<question> questions = a.afficherQuestion();
