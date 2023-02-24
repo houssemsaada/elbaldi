@@ -46,7 +46,21 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
                 ex.printStackTrace();
             }
         } else {
-            try {
+             if (l.getStatus_livraison()==null && l.getDate_livraison() == null) {
+                 try {
+                String req = "INSERT INTO `livraison` (`id_cmd`, `adresse_livraison`) VALUES (?,?)";
+                PreparedStatement ps = conn.prepareStatement(req);
+                ps.setInt(1, l.getC1().getId_cmd());
+              
+                ps.setString(2, l.getAdresse_livraison());
+               
+                ps.executeUpdate();
+                System.out.println("livraison ajouté!!!");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+             }else {
+                 try {
                 String req = "INSERT INTO `livraison` (`id_cmd`, `status_livraison`, `adresse_livraison`, `date_livraison`) VALUES (?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, l.getC1().getId_cmd());
@@ -58,12 +72,14 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+             }
+            
         }
 
     }
 
     @Override
-    public void modifierLivraison(livraison l) {
+    public void modifierLivraison(livraison l,livraison l2) {
         try {
             String req = "UPDATE `livraison` SET `id_cmd` = ?,`status_livraison` = ?, `adresse_livraison` = ? , `date_livraison` = ? WHERE id_livraison   = ? ";
             PreparedStatement ps = conn.prepareStatement(req);
@@ -71,7 +87,7 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             ps.setString(2, l.getStatus_livraison());
             ps.setString(3, l.getAdresse_livraison());
             ps.setDate(4, l.getDate_livraison());
-            ps.setInt(5, l.getId_livraison());
+            ps.setInt(5, l2.getId_livraison());
             ps.executeUpdate();
             System.out.println("livraison updated !");
         } catch (SQLException ex) {

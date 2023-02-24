@@ -18,9 +18,9 @@ public class commande {
     private int id_cmd;
     private String etat;
     private Date date_cmd;
+    private float total;
+    private panier pan;
 
-    private panier pan ; 
-    
     //constructeur par defaut
     public commande() {
     }
@@ -30,13 +30,22 @@ public class commande {
         this.pan = pan;
         this.etat = etat;
         this.date_cmd = date_cmd;
+        this.total = pan.getTotal_panier();
     }
+
+    public commande(panier pan) {
+        this.pan = pan;
+        this.total=pan.getTotal_panier();
+    }
+    
 
     public commande(int id_cmd, panier pan, String etat, Date date_cmd) {
         this.id_cmd = id_cmd;
         this.pan = pan;
         this.etat = etat;
         this.date_cmd = date_cmd;
+        this.total = pan.getTotal_panier();
+
     }
     //getters
 
@@ -47,8 +56,6 @@ public class commande {
     public panier getPan() {
         return pan;
     }
-    
-
 
     public String getEtat() {
         return etat;
@@ -67,7 +74,13 @@ public class commande {
         this.pan = pan;
     }
 
- 
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(panier p) {
+        this.total = pan.getTotal_panier();
+    }
 
     public void setEtat(String etat) {
         this.etat = etat;
@@ -79,9 +92,7 @@ public class commande {
 
     @Override
     public String toString() {
-        return "commande{" + "id_cmd=" + id_cmd + ", etat=" + etat + ", date_cmd=" + date_cmd + ", panier =" + pan + '}';
+        return "commande{" + "id_cmd=" + id_cmd + ", etat=" + etat + ", date_cmd=" + date_cmd + ", panier =" + pan +", total =" + total+ '}';
     }
-
-
 
 }

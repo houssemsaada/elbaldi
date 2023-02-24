@@ -14,7 +14,7 @@ import java.sql.Date;
  */
 public interface livraisonInterfaceCRUD {
     public void ajouterLivraison(livraison l) ; 
-    public void modifierLivraison(livraison l);
+    public void modifierLivraison(livraison l,livraison l2);
     public void supprimerLivraison(livraison l) ;
     public List<livraison> afficherLivraison();
     public List<livraison> filtreByDate(Date date_livraison);

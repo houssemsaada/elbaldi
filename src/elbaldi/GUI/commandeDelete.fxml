@@ -13,8 +13,9 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CommandeinterfaceController">
+<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CommandeDeleteController">
    <children>
       <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #EBEAEA;">
          <children>
@@ -23,7 +24,7 @@
                   <Font name="System Italic" size="34.0" />
                </font>
             </Label>
-            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="110.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="ADD">
+            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="81.0" layoutY="238.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #a20812;" text="DELETE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -41,45 +42,14 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="157.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="UPDATE">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
-            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="200.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="DELETE">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
+            <Text layoutX="41.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please select an order to delete" wrappingWidth="238.67893981933594">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
-      <TableView fx:id="tableView" layoutX="278.0" layoutY="55.0" prefHeight="394.0" prefWidth="935.0">
+      <TableView fx:id="tableView" layoutX="321.0" layoutY="55.0" prefHeight="394.0" prefWidth="892.0">
         <columns>
           <TableColumn fx:id="IDCol" prefWidth="54.399993896484375" text="IDcommande" />
           <TableColumn fx:id="etatCol" prefWidth="85.60000610351562" text="état " />
@@ -89,11 +59,11 @@
             <TableColumn fx:id="emailCol" prefWidth="125.60003662109375" text="email" />
             <TableColumn fx:id="telCol" prefWidth="113.5999755859375" text="Telephone" />
             <TableColumn fx:id="PanierCol" prefWidth="62.39990234375" text="idPanier" />
-            <TableColumn fx:id="articleCol" prefWidth="116.00006103515625" text="number of articles" />
-            <TableColumn fx:id="totalCol" prefWidth="84.0" text="total" />
+            <TableColumn fx:id="articleCol" prefWidth="67.99993896484375" text="number of articles" />
+            <TableColumn fx:id="totalCol" prefWidth="112.0" text="total" />
         </columns>
       </TableView>
-      <Pane layoutX="279.0" layoutY="451.0" prefHeight="146.0" prefWidth="935.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 3px;">
+      <Pane layoutX="-1.0" layoutY="451.0" prefHeight="146.0" prefWidth="1199.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 3px;">
          <children>
             <Label layoutX="52.0" layoutY="22.0" prefHeight="26.0" prefWidth="175.0" text="Admin Dashboard" textFill="#c90000">
                <font>
@@ -105,7 +75,25 @@
                   <Image url="@images/guestwo.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitCommandeScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Exit">
+            <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="1085.0" layoutY="96.0" mnemonicParsing="false" onAction="#exitCommandeScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Exit">
+               <textFill>
+                  <RadialGradient centerX="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="loginButton121" blendMode="SRC_ATOP" layoutX="62.0" layoutY="67.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Back">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>

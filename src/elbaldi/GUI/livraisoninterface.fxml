@@ -14,11 +14,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CommandeinterfaceController">
+<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.LivraisoninterfaceController">
    <children>
       <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #EBEAEA;">
          <children>
-            <Label layoutX="20.0" layoutY="15.0" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #a20812;" text="commande" textFill="#301a1a">
+            <Label layoutX="20.0" layoutY="15.0" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #a20812;" text="Livraison" textFill="#301a1a">
                <font>
                   <Font name="System Italic" size="34.0" />
                </font>
@@ -81,16 +81,17 @@
       </Pane>
       <TableView fx:id="tableView" layoutX="278.0" layoutY="55.0" prefHeight="394.0" prefWidth="935.0">
         <columns>
-          <TableColumn fx:id="IDCol" prefWidth="54.399993896484375" text="IDcommande" />
-          <TableColumn fx:id="etatCol" prefWidth="85.60000610351562" text="état " />
-            <TableColumn fx:id="DateCol" prefWidth="91.20001220703125" text="Date " />
-            <TableColumn fx:id="userCol" prefWidth="68.0" text="IDuser" />
-            <TableColumn fx:id="usernameCol" prefWidth="130.4000244140625" text="Name of user" />
-            <TableColumn fx:id="emailCol" prefWidth="125.60003662109375" text="email" />
-            <TableColumn fx:id="telCol" prefWidth="113.5999755859375" text="Telephone" />
-            <TableColumn fx:id="PanierCol" prefWidth="62.39990234375" text="idPanier" />
-            <TableColumn fx:id="articleCol" prefWidth="116.00006103515625" text="number of articles" />
-            <TableColumn fx:id="totalCol" prefWidth="84.0" text="total" />
+          <TableColumn fx:id="IDCol" prefWidth="54.399993896484375" text="IDlivraison" />
+          <TableColumn fx:id="statusCol" prefWidth="68.0" text="status" />
+            <TableColumn fx:id="adresseCol" prefWidth="100.79998779296875" text="adresse" />
+            <TableColumn fx:id="DateCol" prefWidth="90.4000244140625" text="date livraison" />
+            <TableColumn fx:id="DatecomCol" prefWidth="84.79995727539062" text="date commande" />
+            <TableColumn fx:id="usernameCol" prefWidth="96.79998779296875" text="Name of user" />
+            <TableColumn fx:id="emailCol" prefWidth="88.79998779296875" text="email" />
+            <TableColumn fx:id="telCol" prefWidth="76.0" text="Telephone" />
+            <TableColumn fx:id="idcomCol" prefWidth="80.800048828125" text="id commande" />
+            <TableColumn fx:id="articleCol" prefWidth="117.5999755859375" text="number of articles" />
+            <TableColumn fx:id="totalCol" prefWidth="77.5999755859375" text="total" />
         </columns>
       </TableView>
       <Pane layoutX="279.0" layoutY="451.0" prefHeight="146.0" prefWidth="935.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 3px;">

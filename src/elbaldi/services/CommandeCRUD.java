@@ -32,30 +32,47 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
     @Override
     public void ajouterCommande(commande c) {
         if (c.getId_cmd() != 0) {
+           
             try {
-                String req = "INSERT INTO `commande` (`id_cmd`,`id_panier`, `etat`, `date_cmd`) VALUES (?,?,?,?)";
+                String req = "INSERT INTO `commande` (`id_cmd`,`id_panier`, `etat`, `date_cmd`, `total`) VALUES (?,?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, c.getId_cmd());
                 ps.setInt(2, c.getPan().getId_panier());
                 ps.setString(3, c.getEtat());
                 ps.setDate(4, c.getDate_cmd());
+                ps.setFloat(5, c.getPan().getTotal_panier());
                 ps.executeUpdate();
                 System.out.println("commande ajouté!!!");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         } else {
-            try {
-                String req = "INSERT INTO `commande` (`id_panier`, `etat`, `date_cmd`) VALUES (?,?,?)";
+            if (c.getEtat()==null && c.getDate_cmd() == null) {
+               try {
+                String req = "INSERT INTO `commande` (`id_panier`, `total`) VALUES (?,?)";
                 PreparedStatement ps = conn.prepareStatement(req);
                 ps.setInt(1, c.getPan().getId_panier());
-                ps.setString(2, c.getEtat());
-                ps.setDate(3, c.getDate_cmd());
+                 ps.setFloat(2, c.getPan().getTotal_panier());
                 ps.executeUpdate();
                 System.out.println("commande ajouté!!!");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+           }else {
+                try {
+                String req = "INSERT INTO `commande` (`id_panier`, `etat`, `date_cmd`, `total`) VALUES (?,?,?,?)";
+                PreparedStatement ps = conn.prepareStatement(req);
+                ps.setInt(1, c.getPan().getId_panier());
+                ps.setString(2, c.getEtat());
+                ps.setDate(3, c.getDate_cmd());
+                 ps.setFloat(4, c.getPan().getTotal_panier());
+                ps.executeUpdate();
+                System.out.println("commande ajouté!!!");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            }
+            
         }
     }
 
@@ -107,6 +124,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = RS.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
+                c.setTotal(pan);
                 list.add(c);
             }
 
@@ -136,6 +154,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = RS.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
+                c.setTotal(pan);
                 commandes.add(c);
             }
         } catch (SQLException ex) {
@@ -162,6 +181,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = RS.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
+                c.setTotal(pan);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -185,8 +205,8 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 panierCRUD pc = new panierCRUD();
                 int pan_id = rs.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
-                c.setPan(pan);;
-
+                c.setPan(pan);
+                c.setTotal(pan);
                 commandes.add(c);
             }
         } catch (SQLException ex) {
@@ -213,12 +233,39 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = rs.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-
+                c.setTotal(pan);
                 commandes.add(c);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return commandes;
+    }
+    @Override
+    public commande filtreBypanier(panier p1) {
+        commande c = new commande();
+        try {
+            String query = "SELECT * FROM commande WHERE id_panier  = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, p1.getId_panier());
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+
+                c.setId_cmd(rs.getInt(1));
+                c.setEtat(rs.getString(3));
+                c.setDate_cmd(rs.getDate(4));
+               panierCRUD pc = new panierCRUD();
+                int pan_id = rs.getInt(2);
+                panier pan = pc.filtreByidPanier(pan_id);
+                c.setPan(pan);
+                c.setTotal(pan);
+                
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return c;
     }
 }

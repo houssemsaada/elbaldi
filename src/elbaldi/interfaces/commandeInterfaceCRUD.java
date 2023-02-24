@@ -7,6 +7,7 @@ package elbaldi.interfaces;
 import elbaldi.models.Utilisateur;
 import java.util.List;
 import elbaldi.models.commande;
+import elbaldi.models.panier;
 import java.sql.Date;
 
 /**
@@ -22,5 +23,7 @@ public interface commandeInterfaceCRUD {
     public List<commande> sortCommandesByDate();
     public List<commande> filtreByuser(Utilisateur u1);
     public commande filtreByid(int id_cmd);
+        public commande filtreBypanier(panier p1) ;
+
 
 }

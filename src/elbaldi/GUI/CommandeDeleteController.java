@@ -7,17 +7,8 @@ package elbaldi.GUI;
 
 import elbaldi.models.Utilisateur;
 import elbaldi.models.commande;
-import elbaldi.models.panier;
 import elbaldi.services.CommandeCRUD;
-import elbaldi.services.UtilisateurCRUD;
-import elbaldi.utils.MyConnection;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
@@ -42,19 +33,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author houss
  */
-public class CommandeinterfaceController implements Initializable {
+public class CommandeDeleteController implements Initializable {
 
-    @FXML
-    private TextField idField;
-    @FXML
-    private TextField etatField;
-    @FXML
-    private TextField dateField;
-    private TextField userField;
-    @FXML
-    private Button addBtn;
-    @FXML
-    private Button updBtn;
     @FXML
     private Button delBtn;
     @FXML
@@ -74,16 +54,6 @@ public class CommandeinterfaceController implements Initializable {
     private TableColumn<commande, String> emailCol;
     @FXML
     private TableColumn<commande, String> telCol;
-
-    @FXML
-    private Button loginButton12;
-    @FXML
-    private TextField searchTextField;
-    Statement ste;
-    Connection conn = MyConnection.getInstance().getConn();
-    ObservableList<commande> commandeObservableList = FXCollections.observableArrayList();
-    @FXML
-    private TextField panierField;
     @FXML
     private TableColumn<commande, Integer> PanierCol;
     @FXML
@@ -91,14 +61,20 @@ public class CommandeinterfaceController implements Initializable {
     @FXML
     private TableColumn<commande, Float> totalCol;
     @FXML
+    private Button loginButton12;
+    @FXML
+    private Button loginButton121;
+    @FXML
+    private TextField searchTextField;
+    @FXML
     private Button refreshbtn;
+    ObservableList<commande> commandeObservableList = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         CommandeCRUD cc = new CommandeCRUD();
         commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
 
@@ -157,11 +133,52 @@ public class CommandeinterfaceController implements Initializable {
         SortedList<commande> sortedList = new SortedList<>(filteredData);
         sortedList.comparatorProperty().bind(tableView.comparatorProperty());
         tableView.setItems(filteredData);
-        // TODO
     }
-    // method to refresh the table view to show the updated data after any action
 
-     void refreshTable() {
+    @FXML
+    private void deleteOnAction(ActionEvent event) {
+        try {
+            if (tableView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order to delete", "No order selected", Alert.AlertType.ERROR);
+                return;
+            }
+
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+        try {
+            commande c = new commande();
+            CommandeCRUD cc = new CommandeCRUD();
+            c.setId_cmd(tableView.getSelectionModel().getSelectedItem().getId_cmd());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you sure you want to delete the order ?");
+            alert.setHeaderText("Please confirm your action");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // if the user confirms the deletion
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                cc.supprimerCommande(c);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        } 
+    }
+
+    @FXML
+    private void exitCommandeScene(ActionEvent event) {
+    }
+
+    @FXML
+    private void backOnAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
+    }
+
+    @FXML
+    private void refreshOnAction(ActionEvent event) {
 
         CommandeCRUD cc = new CommandeCRUD();
         commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
@@ -182,30 +199,6 @@ public class CommandeinterfaceController implements Initializable {
         articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getNombre_article()));
         totalCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getTotal_panier()));
         tableView.setItems(commandeObservableList);
-    }
-
-    @FXML
-    private void addBtnOnAction(ActionEvent event) {
-         commandeGUI.changeScene ( event,  "commandeajout.fxml","Ajouter commande" );
-         }
-
-    @FXML
-    private void updateBtnOnAction(ActionEvent event) {
-       commandeGUI.changeScene ( event,  "commandeupdate.fxml","modifier commande" );
-    }
-
-    @FXML
-    private void deleteBtnOnAction(ActionEvent event) {
-        commandeGUI.changeScene ( event,  "commandeDelete.fxml","supprimer commande" );
-    }
-
-    @FXML
-    private void exitCommandeScene(ActionEvent event) {
-    }
-
-    @FXML
-    private void refreshOnAction(ActionEvent event) {
-        refreshTable();
     }
 
 }

@@ -67,14 +67,16 @@ public class houssem {
         //System.out.println(liv.sortlivraisonByDate());
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
-        panier pan1 = new panier(16, u2);
+        panier pan1 = new panier(15);
         panierCRUD pan = new panierCRUD();
         //pan.ajouterPanier(pan1);
         //pan.ajouterProdPanier(pan1, p1,10);
         //pan.supprimerProdPanier(pan1,p1) ; 
-        // pan.modifierPanier(pan1);
+       //  pan.modifierPanier(pan1);
         //pan.supprimerPanier(3);
         //System.out.println(pan.afficherPanier());
         //System.out.println(pan.filtreByuser(u1));
+        //System.out.println(pan.afficherListProduitPanier(pan1));
+        pan.modifierQteProdPanier(pan1, p1, 8);
     }
 }
