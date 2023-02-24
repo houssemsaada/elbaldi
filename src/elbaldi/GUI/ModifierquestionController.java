@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,6 +31,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -45,7 +47,7 @@ public class ModifierquestionController implements Initializable {
     @FXML
     private Button backfx;
     @FXML
-    private TextField fxidquestion;
+    private Label fxidquestion;
     @FXML
     private TextField fxquestion;
     @FXML
@@ -95,8 +97,8 @@ public class ModifierquestionController implements Initializable {
 
                 // Mettre à jour les champs de texte avec les valeurs récupérées
                 fxidquestion.setText(String.valueOf(idQuestion));
-                fxquestion.setText(questionn);
-                fxdifficulte.setText(Difficulté);
+                fxdifficulte.setText(questionn);
+                fxquestion.setText(Difficulté);
                 fxreponse1.setText(Reponse1);
                 fxreponse2.setText(Reponse2);
                 fxreponse3.setText(Reponse3);
@@ -189,9 +191,9 @@ public class ModifierquestionController implements Initializable {
             if (empty || question == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Question: %d\n",question.getId_question()) 
-                    +String.format("- Difficulté: %s\n", question.getDifficulte())
-                    + String.format("- Question: %s\n", question.getQuestionn())
+                 setText(/*String.format("ID Question: %d\n",question.getId_question()) 
+                    + */String.format("- Question: %s\n", question.getDifficulte())
+                    + String.format("- Difficulté: %s\n", question.getQuestionn())
                     + String.format("- Réponse1: %s\n",question.getReponse1())
                     + String.format("- Réponse2: %s\n",question.getReponse2())
                     + String.format("- Réponse3: %s\n",question.getReponse3())

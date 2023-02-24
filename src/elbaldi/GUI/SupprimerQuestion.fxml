@@ -16,7 +16,6 @@
       </Text>
       <Button fx:id="buttonSupprimerQ" layoutX="278.0" layoutY="415.0" mnemonicParsing="false" onAction="#supprimer_Question" text="Supprimer Question" />
       <Button fx:id="backfix" layoutX="34.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" text="&lt;-  Back" />
-      <Text layoutX="81.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
       <Text fx:id="fxquestion" layoutX="94.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text layoutX="197.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulte" />
       <Text fx:id="fxdifficulte" layoutX="209.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" />

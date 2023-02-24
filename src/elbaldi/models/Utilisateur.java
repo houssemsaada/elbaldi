@@ -152,7 +152,7 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id_user=" + id_user + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", dateNaissance=" + dateNaissance + ", numTel=" + numTel + ", ville=" + ville + ", login=" + login + ", mdp=" + mdp + ", role=" + role + '}';
+        return "Utilisateur{" /*+ "id_user=" + id_user */+ " nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", dateNaissance=" + dateNaissance + ", numTel=" + numTel + ", ville=" + ville + ", login=" + login + ", mdp=" + mdp + ", role=" + role + '}';
     }
     
     

@@ -79,7 +79,7 @@ public class SupprimerQuestionController implements Initializable {
             question selectedQuestion = listview.getSelectionModel().getSelectedItem();
             if ( selectedQuestion != null) {
                 // Récupérer les valeurs de l'objet Promotion sélectionné
-                int idQuestion =  selectedQuestion.getId_question();
+               // int idQuestion =  selectedQuestion.getId_question();
                 String questionn =  selectedQuestion.getQuestionn();
                 String Difficulté =  selectedQuestion.getDifficulte();
                 String Reponse1 =  selectedQuestion.getReponse1();
@@ -92,7 +92,7 @@ public class SupprimerQuestionController implements Initializable {
 
                 // Mettre à jour les champs de texte avec les valeurs récupérées
                // fxidquestion.setText(String.valueOf(idQuestion));
-                fxquestion.setText(questionn);
+                //fxquestion.setText(questionn);
                 fxdifficulte.setText(Difficulté);
                 fxreponse1.setText(Reponse1);
                 fxreponse2.setText(Reponse2);
@@ -126,7 +126,7 @@ public class SupprimerQuestionController implements Initializable {
     
     @FXML
     private void supprimer_Question(ActionEvent event) {
-        if (fxquestion.getText().isEmpty() || fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getText().isEmpty()) {
+        if (/*fxquestion.getText().isEmpty() ||*/ fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getText().isEmpty()) {
      
                   Alert alert = new Alert(Alert.AlertType.WARNING);
                   alert.setTitle("Avertissement");
@@ -175,9 +175,9 @@ public class SupprimerQuestionController implements Initializable {
             if (empty || question == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Question: %d\n",question.getId_question()) 
-                    +String.format("- Difficulté: %s\n", question.getDifficulte())
-                    + String.format("- Question: %s\n", question.getQuestionn())
+                 setText(/*String.format("ID Question: %d\n",question.getId_question()) 
+                    + */String.format("- Question: %s\n", question.getDifficulte())
+                    + String.format("- Difficulté: %s\n", question.getQuestionn())
                     + String.format("- Réponse1: %s\n",question.getReponse1())
                     + String.format("- Réponse2: %s\n",question.getReponse2())
                     + String.format("- Réponse3: %s\n",question.getReponse3())

@@ -73,8 +73,8 @@ public class AfficherpromotionController implements Initializable {
             if (empty || promotion == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Promotion: %d\n", promotion.getId_promotion())
-                    +String.format("- Code_Promo: %s\n", promotion.getCode_promo())
+                 setText(/*String.format("ID Promotion: %d\n", promotion.getId_promotion())
+                    +  */String.format("- Code_Promo: %s\n", promotion.getCode_promo())
                     + String.format("- Taux: %f\n", promotion.getTaux())
                     + String.format("- Date de début: %s\n", promotion.getDate_debut())
                     + String.format("- Date de fin: %s\n", promotion.getDate_fin()));

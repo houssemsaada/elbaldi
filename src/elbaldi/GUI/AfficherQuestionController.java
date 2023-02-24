@@ -55,9 +55,9 @@ public class AfficherQuestionController implements Initializable {
             if (empty || question == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Question: %d\n",question.getId_question()) 
-                    +String.format("- Difficulté: %s\n", question.getDifficulte())
-                    + String.format("- Question: %s\n", question.getQuestionn())
+                 setText(/*String.format("ID Question: %d\n",question.getId_question()) 
+                    + */String.format("- Question: %s\n", question.getDifficulte())
+                    + String.format("- Difficulté: %s\n", question.getQuestionn())
                     + String.format("- Réponse1: %s\n",question.getReponse1())
                     + String.format("- Réponse2: %s\n",question.getReponse2())
                     + String.format("- Réponse3: %s\n",question.getReponse3())
@@ -97,55 +97,8 @@ public class AfficherQuestionController implements Initializable {
             }
         });
     
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         /*// Retrieve all questions from the database
-    QuestionCRUD qc = new QuestionCRUD();
-    List<question> questions = qc.afficherQuestion();
 
-    // Add each question to the questionContainer
-    for (question q : questions) {
-       
-        Label questionLabel = new Label("Id_question: "+ q.getId_question() + " || "+"Difficulté: " 
-   + q.getDifficulte() + " || " + "Question: " + q.getQuestionn() + " || "  
-   + "Réponse 1 : "+ q.getReponse1() + " || " + "Réponse 2: " + q.getReponse2() + 
-   " || "  + "Réponse 3: "+ q.getReponse3() + " || " + "Solution: " + q.getSolution() + " || "  + "Id_quiz: "
-   + q.getquiz());
-        
-        
-            questionLabel.setWrapText(true);
-            Separator separator = new Separator(Orientation.HORIZONTAL);
-        separator.setPrefHeight(10);
-        fxvbox.getChildren().addAll(questionLabel, separator);
-    }*/
+     
 }
 
     @FXML

@@ -15,7 +15,7 @@ import java.util.List;
 public interface InterfaceCRUDpromotion {
      public void ajouterpromotion(promotion p);
      public void modifierpromotion(promotion p);
-     public void supprimerpromotion(int id);
+     public void supprimerpromotion(int id );
      public List<promotion> afficherpromotion(); 
      public promotion getById(int id);
      public List<promotion> filtreBytaux(float taux);

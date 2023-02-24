@@ -120,7 +120,7 @@ public class question {
 
     @Override
     public String toString() {
-        return "question{" + "id_question=" + id_question + ", difficulte=" + difficulte + ", questionn=" + questionn + ", reponse1=" + reponse1 + ", reponse2=" + reponse2 + ", reponse3=" + reponse3 + ", solution=" + solution + ", id_quiz=" + id_quiz + '}';
+        return "question{" /*+ "id_question=" + id_question */+ ", difficulte=" + difficulte + ", questionn=" + questionn + ", reponse1=" + reponse1 + ", reponse2=" + reponse2 + ", reponse3=" + reponse3 + ", solution=" + solution + ", id_quiz=" + id_quiz + '}';
     }
     
 

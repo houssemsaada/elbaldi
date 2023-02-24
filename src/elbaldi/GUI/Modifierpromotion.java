@@ -97,7 +97,7 @@ public class Modifierpromotion implements Initializable {
     @FXML
     private void modifier_promo(ActionEvent event) {
            // Vérifier si l'admin a selectionné les champs à modifier 
-    if (id.getText().isEmpty() || promo.getText().isEmpty() || taux.getText().isEmpty() || debut.getText().isEmpty() || fin.getText().isEmpty()) {
+    if (id.getText().isEmpty() ||promo.getText().isEmpty() || taux.getText().isEmpty() || debut.getText().isEmpty() || fin.getText().isEmpty()) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText("Il faut sélectionner les champs à modifier!!!");
@@ -108,7 +108,7 @@ public class Modifierpromotion implements Initializable {
  
         
          // Récupérer les valeurs des champs de texte
-    int idPromotion = Integer.parseInt(id.getText());
+   int idPromotion = Integer.parseInt(id.getText());
     String codePromo = promo.getText();
     float tauxx = Float.parseFloat(taux.getText());
     String dateDebutStr = debut.getText();
@@ -168,8 +168,8 @@ alert.showAndWait();
             if (empty || promotion == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Promotion: %d\n", promotion.getId_promotion())
-                    +String.format("- Code_Promo: %s\n", promotion.getCode_promo())
+                 setText(/*String.format("ID Promotion: %d\n", promotion.getId_promotion())
+                    + */String.format("- Code_Promo: %s\n", promotion.getCode_promo())
                     + String.format("- Taux: %.1f\n", promotion.getTaux())
                     + String.format("- Date de début: %s\n", promotion.getDate_debut())
                     + String.format("- Date de fin: %s\n", promotion.getDate_fin()));

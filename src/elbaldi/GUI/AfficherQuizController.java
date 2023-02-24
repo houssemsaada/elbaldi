@@ -47,8 +47,8 @@ public class AfficherQuizController implements Initializable {
             if (empty || quiz == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Quiz: %d\n",quiz.getId_quiz()) 
-                    +String.format("- Difficulté: %s\n", quiz.getDifficulte())
+                 setText(/*String.format("ID Quiz: %d\n",quiz.getId_quiz()) 
+                    + */String.format("- Difficulté: %s\n", quiz.getDifficulte())
                     + String.format("- Score: %d\n", quiz.getScore())
                     + String.format("- id_promotion: %s\n",quiz.getpromotion())
                     

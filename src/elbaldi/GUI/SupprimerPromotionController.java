@@ -26,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -36,7 +37,7 @@ import javafx.stage.Stage;
 public class SupprimerPromotionController implements Initializable {
 
     @FXML
-    private TextField fxiid;
+    private Text fxiid;
     @FXML
     private TextField fxcodee;
     @FXML
@@ -68,7 +69,7 @@ public class SupprimerPromotionController implements Initializable {
             promotion selectedPromotion = list.getSelectionModel().getSelectedItem();
             if (selectedPromotion != null) {
                 // Récupérer les valeurs de l'objet Promotion sélectionné
-                int idPromotion = selectedPromotion.getId_promotion();
+                //int idPromotion = selectedPromotion.getId_promotion();
                 String codePromo = selectedPromotion.getCode_promo();
                 Float tauxx = selectedPromotion.getTaux();
               Date dateDebut = selectedPromotion.getDate_debut(); 
@@ -77,7 +78,7 @@ public class SupprimerPromotionController implements Initializable {
                
 
                 // Mettre à jour les champs de texte avec les valeurs récupérées
-               fxiid.setText(String.valueOf(idPromotion));
+              // fxiid.setText(String.valueOf(idPromotion));
                 fxcodee.setText(codePromo);
                 fxtauux.setText(String.valueOf(tauxx));
                 fxdebutt.setText(String.valueOf(dateDebut));
@@ -90,7 +91,7 @@ public class SupprimerPromotionController implements Initializable {
 
     @FXML
     private void supprimer(ActionEvent event) {
-    if (fxiid.getText().isEmpty() || fxcodee.getText().isEmpty() || fxtauux.getText().isEmpty() || fxdebutt.getText().isEmpty() || fxfinn.getText().isEmpty()) {
+    if (/*fxiid.getText().isEmpty() ||*/ fxcodee.getText().isEmpty() || fxtauux.getText().isEmpty() || fxdebutt.getText().isEmpty() || fxfinn.getText().isEmpty()) {
      
 Alert alert = new Alert(AlertType.WARNING);
 alert.setTitle("Avertissement");
@@ -160,8 +161,8 @@ alert.showAndWait();
             if (empty || promotion == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Promotion: %d\n", promotion.getId_promotion())
-                    +String.format("- Code_Promo: %s\n", promotion.getCode_promo())
+                 setText(/*String.format("ID Promotion: %d\n", promotion.getId_promotion())
+                    + */String.format("- Code_Promo: %s\n", promotion.getCode_promo())
                     + String.format("- Taux: %.1f\n", promotion.getTaux())
                     + String.format("- Date de début: %s\n", promotion.getDate_debut())
                     + String.format("- Date de fin: %s\n", promotion.getDate_fin()));

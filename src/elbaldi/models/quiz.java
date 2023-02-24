@@ -77,7 +77,7 @@ public class quiz {
 
     @Override
     public String toString() {
-        return "quiz{" + "id_quiz=" + id_quiz + ", difficulte=" + difficulte + ", score=" + score + ", id_promotion=" + id_promotion + ", id_user=" + id_user + '}';
+        return "quiz{ " /*+ "id_quiz=" + id_quiz */ + ", difficulte=" + difficulte + ", score=" + score + ", id_promotion=" + id_promotion + ", id_user=" + id_user + '}';
     }
 
     

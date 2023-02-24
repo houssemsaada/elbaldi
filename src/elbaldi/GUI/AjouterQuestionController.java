@@ -73,8 +73,8 @@ public class AjouterQuestionController implements Initializable {
     @FXML
     private void ajouter(ActionEvent event) {
     
-  String difficulte = fxdifficulte.getText();
-    String questionn = fxquestion.getText();
+  String difficulte = fxquestion.getText();
+    String questionn = fxdifficulte.getText();
     String reponse1 = fxreponse1.getText();
     String reponse2 = fxreponse2.getText();
     String reponse3 = fxreponse3.getText();

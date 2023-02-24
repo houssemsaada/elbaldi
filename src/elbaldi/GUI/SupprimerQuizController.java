@@ -70,8 +70,8 @@ public class SupprimerQuizController implements Initializable {
             if (empty || quiz == null) {
                 setText(null);
             } else {
-                 setText(String.format("ID Quiz: %d\n",quiz.getId_quiz())
-                    +String.format("- Difficulté: %s\n", quiz.getDifficulte())
+                 setText(/*String.format("ID Quiz: %d\n",quiz.getId_quiz())
+                    + */String.format("- Difficulté: %s\n", quiz.getDifficulte())
                     + String.format("- Score: %d\n", quiz.getScore())
                     + String.format("- id_promotion: %d\n",quiz.getpromotion().getId_promotion())
                     
@@ -133,20 +133,7 @@ public class SupprimerQuizController implements Initializable {
 
     @FXML
     private void supprimer_Quiz(ActionEvent event) {
-        /////////////////////////////////////////////////////////////////////////////
-     /*int id_quiz = Integer.parseInt(fxid_quiz.getText());
-     String difficulte = difffix.getText();
-     int score = Integer.parseInt(scorefix.getText());
-     promotion id_promotionn = new promotion();
-    id_promotionn.setId_promotion(Integer.parseInt(promofix.getText()));
-    
-    Utilisateur id_user = new Utilisateur();
-    id_user.setid_user(Integer.parseInt(iduserfix.getText()));
-    
-    
-    QuizCRUD qc = new QuizCRUD();
-    qc.supprimerquiz(score);
-    */
+       
         
         
         if (difffix.getText().isEmpty() || scorefix.getText().isEmpty() || promofix.getText().isEmpty() || iduserfix.getText().isEmpty()) {
