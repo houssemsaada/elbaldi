@@ -85,7 +85,7 @@ public class AjouterQuestionController implements Initializable {
     // Créer l'objet question avec le quiz sélectionné
     
    
-        question qt = new question(difficulte,questionn,reponse1,reponse2,reponse3,solution,selectedQuiz);
+        question qt = new question(questionn,difficulte,reponse1,reponse2,reponse3,solution,selectedQuiz);
         QuestionCRUD qcr = new QuestionCRUD();
         qcr.ajouterQuestion(qt);
       

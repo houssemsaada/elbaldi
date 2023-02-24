@@ -56,8 +56,8 @@ public class AfficherQuestionController implements Initializable {
                 setText(null);
             } else {
                  setText(/*String.format("ID Question: %d\n",question.getId_question()) 
-                    + */String.format("- Question: %s\n", question.getDifficulte())
-                    + String.format("- Difficulté: %s\n", question.getQuestionn())
+                    + */String.format("- Question: %s\n", question.getQuestionn())
+                    + String.format("- Difficulté: %s\n", question.getDifficulte())
                     + String.format("- Réponse1: %s\n",question.getReponse1())
                     + String.format("- Réponse2: %s\n",question.getReponse2())
                     + String.format("- Réponse3: %s\n",question.getReponse3())

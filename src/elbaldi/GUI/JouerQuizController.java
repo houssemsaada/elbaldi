@@ -69,11 +69,11 @@ public class JouerQuizController implements Initializable {
         question c = new question();
         questions = new ArrayList<>();
         
-        questions.add(qc.getById(100));
-        questions.add(qc.getById(101));
-        questions.add(qc.getById(103));
-        questions.add(qc.getById(104));
-         questions.add(qc.getById(105));
+        questions.add(qc.getById(118));
+        questions.add(qc.getById(119));
+        questions.add(qc.getById(120));
+        questions.add(qc.getById(122));
+         questions.add(qc.getById(123));
        
  
         // Mélanger la liste de questions

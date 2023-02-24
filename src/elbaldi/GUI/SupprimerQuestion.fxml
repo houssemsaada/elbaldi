@@ -30,5 +30,7 @@
       <Label fx:id="fxsolutionn" layoutX="99.0" layoutY="369.0" />
       <Label fx:id="fxquiz" layoutX="244.0" layoutY="369.0" />
       <Label layoutX="244.0" layoutY="345.0" text="Id_quiz" />
+      <Text layoutX="500.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" />
+      <Label fx:id="fxquestionn" layoutX="510.0" layoutY="369.0" />
    </children>
 </AnchorPane>

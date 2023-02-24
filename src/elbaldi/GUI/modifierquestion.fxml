@@ -24,7 +24,7 @@
       <Label layoutX="451.0" layoutY="196.0" text="Réponse 3" />
       <Label layoutX="283.0" layoutY="253.0" text="Solution" />
       <Label layoutX="506.0" layoutY="324.0" text="Id_Quiz" />
-      <TextField fx:id="fxquestion" layoutX="440.0" layoutY="281.0" />
+      <TextField fx:id="fxquestionn" layoutX="440.0" layoutY="281.0" />
       <TextField fx:id="fxdifficulte" layoutX="41.0" layoutY="281.0" />
       <TextField fx:id="fxreponse1" layoutX="41.0" layoutY="353.0" />
       <TextField fx:id="fxreponse2" layoutX="248.0" layoutY="353.0" />

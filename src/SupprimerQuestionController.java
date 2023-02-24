@@ -43,8 +43,7 @@ public class SupprimerQuestionController implements Initializable {
     private Button buttonSupprimerQ;
     @FXML
     private Button backfix;
-    @FXML
-    private Text fxquestion;
+   
     @FXML
     private Text fxdifficulte;
     @FXML
@@ -59,6 +58,9 @@ public class SupprimerQuestionController implements Initializable {
     private Label fxquiz;
     @FXML
     private ListView<question> listview;
+    
+    @FXML
+    private Label fxquestionn;
 
     /**
      * Initializes the controller class.
@@ -92,7 +94,7 @@ public class SupprimerQuestionController implements Initializable {
 
                 // Mettre à jour les champs de texte avec les valeurs récupérées
                // fxidquestion.setText(String.valueOf(idQuestion));
-                //fxquestion.setText(questionn);
+                fxquestionn.setText(questionn);
                 fxdifficulte.setText(Difficulté);
                 fxreponse1.setText(Reponse1);
                 fxreponse2.setText(Reponse2);
@@ -126,7 +128,7 @@ public class SupprimerQuestionController implements Initializable {
     
     @FXML
     private void supprimer_Question(ActionEvent event) {
-        if (/*fxquestion.getText().isEmpty() ||*/ fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getText().isEmpty()) {
+        if (fxquestionn.getText().isEmpty() || fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getText().isEmpty()) {
      
                   Alert alert = new Alert(Alert.AlertType.WARNING);
                   alert.setTitle("Avertissement");
@@ -156,7 +158,7 @@ public class SupprimerQuestionController implements Initializable {
         listview.setItems(observableList);
 
         // Effacer les champs de texte
-        fxquestion.setText("");
+        fxquestionn.setText("");
         fxdifficulte.setText("");
         fxreponse1.setText("");
         fxreponse2.setText("");
@@ -175,9 +177,9 @@ public class SupprimerQuestionController implements Initializable {
             if (empty || question == null) {
                 setText(null);
             } else {
-                 setText(/*String.format("ID Question: %d\n",question.getId_question()) 
-                    + */String.format("- Question: %s\n", question.getDifficulte())
-                    + String.format("- Difficulté: %s\n", question.getQuestionn())
+                  setText(/*String.format("ID Question: %d\n",question.getId_question()) 
+                    +*/ String.format("-Question: %s\n", question.getQuestionn())
+                    + String.format("- Difficulté: %s\n", question.getDifficulte())
                     + String.format("- Réponse1: %s\n",question.getReponse1())
                     + String.format("- Réponse2: %s\n",question.getReponse2())
                     + String.format("- Réponse3: %s\n",question.getReponse3())

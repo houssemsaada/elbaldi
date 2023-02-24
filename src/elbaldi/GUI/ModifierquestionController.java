@@ -48,8 +48,7 @@ public class ModifierquestionController implements Initializable {
     private Button backfx;
     @FXML
     private Label fxidquestion;
-    @FXML
-    private TextField fxquestion;
+   
     @FXML
     private TextField fxdifficulte;
     @FXML
@@ -66,6 +65,8 @@ public class ModifierquestionController implements Initializable {
     private Button modifierquestionfx;
     @FXML
     private ListView<question> listview;
+    @FXML
+    private TextField fxquestionn;
 
     /**
      * Initializes the controller class.
@@ -84,28 +85,28 @@ public class ModifierquestionController implements Initializable {
             if ( selectedQuestion != null) {
                 // Récupérer les valeurs de l'objet Promotion sélectionné
                 int idQuestion =  selectedQuestion.getId_question();
-                String questionn =  selectedQuestion.getQuestionn();
-                String Difficulté =  selectedQuestion.getDifficulte();
+                String questionnn =  selectedQuestion.getQuestionn();
+                String Difficultée =  selectedQuestion.getDifficulte();
                 String Reponse1 =  selectedQuestion.getReponse1();
                 String Reponse2 =  selectedQuestion.getReponse2();
                 String Reponse3 =  selectedQuestion.getReponse3();
                 String Solution =  selectedQuestion.getSolution();
                 quiz qu = selectedQuestion.getquiz();
-               // int idQuiz =  selectedQuestion.getquiz().getId_quiz();
+               
 
                
 
                 // Mettre à jour les champs de texte avec les valeurs récupérées
                 fxidquestion.setText(String.valueOf(idQuestion));
-                fxdifficulte.setText(questionn);
-                fxquestion.setText(Difficulté);
+                fxquestionn.setText(questionnn);
+                fxdifficulte.setText(Difficultée);
                 fxreponse1.setText(Reponse1);
                 fxreponse2.setText(Reponse2);
                 fxreponse3.setText(Reponse3);
                 fxsolutionn.setText(Solution);
                 //fxquiz.setText(String.valueOf(idQuiz));
                fxquiz.setValue(qu);
-              
+           
                 
                 ;
             }
@@ -140,7 +141,7 @@ public class ModifierquestionController implements Initializable {
     @FXML
     private void modifierquestion(ActionEvent event) {
         
-         if (fxquestion.getText().isEmpty() || fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getValue() ==null) {
+         if (fxquestionn.getText().isEmpty() || fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getValue() ==null) {
      
                   Alert alert = new Alert(Alert.AlertType.WARNING);
                   alert.setTitle("Avertissement");
@@ -155,16 +156,15 @@ public class ModifierquestionController implements Initializable {
         
         
                 int idQuestion =  Integer.parseInt(fxidquestion.getText());
-                String questionn =   fxquestion.getText();
-                String Difficulté =  fxdifficulte.getText();
+                String questionn =   fxdifficulte.getText();
+                String Difficulté =  fxquestionn.getText();
                 String Reponse1 =  fxreponse1.getText();
                 String Reponse2 =  fxreponse2.getText();
                 String Reponse3 = fxreponse3.getText();
                
                 String Solution = fxsolutionn.getText();
                 quiz quiz = fxquiz.getValue();
-               // quiz idQuiz = new quiz();
-                //idQuiz.setId_quiz(Integer.parseInt(fxquiz.getText()));
+               
 
     // Mettre à jour la promotion sélectionnée
     QuestionCRUD a = new QuestionCRUD();
@@ -186,14 +186,15 @@ public class ModifierquestionController implements Initializable {
         
          private class questionListViewCell extends ListCell<question> {
 
+        @Override
         protected void updateItem(question question, boolean empty) {
             super.updateItem(question, empty);
             if (empty || question == null) {
                 setText(null);
             } else {
-                 setText(/*String.format("ID Question: %d\n",question.getId_question()) 
-                    + */String.format("- Question: %s\n", question.getDifficulte())
-                    + String.format("- Difficulté: %s\n", question.getQuestionn())
+                 setText(String.format("ID Question: %d\n",question.getId_question()) 
+                    + String.format("-Question: %s\n", question.getQuestionn())
+                    + String.format("- Difficulté: %s\n", question.getDifficulte())
                     + String.format("- Réponse1: %s\n",question.getReponse1())
                     + String.format("- Réponse2: %s\n",question.getReponse2())
                     + String.format("- Réponse3: %s\n",question.getReponse3())
