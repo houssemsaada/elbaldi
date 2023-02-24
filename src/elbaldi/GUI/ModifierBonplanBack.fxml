@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ModifierBonplanBackController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="7.0" layoutY="11.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="216.0" layoutY="25.0" text="Modifier Bon plan" textFill="#b91010">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="modifier" layoutX="178.0" layoutY="503.0" mnemonicParsing="false" onAction="#modifierBP" prefHeight="25.0" prefWidth="155.0" text="modifier" />
+            <Label layoutX="52.0" layoutY="110.0" prefHeight="27.0" prefWidth="155.0" text="Tirtre">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="395.0" prefHeight="27.0" prefWidth="89.0" text="Image:">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ListView fx:id="imageBP" layoutX="278.0" layoutY="377.0" prefHeight="77.0" prefWidth="174.0" />
+            <Button fx:id="insérer" layoutX="471.0" layoutY="403.0" mnemonicParsing="false" onAction="#insererOnClick" text="Insérer" />
+            <Label layoutX="42.0" layoutY="165.0" prefHeight="27.0" prefWidth="174.0" text="Description:">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="descriptionBP" layoutX="280.0" layoutY="172.0" prefHeight="77.0" prefWidth="174.0" />
+            <Button fx:id="annuler" layoutX="413.0" layoutY="504.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
+            <Label layoutX="64.0" layoutY="299.0" prefHeight="27.0" prefWidth="89.0" text="Type">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="titreBP" layoutX="291.0" layoutY="111.0" onMouseClicked="#prefixe" />
+            <TextField fx:id="typeBP" layoutX="293.0" layoutY="300.0" onMouseClicked="#prefixe" />
+            <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="266.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

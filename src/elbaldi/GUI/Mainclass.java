@@ -29,7 +29,7 @@ public class Mainclass extends Application {
        
         Parent root;
         try {
-            root=FXMLLoader.load(getClass().getResource("AjoutBonplanBack.fxml"));
+            root=FXMLLoader.load(getClass().getResource("AfficherBonplan.fxml"));
              Scene scene = new Scene(root);
         
         primaryStage.setTitle("Ajout Bonplan");

@@ -23,7 +23,6 @@ public class bonplan {
     private String description_bonplan;
     private String type_bonplan;
     private String image_bonplan;
-    private  Utilisateur user;
     private ImageView imgview;
 
     public bonplan() {
@@ -33,6 +32,14 @@ public class bonplan {
         this.id_bonplan = id_bonplan;
     }
 
+    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan) {
+        this.id_bonplan = id_bonplan;
+        this.titre_bonplan = titre_bonplan;
+        this.description_bonplan = description_bonplan;
+        this.type_bonplan = type_bonplan;
+        this.image_bonplan = image_bonplan;
+    }
+
     public bonplan(String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan) {
         this.titre_bonplan = titre_bonplan;
         this.description_bonplan = description_bonplan;
@@ -40,30 +47,21 @@ public class bonplan {
         this.image_bonplan = image_bonplan;
     }
 
-    public bonplan(String titre_bonplan, String description_bonplan, String type_bonplan) {
-        this.titre_bonplan = titre_bonplan;
-        this.description_bonplan = description_bonplan;
-        this.type_bonplan = type_bonplan;
-    }
-    
-    
-    public bonplan(String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan, Utilisateur user) {
-        this.titre_bonplan = titre_bonplan;
-        this.description_bonplan = description_bonplan;
-        this.type_bonplan = type_bonplan;
-        this.image_bonplan = image_bonplan;
-        this.user = user;
-    }
-
-    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan, Utilisateur user, ImageView imgview) {
+    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan, ImageView imgview) {
         this.id_bonplan = id_bonplan;
         this.titre_bonplan = titre_bonplan;
         this.description_bonplan = description_bonplan;
         this.type_bonplan = type_bonplan;
         this.image_bonplan = image_bonplan;
-        this.user = user;
         this.imgview = imgview;
     }
+
+    public bonplan(String titre_bonplan, String description_bonplan, String type_bonplan) {
+        this.titre_bonplan = titre_bonplan;
+        this.description_bonplan = description_bonplan;
+        this.type_bonplan = type_bonplan;
+    }
+
 
     
 
@@ -107,18 +105,10 @@ public class bonplan {
         this.image_bonplan = image_bonplan;
     }
 
-    public Utilisateur getUser() {
-        return user;
-    }
 
-    public void setUser(Utilisateur user) {
-        this.user = user;
-    }
 
-    @Override
-    public String toString() {
-        return "bonplan{" + "id_bonplan=" + id_bonplan + ", titre_bonplan=" + titre_bonplan + ", description_bonplan=" + description_bonplan + ", type_bonplan=" + type_bonplan + ", image_bonplan=" + image_bonplan + ", user=" + user + '}';
-    }
+
+    
 
     public ImageView getImgview() {
         return imgview;

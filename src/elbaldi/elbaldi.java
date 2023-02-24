@@ -268,35 +268,26 @@ public class elbaldi {
         
        
         BonplanCrud per = new BonplanCrud();
-        bonplan bp1 = new bonplan("Tunis","darjeld","resto","img",uti1.getUserByID(2482)); 
+        bonplan bp1 = new bonplan("Tunis","darjeld","resto","img"); 
         //bonplan bp1 = new bonplan("Tunis","darjeld","resto","img",u3)); 
         per.ajouterBonplan(bp1);
        
      
         //afficher bonplan
-           System.out.println(per.afficherBonplan());
-         
+          System.out.println(per.afficherBonplan());
+       
         //modifier bonplan
         bonplan pb1 = per.getByIdBonplan(2482);
         pb1.setTitre_bonplan("musee"); //Modifier le contenu d
         per.modifierBonplan(pb1); //Appeler la méthode pour mettre à jour le commentaire
         
        
-       //Modifier bonplan
-       //Récupérer un bonplan que j'ai deja avec son id  
-       //bonplan pb1 = per.getByIdBonplan(12); 
-       //Modifier le titre de bonplan qui porte l'id que j'ai mentionné 
-       //pb1.setTitre_bonplan("Hotel africa jade"); 
-       //faire appel à la méthode pour faire la mise à jour du mon bonplan
-       //per.modifierBonplan(pb1); 
-       //afficher le bon bon plan apres modification du titre 
-       //System.out.println("---------------affichage des bons plans après modification------------- ");
-       //System.out.println(per.afficherBonplan());
+      
        
 
         //supprimer bonplan
-        //per.supprimerbonplan(2482);
-         
+       per.supprimerbonplan(135);
+        
       System.out.println("-------------------------------------------------------------------------------------------------");
        /*
          //ajout reservation
@@ -315,12 +306,13 @@ public class elbaldi {
         UtilisateurCRUD uti5 = new UtilisateurCRUD();
         uti5.ajouterUtlisateur(u5);
         
-        bonplan bonp1 = new bonplan("Tunis","darjeld","resto","img",u5); 
+        bonplan bonp = new bonplan("Tunis","darjeld","resto","img"); 
         
         java.sql.Date date3 = new java.sql.Date(new java.util.Date().getTime());
-        Reservation rss= new Reservation( 20, date3, "confirme", per.getByIdBonplan(28), uti5.getUserByID(2466));
+        Reservation rss= new Reservation( 20, date3, "confirme", per.getByIdBonplan(140), uti5.getUserByID(2481));
         
-        ReservationCrud rscc = new ReservationCrud();
+        ReservationCrud rscc = new ReservationCrud(); 
+        
         rscc.ajouterReservation(rss);
         
         
@@ -330,12 +322,12 @@ public class elbaldi {
         
         
         //modifier reservation
-        Reservation rr= rscc.getReservationById(16);
-        rr.setStatut_reservation("annulee");
-        rscc.modifierReservation(rr);
+//        Reservation rr= rscc.getReservationById(16);
+//        rr.setStatut_reservation("annulee");
+//        rscc.modifierReservation(rr);
         
         //supprimer reservation
-       rscc.supprimerReservation(17);
+       //rscc.supprimerReservation(17);
         
         
         
@@ -344,7 +336,7 @@ public class elbaldi {
        
         
         
-        /*
+       
          //afficher reservation
         //System.out.println(res1.afficherReservation());
 
@@ -377,13 +369,13 @@ public class elbaldi {
         // System.out.println(res1.filtreByDate(Date.valueOf("2023-02-15")));
         
     }
-    */
-      
-        System.out.println("-------------------------------------------------------------------------------------------------");
+    
+     
+        //System.out.println("-------------------------------------------------------------------------------------------------");
         
-        
+       
          //ajout avis
-         
+        /* 
          
         Utilisateur u4 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
         UtilisateurCRUD uti2 = new UtilisateurCRUD();
@@ -398,27 +390,26 @@ public class elbaldi {
         avis avv= new avis( 3.5f, date2, uti2.getUserByID(2480),per.getByIdBonplan(5));
         AvisCrud avc = new AvisCrud();
         avc.ajouterAvis(avv);
-        //avc.ajouterAvis(av1);
+        //avc.ajouterAvis(avv);
    
-        
+       /* 
         //afficher avis
         System.out.println(avc.afficherAvis());
         
-       /* 
+       
         //modifier avis
         avis n=avc.getAvisById(19);
         n.setNote_avis(3.2f);
-        avc.modifierAvis(n); */
+        avc.modifierAvis(n); 
         
         //supprimer avis 
        //avc.supprimerAvis(28); 
          
         
         
-        
       
        
-       
+       */
        
         
         
@@ -426,4 +417,4 @@ public class elbaldi {
        
        
     }
-}
+    

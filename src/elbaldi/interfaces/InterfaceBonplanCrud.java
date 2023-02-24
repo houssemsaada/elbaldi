@@ -16,7 +16,7 @@ import java.util.List;
  * @author user
  */
 public interface InterfaceBonplanCrud {
-   public void ajouterBonplan(bonplan B) throws SQLException;
+   public void ajouterBonplan(bonplan B) ;
    public void modifierBonplan(bonplan B);
    public List<bonplan> afficherBonplan();
    public void supprimerbonplan(int id);

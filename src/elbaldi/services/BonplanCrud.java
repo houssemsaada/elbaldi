@@ -25,9 +25,9 @@ public class BonplanCrud implements InterfaceBonplanCrud {
    
     Connection connection= MyConnection.getInstance().getConn();
     @Override
-    public void ajouterBonplan(bonplan B) throws SQLException {
+    public void ajouterBonplan(bonplan B)  {
         try {
-            String req = "INSERT INTO `bonplan`(`titre_bonplan`, `description_bonplan`, `type_bonplan` , `image_bonplan`, `id_user`) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `bonplan`(`titre_bonplan`, `description_bonplan`, `type_bonplan` , `image_bonplan`) VALUES (?,?,?,?)";
            PreparedStatement ps=connection.prepareStatement(req);
           
            
@@ -35,7 +35,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             ps.setString(2, B.getDescription_bonplan());
             ps.setString(3, B.getType_bonplan());
             ps.setString(4, B.getImage_bonplan());
-           ps.setInt(5, B.getUser().getid_user()); 
+            
              ps.executeUpdate();
          System.out.println("Bonplan ajouté avec succes ");
         } catch (SQLException ex) {
@@ -51,7 +51,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
                     + "', `description_bonplan` = '" + B.getDescription_bonplan()
                     + "', `type_bonplan` = '" + B.getType_bonplan()
                     + "', `image_bonplan` = '" + B.getImage_bonplan() 
-                    + "', `id_user` = '" + B.getUser()
+               
                     + "' WHERE `bonplan`.`id_bonplan` = " + B.getId_bonplan();
             Statement st = connection.createStatement();
             st.executeUpdate(req);
@@ -72,7 +72,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              bonplan B = new bonplan();
-            
+             B.setId_bonplan(RS.getInt("id_bonplan"));
              B.setTitre_bonplan(RS.getString("titre_bonplan"));
              B.setDescription_bonplan(RS.getString("description_bonplan"));
              B.setType_bonplan(RS.getString("type_bonplan"));
@@ -88,7 +88,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
 
     
     
-    /*@Override
+    @Override
     public void supprimerbonplan(int id) {
         try {
             String req = "DELETE FROM `bonplan` WHERE id_bonplan = " + id;
@@ -100,7 +100,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
         }
     }
     
-    */
+    
     @Override
     public bonplan getByIdBonplan(int id) {
         bonplan Bpp= new bonplan();
@@ -151,11 +151,11 @@ public class BonplanCrud implements InterfaceBonplanCrud {
     
     
     
-    @Override
+   /* @Override
     public void supprimerbonplan(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    */
     
     }
     

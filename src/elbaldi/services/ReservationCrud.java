@@ -7,7 +7,7 @@ package elbaldi.services;
 import elbaldi.interfaces.InterfaceReservationCrud;
 import elbaldi.models.Reservation;
 import elbaldi.models.bonplan;
-import elbaldi.models.categorie;
+
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.Date;
