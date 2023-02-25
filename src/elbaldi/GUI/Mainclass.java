@@ -29,10 +29,12 @@ public class Mainclass extends Application {
        
         Parent root;
         try {
-            root=FXMLLoader.load(getClass().getResource("AfficherBonplan.fxml"));
+           //root=FXMLLoader.load(getClass().getResource("AfficherReservationBack.fxml"));
+                    root=FXMLLoader.load(getClass().getResource("AfficherBonplan.fxml"));
+
              Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Ajout Bonplan");
+        primaryStage.setTitle("Affichage des bonplans");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {

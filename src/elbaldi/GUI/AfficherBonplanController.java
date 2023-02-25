@@ -189,7 +189,7 @@ public class AfficherBonplanController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Vous devez selectionner une promotion");
+            alert.setContentText("Vous devez selectionner bonplan");
             alert.show();
         }
     }

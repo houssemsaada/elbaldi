@@ -270,23 +270,23 @@ public class elbaldi {
         BonplanCrud per = new BonplanCrud();
         bonplan bp1 = new bonplan("Tunis","darjeld","resto","img"); 
         //bonplan bp1 = new bonplan("Tunis","darjeld","resto","img",u3)); 
-        per.ajouterBonplan(bp1);
+       // per.ajouterBonplan(bp1);
        
      
         //afficher bonplan
           System.out.println(per.afficherBonplan());
        
         //modifier bonplan
-        bonplan pb1 = per.getByIdBonplan(2482);
-        pb1.setTitre_bonplan("musee"); //Modifier le contenu d
-        per.modifierBonplan(pb1); //Appeler la méthode pour mettre à jour le commentaire
-        
+        bonplan pb1 = per.getByIdBonplan(134);
+//        pb1.setTitre_bonplan("musee"); //Modifier le contenu d
+//        per.modifierBonplan(pb1); //Appeler la méthode pour mettre à jour le commentaire
+//        
        
       
        
 
         //supprimer bonplan
-       per.supprimerbonplan(135);
+      // per.supprimerbonplan(135);
         
       System.out.println("-------------------------------------------------------------------------------------------------");
        /*
@@ -303,14 +303,14 @@ public class elbaldi {
          
          
         Utilisateur u5 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
-        UtilisateurCRUD uti5 = new UtilisateurCRUD();
-        uti5.ajouterUtlisateur(u5);
+//        UtilisateurCRUD uti5 = new UtilisateurCRUD();
+//        uti5.ajouterUtlisateur(u5);
         
         bonplan bonp = new bonplan("Tunis","darjeld","resto","img"); 
         
         java.sql.Date date3 = new java.sql.Date(new java.util.Date().getTime());
-        Reservation rss= new Reservation( 20, date3, "confirme", per.getByIdBonplan(140), uti5.getUserByID(2481));
-        
+        Reservation rss= new Reservation( 20, date3, "confirme", per.getByIdBonplan(140), u5);
+        System.out.println(rss.getUser2());
         ReservationCrud rscc = new ReservationCrud(); 
         
         rscc.ajouterReservation(rss);

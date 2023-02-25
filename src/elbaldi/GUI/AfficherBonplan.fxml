@@ -25,7 +25,7 @@
             <Button fx:id="ajouterC" layoutX="107.0" layoutY="454.0" mnemonicParsing="false" onAction="#ajouterBP" prefHeight="31.0" prefWidth="200.0" text="Ajouter un bonplan" />
             <Button fx:id="updateC" layoutX="107.0" layoutY="505.0" mnemonicParsing="false" onAction="#modifierBP" prefHeight="31.0" prefWidth="200.0" text="Modifier un bonplan" />
             <Button fx:id="deleteC" layoutX="379.0" layoutY="454.0" mnemonicParsing="false" onAction="#supprimerBP" prefHeight="31.0" prefWidth="200.0" text="Supprimer un bonplan" />
-            <Button fx:id="showC" layoutX="379.0" layoutY="505.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Afficher un bonplan" />
+            <Button fx:id="showC" layoutX="379.0" layoutY="505.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="more details" />
             <TableView fx:id="tableC" layoutX="88.0" layoutY="122.0" prefHeight="261.0" prefWidth="498.0">
                <columns>
                   <TableColumn fx:id="nom" prefWidth="100.0" text="titre " />
