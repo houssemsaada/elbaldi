@@ -6,6 +6,7 @@
 package elbaldi;
 
 import elbaldi.models.*;
+import static elbaldi.models.Role.admin;
 import static elbaldi.models.Role.client;
 import elbaldi.services.*;
 import java.sql.Date;
@@ -31,42 +32,42 @@ public class elbaldi {
        
        
       
-        Utilisateur u1 = new Utilisateur("ben mahmoud", "khaled","test@test","10/16/2000",2345564,"tunis","test","test",client);
+        Utilisateur u1 = new Utilisateur("ben mahmoud", "khaled","test@test","10/16/2000",2345564,"tunis","test","test",admin);
         UtilisateurCRUD uti = new UtilisateurCRUD();
         
-        uti.ajouterUtlisateur(u1);
-        uti.supprimerUtilisateur(2423);
-        Utilisateur mod = new Utilisateur("testttt", "test","test@test","10/16/2000",2345564,"tunis","test","test",client);
-        uti.modifierUtilisateur(mod,2424);
+       uti.ajouterUtlisateur(u1);
+      uti.supprimerUtilisateur(2459);
+     Utilisateur mod = new Utilisateur("testttt", "test","test@test","10/16/2000",2345564,"tunis","test","test",client);
+       uti.modifierUtilisateur(mod,2550);
       
         System.out.println( uti.afficherUtilisateur());
         
-        System.out.println(uti.getUserByID(2433)); 
-        System.out.println(uti.Filter_utilisateur("nom", "test"));
+     //  System.out.println(uti.getUserByID(2433)); 
+      //  System.out.println(uti.Filter_utilisateur("nom", "test"));
         
         
         
      //-----------------------------------------------------------------------------------------------------------------------------------------
-         System.out.println("-------------------------------------------------------------------------------");
+        /* System.out.println("-------------------------------------------------------------------------------");
          System.out.println("                             PARTIE RECLAMATION");
          System.out.println("-------------------------------------------------------------------------------");
      
      
-     Reclamation r1 = new Reclamation("10/16/2000","tunis",2425);
+     Reclamation r1 = new Reclamation("10/16/2000","tunis",2539);
         ReclamationCRUD rec = new ReclamationCRUD();
         
         rec.ajouterReclamation(r1);
          rec.supprimerReclamation(2425);
-        Reclamation mod2 = new Reclamation("10/16/2000","testetst",2425);
-        rec.modifierReclamation(mod2,2424);
+        Reclamation mod2 = new Reclamation("10/16/2000","testetst",2539);
+        rec.modifierReclamation(mod2,2424); 
       
          System.out.println( rec.afficherReclamation());
         
-         System.out.println(rec.getReclamationByID(2433)); 
-        System.out.println(rec.Filter_Reclamation("10/16/2000", "tunis"));
+       System.out.println(rec.getReclamationByID(2433)); 
+        System.out.println(rec.Filter_Reclamation("10/16/2000", "tunis")); */
         
                 
-        
+        /*
         System.out.println("-------------------------------------------------------------");
         System.out.println("----------------Module Produits et categories ----------------");
         System.out.println("-------------------------------------------------------------");
@@ -337,6 +338,7 @@ public class elbaldi {
          //System.out.println(res1.filtreByDate(datefiltre));
          //ou bien
          System.out.println(res1.filtreByDate(Date.valueOf("2023-02-15")));
-        
+
+  */
     }
 }
