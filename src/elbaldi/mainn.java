@@ -23,19 +23,20 @@ public class mainn {
       
         EvenementService es = new EvenementService();
         
-        Evenement e1= new Evenement(2459,2459, "skanderaaa", "ssdddes", "15-10-2021", "19-10-2023", "100dt");
-       // es.ajouter(e1);
+        Evenement e1= new Evenement(0, "skanderaaa", "ssdddes", "15-10-2021", "19-10-2023", "100dt");
+       es.ajouter(e1);
       //es.modifier(e1); 
       //es.supprimer(e1);
         System.out.println(es.recuperer(e1));   
         
         
          System.out.println("*********************PARTICIPATION***************");
- Participation p1 = new Participation(1,2459,4, "12/12/2001");
+ Participation p1 = new Participation(21,2462,"12-10-2021",e1);
  ParticipationService ps= new ParticipationService();
         //  ps.supprimer(p1);
-         //ps.ajouter(p1);
-       // ps.modifier(p1);
+        e1.setId_event(26);
+       //ps.ajouter(p1);
+     //ps.modifier(p1);
              System.out.println(ps.recuperer(p1));
     }
     

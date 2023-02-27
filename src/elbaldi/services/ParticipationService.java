@@ -34,7 +34,7 @@ public class ParticipationService implements InterfaceParticipationCRUD<Particip
     public void ajouter(Participation t) throws SQLException {
  try{ 
      String req = "insert into participation(id_user, id_event,date) VALUES ("
-             + "'"+t.getId_user()+ "','"+t.getId_event()+ "','"+t.getDate()+  "')";
+             + "'"+t.getId_user()+ "','"+t.getEv().getId_event()+ "','"+t.getDate()+  "')";
      
      Statement st = cnn
              .createStatement();
@@ -48,11 +48,14 @@ public class ParticipationService implements InterfaceParticipationCRUD<Particip
     @Override
     public void modifier(Participation t) throws SQLException {
          try{ 
-      String req = "UPDATE  participation SET id_user = ? , id_event=? ";
+      String req = "UPDATE  participation SET id_user = ? , id_event=? , date=? WHERE id_participation =? ";
              PreparedStatement ps =cnn
                      .prepareStatement(req);
              ps.setInt(1, t.getId_user());
-             ps.setInt(2, t.getId_event());
+             ps.setInt(2, t.getEv().getId_event());
+             ps.setString(3,t.getDate());
+             ps.setInt(4, t.getId_participation());
+             
              ps.executeUpdate();
              System.out.println("Modification de participation se fait");
  } catch(SQLException ex ){
@@ -82,11 +85,12 @@ public class ParticipationService implements InterfaceParticipationCRUD<Particip
           Statement st = cnn
                   .createStatement();
           ResultSet rs = st.executeQuery(req);
+          EvenementService es = new EvenementService() ;
           while(rs.next()){
               Participation P = new Participation();
               P.setId_participation(rs.getInt(1));
               P.setId_user(rs.getInt(2));
-              P.setId_event(rs.getInt(3));
+              P.setEv(es.findByid(rs.getInt(4)));
               
               lP.add(P);
           }

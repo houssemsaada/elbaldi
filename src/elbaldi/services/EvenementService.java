@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import elbaldi.models.Evenement;
 import elbaldi.interfaces.InterfaceParticipationCRUD;
+import elbaldi.utils.MyConnection;
 /**
  *
  * @author MSI
@@ -90,5 +91,31 @@ public class EvenementService implements InterfaceParticipationCRUD <Evenement> 
         
         return event;
     }
+    public Evenement findByid(int id_ev){
+         Evenement ev =new Evenement();
+		try {
+			String req = "SELECT * FROM Evenement WHERE id_event = " + id_ev;
+			 Statement st = cnn.createStatement();
+            ResultSet rs = st.executeQuery(req);
+             Evenement E = new Evenement();
+            while (rs.next()) {                
+                E.setId_event(rs.getInt(1));
+                E.setNom(rs.getString(2));
+                E.setDescription(rs.getString(3));
+                E.setDate_debut(rs.getString(4));
+                E.setDate_fin(rs.getString(5));
+                E.setNb_participant(rs.getInt(6));
+                E.setAwards(rs.getString(7));
+			}
+
+			return E;
+		}
+		catch (SQLException ex){
+			System.out.println(ex.getMessage());
+		}
+		return null;
+	}
+        
+    }
        
-}
+

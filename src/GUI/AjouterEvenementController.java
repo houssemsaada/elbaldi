@@ -33,6 +33,12 @@ public class AjouterEvenementController implements Initializable {
 
     @FXML
     private TextField nom;
+
+   
+
+    public void setId(String id) {
+        this.id.setText(id);
+    }
     @FXML
     private TextField awards;
     @FXML
@@ -55,7 +61,9 @@ public class AjouterEvenementController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+ 
+    
     }    
 
     @FXML

@@ -32,7 +32,7 @@
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="id_label" layoutX="24.0" layoutY="5.0" text="Label" visible="false" />
+      <Label fx:id="id_label" layoutX="24.0" layoutY="5.0" text="Label" />
       <Button fx:id="participerbtn" layoutX="7.0" layoutY="131.0" mnemonicParsing="false" onAction="#ParticiperEvent" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #B7F0AD;" text="Participer" />
       <Accordion />
    </children>

@@ -11,7 +11,15 @@ package elbaldi.models;
  */
 public class Participation {
  int id_participation,id_user,id_event;
+
+    public Participation(int id_participation, int id_user, String date, Evenement ev) {
+        this.id_participation = id_participation;
+        this.id_user = id_user;
+        this.date = date;
+        this.ev = ev;
+    }
  String date;
+ private Evenement ev ;
 
     public Participation() {
     }
@@ -55,10 +63,21 @@ public class Participation {
         this.date = date;
     }
 
+    public Evenement getEv() {
+        return ev;
+    }
+
+    public void setEv(Evenement ev) {
+        this.ev = ev;
+    }
+
     @Override
     public String toString() {
-        return "Participation{" + "id_participation=" + id_participation + ", id_user=" + id_user + ", id_event=" + id_event + ", date=" + date + '}';
+        return "Participation{" + "id_participation=" + id_participation + ", id_user=" + id_user + ", id_event=" + id_event + ", date=" + date + ", ev=" + ev + '}';
     }
+
+    
+    
 
      
  

@@ -45,14 +45,14 @@ public class MyConnection {
                 ;
     }
 
-    //3
+    
     public static MyConnection getInstance() {
         if(instance == null)
             instance = new MyConnection();
         
         return instance;
     }
-    
+   
     
     
 }
