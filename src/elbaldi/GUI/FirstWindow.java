@@ -32,9 +32,9 @@ public class FirstWindow extends Application {
     public void start(Stage primaryStage)  {
        
      
-  /* Parent root;
+  Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+            root = FXMLLoader.load(getClass().getResource("front.fxml"));
        
         
         Scene scene = new Scene(root);
@@ -43,9 +43,22 @@ public class FirstWindow extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {
+            System.out.println(ex.getMessage());  }} 
+  
+  /*Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("client.fxml"));
+       
+        
+        Scene scene = new Scene(root);
+        
+        primaryStage.setTitle("QUIZ");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());  }} */
     
-    Parent root;
+    /*Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("Acceuil Client.fxml"));
        
@@ -58,7 +71,7 @@ public class FirstWindow extends Application {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());  }}
     
-    
+    */
     public static void main(String[] args) {
         launch(args);
     }

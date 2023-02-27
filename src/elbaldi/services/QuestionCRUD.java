@@ -70,15 +70,18 @@ public void modifierquestion(question qq) {
 }
 
      @Override
-    public void supprimerquestion(int id) {
+    public void supprimerquestion(question qq ) {
         try {
-            String req = "DELETE FROM `question` WHERE `id_question` = " + id;
-            Statement st = conn.createStatement();
-            st.executeUpdate(req);
+             String req = " DELETE FROM question where id_question  = ?   ";
+            PreparedStatement ps  = conn.prepareStatement(req);
+             ps.setInt(1, qq.getId_question());
+            ps.executeUpdate();
             System.out.println("Question deleted !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        
     }
     
      @Override
@@ -173,4 +176,37 @@ public void modifierquestion(question qq) {
 
     return list;
    }
+   
+      
+  @Override
+   public List<question> filtreByidquiz(quiz quiz) {
+    List<question> list = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM question WHERE id_quiz = ?";
+        PreparedStatement ps = conn.prepareStatement(req);
+        ps.setInt(1, quiz.getId_quiz());
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            question qq = new question();
+            qq.setId_question(rs.getInt("id_question"));
+            qq.setDifficulte(rs.getString("difficulte"));
+            qq.setQuestionn(rs.getString("questionn"));
+            qq.setReponse1(rs.getString("reponse1"));
+            qq.setReponse2(rs.getString("reponse2"));
+            qq.setReponse3(rs.getString("reponse3"));
+            qq.setSolution(rs.getString("solution"));
+            QuizCRUD qc = new  QuizCRUD();
+         int quiz_id = rs.getInt(8);
+         quiz q = qc.getById(quiz_id);
+         qq.setquiz(q);
+            list.add(qq);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
+   }
+   
+   
 }

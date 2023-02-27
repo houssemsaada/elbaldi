@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25 févr. 2023, 13:02:55
+    Author     : selim
+*/
+
+.quiz-item{
+  
+        -fx-background-radius: 30;
+}
+
+.transparentt{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.chosen-Quiz-card{
+    -fx-background-color:  #FFFFFF;
+    -fx-background-radius: 30;
+}
+

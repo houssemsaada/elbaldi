@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,47 +40,49 @@ public class AjouterQuizController implements Initializable {
     @FXML
     private Button ajoutQuiz;
     @FXML
-    private TextField fxdifficulte;
-    @FXML
-    private TextField fxscore;
-    @FXML
-    private ComboBox<promotion> fxid_promotion;
+    private ComboBox<String> fxdifficulte;
+    
+   
     
     @FXML
     private ComboBox<Utilisateur> fxid_user;
     @FXML
     private Button backfix;
-
+    @FXML
+    private TextField fxnom;
+    @FXML
+    private TextField imgfx;
+ 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        PromotionCRUD quizCRUD = new PromotionCRUD();
-         List<promotion> promotions = quizCRUD.afficherpromotion();
-        fxid_promotion.getItems().addAll(promotions);
+       
         
         UtilisateurCRUD u = new UtilisateurCRUD();
         List<Utilisateur> users = u.afficherUtilisateur();
         fxid_user.getItems().addAll(users);
-       
+       ObservableList<String> difficultes = FXCollections.observableArrayList("Facile", "Moyenne", "Difficile");
+        fxdifficulte.setItems(difficultes);
     }    
 
     @FXML
     private void ajouter_Quiz(ActionEvent event) {
-    String difficulte = fxdifficulte.getText();
-    int score = Integer.parseInt(fxscore.getText());
-     
-    promotion pro = fxid_promotion.getSelectionModel().getSelectedItem();
-    int selectedpromoIdd = pro.getId_promotion();
+       
+         String difficulte = fxdifficulte.getValue(); 
+    // String difficulte = fxdifficulte.getText();
+     String nom = fxnom.getText();
+    String img = imgfx.getText();
+  
     
     
     Utilisateur u = fxid_user.getSelectionModel().getSelectedItem();
     int selecteduserId = u.getid_user();
     
     
-    quiz q = new quiz(difficulte,score,pro,u);
+    quiz q = new quiz(nom,difficulte,u,img);
     QuizCRUD qc = new QuizCRUD();
     qc.ajouterQuiz(q);
     
@@ -96,7 +100,7 @@ public class AjouterQuizController implements Initializable {
     private void goBack(ActionEvent event) {
         // Redirection vers BrouillonController
     // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);

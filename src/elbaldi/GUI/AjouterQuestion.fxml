@@ -14,21 +14,21 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="16.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 3" />
-      <Text layoutX="16.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté" />
-      <Text layoutX="12.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 1" />
-      <Text layoutX="12.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 2" />
-      <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER" wrappingWidth="79.0" />
-      <Text layoutX="18.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution" />
+      <Text layoutX="16.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 3" />
+      <Text layoutX="11.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté" />
+      <Text layoutX="14.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 1" />
+      <Text layoutX="14.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 2" />
+      <Text layoutX="-9.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER" wrappingWidth="79.0" />
+      <Text layoutX="18.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution" />
       <Button fx:id="ajoutQuestion" layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter Question" />
       <TextField fx:id="fxquestion" layoutX="102.0" layoutY="81.0" />
-      <TextField fx:id="fxdifficulte" layoutX="102.0" layoutY="137.0" />
       <TextField fx:id="fxreponse1" layoutX="102.0" layoutY="188.0" />
       <TextField fx:id="fxreponse2" layoutX="102.0" layoutY="236.0" />
       <TextField fx:id="fxreponse3" layoutX="102.0" layoutY="286.0" />
-      <TextField fx:id="fxsolution" layoutX="102.0" layoutY="333.0" />
       <Text layoutX="285.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_quiz" textAlignment="CENTER" wrappingWidth="79.0" />
       <Button fx:id="backfix" layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="64.0" text="&lt;-  Back" />
       <ComboBox fx:id="fxid_quiz" layoutX="375.0" layoutY="81.0" prefWidth="150.0" />
+      <ComboBox fx:id="fxdifficulte" layoutX="102.0" layoutY="137.0" prefWidth="150.0" />
+      <TextField fx:id="fxsolution" layoutX="103.0" layoutY="335.0" />
    </children>
 </AnchorPane>

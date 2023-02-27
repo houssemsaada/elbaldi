@@ -10,28 +10,40 @@ package elbaldi.models;
  * @author selim
  */
 public class quiz {
-      private int id_quiz;
+   private int id_quiz;
+   private String nom ;
    private String difficulte;
    private int score;
-   private promotion id_promotion;
+
    private Utilisateur id_user;
+   private String imgview;
    
     public quiz() {
     }
 
-    public quiz(int id_quiz, String difficulte, int score, promotion id_promotion, Utilisateur id_user) {
-        this.id_quiz = id_quiz;
+    public quiz(String nom, String difficulte, Utilisateur id_user, String imgview) {
+        this.nom = nom;
         this.difficulte = difficulte;
-        this.score = score;
-        this.id_promotion = id_promotion;
         this.id_user = id_user;
+        this.imgview = imgview;
     }
 
-    public quiz(String difficulte, int score, promotion id_promotion, Utilisateur id_user) {
+    
+    public quiz(int id_quiz, String nom, String difficulte, int score, Utilisateur id_user, String imgview) {
+        this.id_quiz = id_quiz;
+        this.nom = nom;
         this.difficulte = difficulte;
         this.score = score;
-        this.id_promotion = id_promotion;
         this.id_user = id_user;
+        this.imgview = imgview;
+    }
+
+    public quiz(String nom, String difficulte, int score, Utilisateur id_user, String imgview) {
+        this.nom = nom;
+        this.difficulte = difficulte;
+        this.score = score;
+        this.id_user = id_user;
+        this.imgview = imgview;
     }
 
     public int getId_quiz() {
@@ -40,6 +52,14 @@ public class quiz {
 
     public void setId_quiz(int id_quiz) {
         this.id_quiz = id_quiz;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getDifficulte() {
@@ -58,15 +78,6 @@ public class quiz {
         this.score = score;
     }
 
-    public promotion getpromotion() {
-        return id_promotion;
-    }
-
-    public void setpromotion(promotion id_promotion) {
-        this.id_promotion = id_promotion;
-    }
-
-
     public Utilisateur getuser() {
         return id_user;
     }
@@ -75,10 +86,32 @@ public class quiz {
         this.id_user = id_user;
     }
 
+    public String getImgview() {
+        return imgview;
+    }
+
+    public void setImgview(String imgview) {
+        this.imgview = imgview;
+    }
+
     @Override
     public String toString() {
-        return "quiz{ " /*+ "id_quiz=" + id_quiz */ + ", difficulte=" + difficulte + ", score=" + score + ", id_promotion=" + id_promotion + ", id_user=" + id_user + '}';
+        return   nom ;
     }
+
+
+  
+    
+    
+    
+
+   
+
+  
+
+    
+    
+    
 
     
 

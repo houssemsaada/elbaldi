@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +41,7 @@ public class AjouterQuestionController implements Initializable {
     @FXML
     private TextField fxquestion;
     @FXML
-    private TextField fxdifficulte;
+    private ComboBox<String> fxdifficulte;
     @FXML
     private TextField fxreponse1;
     @FXML
@@ -64,7 +66,10 @@ public class AjouterQuestionController implements Initializable {
     List<quiz> quizList = quizCRUD.afficherQuiz();
     fxid_quiz.getItems().addAll(quizList);
     
-   
+        ObservableList<String> difficultes = FXCollections.observableArrayList("Facile", "Moyenne", "Difficile");
+        fxdifficulte.setItems(difficultes);
+        
+     
 }
 
 
@@ -74,7 +79,7 @@ public class AjouterQuestionController implements Initializable {
     private void ajouter(ActionEvent event) {
     
   String difficulte = fxquestion.getText();
-    String questionn = fxdifficulte.getText();
+    String questionn = fxdifficulte.getValue();
     String reponse1 = fxreponse1.getText();
     String reponse2 = fxreponse2.getText();
     String reponse3 = fxreponse3.getText();
@@ -87,27 +92,40 @@ public class AjouterQuestionController implements Initializable {
    
         question qt = new question(questionn,difficulte,reponse1,reponse2,reponse3,solution,selectedQuiz);
         QuestionCRUD qcr = new QuestionCRUD();
-        qcr.ajouterQuestion(qt);
-      
-
-  
-
-    // Afficher une alerte en fonction de l'état de l'ajout
-    
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Succès");
-        alert.setHeaderText(null);
-        alert.setContentText("La question a été ajoutée avec succès.");
-        alert.showAndWait();
         
-   
-}
+      if (difficulte.matches(".*[a-zA-Z]{6,}.*")) {
+           if (reponse1.equalsIgnoreCase(solution) || reponse2.equalsIgnoreCase(solution) || reponse3.equalsIgnoreCase(solution)) {
+                qcr.ajouterQuestion(qt);
+                // Afficher une alerte en fonction de l'état de l'ajout
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("La question a été ajoutée avec succès.");
+                alert.showAndWait();
+            } else {
+                // Afficher une alerte en fonction de l'état de l'ajout
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("La solution doit être compatible avec une des réponses.");
+                alert.showAndWait();
+            }
+        } else {
+            // Afficher une alerte en fonction de l'état de l'ajout
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("La question doit contenir au moins 6 alphabets.");
+            alert.showAndWait();
+        }
+    }
+      
     @FXML
     private void goBack(ActionEvent event) {
        
     // Redirection vers BrouillonController
     // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionBack.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);

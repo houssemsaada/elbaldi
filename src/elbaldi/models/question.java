@@ -10,7 +10,7 @@ package elbaldi.models;
  * @author selim
  */
 public class question {
-     private int id_question;
+    private int id_question;
     private String difficulte;
     private String questionn;
     private String reponse1;

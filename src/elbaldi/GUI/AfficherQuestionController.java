@@ -42,6 +42,15 @@ public class AfficherQuestionController implements Initializable {
     private Button backfix;
     @FXML
     private ListView<question> listview;
+    
+    private quiz q;
+
+    
+
+    public void setQ(quiz q) {
+        this.q = q;
+    }
+    
 
     /**
      * Initializes the controller class.
