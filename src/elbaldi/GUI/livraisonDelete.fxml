@@ -2,8 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -123,20 +122,6 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <TableView fx:id="tableView" layoutX="280.0" layoutY="56.0" prefHeight="394.0" prefWidth="935.0">
-         <columns>
-            <TableColumn fx:id="IDCol" prefWidth="54.399993896484375" text="IDlivraison" />
-            <TableColumn fx:id="statusCol" prefWidth="68.0" text="status" />
-            <TableColumn fx:id="adresseCol" prefWidth="100.79998779296875" text="adresse" />
-            <TableColumn fx:id="DateCol" prefWidth="90.4000244140625" text="date livraison" />
-            <TableColumn fx:id="DatecomCol" prefWidth="84.79995727539062" text="date commande" />
-            <TableColumn fx:id="usernameCol" prefWidth="96.79998779296875" text="Name of user" />
-            <TableColumn fx:id="emailCol" prefWidth="88.79998779296875" text="email" />
-            <TableColumn fx:id="telCol" prefWidth="76.0" text="Telephone" />
-            <TableColumn fx:id="idcomCol" prefWidth="80.800048828125" text="id commande" />
-            <TableColumn fx:id="articleCol" prefWidth="117.5999755859375" text="number of articles" />
-            <TableColumn fx:id="totalCol" prefWidth="77.5999755859375" text="total" />
-         </columns>
-      </TableView>
+      <ListView fx:id="ListView" layoutX="290.0" layoutY="76.0" prefHeight="375.0" prefWidth="898.0" />
    </children>
 </AnchorPane>

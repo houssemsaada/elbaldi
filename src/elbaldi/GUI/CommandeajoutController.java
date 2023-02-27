@@ -113,7 +113,8 @@ public class CommandeajoutController implements Initializable {
             ex.printStackTrace();
             ex.getCause();
         } finally {
-            commandeGUI.clearTextFields(idField, etatField, dateField, panierField);
+            commandeGUI.clearTextFields(idField, etatField,  panierField);
+            datepicker.setValue(null);
 
         }
 

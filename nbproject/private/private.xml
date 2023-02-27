@@ -3,15 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/CommandeajoutController.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/commandeGUI.java</file>
-            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/livraison.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/LivraisoninterfaceController.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/LivraisonDeleteController.java</file>
+            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/CommandeListCell.java</file>
+            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/LivraisonListLcell.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/Commandeupdate2Controller.java</file>
-            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/livraisonCRUD.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/Livraisonupdate2Controller.java</file>
-            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/CommandeupdateController.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/LivraisonupdateController.java</file>
+            <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/CommandeinterfaceController.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/CommandeDeleteController.java</file>
             <file>file:/C:/Users/houss/OneDrive/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/LivraisonajoutController.java</file>
         </group>

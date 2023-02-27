@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -37,29 +38,7 @@ public class CommandeDeleteController implements Initializable {
 
     @FXML
     private Button delBtn;
-    @FXML
-    private TableView<commande> tableView;
-    @FXML
-    private TableColumn<commande, Integer> IDCol;
-    @FXML
-    private TableColumn<commande, String> etatCol;
-    @FXML
-    private TableColumn<commande, String> DateCol;
-    @FXML
-    private TableColumn<commande, Integer> userCol;
-    @FXML
-    private TableColumn<commande, String> usernameCol;
 
-    @FXML
-    private TableColumn<commande, String> emailCol;
-    @FXML
-    private TableColumn<commande, String> telCol;
-    @FXML
-    private TableColumn<commande, Integer> PanierCol;
-    @FXML
-    private TableColumn<commande, Integer> articleCol;
-    @FXML
-    private TableColumn<commande, Float> totalCol;
     @FXML
     private Button loginButton12;
     @FXML
@@ -69,31 +48,22 @@ public class CommandeDeleteController implements Initializable {
     @FXML
     private Button refreshbtn;
     ObservableList<commande> commandeObservableList = FXCollections.observableArrayList();
+    @FXML
+    private ListView<commande> ListView;
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CommandeCRUD cc = new CommandeCRUD();
+       CommandeCRUD cc = new CommandeCRUD();
+
         commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
 
-        IDCol.setCellValueFactory(new PropertyValueFactory<>("id_cmd"));
-        etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<>("date_cmd"));
-        userCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getU1().getid_user()));
-        usernameCol.setCellValueFactory(cellData -> {
-            Utilisateur utilisateur = cellData.getValue().getPan().getU1();
-            String fullName = utilisateur.getNom() + " " + utilisateur.getPrenom();
-            return new SimpleStringProperty(fullName);
-        });
+        ListView.setCellFactory(lv -> new CommandeListCell());
+        ListView.setItems(commandeObservableList);
 
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPan().getU1().getEmail()));
-        telCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPan().getU1().getNumTel())));
-        PanierCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getId_panier()));
-        articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getNombre_article()));
-        totalCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getTotal_panier()));
-        tableView.setItems(commandeObservableList);
         //search bar 
         FilteredList<commande> filteredData = new FilteredList<>(commandeObservableList, b -> true);
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -117,9 +87,9 @@ public class CommandeDeleteController implements Initializable {
                 if (commande.getPan().getU1().getPrenom().toLowerCase().contains(searchKeywords)) {
                     return true;
                 }
-                if (String.valueOf(commande.getPan().getU1().getid_user()).toLowerCase().contains(searchKeywords)) {
-                    return true;
-                }
+//                if (String.valueOf(commande.getPan().getU1().getid_user()).toLowerCase().contains(searchKeywords)) {
+//                    return true;
+//                }
                 if (String.valueOf(commande.getPan().getU1().getNumTel()).toLowerCase().contains(searchKeywords)) {
                     return true;
                 }
@@ -131,14 +101,14 @@ public class CommandeDeleteController implements Initializable {
         });
         // wrap the FilteredList in a SortedList.
         SortedList<commande> sortedList = new SortedList<>(filteredData);
-        sortedList.comparatorProperty().bind(tableView.comparatorProperty());
-        tableView.setItems(filteredData);
+        //sortedList.comparatorProperty().bind(ListView.comparatorProperty());
+        ListView.setItems(filteredData);
     }
 
     @FXML
     private void deleteOnAction(ActionEvent event) {
         try {
-            if (tableView.getSelectionModel().getSelectedItem() == null) {
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
                 commandeGUI.AlertShow("Please select an order to delete", "No order selected", Alert.AlertType.ERROR);
                 return;
             }
@@ -150,7 +120,7 @@ public class CommandeDeleteController implements Initializable {
         try {
             commande c = new commande();
             CommandeCRUD cc = new CommandeCRUD();
-            c.setId_cmd(tableView.getSelectionModel().getSelectedItem().getId_cmd());
+            c.setId_cmd(ListView.getSelectionModel().getSelectedItem().getId_cmd());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("Are you sure you want to delete the order ?");
             alert.setHeaderText("Please confirm your action");
@@ -160,14 +130,22 @@ public class CommandeDeleteController implements Initializable {
             // if the user confirms the deletion
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 cc.supprimerCommande(c);
+                refreshTable();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
-        } 
+        }
     }
+void refreshTable() {
+        CommandeCRUD cc = new CommandeCRUD();
 
+        commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
+
+        ListView.setCellFactory(lv -> new CommandeListCell());
+        ListView.setItems(commandeObservableList);
+    }
     @FXML
     private void exitCommandeScene(ActionEvent event) {
     }
@@ -179,26 +157,12 @@ public class CommandeDeleteController implements Initializable {
 
     @FXML
     private void refreshOnAction(ActionEvent event) {
-
         CommandeCRUD cc = new CommandeCRUD();
+
         commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
 
-        IDCol.setCellValueFactory(new PropertyValueFactory<>("id_cmd"));
-        etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<>("date_cmd"));
-        userCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getU1().getid_user()));
-        usernameCol.setCellValueFactory(cellData -> {
-            Utilisateur utilisateur = cellData.getValue().getPan().getU1();
-            String fullName = utilisateur.getNom() + " " + utilisateur.getPrenom();
-            return new SimpleStringProperty(fullName);
-        });
-
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPan().getU1().getEmail()));
-        telCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPan().getU1().getNumTel())));
-        PanierCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getId_panier()));
-        articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getNombre_article()));
-        totalCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getTotal_panier()));
-        tableView.setItems(commandeObservableList);
+        ListView.setCellFactory(lv -> new CommandeListCell());
+        ListView.setItems(commandeObservableList);
     }
 
 }

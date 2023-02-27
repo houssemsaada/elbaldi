@@ -29,13 +29,23 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -44,12 +54,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class CommandeinterfaceController implements Initializable {
 
-    @FXML
-    private TextField idField;
-    @FXML
-    private TextField etatField;
-    @FXML
-    private TextField dateField;
     private TextField userField;
     @FXML
     private Button addBtn;
@@ -57,23 +61,6 @@ public class CommandeinterfaceController implements Initializable {
     private Button updBtn;
     @FXML
     private Button delBtn;
-    @FXML
-    private TableView<commande> tableView;
-    @FXML
-    private TableColumn<commande, Integer> IDCol;
-    @FXML
-    private TableColumn<commande, String> etatCol;
-    @FXML
-    private TableColumn<commande, String> DateCol;
-    @FXML
-    private TableColumn<commande, Integer> userCol;
-    @FXML
-    private TableColumn<commande, String> usernameCol;
-
-    @FXML
-    private TableColumn<commande, String> emailCol;
-    @FXML
-    private TableColumn<commande, String> telCol;
 
     @FXML
     private Button loginButton12;
@@ -82,16 +69,11 @@ public class CommandeinterfaceController implements Initializable {
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
     ObservableList<commande> commandeObservableList = FXCollections.observableArrayList();
-    @FXML
-    private TextField panierField;
-    @FXML
-    private TableColumn<commande, Integer> PanierCol;
-    @FXML
-    private TableColumn<commande, Integer> articleCol;
-    @FXML
-    private TableColumn<commande, Float> totalCol;
+
     @FXML
     private Button refreshbtn;
+    @FXML
+    private ListView<commande> ListView;
 
     /**
      * Initializes the controller class.
@@ -100,24 +82,12 @@ public class CommandeinterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         CommandeCRUD cc = new CommandeCRUD();
+
         commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
 
-        IDCol.setCellValueFactory(new PropertyValueFactory<>("id_cmd"));
-        etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<>("date_cmd"));
-        userCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getU1().getid_user()));
-        usernameCol.setCellValueFactory(cellData -> {
-            Utilisateur utilisateur = cellData.getValue().getPan().getU1();
-            String fullName = utilisateur.getNom() + " " + utilisateur.getPrenom();
-            return new SimpleStringProperty(fullName);
-        });
+        ListView.setCellFactory(lv -> new CommandeListCell());
+        ListView.setItems(commandeObservableList);
 
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPan().getU1().getEmail()));
-        telCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPan().getU1().getNumTel())));
-        PanierCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getId_panier()));
-        articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getNombre_article()));
-        totalCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getTotal_panier()));
-        tableView.setItems(commandeObservableList);
         //search bar 
         FilteredList<commande> filteredData = new FilteredList<>(commandeObservableList, b -> true);
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -141,9 +111,9 @@ public class CommandeinterfaceController implements Initializable {
                 if (commande.getPan().getU1().getPrenom().toLowerCase().contains(searchKeywords)) {
                     return true;
                 }
-                if (String.valueOf(commande.getPan().getU1().getid_user()).toLowerCase().contains(searchKeywords)) {
-                    return true;
-                }
+//                if (String.valueOf(commande.getPan().getU1().getid_user()).toLowerCase().contains(searchKeywords)) {
+//                    return true;
+//                }
                 if (String.valueOf(commande.getPan().getU1().getNumTel()).toLowerCase().contains(searchKeywords)) {
                     return true;
                 }
@@ -155,48 +125,34 @@ public class CommandeinterfaceController implements Initializable {
         });
         // wrap the FilteredList in a SortedList.
         SortedList<commande> sortedList = new SortedList<>(filteredData);
-        sortedList.comparatorProperty().bind(tableView.comparatorProperty());
-        tableView.setItems(filteredData);
+        //sortedList.comparatorProperty().bind(ListView.comparatorProperty());
+        ListView.setItems(filteredData);
         // TODO
     }
     // method to refresh the table view to show the updated data after any action
 
-     void refreshTable() {
-
+    void refreshTable() {
         CommandeCRUD cc = new CommandeCRUD();
+
         commandeObservableList = FXCollections.observableList(cc.sortCommandesByDate());
 
-        IDCol.setCellValueFactory(new PropertyValueFactory<>("id_cmd"));
-        etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<>("date_cmd"));
-        userCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getU1().getid_user()));
-        usernameCol.setCellValueFactory(cellData -> {
-            Utilisateur utilisateur = cellData.getValue().getPan().getU1();
-            String fullName = utilisateur.getNom() + " " + utilisateur.getPrenom();
-            return new SimpleStringProperty(fullName);
-        });
-
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPan().getU1().getEmail()));
-        telCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPan().getU1().getNumTel())));
-        PanierCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getId_panier()));
-        articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getNombre_article()));
-        totalCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPan().getTotal_panier()));
-        tableView.setItems(commandeObservableList);
+        ListView.setCellFactory(lv -> new CommandeListCell());
+        ListView.setItems(commandeObservableList);
     }
 
     @FXML
     private void addBtnOnAction(ActionEvent event) {
-         commandeGUI.changeScene ( event,  "commandeajout.fxml","Ajouter commande" );
-         }
+        commandeGUI.changeScene(event, "commandeajout.fxml", "Ajouter commande");
+    }
 
     @FXML
     private void updateBtnOnAction(ActionEvent event) {
-       commandeGUI.changeScene ( event,  "commandeupdate.fxml","modifier commande" );
+        commandeGUI.changeScene(event, "commandeupdate.fxml", "modifier commande");
     }
 
     @FXML
     private void deleteBtnOnAction(ActionEvent event) {
-        commandeGUI.changeScene ( event,  "commandeDelete.fxml","supprimer commande" );
+        commandeGUI.changeScene(event, "commandeDelete.fxml", "supprimer commande");
     }
 
     @FXML
@@ -209,3 +165,4 @@ public class CommandeinterfaceController implements Initializable {
     }
 
 }
+

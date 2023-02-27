@@ -54,14 +54,14 @@ public class LivraisonajoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void addOnAction(ActionEvent event) {
-                try {
+        try {
 
             try {
-                if (commandeGUI.isTextFieldEmpty(statusField, commandeField,adresseField) || datepicker.getValue()== null) {
+                if (commandeGUI.isTextFieldEmpty(statusField, commandeField, adresseField) || datepicker.getValue() == null) {
                     commandeGUI.AlertShow("Please fill all fields", "Empty fields", Alert.AlertType.ERROR);
                     return;
                 }
@@ -95,7 +95,7 @@ public class LivraisonajoutController implements Initializable {
 //                commandeGUI.AlertShow("Please enter a valid date, use this format YYYY-MM-DD", "Invalid Date ", Alert.AlertType.ERROR);
 //                return;
 //            }
-            Date date_liv =  Date.valueOf(datepicker.getValue());
+            Date date_liv = Date.valueOf(datepicker.getValue());
 //   Date date_liv = Date.valueOf(dateField.getText());
             String adresse = adresseField.getText();
             commande c = new commande();
@@ -103,17 +103,17 @@ public class LivraisonajoutController implements Initializable {
             livraisonCRUD lv = new livraisonCRUD();
             if (commandeGUI.isTextFieldEmpty(idField)) {
                 livraison liv = new livraison(status, adresse, date_liv, c);
-                try{
-                lv.ajouterLivraison(liv);}
-                catch(Exception ex) {
+                try {
+                    lv.ajouterLivraison(liv);
+                } catch (Exception ex) {
                     commandeGUI.AlertShow("order id not found ! ", "order", Alert.AlertType.ERROR);
                 }
             } else {
                 int id = Integer.parseInt(idField.getText());
-                livraison liv = new livraison(id,status, adresse, date_liv, c);
-                try{
-                lv.ajouterLivraison(liv);}
-                catch(Exception ex) {
+                livraison liv = new livraison(id, status, adresse, date_liv, c);
+                try {
+                    lv.ajouterLivraison(liv);
+                } catch (Exception ex) {
                     commandeGUI.AlertShow("order id not found ! ", "order", Alert.AlertType.ERROR);
                 }
             }
@@ -122,7 +122,8 @@ public class LivraisonajoutController implements Initializable {
             ex.printStackTrace();
             ex.getCause();
         } finally {
-            commandeGUI.clearTextFields(idField, statusField, dateField, commandeField,adresseField);
+            commandeGUI.clearTextFields(idField, statusField, commandeField, adresseField);
+            datepicker.setValue(null);
 
         }
 
@@ -136,5 +137,5 @@ public class LivraisonajoutController implements Initializable {
     private void backonAction(ActionEvent event) {
         commandeGUI.changeScene(event, "livraisoninterface.fxml", "livraison interface");
     }
-    
+
 }

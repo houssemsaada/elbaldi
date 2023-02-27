@@ -45,31 +45,50 @@ public class Commandeupdate2Controller implements Initializable {
     private Button update2Btn;
     @FXML
     private DatePicker datepicker;
+    private commande comm ; 
 
-    public void setIdField(String idField) {
-        this.idField.setText(idField);
-    }
+    /**/
 
-    public void setEtatField(String etatField) {
-        this.etatField.setText(etatField);
-    }
+    /**
+     *
+     * @param com
+     */
 
-    public void setDateField(String dateField) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy") ; 
-        LocalDate date =LocalDate.parse(dateField, formatter);
-        this.datepicker.setValue(date);
+    public void setCom(commande com) {
+        comm = com;
+        idField.setText(comm.getId_cmd()+"");
+        etatField.setText(comm.getEtat());
+   
+        datepicker.setValue(comm.getDate_cmd().toLocalDate());
+        panierField.setText(comm.getPan().getId_panier()+"");
+        
+       
     }
-
-    public void setPanierField(String panierField) {
-        this.panierField.setText(panierField);
-    }
+//    
+//    public void setIdField(String idField) {
+//        this.idField.setText(idField);
+//    }
+//
+//    public void setEtatField(String etatField) {
+//        this.etatField.setText(etatField);
+//    }
+//
+//    public void setDateField(String dateField) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy") ; 
+//        LocalDate date =LocalDate.parse(dateField, formatter);
+//        this.datepicker.setValue(date);
+//    }
+//
+//    public void setPanierField(String panierField) {
+//        this.panierField.setText(panierField);
+//    }
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
 
     @FXML
@@ -140,7 +159,8 @@ public class Commandeupdate2Controller implements Initializable {
             System.out.println(e.getMessage());
         } finally {
             // refreshTable();
-            commandeGUI.clearTextFields(idField, etatField, dateField, panierField);
+            commandeGUI.clearTextFields(idField, etatField,  panierField);
+            datepicker.setValue(null);
         }
     }
 

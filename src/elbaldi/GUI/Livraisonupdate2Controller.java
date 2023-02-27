@@ -65,10 +65,9 @@ public class Livraisonupdate2Controller implements Initializable {
         this.statusField.setText(statusField);
     }
 
-    public void setDateField(String dateField) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy") ; 
-        LocalDate date =LocalDate.parse(dateField, formatter);
-        this.datepicker.setValue(date);
+    public void setDateField(Date dateField) {
+   
+        this.datepicker.setValue(dateField.toLocalDate());
     }
 
     public void setCommandeField(String commandeField) {
@@ -143,7 +142,8 @@ public class Livraisonupdate2Controller implements Initializable {
             System.out.println(e.getMessage());
         } finally {
             // refreshTable();
-            commandeGUI.clearTextFields(idField, statusField , commandeField, adresseField);
+            commandeGUI.clearTextFields(idField, statusField, commandeField, adresseField);
+            datepicker.setValue(null);
         }
     }
 

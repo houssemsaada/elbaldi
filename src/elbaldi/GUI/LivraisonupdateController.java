@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -49,31 +50,10 @@ public class LivraisonupdateController implements Initializable {
     private TextField searchTextField;
     @FXML
     private Button refreshbtn;
-    @FXML
-    private TableView<livraison> tableView;
-    @FXML
-    private TableColumn<livraison, Integer> IDCol;
-    @FXML
-    private TableColumn<livraison, String> statusCol;
-    @FXML
-    private TableColumn<livraison, String> adresseCol;
-    @FXML
-    private TableColumn<livraison, String> usernameCol;
-    @FXML
-    private TableColumn<livraison, String> emailCol;
-    @FXML
-    private TableColumn<livraison, String> telCol;
-    @FXML
-    private TableColumn<livraison, Integer> articleCol;
-    @FXML
-    private TableColumn<livraison, String> totalCol;
-    @FXML
-    private TableColumn<livraison, String> DateCol;
-    @FXML
-    private TableColumn<livraison, Integer> idcomCol;
-    @FXML
-    private TableColumn<livraison, String> DatecomCol;
+
     ObservableList<livraison> livraisonObservableList = FXCollections.observableArrayList();
+    @FXML
+    private ListView<livraison> ListView;
 
     /**
      * Initializes the controller class.
@@ -82,30 +62,10 @@ public class LivraisonupdateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         livraisonCRUD lv = new livraisonCRUD();
         livraisonObservableList = FXCollections.observableList(lv.sortlivraisonByDate());
-        IDCol.setCellValueFactory(new PropertyValueFactory<>("id_livraison"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("status_livraison"));
-        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse_livraison"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<>("date_livraison"));
-        idcomCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getC1().getId_cmd()));
-        usernameCol.setCellValueFactory(cellData -> {
-            Utilisateur utilisateur = cellData.getValue().getC1().getPan().getU1();
-            String fullName = utilisateur.getNom() + " " + utilisateur.getPrenom();
-            return new SimpleStringProperty(fullName);
-        });
-        totalCol.setCellValueFactory(cellData -> {
-            panier pan = cellData.getValue().getC1().getPan();
-            float total = pan.getTotal_panier();
-            return new SimpleObjectProperty(total);
-        });
-        DatecomCol.setCellValueFactory(cellData -> {
-            commande com = cellData.getValue().getC1();
-            Date date = com.getDate_cmd();
-            return new SimpleObjectProperty(date);
-        });
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getC1().getPan().getU1().getEmail()));
-        telCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getC1().getPan().getU1().getNumTel())));
-        articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getC1().getPan().getNombre_article()));
-        tableView.setItems(livraisonObservableList);
+
+        ListView.setCellFactory(lva -> new LivraisonListCell());
+        ListView.setItems(livraisonObservableList);
+
         //search bar 
         FilteredList<livraison> filteredData = new FilteredList<>(livraisonObservableList, b -> true);
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -148,33 +108,33 @@ public class LivraisonupdateController implements Initializable {
             });
         });
         // wrap the FilteredList in a SortedList.
-        SortedList<livraison> sortedList = new SortedList<>(filteredData);
-        sortedList.comparatorProperty().bind(tableView.comparatorProperty());
-        tableView.setItems(filteredData);
+//        SortedList<livraison> sortedList = new SortedList<>(filteredData);
+//        sortedList.comparatorProperty().bind(tableView.comparatorProperty());
+        ListView.setItems(filteredData);
     }
 
     @FXML
     private void UpdateOnAction(ActionEvent event) {
         try {
-                if (tableView.getSelectionModel().getSelectedItem() == null) {
-                    commandeGUI.AlertShow("Please select an order to update", "No order selected", Alert.AlertType.ERROR);
-                    return;
-                }
-            } catch (Exception ewww) {
-                ewww.printStackTrace();
-                ewww.getCause();
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order to update", "No order selected", Alert.AlertType.ERROR);
+                return;
             }
-        
-        livraison liv =tableView.getSelectionModel().getSelectedItem();
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+
+        livraison liv = ListView.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("livraisonupdate2.fxml"));
         try {
             Parent root = loader.load();
             Livraisonupdate2Controller lc = loader.getController();
-            lc.setIdField(liv.getId_livraison()+"");
+            lc.setIdField(liv.getId_livraison() + "");
             lc.setAdresseField(liv.getAdresse_livraison());
             lc.setStatusField(liv.getStatus_livraison());
-            //lc.setDateField(liv.getDate_livraison()+"");
-            lc.setCommandeField(liv.getC1().getId_cmd()+"");
+            lc.setDateField(liv.getDate_livraison());
+            lc.setCommandeField(liv.getC1().getId_cmd() + "");
             UpdatelBtn.getScene().setRoot(root);
 
         } catch (IOException ex) {
@@ -193,32 +153,11 @@ public class LivraisonupdateController implements Initializable {
 
     @FXML
     private void refreshOnAction(ActionEvent event) {
-         livraisonCRUD lv = new livraisonCRUD();
+        livraisonCRUD lv = new livraisonCRUD();
         livraisonObservableList = FXCollections.observableList(lv.sortlivraisonByDate());
-        IDCol.setCellValueFactory(new PropertyValueFactory<>("id_livraison"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("status_livraison"));
-        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse_livraison"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<>("date_livraison"));
-        idcomCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getC1().getId_cmd()));
-        usernameCol.setCellValueFactory(cellData -> {
-            Utilisateur utilisateur = cellData.getValue().getC1().getPan().getU1();
-            String fullName = utilisateur.getNom() + " " + utilisateur.getPrenom();
-            return new SimpleStringProperty(fullName);
-        });
-        totalCol.setCellValueFactory(cellData -> {
-            panier pan = cellData.getValue().getC1().getPan();
-            float total = pan.getTotal_panier();
-            return new SimpleObjectProperty(total);
-        });
-        DatecomCol.setCellValueFactory(cellData -> {
-            commande com = cellData.getValue().getC1();
-            Date date = com.getDate_cmd();
-            return new SimpleObjectProperty(date);
-        });
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getC1().getPan().getU1().getEmail()));
-        telCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getC1().getPan().getU1().getNumTel())));
-        articleCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getC1().getPan().getNombre_article()));
-        tableView.setItems(livraisonObservableList);
+
+        ListView.setCellFactory(lva -> new LivraisonListCell());
+        ListView.setItems(livraisonObservableList);
     }
 
 }
