@@ -47,6 +47,13 @@ public class LivraisonajoutController implements Initializable {
     private TextField adresseField;
     @FXML
     private DatePicker datepicker;
+    commande com;
+
+    public void setCom(commande com) {
+        this.com = com;
+        adresseField.setText(com.getAdresse());
+
+    }
 
     /**
      * Initializes the controller class.
@@ -61,7 +68,7 @@ public class LivraisonajoutController implements Initializable {
         try {
 
             try {
-                if (commandeGUI.isTextFieldEmpty(statusField, commandeField, adresseField) || datepicker.getValue() == null) {
+                if (commandeGUI.isTextFieldEmpty(statusField, adresseField) || datepicker.getValue() == null) {
                     commandeGUI.AlertShow("Please fill all fields", "Empty fields", Alert.AlertType.ERROR);
                     return;
                 }
@@ -69,25 +76,9 @@ public class LivraisonajoutController implements Initializable {
                 e.printStackTrace();
                 e.getCause();
             }
-            try {
-                if (commandeGUI.isTextFieldEmpty(idField)) {
 
-                } else {
-                    Integer.parseInt(idField.getText());
-                }
-            } catch (Exception e) {
-                commandeGUI.AlertShow("Please enter a valid id, only digits are allowed", "Invalid id", Alert.AlertType.ERROR);
-                return;
-            }
-            try {
-                Integer.parseInt(commandeField.getText());
-
-            } catch (Exception e) {
-                commandeGUI.AlertShow("Please enter a valid order id, only digits are allowed", "Invalid order user ", Alert.AlertType.ERROR);
-                return;
-            }
-
-            int id_cmd = Integer.parseInt(commandeField.getText());
+            int id_cmd = com.getId_cmd();
+            System.out.println(id_cmd);
             String status = statusField.getText();
 //            try {
 //                Date.valueOf(dateField.getText());
@@ -101,28 +92,20 @@ public class LivraisonajoutController implements Initializable {
             commande c = new commande();
             c.setId_cmd(id_cmd);
             livraisonCRUD lv = new livraisonCRUD();
-            if (commandeGUI.isTextFieldEmpty(idField)) {
-                livraison liv = new livraison(status, adresse, date_liv, c);
-                try {
-                    lv.ajouterLivraison(liv);
-                } catch (Exception ex) {
-                    commandeGUI.AlertShow("order id not found ! ", "order", Alert.AlertType.ERROR);
-                }
-            } else {
-                int id = Integer.parseInt(idField.getText());
-                livraison liv = new livraison(id, status, adresse, date_liv, c);
-                try {
-                    lv.ajouterLivraison(liv);
-                } catch (Exception ex) {
-                    commandeGUI.AlertShow("order id not found ! ", "order", Alert.AlertType.ERROR);
-                }
+
+            livraison liv = new livraison(status, adresse, date_liv, c);
+            try {
+                lv.ajouterLivraison(liv);
+            } catch (Exception ex) {
+                commandeGUI.AlertShow("order id not found ! ", "order", Alert.AlertType.ERROR);
             }
+
             commandeGUI.AlertShow(" added ! ", "shipping", Alert.AlertType.INFORMATION);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
         } finally {
-            commandeGUI.clearTextFields(idField, statusField, commandeField, adresseField);
+            commandeGUI.clearTextFields(statusField, adresseField);
             datepicker.setValue(null);
 
         }
@@ -135,7 +118,7 @@ public class LivraisonajoutController implements Initializable {
 
     @FXML
     private void backonAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "livraisoninterface.fxml", "livraison interface");
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
     }
 
 }

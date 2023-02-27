@@ -101,54 +101,32 @@
             </Button>
          </children>
       </Pane>
-      <GridPane layoutX="494.0" layoutY="83.0" prefHeight="314.0" prefWidth="434.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
+      <GridPane layoutX="426.0" layoutY="144.0" prefHeight="217.0" prefWidth="445.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.400048828125" minWidth="10.0" prefWidth="213.60002441406246" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.39998779296872" minWidth="10.0" prefWidth="215.19997558593747" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="78.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="182.0" text="             id commande" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="17.0" />
-               </font>
-            </Label>
-            <TextField fx:id="idField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="idcmd" style="-fx-background-color: #808080; -fx-border-color: #a20812; -fx-border-width: 3px;" GridPane.columnIndex="1">
+            <TextField fx:id="etatField" blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="état " style="-fx-background-color: #808080; -fx-border-color: #a20812; -fx-border-width: 3px;" GridPane.columnIndex="1">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="etatField" blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="état " style="-fx-background-color: #808080; -fx-border-color: #a20812; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <Label alignment="BASELINE_LEFT" contentDisplay="CENTER" prefHeight="22.0" prefWidth="206.0" text="                     Date " GridPane.rowIndex="2">
+            <Label alignment="BASELINE_LEFT" contentDisplay="CENTER" prefHeight="22.0" prefWidth="206.0" text="                     Date " GridPane.rowIndex="1">
                <font>
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="209.0" text="                 id panier" GridPane.rowIndex="3">
+            <Label prefHeight="22.0" prefWidth="134.0" text="                     état " textAlignment="JUSTIFY">
                <font>
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="panierField" blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="id panier" style="-fx-background-color: #808080; -fx-border-color: #a20812; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <Label prefHeight="22.0" prefWidth="134.0" text="                     état " textAlignment="JUSTIFY" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="17.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="datepicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="datepicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

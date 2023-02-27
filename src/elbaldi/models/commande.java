@@ -20,6 +20,7 @@ public class commande {
     private Date date_cmd;
     private float total;
     private panier pan;
+    private String adresse;
 
     //constructeur par defaut
     public commande() {
@@ -90,6 +91,18 @@ public class commande {
         this.date_cmd = date_cmd;
     }
 
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    
     @Override
     public String toString() {
         return "commande{" + "id_cmd=" + id_cmd + ", etat=" + etat + ", date_cmd=" + date_cmd + ", panier =" + pan +", total =" + total+ '}';

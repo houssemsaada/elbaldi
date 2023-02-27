@@ -11,6 +11,7 @@ import elbaldi.models.panier;
 import elbaldi.services.CommandeCRUD;
 import elbaldi.services.UtilisateurCRUD;
 import elbaldi.utils.MyConnection;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -28,8 +29,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -74,6 +77,8 @@ public class CommandeinterfaceController implements Initializable {
     private Button refreshbtn;
     @FXML
     private ListView<commande> ListView;
+    @FXML
+    private Button addBtn1;
 
     /**
      * Initializes the controller class.
@@ -162,6 +167,35 @@ public class CommandeinterfaceController implements Initializable {
     @FXML
     private void refreshOnAction(ActionEvent event) {
         refreshTable();
+    }
+
+    @FXML
+    private void addlivraisonOnAction(ActionEvent event) {
+       try {
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order", "No order selected", Alert.AlertType.ERROR);
+                return;
+            }
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+
+//        commande c = ListView.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("livraisonajout.fxml"));
+        try {
+            Parent root = loader.load();
+           LivraisonajoutController dc = loader.getController();
+//            dc.setIdField(c.getId_cmd()+"");
+//            dc.setEtatField(c.getEtat());
+//            dc.setDateField(c.getDate_cmd()+"");
+//            dc.setPanierField(c.getPan().getId_panier()+"");
+            searchTextField.getScene().setRoot(root);
+           dc.setCom(ListView.getSelectionModel().getSelectedItem());
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }

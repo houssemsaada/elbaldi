@@ -22,24 +22,6 @@
                   <Font name="System Italic" size="34.0" />
                </font>
             </Label>
-            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="110.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="ADD">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
             <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="157.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="UPDATE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
@@ -59,6 +41,24 @@
                </textFill>
             </Button>
             <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="200.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="DELETE">
+               <textFill>
+                  <RadialGradient centerX="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="addBtn1" blendMode="SRC_ATOP" layoutX="98.0" layoutY="268.0" mnemonicParsing="false" onAction="#addlivraisonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="ADD shipping">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -134,6 +134,6 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <ListView fx:id="ListView" layoutX="280.0" layoutY="66.0" prefHeight="375.0" prefWidth="898.0" />
+      <ListView fx:id="ListView" layoutX="279.0" layoutY="59.0" prefHeight="375.0" prefWidth="898.0" />
    </children>
 </AnchorPane>

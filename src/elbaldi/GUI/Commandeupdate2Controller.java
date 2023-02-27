@@ -35,12 +35,8 @@ public class Commandeupdate2Controller implements Initializable {
     @FXML
     private Button exit1;
     @FXML
-    private TextField idField;
-    @FXML
     private TextField etatField;
     private TextField dateField;
-    @FXML
-    private TextField panierField;
     @FXML
     private Button update2Btn;
     @FXML
@@ -56,11 +52,11 @@ public class Commandeupdate2Controller implements Initializable {
 
     public void setCom(commande com) {
         comm = com;
-        idField.setText(comm.getId_cmd()+"");
+      
         etatField.setText(comm.getEtat());
    
         datepicker.setValue(comm.getDate_cmd().toLocalDate());
-        panierField.setText(comm.getPan().getId_panier()+"");
+     
         
        
     }
@@ -107,19 +103,13 @@ public class Commandeupdate2Controller implements Initializable {
             CommandeCRUD cc = new CommandeCRUD();
             commande c = new commande();
             commande c2 = new commande();
-            c2.setId_cmd(Integer.parseInt(idField.getText()));
+            c2.setId_cmd(comm.getId_cmd());
             int id;
             Date date_com;
             String etat;
             int id_panier;
-
-            try {
-                Integer.parseInt(idField.getText());
-            } catch (Exception e) {
-                commandeGUI.AlertShow("Please enter a valid id, only digits are allowed", "Invalid id", Alert.AlertType.ERROR);
-                return;
-            }
-            id = Integer.parseInt(idField.getText());
+            
+            id = comm.getId_cmd();
             c.setId_cmd(id);
 
             etat = etatField.getText();
@@ -136,14 +126,8 @@ public class Commandeupdate2Controller implements Initializable {
             //date_com = Date.valueOf(dateField.getText());
             c.setDate_cmd(date_com);
 
-            try {
-                Integer.parseInt(panierField.getText());
 
-            } catch (Exception e) {
-                commandeGUI.AlertShow("Please enter a valid user id, only digits are allowed", "Invalid id user ", Alert.AlertType.ERROR);
-                return;
-            }
-            id_panier = Integer.parseInt(panierField.getText());
+            id_panier = comm.getPan().getId_panier();
             panier pan = new panier(id_panier);
             c.setPan(pan);
 
@@ -159,7 +143,7 @@ public class Commandeupdate2Controller implements Initializable {
             System.out.println(e.getMessage());
         } finally {
             // refreshTable();
-            commandeGUI.clearTextFields(idField, etatField,  panierField);
+            commandeGUI.clearTextFields( etatField);
             datepicker.setValue(null);
         }
     }

@@ -40,19 +40,19 @@ class LivraisonListCell extends ListCell<livraison> {
             // create labels to display the Livraison properties
             Text idText = new Text("Ref livraison: ");
             idText.setStyle("-fx-font-weight: bold");
-            Text idValue = new Text(item.getId_livraison()+ "");
+            Text idValue = new Text(item.getId_livraison() + "");
             HBox idbox = new HBox(idText, idValue);
 
             Text etatText = new Text("Etat:");
             etatText.setStyle("-fx-font-weight: bold");
             Text etatValue = new Text(item.getStatus_livraison());
             HBox etatbox = new HBox(etatText, etatValue);
-            
+
             Text dateText = new Text("Date livraison: ");
             dateText.setStyle("-fx-font-weight: bold");
-            Text dateValue = new Text(item.getDate_livraison()+"");
+            Text dateValue = new Text(item.getDate_livraison() + "");
             HBox datebox = new HBox(dateText, dateValue);
-      
+
             Text clientText = new Text("Client: ");
             clientText.setStyle("-fx-font-weight: bold");
             Text clientValue = new Text(item.getC1().getPan().getU1().getNom() + " " + item.getC1().getPan().getU1().getPrenom());
@@ -67,20 +67,30 @@ class LivraisonListCell extends ListCell<livraison> {
             telText.setStyle("-fx-font-weight: bold");
             Text telValue = new Text(item.getC1().getPan().getU1().getNumTel() + "");
             HBox telbox = new HBox(telText, telValue);
-
+            
+            Text emailText = new Text("Email: ");
+            emailText.setStyle("-fx-font-weight: bold");
+            Text emailValue = new Text(item.getC1().getPan().getU1().getEmail());
+            HBox emailbox = new HBox(emailText, emailValue);
+            
+                     Text dateccmdText = new Text("Date commande: ");
+            dateccmdText.setStyle("-fx-font-weight: bold");
+            Text dateccmdValue = new Text(item.getC1().getDate_cmd()+"");
+            HBox dateccmdbox = new HBox(dateccmdText, dateccmdValue);
+            
             Text articleText = new Text("Nombre d'articles: ");
             articleText.setStyle("-fx-font-weight: bold");
-            Text articleValue = new Text(item.getC1().getPan().getNombre_article()+ "");
+            Text articleValue = new Text(item.getC1().getPan().getNombre_article() + "");
             HBox articlebox = new HBox(articleText, articleValue);
 
             Text totalText = new Text("Total: ");
             totalText.setStyle("-fx-font-weight: bold");
-            Text totalValue = new Text(item.getC1().getTotal()+ "");
+            Text totalValue = new Text(item.getC1().getTotal() + "");
             HBox totalbox = new HBox(totalText, totalValue);
 
             // add the labels to the VBox
             vbox.getChildren().addAll(idbox, etatbox, datebox, clientbox, adressebox);
-            vbox2.getChildren().addAll(telbox, articlebox, totalbox);
+            vbox2.getChildren().addAll(telbox,emailbox,dateccmdbox, articlebox, totalbox);
             Pane leftPane = new Pane(vbox);
 
             HBox.setHgrow(leftPane, Priority.ALWAYS);
