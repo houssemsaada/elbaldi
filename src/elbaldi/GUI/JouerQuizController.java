@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,42 +58,61 @@ public class JouerQuizController implements Initializable {
     @FXML
     private Label numerofx;
 
-    private ArrayList<question> questions; // Liste de questions
+   // private ArrayList<question> questions; // Liste de questions
     private int currentQuestionIndex; // Index de la question courante
     private ArrayList<String> reponsesUtilisateur; // Liste des réponses de l'utilisateur
+    private quiz quiz;
     
+    private List<question> questions = new ArrayList<>();
+    
+     QuestionCRUD ds = new QuestionCRUD();
+     question q =new question();
+     
+     
+     
+     public void setQuiz(quiz quiz) {
+        this.quiz = quiz;
+        System.out.println(quiz);
+    }
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Récupérer les 4 questions à partir de la source de données
+       //  Récupérer les 4 questions à partir de la source de données
         QuestionCRUD qc = new QuestionCRUD();
         question c = new question();
         questions = new ArrayList<>();
         
-        questions.add(qc.getById(158));
-        questions.add(qc.getById(119));
-        questions.add(qc.getById(120));
-        questions.add(qc.getById(122));
-         questions.add(qc.getById(123));
+        
        
+        
+        questions.add(qc.getById(160));
+        questions.add(qc.getById(161));
+        questions.add(qc.getById(166));
+        questions.add(qc.getById(169));
+        questions.add(qc.getById(170));
+ 
+ 
  
         // Mélanger la liste de questions
         Collections.shuffle(questions);
+           
 
-        // Initialiser l'index de la question courante et la liste des réponses de l'utilisateur
+         //Initialiser l'index de la question courante et la liste des réponses de l'utilisateur
         currentQuestionIndex = 0;
         reponsesUtilisateur = new ArrayList<>();
 
-        // Afficher la première question
+      //   Afficher la première question
         
         afficherQuestion();
         int numQuestionn = 1 ;
             int totalQuestions = questions.size();
+         
             numerofx.setText("Question 1/" + totalQuestions );
         
     }
 
-    @FXML
+   @FXML
     private void suivante() {
         // Enregistrer la réponse de l'utilisateur
         String reponse = null;
@@ -115,13 +135,17 @@ public class JouerQuizController implements Initializable {
         
         // Passer à la question suivante 
         if (currentQuestionIndex < questions.size() -1) {  
+      
+
             currentQuestionIndex++;
             afficherQuestion();
             int numQuestion = currentQuestionIndex+1 ;
             int totalQuestions = questions.size();
+            
             numerofx.setText("Question "+ numQuestion +"/" + totalQuestions );
         } 
-        else if (currentQuestionIndex == questions.size()-1) {
+       else if (currentQuestionIndex == questions.size()-1) {
+      
                 // Afficher la classe ScoreControlleur pour afficher le score
         
             try {
@@ -134,6 +158,8 @@ public class JouerQuizController implements Initializable {
             } catch (IOException ex) {
                 
             }
+
+
                 }
         
         
@@ -146,7 +172,7 @@ public class JouerQuizController implements Initializable {
     private void afficherQuestion() {
         // Récupérer la question courante
         question q = questions.get(currentQuestionIndex);
-
+      
         // Afficher la question et les réponses
         fixquestion.setText(q.getQuestionn());
         fixreponse1.setText(q.getReponse1());
@@ -154,6 +180,7 @@ public class JouerQuizController implements Initializable {
         fixreponse3.setText(q.getReponse3());
 
         int lastQuestionIndex = questions.size() - 1;
+       
               if (lastQuestionIndex == currentQuestionIndex) {
                     fixsuivante.setText("Voir Score");
               } else {
@@ -167,12 +194,24 @@ public class JouerQuizController implements Initializable {
     }
 
     
+  
 
+    
+
+      
+public double calculateScore(List<question> questions, List<String> userAnswers) {
+    double score = 0.0;
+    for (int i = 0; i < questions.size(); i++) {
+        question q = questions.get(i);
+        String correctAnswer = q.getSolution();
+        String userAnswer = userAnswers.get(i);
+        if (correctAnswer.equals(userAnswer)) {
+            score += 1.0;
+        }
+    }
+    return (score / questions.size()) * 100.0;
+}
 
     
 }
-      
-
-
-    
 

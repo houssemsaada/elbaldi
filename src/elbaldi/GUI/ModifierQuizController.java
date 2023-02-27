@@ -60,24 +60,21 @@ public class ModifierQuizController implements Initializable {
      * Initializes the controller class.
      */
     
-    // Ajouter un attribut pour stocker la valeur de idLabel
-    private int idLabelValue;
-    
-    // Ajouter une méthode pour stocker la valeur de idLabel
-    public void setParam(int idLabelValue) {
-        this.idLabelValue = idLabelValue;
+     public void setQuiz(quiz quiz) {
+        this.quiz = quiz;
+        System.out.println(quiz);
     }
+   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+       
     }
 
-    ItemBackController it = new ItemBackController();
-    int id = it.Label;
     
     @FXML
     private void Modifier_Quiz(ActionEvent event) {
+      
        
     }
 

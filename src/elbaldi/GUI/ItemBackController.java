@@ -57,15 +57,13 @@ public class ItemBackController implements Initializable {
    
     QuizCRUD qc = new QuizCRUD();
     
-      public void setquiz(quiz q) {
+     public void setquiz(quiz q) {
           
-          this.qcc=q;
-          
-      nomLabell.setText(q.getNom());
-      di.setText(q.getDifficulte());
-     // idLabel.setText(String.valueOf(q.getId_quiz()));
-     // imgLabel.setText(q.getImgview());            
-       
+          this.qcc=q;       
+          nomLabell.setText(q.getNom());
+          di.setText(q.getDifficulte());
+          // idLabel.setText(String.valueOf(q.getId_quiz()));
+          // imgLabel.setText(q.getImgview());              
     }
     /**
      * Initializes the controller class.
@@ -76,18 +74,11 @@ public class ItemBackController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-     
-   
-    
-    
-       
-        
-      
-    
 
+
+        
     @FXML
- 
-private void delete(ActionEvent event) throws IOException {
+   private void delete(ActionEvent event) throws IOException {
        
       quiz q = new quiz();
       q.setNom(nomLabell.getText());
@@ -114,62 +105,39 @@ private void delete(ActionEvent event) throws IOException {
     private void question(ActionEvent event) {
         
         
-        System.out.println("hhhhhhhhhhhhhhh"+qcc);
+        
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionBack.fxml"));
         try {
             Parent root = loader.load();
             QuestionBackController qbc= loader.getController();
             qbc.setQuiz(qcc);
-            System.out.println("aaaaaaaaaaaaa"+qcc);
+            
             nomLabell.getScene().setRoot(root);
             
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        
-        
-        
-        
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionBack.fxml"));
-//    try {
-//        Parent root = loader.load();
-//        Scene scene = new Scene(root);
-//        Stage stage = (Stage) fxquestion.getScene().getWindow();// backButton est le bouton de retour
-//        QuestionBackController qbc= loader.getController();
-//        System.out.println("hhhhhhhhhhhhhhh"+qcc);
-//        qbc.setQuiz(qcc);
-//        System.out.println("ibc1");
-//        stage.setScene(scene);
-//        stage.show();
-//    } catch (IOException ex) {
-//        ex.printStackTrace();
-//    }
+
     }
 
     @FXML
     private void modifier(ActionEvent event) throws IOException {
       
          FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierQuiz.fxml"));
-    try {
-        Parent root1 = loader.load();
-        Scene scene = new Scene(root1);
-        Stage stage = (Stage) fxquestion.getScene().getWindow(); // backButton est le bouton de retour
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        ex.printStackTrace();
-    }
+        try {
+            Parent root = loader.load();
+
+            nomLabell.getScene().setRoot(root);
+             ModifierQuizController qbc= loader.getController();
+            qbc.setQuiz(qcc);
+           
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         
-        
-        
-  /*  quiz q = new quiz();
-    q.setId_quiz(Integer.parseInt(idLabel.getText()));
-     Parent loader = FXMLLoader.load(getClass().getResource("font.fxml"));
-      nomLabell.getScene().setRoot(loader);
-    
-    */
+      
             
     }
     

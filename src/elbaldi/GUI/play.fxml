@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="elbaldi.GUI.PlayController">
+   <children>
+      <Text fx:id="fxquestion" layoutX="17.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="569.13671875" />
+      <RadioButton fx:id="rep1" layoutX="106.0" layoutY="108.0" mnemonicParsing="false" />
+      <RadioButton fx:id="rep2" layoutX="106.0" layoutY="171.0" mnemonicParsing="false" />
+      <RadioButton fx:id="rep3" layoutX="106.0" layoutY="236.0" mnemonicParsing="false" />
+   </children>
+</AnchorPane>
