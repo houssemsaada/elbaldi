@@ -25,5 +25,6 @@
          <font>
             <Font name="Arial" size="14.0" />
          </font></Label>
+      <Button fx:id="back" layoutX="457.0" layoutY="-2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="16.0" style="-fx-background-color: #ff0000;" styleClass="transparentt" stylesheets="@quiz.css" text="X" />
    </children>
 </AnchorPane>

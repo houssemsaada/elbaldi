@@ -54,17 +54,21 @@ public class ItemBackController implements Initializable {
     @FXML
     public Label idLabel;
     private quiz qcc;
+    private int id_quizz;
    
     QuizCRUD qc = new QuizCRUD();
     
      public void setquiz(quiz q) {
           
-          this.qcc=q;       
+          this.qcc=q;   
+          id_quizz=q.getId_quiz();
           nomLabell.setText(q.getNom());
           di.setText(q.getDifficulte());
           // idLabel.setText(String.valueOf(q.getId_quiz()));
           // imgLabel.setText(q.getImgview());              
     }
+     
+   
     /**
      * Initializes the controller class.
      * @param url
@@ -125,17 +129,22 @@ public class ItemBackController implements Initializable {
     @FXML
     private void modifier(ActionEvent event) throws IOException {
       
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierQuiz.fxml"));
-        try {
-            Parent root = loader.load();
+         FXMLLoader loader = new FXMLLoader();
+         System.out.println("aaaaa");
+        loader.setLocation(getClass().getResource("ModifierQuiz.fxml"));
+        System.out.println("eeeeeee");
+        Parent root = loader.load();
+       
 
-            nomLabell.getScene().setRoot(root);
-             ModifierQuizController qbc= loader.getController();
-            qbc.setQuiz(qcc);
-           
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+        ModifierQuizController cb;
+        cb = loader.getController();
+        cb.setQuiz(id_quizz);
+
+            
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
         
       
             

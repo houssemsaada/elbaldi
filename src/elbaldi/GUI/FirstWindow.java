@@ -34,7 +34,7 @@ public class FirstWindow extends Application {
      
   Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("Client.fxml"));
+                root = FXMLLoader.load(getClass().getResource("client.fxml"));
        
         
         Scene scene = new Scene(root);

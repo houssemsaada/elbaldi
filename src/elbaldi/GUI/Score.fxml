@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +20,7 @@
          </font>
       </Text>
       <Text layoutX="281.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text fill="#e11818" layoutX="92.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="90%  Score " textAlignment="CENTER" wrappingWidth="378.53076171875">
+      <Text fx:id="scorefx" fill="#e11818" layoutX="92.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="378.53076171875">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
@@ -34,5 +35,6 @@
             <Image url="@../../Ressource/téléchargement.png" />
          </image>
       </ImageView>
+      <Label fx:id="fxfcx" layoutX="139.0" layoutY="84.0" prefHeight="30.0" prefWidth="187.0" text="Labelfx" />
    </children>
 </AnchorPane>

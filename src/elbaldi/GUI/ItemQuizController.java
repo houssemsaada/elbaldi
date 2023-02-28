@@ -74,7 +74,6 @@ public class ItemQuizController implements Initializable {
             Parent root = loader.load();
             JouerQuizController qbc= loader.getController();
             qbc.setQuiz(qcc);
-            
             nomLabel.getScene().setRoot(root);
             
     } catch (IOException ex) {

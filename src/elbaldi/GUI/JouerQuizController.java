@@ -67,31 +67,20 @@ public class JouerQuizController implements Initializable {
     
      QuestionCRUD ds = new QuestionCRUD();
      question q =new question();
+    @FXML
+    private Button back;
      
      
      
      public void setQuiz(quiz quiz) {
         this.quiz = quiz;
         System.out.println(quiz);
-    }
-
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-       //  Récupérer les 4 questions à partir de la source de données
+        //  Récupérer les 4 questions à partir de la source de données
         QuestionCRUD qc = new QuestionCRUD();
         question c = new question();
-        questions = new ArrayList<>();
-        
+        questions = qc.filtreByidquiz(quiz);
         
        
-        
-        questions.add(qc.getById(160));
-        questions.add(qc.getById(161));
-        questions.add(qc.getById(166));
-        questions.add(qc.getById(169));
-        questions.add(qc.getById(170));
- 
  
  
         // Mélanger la liste de questions
@@ -110,6 +99,12 @@ public class JouerQuizController implements Initializable {
          
             numerofx.setText("Question 1/" + totalQuestions );
         
+    }
+
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+       
     }
 
    @FXML
@@ -134,8 +129,8 @@ public class JouerQuizController implements Initializable {
    
         
         // Passer à la question suivante 
-        if (currentQuestionIndex < questions.size() -1) {  
-      
+     //   if (currentQuestionIndex < questions.size() -1) {  
+       if (currentQuestionIndex < questions.size() -1) {
 
             currentQuestionIndex++;
             afficherQuestion();
@@ -150,10 +145,16 @@ public class JouerQuizController implements Initializable {
         
             try {
                Parent root = FXMLLoader.load(getClass().getResource("Score.fxml"));
+                           
                Scene scene = new Scene(root);
-        Stage stage = (Stage) fixsuivante.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+               Stage stage = (Stage) fixsuivante.getScene().getWindow();
+              double score=calculateScore(questions, reponsesUtilisateur);
+                System.out.println(score);
+              ScoreController sc = new ScoreController();
+              sc.setscore(score);
+              
+               stage.setScene(scene);
+               stage.show();
         
             } catch (IOException ex) {
                 
@@ -212,6 +213,20 @@ public double calculateScore(List<question> questions, List<String> userAnswers)
     return (score / questions.size()) * 100.0;
 }
 
+    @FXML
+    private void goBack(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("client.fxml"));
+    try {
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+       Stage stage = (Stage) back.getScene().getWindow(); // backButton est le bouton de retour
+       stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
     
+}
 }
 

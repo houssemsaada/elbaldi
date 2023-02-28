@@ -176,12 +176,12 @@ public class elbaldi {
 
         Utilisateur ui = new Utilisateur(1);
       
-        quiz q1= new quiz(66,"djerba","aa",0,ui,"sss");
+        quiz q1= new quiz(5,"Sousse","facile",0,ui,"aaa");
         QuizCRUD qu= new QuizCRUD();
         //Ajout d'un Quiz 
                  //qu.ajouterQuiz(q1);
         //Modification d'un Quiz          
-                 //qu.modifierquiz(q1);
+                 qu.modifierquiz(q1,0);
         //Suppression d'un Quiz 
                // qu.supprimerquiz(q1);
         //Affichage d'un Quiz 

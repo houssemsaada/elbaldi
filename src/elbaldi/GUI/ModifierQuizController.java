@@ -15,14 +15,17 @@ import elbaldi.services.QuizCRUD;
 import elbaldi.services.UtilisateurCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -56,20 +59,59 @@ public class ModifierQuizController implements Initializable {
      private quiz quiz;
     @FXML
     private TextField idLabel2;
+    
+     public static quiz qu;
     /**
      * Initializes the controller class.
      */
     
      public void setQuiz(quiz quiz) {
         this.quiz = quiz;
-        System.out.println(quiz);
+       
+        this.idLabel2.setText(quiz.getNom());
+        this.fxdifficulte.setValue(quiz.getDifficulte());
     }
    
+     
+
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-    }
+         ModifierQuiz.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+
+                QuizCRUD quizcrud = new QuizCRUD();
+                quiz q = new quiz();
+ if (!idLabel2.getText().equalsIgnoreCase("") && !fxdifficulte.getValue().equalsIgnoreCase("")) {
+                q.setNom(idLabel2.getText());
+                q.setDifficulte(fxdifficulte.getValue());
+               
+                quizcrud.modifierquiz(q,quiz.getId_quiz());
+               
+                 
+                Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
+                alert0.setTitle("information Dialog");
+                alert0.setHeaderText(null);
+                alert0.setContentText("Votre modification est enregistrée avec succes ");
+                alert0.show();
+                ((Node) event.getSource()).getScene().getWindow().hide();
+ }
+                else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Echec de la modification");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Attention ! Verifier les données saisie (Pas de champs vides)");
+                        alert.showAndWait();
+ }
+            }
+
+        });
+    }    
+    
 
     
     @FXML

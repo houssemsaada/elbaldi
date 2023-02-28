@@ -24,9 +24,12 @@
       <Button fx:id="supprimer" layoutX="170.0" layoutY="207.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="78.0" text="Supprimer" AnchorPane.bottomAnchor="16.0" />
       <Label fx:id="nomLabell" layoutX="139.0" layoutY="144.0">
          <font>
-            <Font name="Cambria" size="12.0" />
+            <Font name="Cambria" size="16.0" />
          </font></Label>
-      <Label fx:id="di" layoutX="139.0" layoutY="179.0" />
+      <Label fx:id="di" layoutX="139.0" layoutY="179.0">
+         <font>
+            <Font name="Cambria" size="16.0" />
+         </font></Label>
       <Button fx:id="fxquestion" layoutX="223.0" layoutY="114.0" mnemonicParsing="false" onAction="#question" prefHeight="25.0" prefWidth="44.0" styleClass="quiz-item" stylesheets="@quiz.css" text="&gt;&gt;&gt;" />
       <Label fx:id="idLabel" layoutX="304.0" layoutY="29.0" />
       <ImageView fx:id="imgLabel" fitHeight="94.0" fitWidth="120.0" layoutX="80.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">

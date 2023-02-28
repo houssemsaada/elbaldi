@@ -50,26 +50,19 @@ public class QuizCRUD implements InterfaceCRUDQ{
      
    
     @Override
-    public void modifierquiz(quiz q) {
-    try {
-        String req = "UPDATE `quiz` SET  `nom` = ?,`difficulte` = ?, `score` = ?,`id_user` = ?,`image` = ? WHERE `id_quiz` = ?";
-        PreparedStatement ps = conn.prepareStatement(req);
-        
-        ps.setString(1, q.getNom());
-        ps.setString(2, q.getDifficulte());
-        ps.setInt(3, q.getScore());
+    public void modifierquiz(quiz q,int id_quiz) {
   
-        ps.setInt(4,q.getuser().getid_user());
-       
-        ps.setString(5, q.getImgview());
-        ps.setInt(6, q.getId_quiz());
-       
-        ps.executeUpdate();
-        System.out.println("Quiz modifié !");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+    
+    try {
+            String req = "UPDATE `quiz` SET `id_quiz` = '" + q.getId_quiz()+ "', `difficulte` = '" + q.getDifficulte()+  "', `score` = '" + q.getScore()+ "', `id_user` = '" + q.getuser().getid_user()+  "', `nom` = '" + q.getNom()+ "', `image` = '" + q.getImgview()+      "' WHERE `quiz`.`id_quiz` = " + id_quiz;
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Quiz updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-}
+
 
    
       @Override
