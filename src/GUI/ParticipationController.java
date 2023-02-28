@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 /**
  * FXML Controller class
  *
- * @author skander maamouri
+ * @author MSI
  */
 public class ParticipationController implements Initializable {
 

@@ -31,13 +31,13 @@ public class mainn {
         
         
          System.out.println("*********************PARTICIPATION***************");
- Participation p1 = new Participation(21,2462,"12-10-2021",e1);
+ //Participation p1 = new Participation(21,2462,"12-10-2021",e1);
  ParticipationService ps= new ParticipationService();
         //  ps.supprimer(p1);
         e1.setId_event(26);
        //ps.ajouter(p1);
      //ps.modifier(p1);
-             System.out.println(ps.recuperer(p1));
+       //      System.out.println(ps.recuperer(p1));
     }
     
 }

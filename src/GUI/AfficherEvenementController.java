@@ -6,6 +6,9 @@
 package GUI;
 
 import elbaldi.models.Evenement;
+import elbaldi.models.Participation;
+import elbaldi.services.EvenementService;
+import elbaldi.services.ParticipationService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,13 +24,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import elbaldi.services.EvenementService;
+
 
 /**
  * FXML Controller class
  *
- * @author MSI
+ * @author Meddeb sofien
  */
 public class AfficherEvenementController implements Initializable {
 
@@ -37,6 +39,8 @@ public class AfficherEvenementController implements Initializable {
       Evenement e1;
     @FXML
     private Button retour_btn;
+    @FXML
+    private Button affichparticipbtn;
     /**
      * Initializes the controller class.
      */
@@ -73,6 +77,7 @@ public class AfficherEvenementController implements Initializable {
     private void retournerHome(ActionEvent event) {
         
         try {
+           
 
             Parent loader = FXMLLoader.load(getClass().getResource("AjouterEvenement.fxml"));
            gridpane.getScene().setRoot(loader);
@@ -80,5 +85,19 @@ public class AfficherEvenementController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());        }
     }
+
+    @FXML
+    private void afficherparticipation(ActionEvent event) {
+        
+        try {
+           
+
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherParticipation.fxml"));
+           gridpane.getScene().setRoot(loader);
+       
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());        }
+    }
+    
     
 }
