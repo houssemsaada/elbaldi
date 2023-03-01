@@ -71,6 +71,8 @@ public class ConsulterPanierController implements Initializable {
         panierCRUD pc = new panierCRUD();
         panier p = new panier();
         p.setId_panier(Integer.parseInt(panieridTF.getText()));
+        PanierListCell pl = new PanierListCell();
+        pl.setP(p);
         produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
         ListView.setCellFactory(lv -> new PanierListCell());
         ListView.setItems(produitObservableList);
@@ -87,7 +89,9 @@ public class ConsulterPanierController implements Initializable {
     @FXML
     private void commanderOnAction(ActionEvent event) {
         panier p = new panier();
-        p.setId_panier(Integer.parseInt(panieridTF.getText()));
+        panierCRUD pc = new panierCRUD();
+        //p.setId_panier(Integer.parseInt(panieridTF.getText()));
+        p=pc.filtreByidPanier(Integer.parseInt(panieridTF.getText()));
         try {
             if (p.sommePanier(produitObservableList) == 0) {
                 commandeGUI.AlertShow("panier vide", "vide", Alert.AlertType.ERROR);
@@ -105,9 +109,12 @@ public class ConsulterPanierController implements Initializable {
             CommandeclientController dc = loader.getController();
             //System.out.println(p.getId_panier());
             int id_panier = p.getId_panier();
-            //  dc.setId_panTF(String.valueOf(id_panier));
+        //  dc.setId_panTF(String.valueOf(id_panier));
             // dc.setId_panTF(panieridTF);
             dc.setTotalTF(somme + "");
+            dc.setP(p);
+            dc.setNomTF(p.getU1().getNom());
+            dc.setPrenomTF(p.getU1().getPrenom());
             totalTF.getScene().setRoot(root);
 
         } catch (IOException ex) {

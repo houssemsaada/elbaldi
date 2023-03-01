@@ -72,7 +72,6 @@ public class CommandeDeleteController implements Initializable {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
                 String searchKeywords = newValue.toLowerCase();
 
                 if (commande.getEtat().toLowerCase().contains(searchKeywords)) {

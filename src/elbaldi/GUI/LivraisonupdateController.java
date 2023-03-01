@@ -130,11 +130,11 @@ public class LivraisonupdateController implements Initializable {
         try {
             Parent root = loader.load();
             Livraisonupdate2Controller lc = loader.getController();
-            lc.setIdField(liv.getId_livraison() + "");
+            lc.setLivrai(liv);
             lc.setAdresseField(liv.getAdresse_livraison());
-            lc.setStatusField(liv.getStatus_livraison());
+           // lc.setStatusField(liv.getStatus_livraison());
             lc.setDateField(liv.getDate_livraison());
-            lc.setCommandeField(liv.getC1().getId_cmd() + "");
+            
             UpdatelBtn.getScene().setRoot(root);
 
         } catch (IOException ex) {

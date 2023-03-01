@@ -79,7 +79,7 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
     }
 
     @Override
-    public void modifierLivraison(livraison l,livraison l2) {
+    public void modifierLivraison(livraison l) {
         try {
             String req = "UPDATE `livraison` SET `id_cmd` = ?,`status_livraison` = ?, `adresse_livraison` = ? , `date_livraison` = ? WHERE id_livraison   = ? ";
             PreparedStatement ps = conn.prepareStatement(req);
@@ -87,7 +87,7 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
             ps.setString(2, l.getStatus_livraison());
             ps.setString(3, l.getAdresse_livraison());
             ps.setDate(4, l.getDate_livraison());
-            ps.setInt(5, l2.getId_livraison());
+            ps.setInt(5, l.getId_livraison());
             ps.executeUpdate();
             System.out.println("livraison updated !");
         } catch (SQLException ex) {

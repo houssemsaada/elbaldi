@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ConsulterPanierController">
+<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ConsulterPanierController">
    <children>
       <Pane layoutX="962.0" layoutY="2.0" prefHeight="596.0" prefWidth="252.0" style="-fx-background-color: #EBEAEA;">
          <children>
@@ -121,7 +121,7 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <Spinner fx:id="qtescroll" layoutX="913.0" layoutY="113.0" prefHeight="26.0" prefWidth="59.0" />
+      <Spinner fx:id="qtescroll" layoutX="913.0" layoutY="113.0" prefHeight="26.0" prefWidth="75.0" />
       <ListView fx:id="ListView" layoutX="27.0" layoutY="24.0" onMouseClicked="#changeQTE" prefHeight="471.0" prefWidth="722.0" />
    </children>
 </AnchorPane>

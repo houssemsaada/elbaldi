@@ -12,14 +12,17 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -35,30 +38,27 @@ public class Commandeupdate2Controller implements Initializable {
     @FXML
     private Button exit1;
     @FXML
-    private TextField etatField;
+    private ComboBox<String> etatField;
     private TextField dateField;
     @FXML
     private Button update2Btn;
     @FXML
     private DatePicker datepicker;
-    private commande comm ; 
+    private commande comm;
+    ArrayList<String> my_list = new ArrayList<>();
 
     /**/
-
     /**
      *
      * @param com
      */
-
     public void setCom(commande com) {
         comm = com;
-      
-        etatField.setText(comm.getEtat());
-   
+
+        etatField.setValue(comm.getEtat());
+
         datepicker.setValue(comm.getDate_cmd().toLocalDate());
-     
-        
-       
+
     }
 //    
 //    public void setIdField(String idField) {
@@ -84,6 +84,9 @@ public class Commandeupdate2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+        etatField.getItems().add("En attente");
+        etatField.getItems().add("Acceptée");
 
     }
 
@@ -108,11 +111,11 @@ public class Commandeupdate2Controller implements Initializable {
             Date date_com;
             String etat;
             int id_panier;
-            
+
             id = comm.getId_cmd();
             c.setId_cmd(id);
 
-            etat = etatField.getText();
+            etat = etatField.getValue();
             c.setEtat(etat);
 
 //            try {
@@ -125,7 +128,6 @@ public class Commandeupdate2Controller implements Initializable {
 
             //date_com = Date.valueOf(dateField.getText());
             c.setDate_cmd(date_com);
-
 
             id_panier = comm.getPan().getId_panier();
             panier pan = new panier(id_panier);
@@ -143,7 +145,7 @@ public class Commandeupdate2Controller implements Initializable {
             System.out.println(e.getMessage());
         } finally {
             // refreshTable();
-            commandeGUI.clearTextFields( etatField);
+            etatField.setValue(null);
             datepicker.setValue(null);
         }
     }

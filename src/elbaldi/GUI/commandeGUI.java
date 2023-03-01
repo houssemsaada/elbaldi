@@ -5,6 +5,8 @@
  */
 package elbaldi.GUI;
 
+
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,12 +33,11 @@ public class commandeGUI extends Application {
     public void start(Stage primaryStage) {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("consulterPanier.fxml"));
-        //   Parent root = FXMLLoader.load(getClass().getResource("livraisoninterface.fxml"));
-// Parent root = FXMLLoader.load(getClass().getResource("commandeinterface.fxml"));
-
+       Parent  root = FXMLLoader.load(getClass().getResource("consulterPanier.fxml"));
+         //Parent root = FXMLLoader.load(getClass().getResource("livraisoninterface.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("commandeinterface.fxml"));
+        
             Scene scene = new Scene(root);
-
             primaryStage.setTitle("commande");
             primaryStage.setScene(scene);
             primaryStage.show();

@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import static jdk.internal.org.objectweb.asm.commons.GeneratorAdapter.OR;
@@ -37,12 +38,8 @@ public class LivraisonajoutController implements Initializable {
     @FXML
     private Button exit1;
     @FXML
-    private TextField idField;
-    @FXML
-    private TextField statusField;
+    private ComboBox<String> statusField;
     private TextField dateField;
-    @FXML
-    private TextField commandeField;
     @FXML
     private TextField adresseField;
     @FXML
@@ -60,7 +57,9 @@ public class LivraisonajoutController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        statusField.getItems().add("En attente");
+        statusField.getItems().add("en expédition");
+         statusField.getItems().add("livrée");
     }
 
     @FXML
@@ -68,7 +67,7 @@ public class LivraisonajoutController implements Initializable {
         try {
 
             try {
-                if (commandeGUI.isTextFieldEmpty(statusField, adresseField) || datepicker.getValue() == null) {
+                if (commandeGUI.isTextFieldEmpty( adresseField) || datepicker.getValue() == null || statusField.getValue() == null ) {
                     commandeGUI.AlertShow("Please fill all fields", "Empty fields", Alert.AlertType.ERROR);
                     return;
                 }
@@ -79,7 +78,7 @@ public class LivraisonajoutController implements Initializable {
 
             int id_cmd = com.getId_cmd();
             System.out.println(id_cmd);
-            String status = statusField.getText();
+            String status = statusField.getValue();
 //            try {
 //                Date.valueOf(dateField.getText());
 //            } catch (Exception e) {
@@ -105,7 +104,8 @@ public class LivraisonajoutController implements Initializable {
             ex.printStackTrace();
             ex.getCause();
         } finally {
-            commandeGUI.clearTextFields(statusField, adresseField);
+            commandeGUI.clearTextFields( adresseField);
+            statusField.setValue(null);
             datepicker.setValue(null);
 
         }
