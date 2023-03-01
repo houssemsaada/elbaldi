@@ -133,7 +133,7 @@ public class elbaldi {
         
         
 
-        Utilisateur u2 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
+        Utilisateur u2 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000","2345564","tunis","test","test",client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
         uti.ajouterUtlisateur(u2);
         //ajouter commentaire

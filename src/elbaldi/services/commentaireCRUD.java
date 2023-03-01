@@ -28,7 +28,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
       Connection conn = MyConnection.getInstance().getConn();
 
     @Override
-    public void ajouterCommentaire(commentaire c) {
+    public void ajouterCommentaire(commentaire c)  throws SQLException {
         // Créer un objet Timestamp pour la date et l'heure actuelles
             Timestamp date = new Timestamp(System.currentTimeMillis());
             try {
@@ -47,7 +47,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
     }
 
     @Override
-    public void modifierCommentaire(commentaire c) {
+    public void modifierCommentaire(commentaire c)  throws SQLException {
         
         // Créer un objet Timestamp pour la date et l'heure actuelles
             Timestamp date = new Timestamp(System.currentTimeMillis());
@@ -67,7 +67,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
      
 
     @Override
-    public void supprimerCommentaire(commentaire c) {
+    public void supprimerCommentaire(commentaire c)   throws SQLException {
         try {
             String req = "DELETE FROM `commentaire` WHERE `id_commentaire` = ?";
             PreparedStatement ps = conn.prepareStatement(req);
@@ -82,7 +82,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
     }
 
     @Override
-    public List<commentaire> afficherCommentaire() {
+    public List<commentaire> afficherCommentaire()  throws SQLException {
      List<commentaire> list = new ArrayList<>();
         try {
             String req = "SELECT * FROM `commentaire`";
@@ -112,7 +112,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
         return list;
     }
     @Override
-    public commentaire getCommentaireById(int id_commentaire) {
+    public commentaire getCommentaireById(int id_commentaire)  throws SQLException {
     commentaire c = null;
     try {
         String req = "SELECT * FROM `commentaire` WHERE `id_commentaire` = ?";
@@ -145,7 +145,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
 
     
     @Override
-    public List<commentaire> getCommentairesByArticle(produit p) {
+    public List<commentaire> getCommentairesByArticle(produit p) throws SQLException {
     List<commentaire> list = new ArrayList<>();
     try {
         String req = "SELECT * FROM `commentaire` WHERE `ref_produit` = ?";
@@ -176,7 +176,7 @@ public class commentaireCRUD implements InterfaceCommentaireCRUD{
     return list;
 }
     @Override
-    public List<commentaire> filterParDate(Date date) {
+    public List<commentaire> filterParDate(Date date)  throws SQLException{
     List<commentaire> list = new ArrayList<>();
     try {
         String req = "SELECT * FROM `commentaire` WHERE `date_comm` > ?";

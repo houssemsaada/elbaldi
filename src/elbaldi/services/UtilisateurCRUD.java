@@ -71,7 +71,7 @@ public class UtilisateurCRUD implements InterfaceCRUD{
              u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
                u.setDateNaissance(RS.getString(5));
-                u.setNumTel(RS.getInt(6));
+                u.setNumTel(RS.getString(6));
                  u.setVille(RS.getString(7));
                   u.setLogin(RS.getString(8));
                    u.setMdp(RS.getString(9));
@@ -112,7 +112,7 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
                u.setDateNaissance(RS.getString(5));
-                u.setNumTel(RS.getInt(6));
+                u.setNumTel(RS.getString(6));
                  u.setVille(RS.getString(7));
                   u.setLogin(RS.getString(8));
                    u.setMdp(RS.getString(9));
@@ -141,7 +141,7 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
                u.setDateNaissance(RS.getString(5));
-                u.setNumTel(RS.getInt(6));
+                u.setNumTel(RS.getString(6));
                  u.setVille(RS.getString(7));
                   u.setLogin(RS.getString(8));
                    u.setMdp(RS.getString(9));
@@ -161,7 +161,7 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
                u.setDateNaissance(RS.getString(5));
-                u.setNumTel(RS.getInt(6));
+                u.setNumTel(RS.getString(6));
                  u.setVille(RS.getString(7));
                   u.setLogin(RS.getString(8));
                    u.setMdp(RS.getString(9));

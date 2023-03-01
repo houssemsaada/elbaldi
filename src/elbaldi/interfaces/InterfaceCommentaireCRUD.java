@@ -8,6 +8,7 @@ package elbaldi.interfaces;
 import elbaldi.models.commentaire;
 import elbaldi.models.produit;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,11 +16,11 @@ import java.util.List;
  * @author Yasmine
  */
 public interface InterfaceCommentaireCRUD {
-    public void ajouterCommentaire(commentaire c);
-    public void modifierCommentaire(commentaire c);
-    public void supprimerCommentaire(commentaire c) ;
-    public List<commentaire> afficherCommentaire();
-    public commentaire getCommentaireById(int id_commentaire);
-    public List<commentaire> getCommentairesByArticle(produit p);
-    public List<commentaire> filterParDate(Date date);
+    public void ajouterCommentaire(commentaire c) throws SQLException;
+    public void modifierCommentaire(commentaire c) throws SQLException;
+    public void supprimerCommentaire(commentaire c) throws SQLException ;
+    public List<commentaire> afficherCommentaire() throws SQLException;
+    public commentaire getCommentaireById(int id_commentaire) throws SQLException;
+    public List<commentaire> getCommentairesByArticle(produit p) throws SQLException;
+    public List<commentaire> filterParDate(Date date) throws SQLException;
 }

@@ -6,6 +6,9 @@
 package elbaldi.models;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -40,6 +43,13 @@ public class commentaire {
         this.produit = produit;
         this.utilisateur = utilisateur;
       
+    }
+     public commentaire(String contenu){
+         this.contenu=contenu;
+     }
+
+    public commentaire(produit produitt, Utilisateur utilisateur, String texte, Timestamp date) {
+       
     }
 
     public int getId_commentaire() {
@@ -84,7 +94,8 @@ public class commentaire {
 
     @Override
     public String toString() {
-        return "Commentaire{" + "id_commentaire=" + id_commentaire + ", contenu=" + contenu + ", produit=" + produit + ", utilisateur=" + utilisateur + ", date=" + date + '}';
+        return  contenu +"\n Le "+ date ;
+
     }
 }
 

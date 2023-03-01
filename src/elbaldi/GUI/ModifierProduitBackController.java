@@ -11,6 +11,8 @@ import elbaldi.services.CategorieCRUD;
 import elbaldi.services.ProduitCRUD;
 import elbaldi.services.Upload;
 import elbaldi.utils.MyConnection;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -36,9 +38,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -95,7 +100,23 @@ public class ModifierProduitBackController implements Initializable {
         this.libellefx.setText(produitP.getLibelle());
         this.quantitefx.setText(produitP.getQuantite()+ "");
         categoriefx.getSelectionModel().select(produitP.getCategoriee());
- 
+//         String imagePath = "C:\\xampp\\htdocs\\images\\"+ produitP.getImage().toString();
+//       
+//        // Create an ImageView object
+//        ImageView imageView = new ImageView();
+//        // Create a File object with the path of your image
+//        File file = new File(imagePath);
+//       
+//        // Check if the file exists
+//        if (file.exists()) {
+//            // Create an Image object with the file path
+//            Image image = new Image(file.toURI().toString());
+//            // Set the image to the ImageView
+//            this.img.setImage(image);
+//        } else {
+//            System.out.println("Image not found.");
+//        }
+// 
     }
  
     @Override
@@ -113,16 +134,15 @@ public class ModifierProduitBackController implements Initializable {
                 );
                 selectedfile = fc.showOpenDialog(null);
                 if (selectedfile != null) {
-
-                    Upload u = new Upload();
                     try {
-                        u.upload(selectedfile);
+                        resizeFile(selectedfile.getAbsolutePath(),"C:\\xampp\\htdocs\\images\\"+selectedfile.getName(),227,207);
+                        
+                        img.getItems().add(selectedfile.getName());
+                        
+                        path_img = selectedfile.getAbsolutePath();
                     } catch (IOException ex) {
-                        Logger.getLogger(ModifierProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(AjouterProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    img.getItems().add(selectedfile.getName());
-
-                    path_img = selectedfile.getAbsolutePath();
 
                 } else {
                     System.out.println("Fichier erroné");
@@ -206,6 +226,25 @@ public class ModifierProduitBackController implements Initializable {
 
         categoriefx.setItems(null);
         categoriefx.setItems(list);
+    }
+     public void resizeFile(String imagePathToRead,
+            String imagePathToWrite, int resizeWidth, int resizeHeight)
+            throws IOException {
+
+        File fileToRead = new File(imagePathToRead);
+        BufferedImage bufferedImageInput = ImageIO.read(fileToRead);
+
+        BufferedImage bufferedImageOutput = new BufferedImage(resizeWidth,
+                resizeHeight, bufferedImageInput.getType());
+
+        Graphics2D g2d = bufferedImageOutput.createGraphics();
+        g2d.drawImage(bufferedImageInput, 0, 0, resizeWidth, resizeHeight, null);
+        g2d.dispose();
+
+        String formatName = imagePathToWrite.substring(imagePathToWrite
+                .lastIndexOf(".") + 1);
+
+        ImageIO.write(bufferedImageOutput, formatName, new File(imagePathToWrite));
     }
 
    

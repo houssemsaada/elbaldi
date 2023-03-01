@@ -80,6 +80,7 @@ public class CategorieBackModifierController implements Initializable {
                 alert0.setContentText("Votre modification est enregistrée avec succes ");
                 alert0.show();
                 ((Node) event.getSource()).getScene().getWindow().hide();
+                
  }
                 else{
         Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -28,13 +28,21 @@ public class FirstWindow extends Application {
     public void start(Stage primaryStage) {
         try {
             
-            //Parent root = root=FXMLLoader.load(getClass().getResource("CategorieBack.fxml"));
+            
+              //Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
             Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
+          // Parent root = root=FXMLLoader.load(getClass().getResource("catgeorielistBack.fxml"));
+          
+          
+        
+                     
+           
+            
             //Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
             //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Gestion Catégories ");
+            primaryStage.setTitle("Application Elbaldi ");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

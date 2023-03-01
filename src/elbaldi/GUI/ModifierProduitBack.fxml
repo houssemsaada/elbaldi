@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ModifierProduitBackController">
    <children>
-      <Pane fx:id="pnlOverview" prefHeight="589.0" prefWidth="803.0" style="-fx-background-color: #ffff;">
+      <Pane fx:id="pnlOverview" prefHeight="589.0" prefWidth="803.0" style="-fx-background-color: #ffff;" stylesheets="@style.css">
          <children>
             <Label layoutX="269.0" layoutY="17.0" text="Modifier Produit" textFill="#b91010">
                <font>
@@ -71,6 +71,7 @@
                   <Image url="@../../Ressources/Logo.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="308.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

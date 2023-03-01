@@ -17,7 +17,7 @@ public class Utilisateur {
     private String prenom;
     private String email;
     private String dateNaissance;
-    private int numTel;
+    private String numTel;
     private String ville;
     private String login;
     private String mdp;
@@ -26,7 +26,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp, Role role) {
+    public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, String numTel, String ville, String login, String mdp, Role role) {
         this.id_user = id_user;
         this.nom = nom;
         this.prenom = prenom;
@@ -39,7 +39,7 @@ public class Utilisateur {
         this.role = role;
     }
 
-    public Utilisateur(String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp, Role role) {
+    public Utilisateur(String nom, String prenom, String email, String dateNaissance, String numTel, String ville, String login, String mdp, Role role) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -91,11 +91,11 @@ public class Utilisateur {
         this.dateNaissance = dateNaissance;
     }
 
-    public int getNumTel() {
+    public String getNumTel() {
         return numTel;
     }
 
-    public void setNumTel(int numTel) {
+    public void setNumTel(String numTel) {
         this.numTel = numTel;
     }
 

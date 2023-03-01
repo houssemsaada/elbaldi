@@ -44,10 +44,6 @@ public class CommentaireBackController implements Initializable {
     @FXML
     private TableView<commentaire> table;
     @FXML
-    private Button Home;
-    @FXML
-    private Button btnSignout;
-    @FXML
     private TableColumn<commentaire, String> contenu;
     @FXML
     private TableColumn<commentaire, Date> dateC;
@@ -55,12 +51,39 @@ public class CommentaireBackController implements Initializable {
     private TableColumn<commentaire, Utilisateur> client;
     @FXML
     private TableColumn<commentaire, produit> produit;
-    @FXML
     private Button categorie;
-    @FXML
     private Button produitt;
-    @FXML
     private Button commentaires;
+    @FXML
+    private Button Home1;
+    @FXML
+    private Button categorie1;
+    @FXML
+    private Button produit1;
+    @FXML
+    private Button btnSignout1;
+    @FXML
+    private Button btnSignout111;
+    @FXML
+    private Button btnSignout1111;
+    @FXML
+    private Button btnSignout11111;
+    @FXML
+    private Button btnSignout1111111;
+    @FXML
+    private Button btnSignout11111111;
+    @FXML
+    private Button btnSignout111111111;
+    @FXML
+    private Button btnSignout11112;
+    @FXML
+    private Button btnSignout11;
+    @FXML
+    private Button comm1;
+    @FXML
+    private Button btnSignout1111211;
+    @FXML
+    private Button btnSignout11112111;
     
         /**
      * Initializes the controller class.
@@ -131,30 +154,29 @@ public class CommentaireBackController implements Initializable {
     }
 
     @FXML
-    private void categg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(getClass().getResource("CategorieBack.fxml"));
-        Parent root = loader.load();
-        categorie.getScene().setRoot(root);
-    }
-
-    @FXML
     private void prodd(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("ProduitBack.fxml"));
+        loader.setLocation(getClass().getResource("prodbacklist.fxml"));
         Parent root = loader.load();
-        produitt.getScene().setRoot(root);
+        produit1.getScene().setRoot(root);
+    }
+    @FXML
+    private void categ(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("catgeorielistBack.fxml"));
+        Parent root = loader.load();
+        categorie1.getScene().setRoot(root);
     }
 
     @FXML
-    private void comen(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+    private void commen(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("CommentaireBack.fxml"));
         Parent root = loader.load();
-        commentaires.getScene().setRoot(root);
+        comm1.getScene().setRoot(root);
     }
     
     
