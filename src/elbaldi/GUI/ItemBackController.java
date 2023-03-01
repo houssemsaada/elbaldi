@@ -7,6 +7,7 @@ package elbaldi.GUI;
 
 import elbaldi.models.Evenement;
 import elbaldi.models.quiz;
+import elbaldi.gui.ModifierQuizController;
 import elbaldi.services.QuizCRUD;
 import elbaldi.utils.MyConnection;
 import java.io.IOException;
@@ -29,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -87,15 +89,18 @@ public class ItemBackController implements Initializable {
       quiz q = new quiz();
       q.setNom(nomLabell.getText());
 
-  
+  int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de supprimer le quiz ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
+    if (option == JOptionPane.YES_OPTION) {
       qc.supprimerquiz(q);
-      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Information Dialog");
       alert.setHeaderText(null);
       alert.setContentText("Quiz a été supprimé avec succés!");
       alert.show();
       Parent loader = FXMLLoader.load(getClass().getResource("front.fxml"));
       nomLabell.getScene().setRoot(loader);
+    }
+     
 
     }
 
@@ -126,28 +131,22 @@ public class ItemBackController implements Initializable {
 
     }
 
+   
+
     @FXML
-    private void modifier(ActionEvent event) throws IOException {
-      
-         FXMLLoader loader = new FXMLLoader();
-         System.out.println("aaaaa");
-        loader.setLocation(getClass().getResource("ModifierQuiz.fxml"));
-        System.out.println("eeeeeee");
-        Parent root = loader.load();
+    private void Modifier(ActionEvent event){
        
-
-        ModifierQuizController cb;
-        cb = loader.getController();
-        cb.setQuiz(id_quizz);
-
-            
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.showAndWait();
         
-      
-            
+        try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ModifierQuiz.fxml"));
+        Parent root = loader.load();
+        ModifierQuizController qbc = loader.getController();
+        qbc.setQuiz(qcc);
+        nomLabell.getScene().setRoot(root);
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
     }
     
 

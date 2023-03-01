@@ -18,6 +18,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,57 +62,62 @@ public class ModifierQuizController implements Initializable {
     @FXML
     private TextField idLabel2;
     
-     public static quiz qu;
+    
     /**
      * Initializes the controller class.
      */
+    public void setQuiz(quiz quiz) {
+    this.quiz = quiz;
+    this.idLabel2.setText(quiz.getNom());
+    this.fxdifficulte.setValue(quiz.getDifficulte());
+    UtilisateurCRUD userCRUD = new UtilisateurCRUD();
+        List<Utilisateur> allUsers = userCRUD.afficherUtilisateur();
+        fxid_user.getItems().addAll(allUsers);
+
+        // Set the selected user in the combo box to the one already assigned to the quiz
+        fxid_user.setValue(quiz.getuser());
     
-     public void setQuiz(quiz quiz) {
-        this.quiz = quiz;
-       
-        this.idLabel2.setText(quiz.getNom());
-        this.fxdifficulte.setValue(quiz.getDifficulte());
-    }
-   
+    
+    
+    
+    
+    ModifierQuiz.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            System.out.println("eeeeeee");
+            QuizCRUD quizcrud = new QuizCRUD();
+            if (!idLabel2.getText().equalsIgnoreCase("") && !fxdifficulte.getValue().equalsIgnoreCase("") && fxid_user.getValue()!= null) {
+                quiz.setNom(idLabel2.getText());
+                quiz.setDifficulte(fxdifficulte.getValue());
+                quizcrud.modifierquiz(quiz, quiz.getId_quiz());
+             
+               // Alerte si la modification est effectuée avec succeés 
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Modification du Quiz");
+                alert.setHeaderText(null);
+                alert.setContentText("Le quiz a été modifiée avec succès !");
+               alert.showAndWait();
+         
+            } else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Echec de la modification");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Attention ! Il faut remplir tous les champs à modifier");
+                        alert.showAndWait();}
+        }
+    });   
+}
+
      
 
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         ObservableList<String> difficultes = FXCollections.observableArrayList("Facile", "Moyenne", "Difficile");
+        fxdifficulte.setItems(difficultes);
+       }
        
-         ModifierQuiz.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-
-                QuizCRUD quizcrud = new QuizCRUD();
-                quiz q = new quiz();
- if (!idLabel2.getText().equalsIgnoreCase("") && !fxdifficulte.getValue().equalsIgnoreCase("")) {
-                q.setNom(idLabel2.getText());
-                q.setDifficulte(fxdifficulte.getValue());
-               
-                quizcrud.modifierquiz(q,quiz.getId_quiz());
-               
-                 
-                Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
-                alert0.setTitle("information Dialog");
-                alert0.setHeaderText(null);
-                alert0.setContentText("Votre modification est enregistrée avec succes ");
-                alert0.show();
-                ((Node) event.getSource()).getScene().getWindow().hide();
- }
-                else{
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Echec de la modification");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Attention ! Verifier les données saisie (Pas de champs vides)");
-                        alert.showAndWait();
- }
-            }
-
-        });
-    }    
     
 
     

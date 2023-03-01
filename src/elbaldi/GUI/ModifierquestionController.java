@@ -13,6 +13,7 @@ import elbaldi.models.quiz;
 import elbaldi.services.PromotionCRUD;
 import elbaldi.services.QuestionCRUD;
 import elbaldi.services.QuizCRUD;
+import elbaldi.services.UtilisateurCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -46,11 +48,7 @@ public class ModifierquestionController implements Initializable {
 
     @FXML
     private Button backfx;
-    @FXML
-    private Label fxidquestion;
    
-    @FXML
-    private TextField fxdifficulte;
     @FXML
     private TextField fxreponse1;
     @FXML
@@ -63,70 +61,107 @@ public class ModifierquestionController implements Initializable {
     private ComboBox<quiz> fxquiz;
     @FXML
     private Button modifierquestionfx;
-    @FXML
-    private ListView<question> listview;
+   
     @FXML
     private TextField fxquestionn;
+    
+    private question questionn;
+    @FXML
+    private ComboBox<String> fxdifficultes;
 
     /**
      * Initializes the controller class.
      */
+    public void setQuestion(question qu) {
+    this.questionn = qu;
+    this.fxquestionn.setText(qu.getQuestionn());
+    this.fxdifficultes.setValue(qu.getDifficulte());
+    this.fxreponse1.setText(qu.getReponse1());
+    this.fxreponse2.setText(qu.getReponse2());
+    this.fxreponse3.setText(qu.getReponse3());
+    this.fxsolutionn.setText(qu.getSolution());
+     ObservableList<String> difficultes = FXCollections.observableArrayList("Facile", "Moyenne", "Difficile");
+        fxdifficultes.setItems(difficultes);
+        QuizCRUD quizCRUD = new QuizCRUD();
+        List<quiz> allquizs = quizCRUD.afficherQuiz();
+        fxquiz.getItems().addAll(allquizs);
+
+        // Set the selected user in the combo box to the one already assigned to the quiz
+        fxquiz.setValue(qu.getquiz());
+    modifierquestionfx.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            System.out.println("eeeeeee");
+            QuestionCRUD questioncrud = new QuestionCRUD();
+            question qu = new question();
+            if (!fxquestionn.getText().isEmpty() && !fxdifficultes.getValue().isEmpty() && !fxreponse1.getText().isEmpty() && 
+                !fxreponse2.getText().isEmpty() && !fxreponse3.getText().isEmpty() && !fxsolutionn.getText().isEmpty() 
+                && fxquiz.getValue() != null) {
+                
+                if (fxquestionn.getText().matches(".*[a-zA-Z]{6,}.*")) {
+                    
+                    if (fxreponse1.getText().equalsIgnoreCase(fxsolutionn.getText()) || 
+                        fxreponse2.getText().equalsIgnoreCase(fxsolutionn.getText()) || 
+                        fxreponse3.getText().equalsIgnoreCase(fxsolutionn.getText())) {
+                        
+                        qu.setQuestionn(fxquestionn.getText());
+                        qu.setDifficulte(fxdifficultes.getValue());
+                        qu.setReponse1(fxreponse1.getText());
+                        qu.setReponse2(fxreponse2.getText());
+                        qu.setReponse3(fxreponse3.getText());
+                        qu.setSolution(fxsolutionn.getText());
+                        qu.setquiz(fxquiz.getValue());
+                        questioncrud.modifierquestion(qu, questionn.getId_question());
+
+                        // Alert if modification is successful 
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Modification de la question");
+                        alert.setHeaderText(null);
+                        alert.setContentText("La question a été modifiée avec succès !");
+                        alert.showAndWait(); 
+                    } else {
+                        // Afficher une alerte en fonction de l'état de l'ajout
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText(null);
+                        alert.setContentText("La solution doit être compatible avec l'une des réponses.");
+                        alert.showAndWait();
+                    }
+                } else {
+                    // Afficher une alerte en fonction de l'état de l'ajout
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("La question doit contenir au moins 6 alphabets.");
+                    alert.showAndWait();
+                }
+            } else {
+                // Afficher une alerte en fonction de l'état de l'ajout
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("il faut remplir tout les champs à remplir.");
+                    alert.showAndWait();
+            }
+        } } ); } 
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        QuestionCRUD a= new QuestionCRUD();
-        List<question> questions = a.afficherQuestion();
-        ObservableList<question> observableList = FXCollections.observableArrayList(questions);
-        listview.setItems(observableList);
-       listview.setCellFactory(questionListView -> new questionListViewCell());
-
-       listview.setOnMouseClicked(e -> {
-            question selectedQuestion = listview.getSelectionModel().getSelectedItem();
-            if ( selectedQuestion != null) {
-                // Récupérer les valeurs de l'objet Promotion sélectionné
-                int idQuestion =  selectedQuestion.getId_question();
-                String questionnn =  selectedQuestion.getQuestionn();
-                String Difficultée =  selectedQuestion.getDifficulte();
-                String Reponse1 =  selectedQuestion.getReponse1();
-                String Reponse2 =  selectedQuestion.getReponse2();
-                String Reponse3 =  selectedQuestion.getReponse3();
-                String Solution =  selectedQuestion.getSolution();
-                quiz qu = selectedQuestion.getquiz();
-               
-
-               
-
-                // Mettre à jour les champs de texte avec les valeurs récupérées
-                fxidquestion.setText(String.valueOf(idQuestion));
-                fxquestionn.setText(questionnn);
-                fxdifficulte.setText(Difficultée);
-                fxreponse1.setText(Reponse1);
-                fxreponse2.setText(Reponse2);
-                fxreponse3.setText(Reponse3);
-                fxsolutionn.setText(Solution);
-                //fxquiz.setText(String.valueOf(idQuiz));
-               fxquiz.setValue(qu);
-           
-                
-                ;
-            }
-        });
-    
-           // Charger la liste des promotions dans le ComboBox
-        QuizCRUD pc = new QuizCRUD();
-        List<quiz> quizs = pc.afficherQuiz();
-        ObservableList<quiz> observableListquiz = FXCollections.observableArrayList(quizs);
-        fxquiz.setItems(observableListquiz);
-       
-       
-       
-    }    
-
+    }
     @FXML
+    private void modifierquestion(ActionEvent event) {
+        
+
+    }
+        
+    
+      @FXML
     private void goBack(ActionEvent event) {
            // Redirection vers BrouillonController
     // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Questionback.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -137,75 +172,6 @@ public class ModifierquestionController implements Initializable {
         ex.printStackTrace();
     }
     }
-
-    @FXML
-    private void modifierquestion(ActionEvent event) {
-        
-         if (fxquestionn.getText().isEmpty() || fxdifficulte.getText().isEmpty() || fxreponse1.getText().isEmpty() || fxreponse2.getText().isEmpty() || fxreponse3.getText().isEmpty() ||  fxsolutionn.getText().isEmpty() ||  fxquiz.getValue() ==null) {
-     
-                  Alert alert = new Alert(Alert.AlertType.WARNING);
-                  alert.setTitle("Avertissement");
-                  alert.setHeaderText(null);
-                  alert.setContentText("Veuillez sélectionner la question à modifier !");
-                  alert.showAndWait();
-                  return;
-}
-    
-        
-        
-        
-        
-                int idQuestion =  Integer.parseInt(fxidquestion.getText());
-                String questionn =   fxdifficulte.getText();
-                String Difficulté =  fxquestionn.getText();
-                String Reponse1 =  fxreponse1.getText();
-                String Reponse2 =  fxreponse2.getText();
-                String Reponse3 = fxreponse3.getText();
-               
-                String Solution = fxsolutionn.getText();
-                quiz quiz = fxquiz.getValue();
-               
-
-    // Mettre à jour la promotion sélectionnée
-    QuestionCRUD a = new QuestionCRUD();
-    question question = new question(idQuestion, questionn , Difficulté ,Reponse1, Reponse2,Reponse3,Solution,quiz);
-    a.modifierquestion(question);
-    
-     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-     alert.setTitle("Modification de la question");
-     alert.setHeaderText(null);
-     alert.setContentText("La question a été modifiée avec succès !");
-     alert.showAndWait();
-
-    // Rafraîchir la liste des promotions
-    List<question> questions = a.afficherQuestion();
-    ObservableList<question> observableList = FXCollections.observableArrayList(questions);
-    listview.setItems(observableList);
-    }
-        
-        
-         private class questionListViewCell extends ListCell<question> {
-
-        @Override
-        protected void updateItem(question question, boolean empty) {
-            super.updateItem(question, empty);
-            if (empty || question == null) {
-                setText(null);
-            } else {
-                 setText(String.format("ID Question: %d\n",question.getId_question()) 
-                    + String.format("-Question: %s\n", question.getQuestionn())
-                    + String.format("- Difficulté: %s\n", question.getDifficulte())
-                    + String.format("- Réponse1: %s\n",question.getReponse1())
-                    + String.format("- Réponse2: %s\n",question.getReponse2())
-                    + String.format("- Réponse3: %s\n",question.getReponse3())
-                    + String.format("- Solution: %s\n", question.getSolution())
-                    + String.format("- id quiz: %d\n", question.getquiz().getId_quiz()));
-            setStyle("-fx-font-size: 12pt; -fx-font-weight: bold;");
-            }
-        }}
-        
-        
-        
         
         
         
@@ -216,5 +182,5 @@ public class ModifierquestionController implements Initializable {
         
         
        
-    
+ 
 }

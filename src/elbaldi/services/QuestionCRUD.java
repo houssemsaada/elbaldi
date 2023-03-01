@@ -47,27 +47,25 @@ public class QuestionCRUD implements InterfaceCRUDquestion{
     }   
 }
 
-     
-    @Override
-public void modifierquestion(question qq) {
+     public void modifierquestion(question qqn, int id_question) {
     try {
-        String req = "UPDATE `question` SET `difficulte` = ?,`questionn` = ?, `reponse1` = ?, `reponse2` = ?, `reponse3` = ?, `solution` = ?, `id_quiz` = ? WHERE `id_question` = ?";
+        String req = "UPDATE `question` SET `difficulte` = ?, `questionn` = ?, `reponse1` = ?, `reponse2` = ?, `reponse3` = ?, `solution` = ?, `id_quiz` = ? WHERE `id_question` = ?";
         PreparedStatement ps = conn.prepareStatement(req);
-        ps.setString(1, qq.getDifficulte());
-        ps.setString(2, qq.getQuestionn());
-        ps.setString(3, qq.getReponse1());
-        ps.setString(4, qq.getReponse2());
-        ps.setString(5, qq.getReponse3());
-        ps.setString(6, qq.getSolution()); 
-        ps.setInt(7, qq.getquiz().getId_quiz());
-      
-        ps.setInt(8, qq.getId_question());
+        ps.setString(1, qqn.getDifficulte());
+        ps.setString(2, qqn.getQuestionn());
+        ps.setString(3, qqn.getReponse1());
+        ps.setString(4, qqn.getReponse2());
+        ps.setString(5, qqn.getReponse3());
+        ps.setString(6, qqn.getSolution()); 
+        ps.setInt(7, qqn.getquiz().getId_quiz());
+        ps.setInt(8, id_question);
         ps.executeUpdate();
         System.out.println("Question modifiée !");
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
 }
+
 
      @Override
     public void supprimerquestion(question qq ) {

@@ -8,23 +8,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="367.0" prefWidth="480.0" style="-fx-background-color: #fdf6e9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.JouerQuizController">
+<AnchorPane id="AnchorPane" prefHeight="333.0" prefWidth="467.0" style="-fx-background-color: #fdf6e9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.JouerQuizController">
    <children>
-      <RadioButton fx:id="fixreponse1" layoutX="87.0" layoutY="175.0" mnemonicParsing="false">
+      <RadioButton fx:id="fixreponse1" layoutX="87.0" layoutY="131.0" mnemonicParsing="false">
          <toggleGroup>
             <ToggleGroup fx:id="tunisie" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="fixreponse2" layoutX="87.0" layoutY="218.0" mnemonicParsing="false" toggleGroup="$tunisie" />
-      <RadioButton fx:id="fixreponse3" layoutX="87.0" layoutY="257.0" mnemonicParsing="false" toggleGroup="$tunisie" />
-      <Button fx:id="fixsuivante" layoutX="167.0" layoutY="308.0" mnemonicParsing="false" onAction="#suivante" prefHeight="25.0" prefWidth="134.0" />
-      <Text fx:id="fixquestion" layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="452.0">
+      <RadioButton fx:id="fixreponse2" layoutX="87.0" layoutY="179.0" mnemonicParsing="false" toggleGroup="$tunisie" />
+      <RadioButton fx:id="fixreponse3" layoutX="87.0" layoutY="229.0" mnemonicParsing="false" toggleGroup="$tunisie" />
+      <Button fx:id="fixsuivante" layoutX="167.0" layoutY="291.0" mnemonicParsing="false" onAction="#suivante" prefHeight="25.0" prefWidth="134.0" />
+      <Text fx:id="fixquestion" layoutX="15.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="431.0">
          <font>
-            <Font name="Bauhaus 93" size="20.0" />
+            <Font name="Cambria" size="20.0" />
          </font></Text>
-      <Label fx:id="numerofx" layoutX="58.0" layoutY="10.0" prefHeight="38.0" prefWidth="363.0" textAlignment="CENTER" textFill="#d71414">
+      <Label fx:id="numerofx" layoutX="49.0" layoutY="3.0" prefHeight="38.0" prefWidth="363.0" textAlignment="CENTER" textFill="#d71414">
          <font>
             <Font name="Arial" size="14.0" />
          </font></Label>
-      <Button fx:id="back" layoutX="457.0" layoutY="-2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="16.0" style="-fx-background-color: #ff0000;" styleClass="transparentt" stylesheets="@quiz.css" text="X" />
+      <Button fx:id="back" layoutX="441.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="16.0" style="-fx-background-color: #ff0000;" styleClass="transparentt" stylesheets="@quiz.css" text="X" />
    </children>
 </AnchorPane>

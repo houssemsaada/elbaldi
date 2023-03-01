@@ -26,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -59,8 +60,24 @@ public class ItemQuestionController implements Initializable {
     @FXML
     private Label idLabel;
     
-    QuestionCRUD qc = new QuestionCRUD();
-     
+    
+      private question qcc;
+   
+  QuestionCRUD qc = new QuestionCRUD();
+    
+        
+  public void setquestion(question qq) {
+         this.qcc= qq;   
+        idLabel.setText(String.valueOf(qq.getId_question()));
+         fixdiffculte.setText(qq.getDifficulte());
+         fixquestion.setText(qq.getQuestionn());
+         fixreponse1.setText(qq.getReponse1());
+         fxrep2.setText(qq.getReponse2());
+         fixrep3.setText(qq.getReponse3());
+         fxsolution.setText(qq.getSolution());
+         quizfx.setText(qq.getquiz().toString());
+         
+  }
 
     /**
      * Initializes the controller class.
@@ -70,37 +87,39 @@ public class ItemQuestionController implements Initializable {
         // TODO
     }
     
-    
-  public void setquestion(question qq) {
-         
-        idLabel.setText(String.valueOf(qq.getId_question()));
-
-         fixdiffculte.setText(qq.getDifficulte());
-         fixquestion.setText(qq.getQuestionn());
-         fixreponse1.setText(qq.getReponse1());
-         fxrep2.setText(qq.getReponse2());
-         fixrep3.setText(qq.getReponse3());
-         fxsolution.setText(qq.getSolution());
-          quizfx.setText(qq.getquiz().toString());
-         
-  }
+ 
 
     @FXML
     private void supprimer(ActionEvent event) throws IOException {
          question q = new question();
          q.setId_question(Integer.parseInt(idLabel.getText()));
-         qc.supprimerquestion(q);
+         int option = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de supprimer la question ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
+    if (option == JOptionPane.YES_OPTION) {
+       qc.supprimerquestion(q);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Information Dialog");
       alert.setHeaderText(null);
-      alert.setContentText("Question supprimer avec succés!");
+      alert.setContentText("Question supprimée avec succés!");
       alert.show();
       Parent loader = FXMLLoader.load(getClass().getResource("QuestionBack.fxml"));
       idLabel.getScene().setRoot(loader);
+    } 
+        
       
     }
 
     @FXML
     private void modifier(ActionEvent event) {
+         
+        try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("modifierquestion.fxml"));
+        Parent root = loader.load();
+        ModifierquestionController qbc = loader.getController();
+        qbc.setQuestion(qcc);
+         fixquestion.getScene().setRoot(root);
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
     }
 }

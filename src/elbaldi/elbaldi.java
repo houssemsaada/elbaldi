@@ -196,7 +196,7 @@ public class elbaldi {
   //-----------------------------Module Question------------------------------------------------               
        quiz q5= new quiz();
        q5.setId_quiz(81);
-       question qq1= new question(144,"Facile","Quel est le nom du plat national tunisien à base de semoule et de légumes?","Brik","Couscous","Chorba","Couscous",q5);
+       question qq1= new question("Facile","Quel est le nom du plat national tunisien à base de semoule et de légumes?","Brik","Couscous","Chorba","Couscous",q5);
        question qq2= new question("Facile","Quel est le nom de la ville tunisienne connue pour ses maisons blanches et bleues?","Sidi Bou Said","Hammamet","Tozeur","Sidi Bou Said",q5);
        question qq3= new question("Facile","Quel est le nom du célèbre festival de musique qui se déroule chaque été à Hammamet?","Jazz à Carthage","Festival de Carthage","Festival international de Hammamet","Festival international de Hammamet",q5);
        QuestionCRUD qq= new QuestionCRUD();
@@ -205,7 +205,7 @@ public class elbaldi {
        //Ajout d'une Question      
                //  qq.ajouterQuestion(qq3);
        //Modification d'une Question    
-                 // qq.modifierquestion(qq1);   
+                 qq.modifierquestion(qq1,178);   
        //Suppression d'une Question  
                 // qq.supprimerquestion(qq1);
        //Affichage d'une Question 

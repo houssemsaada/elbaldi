@@ -20,7 +20,7 @@
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="modifierfix" layoutX="50.0" layoutY="207.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button fx:id="modifierfix" layoutX="50.0" layoutY="207.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
       <Button fx:id="supprimer" layoutX="170.0" layoutY="207.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="78.0" text="Supprimer" AnchorPane.bottomAnchor="16.0" />
       <Label fx:id="nomLabell" layoutX="139.0" layoutY="144.0">
          <font>

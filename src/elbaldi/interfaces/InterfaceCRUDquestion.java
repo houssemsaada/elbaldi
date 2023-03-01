@@ -17,7 +17,7 @@ public interface InterfaceCRUDquestion {
     
      
      public void ajouterQuestion(question qq) ;
-     public void modifierquestion(question qq);
+     public void modifierquestion(question qq,int id_question);
      public void supprimerquestion(question qq);
      public List<question> afficherQuestion() ;
      public question getById(int id);

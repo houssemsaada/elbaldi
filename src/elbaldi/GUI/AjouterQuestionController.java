@@ -125,7 +125,7 @@ public class AjouterQuestionController implements Initializable {
        
     // Redirection vers BrouillonController
     // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionBack.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);

@@ -51,6 +51,8 @@ public class QuestionBackController implements Initializable {
     private quiz quiz ; 
     @FXML
     private TextField quizid;
+    @FXML
+    private Button fxrafraichir;
 
     /**
      *
@@ -58,25 +60,7 @@ public class QuestionBackController implements Initializable {
      */
     public void setQuiz(quiz quiz) {
         this.quiz = quiz;
-        System.out.println(quiz);
-    }
-    
-   
-
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-    }
-        // TODO
-
-  
-    public void afficher(){
-        try {
+         try {
             listeQuestion = ds.filtreByidquiz(quiz);
             
             int column = 0;
@@ -110,12 +94,28 @@ public class QuestionBackController implements Initializable {
         } catch (IOException ex) {
         }
     }
+    
+   
+
+    /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
+    }
+        // TODO
+
+  
+    public void afficher(){
+    }
 
     @FXML
     private void goBack(ActionEvent event) {
            
-    // Redirection vers BrouillonController
-    // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
+    // Redirection vers frontController
     FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
     try {
         Parent root = loader.load();
@@ -131,7 +131,7 @@ public class QuestionBackController implements Initializable {
     @FXML
     private void ajouter(ActionEvent event) {
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterQuestion.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -148,8 +148,13 @@ public class QuestionBackController implements Initializable {
 
     @FXML
     private void afficheronclick(MouseEvent event) {
-                    afficher();
+                //    afficher();
 
+    }
+
+    @FXML
+    private void rafraichir(ActionEvent event) {
+        
     }
 
    

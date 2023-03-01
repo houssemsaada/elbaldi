@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import elbaldi.GUI.ScoreController;
 
 /**
  * FXML Controller class
@@ -86,6 +88,7 @@ public class JouerQuizController implements Initializable {
         // Mélanger la liste de questions
         Collections.shuffle(questions);
            
+      
 
          //Initialiser l'index de la question courante et la liste des réponses de l'utilisateur
         currentQuestionIndex = 0;
@@ -108,7 +111,7 @@ public class JouerQuizController implements Initializable {
     }
 
    @FXML
-    private void suivante() {
+    private void suivante() throws IOException {
         // Enregistrer la réponse de l'utilisateur
         String reponse = null;
         if (fixreponse1.isSelected()) {
@@ -142,32 +145,18 @@ public class JouerQuizController implements Initializable {
        else if (currentQuestionIndex == questions.size()-1) {
       
                 // Afficher la classe ScoreControlleur pour afficher le score
-        
-            try {
-               Parent root = FXMLLoader.load(getClass().getResource("Score.fxml"));
-                           
-               Scene scene = new Scene(root);
-               Stage stage = (Stage) fixsuivante.getScene().getWindow();
-              double score=calculateScore(questions, reponsesUtilisateur);
-                System.out.println(score);
-              ScoreController sc = new ScoreController();
-              sc.setscore(score);
-              
-               stage.setScene(scene);
-               stage.show();
-        
-            } catch (IOException ex) {
-                
-            }
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Score.fxml"));
+        Parent root = loader.load();
+        ScoreController scoreController = loader.getController();
+        float score = calculateScore(questions, reponsesUtilisateur);
+        scoreController.setscoree((float) score);
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) fixsuivante.getScene().getWindow();
+        stage.setScene(scene);
+         stage.show();
 
                 }
-        
-        
-        
-       
-        
-   
+
         }    
     
     private void afficherQuestion() {
@@ -199,9 +188,9 @@ public class JouerQuizController implements Initializable {
 
     
 
-      
-public double calculateScore(List<question> questions, List<String> userAnswers) {
-    double score = 0.0;
+// Métier Calculer Score      
+public float calculateScore(List<question> questions, List<String> userAnswers) {
+    float score = 0.0f;
     for (int i = 0; i < questions.size(); i++) {
         question q = questions.get(i);
         String correctAnswer = q.getSolution();
@@ -210,11 +199,28 @@ public double calculateScore(List<question> questions, List<String> userAnswers)
             score += 1.0;
         }
     }
-    return (score / questions.size()) * 100.0;
+    return score ;
 }
+
+
+
+
 
     @FXML
     private void goBack(ActionEvent event) {
+        
+       // alerte pour confirmer si on veut supprimer le quiz 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Êtes-vous sûr de vouloir quitter ?");
+        alert.setContentText("Toutes les réponses seront perdues.");
+        ButtonType buttonTypeConfirm = new ButtonType("Confirmer");
+        ButtonType buttonTypeCancel = new ButtonType("Annuler");
+        alert.getButtonTypes().setAll(buttonTypeConfirm, buttonTypeCancel);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeConfirm) {
+    // Rediriger vers la page suivante
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("client.fxml"));
     try {
         Parent root = loader.load();
@@ -227,6 +233,7 @@ public double calculateScore(List<question> questions, List<String> userAnswers)
     }
 
     
+}
 }
 }
 

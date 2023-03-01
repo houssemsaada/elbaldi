@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import elbaldi.GUI.JouerQuizController;
 
 /**
  * FXML Controller class
@@ -20,24 +21,27 @@ import javafx.scene.text.Text;
  */
 public class ScoreController implements Initializable {
 
+    private float score;
+    
     @FXML
-    private Text scorefx;
-    private double score;
-    @FXML
-    private Label fxfcx;
+    private Text fxscore;
     /**
      * Initializes the controller class.
      */
     
     
-    public void setscore(double scoree) {
+    public void setscoree(float score) {
           
-          this.score=scoree;       
-        System.out.println(score);
-       // scorefx.setText("votre score est : "+ score);
-       String test = score +"";
-       fxfcx.setText(test);
-    }
+          this.score=score;       
+          System.out.println(score);
+          float scorePercentage = score * 100;
+          System.out.println(scorePercentage + "%");
+          
+          fxscore.setText(String.valueOf(scorePercentage));
+       
+    }       
+    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
