@@ -71,7 +71,7 @@
                   <Image url="@../../Ressources/Logo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="308.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgg" fitHeight="99.0" fitWidth="209.0" layoutX="437.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

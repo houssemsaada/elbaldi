@@ -19,10 +19,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,18 +31,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
  *
- * @author Yasmine
+ * @author USER
  */
-public class ProduitFront2Controller implements Initializable {
+public class Front1Controller implements Initializable {
 
-    @FXML
+ @FXML
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
@@ -68,16 +65,14 @@ public class ProduitFront2Controller implements Initializable {
     @FXML
     private Button Home1111;
     @FXML
-    private Button Home1;
+    private Button cnx;
     @FXML
-    private Button Home11111;
-    @FXML
-    private Button Home111111;
+    private Button insc;
 
     /**
      * Initializes the controller class.
      */
-    @Override
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
          ListerCategorie();
           categoriefx.setOnAction(e -> {
@@ -250,6 +245,13 @@ public class ProduitFront2Controller implements Initializable {
         prodfx.getScene().setRoot(root);
     }
 
-   
 
+    @FXML
+    private void connecter(ActionEvent event) {
+    }
+
+    @FXML
+    private void inscr(ActionEvent event) {
+    }
+    
 }

@@ -6,9 +6,11 @@
 package elbaldi.GUI;
 
 import elbaldi.models.produit;
+import elbaldi.services.ProduitCRUD;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,7 +68,7 @@ public class ProddetailsbackController implements Initializable {
     }    
 
     @FXML
-    private void modifier(ActionEvent event) throws IOException {
+    private void modifier(ActionEvent event) throws IOException, SQLException {
          FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("ModifierProduitBack.fxml"));
         Parent root = loader.load();
@@ -78,6 +80,8 @@ public class ProddetailsbackController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
+        ProduitCRUD sc=new ProduitCRUD();
+        setProduit(sc.getByRefProduit(produitt.getRef_produit()));
     }
 
     @FXML

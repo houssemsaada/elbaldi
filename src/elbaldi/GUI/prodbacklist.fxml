@@ -35,7 +35,7 @@
             <Font name="Arial Black" size="33.0" />
          </font>
       </Label>
-      <VBox alignment="TOP_CENTER" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
+      <VBox alignment="TOP_CENTER" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000">
          <children>
             <ImageView fitHeight="112.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                <image>

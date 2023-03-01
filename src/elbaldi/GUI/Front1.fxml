@@ -15,11 +15,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProduitFront2Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.Front1Controller">
    <children>
-      <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="1060.0" style="-fx-background-color: #ffff">
+      <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="1070.0" style="-fx-background-color: #ffff">
          <children>
             <ImageView fitHeight="449.0" fitWidth="798.0" layoutX="251.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
             <ScrollPane fx:id="scroll" layoutX="205.0" layoutY="113.0" prefHeight="469.0" prefWidth="853.0">
@@ -37,16 +36,6 @@
                   <Image url="@../../Ressources/Logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="913.0" layoutY="29.0" prefHeight="23.0" prefWidth="110.0" text="Mon Panier">
-               <font>
-                  <Font name="Arial Black" size="15.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="865.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Ressources/panier.png" />
-               </image>
-            </ImageView>
             <ComboBox fx:id="categoriefx" layoutX="853.0" layoutY="81.0" prefHeight="31.0" prefWidth="193.0" promptText="Categories Produits" />
             <Accordion layoutX="4.0" layoutY="221.0" />
             <HBox layoutX="561.0" layoutY="81.0" prefHeight="42.0" prefWidth="287.0">
@@ -58,23 +47,8 @@
                </children>
             </HBox>
             <TextField fx:id="searchField" layoutX="205.0" layoutY="71.0" />
-            <VBox layoutY="113.0" prefHeight="279.0" prefWidth="202.0">
+            <VBox layoutX="1.0" layoutY="123.0" prefHeight="135.0" prefWidth="202.0">
                <children>
-                  <Button fx:id="Home1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="205.0" stylesheets="@style.css" text="Profil" textFill="#e7e5e5">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Ressources/accueil.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="50.0" />
-                     </padding>
-                  </Button>
                   <Button fx:id="prodfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#produitsf" prefHeight="42.0" prefWidth="205.0" stylesheets="@style.css" text="Produits" textFill="#e7e5e5">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -120,38 +94,10 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="Home11111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="136.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="209.0" stylesheets="@style.css" text="Quiz" textFill="#e7e5e5">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Ressources/accueil.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="50.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="Home111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="178.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="210.0" stylesheets="@style.css" text="Déconnexion" textFill="#e7e5e5">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Ressources/accueil.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="50.0" />
-                     </padding>
-                  </Button>
                </children>
             </VBox>
+            <Button fx:id="cnx" layoutX="929.0" layoutY="9.0" mnemonicParsing="false" onAction="#connecter" prefHeight="41.0" prefWidth="114.0" stylesheets="@style.css" text="Se connecter" />
+            <Button fx:id="insc" layoutX="805.0" layoutY="9.0" mnemonicParsing="false" onAction="#inscr" prefHeight="41.0" prefWidth="114.0" stylesheets="@style.css" text="S'inscrire" />
          </children>
          <effect>
             <DropShadow color="#1b1eeb" />

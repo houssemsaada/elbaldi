@@ -78,9 +78,11 @@ public class ModifierProduitBackController implements Initializable {
 
     Upload u = new Upload();
     public static produit produitP;
-    private String  Refproduit;
+    private String Refproduit;
     @FXML
     private Button Modifierfx;
+    @FXML
+    private ImageView imgg;
 
     public String getRefProduitP() {
         return Refproduit;
@@ -90,41 +92,43 @@ public class ModifierProduitBackController implements Initializable {
         this.Refproduit = refpro;
     }
 
-     
     public void setProduit(produit p) {
-         produitP = p;
-        this.img.setAccessibleText(produitP.getImage());    
+        produitP = p;
+        this.img.setAccessibleText(produitP.getImage());
         this.prixfx.setText(produitP.getPrix_vente() + "");
         this.reffx.setText(produitP.getRef_produit());
         this.descriptionfx.setText(produitP.getDescription());
         this.libellefx.setText(produitP.getLibelle());
-        this.quantitefx.setText(produitP.getQuantite()+ "");
+        this.quantitefx.setText(produitP.getQuantite() + "");
         categoriefx.getSelectionModel().select(produitP.getCategoriee());
-//         String imagePath = "C:\\xampp\\htdocs\\images\\"+ produitP.getImage().toString();
-//       
-//        // Create an ImageView object
-//        ImageView imageView = new ImageView();
-//        // Create a File object with the path of your image
-//        File file = new File(imagePath);
-//       
-//        // Check if the file exists
-//        if (file.exists()) {
-//            // Create an Image object with the file path
-//            Image image = new Image(file.toURI().toString());
-//            // Set the image to the ImageView
-//            this.img.setImage(image);
-//        } else {
-//            System.out.println("Image not found.");
-//        }
-// 
-    }
+        
+         String imagePath = "C:\\xampp\\htdocs\\images\\"+ produitP.getImage().toString();
+       
+        // Create an ImageView object
+        ImageView imageView = new ImageView();
+        // Create a File object with the path of your image
+        File file = new File(imagePath);
+       
+        // Check if the file exists
+        if (file.exists()) {
+            // Create an Image object with the file path
+            
+            
+            Image image = new Image(file.toURI().toString());
+            // Set the image to the ImageView
+            this.imgg.setImage(image);
+        } else {
+            System.out.println("Image not found.");
+        }
  
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         ListerCategorie();
-  
-     insérer.setOnAction(new EventHandler<ActionEvent>() {
+
+        insérer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
@@ -135,11 +139,25 @@ public class ModifierProduitBackController implements Initializable {
                 selectedfile = fc.showOpenDialog(null);
                 if (selectedfile != null) {
                     try {
-                        resizeFile(selectedfile.getAbsolutePath(),"C:\\xampp\\htdocs\\images\\"+selectedfile.getName(),227,207);
-                        
+                        resizeFile(selectedfile.getAbsolutePath(), "C:\\xampp\\htdocs\\images\\" + selectedfile.getName(), 227, 207);
+
                         img.getItems().add(selectedfile.getName());
-                        
+
                         path_img = selectedfile.getAbsolutePath();
+                        File file = new File(path_img);
+
+                        // Check if the file exists
+                        if (file.exists()) {
+
+                            // Create an Image object with the file path
+                            Image image = new Image(file.toURI().toString());
+
+                            // Set the image to the ImageView
+                            imgg.setImage(image);
+                        } else {
+                            System.out.println("Image not found.");
+                        }
+
                     } catch (IOException ex) {
                         Logger.getLogger(AjouterProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -151,28 +169,27 @@ public class ModifierProduitBackController implements Initializable {
             }
 
         });
-       Modifierfx.setOnAction(new EventHandler<ActionEvent>() {
+        Modifierfx.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
 
                 ProduitCRUD produitcrud = new ProduitCRUD();
-                
+
                 int q = Integer.parseInt(quantitefx.getText());
                 float prixx = Float.parseFloat(prixfx.getText());
-                 
-               
-                 categorie c = categoriefx.getSelectionModel().getSelectedItem();
 
-                produit p = new produit(produitP.getRef_produit(), libellefx.getText(), descriptionfx.getText(),prixx,q,c);
-                       
+                categorie c = categoriefx.getSelectionModel().getSelectedItem();
+                String imgN = img.getItems().toString();
+                imgN = imgN.substring(1, imgN.length() - 1);
+                produit p = new produit(produitP.getRef_produit(), libellefx.getText(), descriptionfx.getText(), imgN, prixx, q, c);
+                System.out.println(img.getItems().toString());
                 if (!libellefx.getText().equalsIgnoreCase("")
                         && !descriptionfx.getText().equalsIgnoreCase("")
                         && !reffx.getText().equalsIgnoreCase("")
                         && Float.parseFloat(prixfx.getText()) > 0
-                        && Float.parseFloat(quantitefx.getText()) > 0
-                        ) {
-                    
+                        && Float.parseFloat(quantitefx.getText()) > 0) {
+
                     try {
 
                         produitcrud.modifierProduit(p);
@@ -180,14 +197,14 @@ public class ModifierProduitBackController implements Initializable {
                     } catch (SQLException ex) {
                         Logger.getLogger(ModifierProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                     Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
                     alert0.setTitle("information Dialog");
                     alert0.setHeaderText(null);
                     alert0.setContentText("Votre modification est enregistrée avec succes ");
                     alert0.show();
                     ((Node) event.getSource()).getScene().getWindow().hide();
-                
+
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Echec de la modification");
@@ -198,28 +215,29 @@ public class ModifierProduitBackController implements Initializable {
             }
 
         });
-    }    
+    }
 
     @FXML
     private void prefixe(MouseEvent event) {
     }
-     private void ListerCategorie() {
+
+    private void ListerCategorie() {
 
         CategorieCRUD categoriecrud = new CategorieCRUD();
         ObservableList<categorie> list = FXCollections.observableArrayList();
         try {
             String req = " select id_categorie,`nom_categorie`,`description` from `categorie`  ";
-            
-           Connection conn = MyConnection.getInstance().getConn();
 
-            PreparedStatement pst=conn.prepareStatement(req);
+            Connection conn = MyConnection.getInstance().getConn();
+
+            PreparedStatement pst = conn.prepareStatement(req);
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 categorie c = new categorie(rs.getInt(1), rs.getString(2), rs.getString(3));
                 list.add(c);
             }
-   
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -227,7 +245,8 @@ public class ModifierProduitBackController implements Initializable {
         categoriefx.setItems(null);
         categoriefx.setItems(list);
     }
-     public void resizeFile(String imagePathToRead,
+
+    public void resizeFile(String imagePathToRead,
             String imagePathToWrite, int resizeWidth, int resizeHeight)
             throws IOException {
 
@@ -247,10 +266,4 @@ public class ModifierProduitBackController implements Initializable {
         ImageIO.write(bufferedImageOutput, formatName, new File(imagePathToWrite));
     }
 
-   
-    
-
-    }    
-    
-    
-
+}
