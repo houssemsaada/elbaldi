@@ -82,6 +82,9 @@ public class commande {
     public void setTotal(panier p) {
         this.total = pan.getTotal_panier();
     }
+     public void setTotal2(float tot) {
+        this.total = tot;
+    }
 
     public void setEtat(String etat) {
         this.etat = etat;

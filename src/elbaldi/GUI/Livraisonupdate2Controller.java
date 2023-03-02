@@ -126,7 +126,7 @@ public class Livraisonupdate2Controller implements Initializable {
                     + "Valeur des produits :" + livrai.getC1().getTotal() + "TND \n"
                     + "Cordialement,\n"
                     + "L'équipe Elbaldi";
-                    sms.sendSms(phone, message);
+                   // sms.sendSms(phone, message);
                 }
 
             }

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -69,6 +70,29 @@
                   </RadialGradient>
                </textFill>
             </Button>
+            <Button fx:id="update2Btn" blendMode="SRC_ATOP" layoutX="549.0" layoutY="51.0" mnemonicParsing="false" onAction="#update2OnAction" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #a20812;" text="Modifier">
+               <textFill>
+                  <RadialGradient centerX="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <Text layoutX="261.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="veuillez modifier les détails de la commande" wrappingWidth="181.96409606933594">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <GridPane layoutX="426.0" layoutY="144.0" prefHeight="217.0" prefWidth="445.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
@@ -105,42 +129,215 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ImageView>
-            <Label prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Gestion commande" textFill="WHITE">
-               <font>
-                  <Font name="System Italic" size="22.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Pane prefHeight="417.0" prefWidth="214.0">
-               <children>
-                  <Button fx:id="update2Btn" blendMode="SRC_ATOP" layoutX="32.0" layoutY="179.0" mnemonicParsing="false" onAction="#update2OnAction" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #a20812;" text="Modifier">
-                     <textFill>
-                        <RadialGradient centerX="0.5" radius="0.5">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </RadialGradient>
-                     </textFill>
-                  </Button>
-                  <Text layoutX="16.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="veuillez modifier les détails de la commande" wrappingWidth="181.96409606933594">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
+            <ScrollPane prefHeight="518.0" prefWidth="214.0" style="-fx-background-color: #FFFFFF;">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="216.0" style="-fx-background-color: #FFFFFF; -fx-background-color: ;">
+                     <children>
+                        <Button fx:id="Home1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Accueil" textFill="#e7e5e5">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/accueil.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="categorie1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="43.0" mnemonicParsing="false" onAction="#catt" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Catégories">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/categorisation.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="produit1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="86.0" mnemonicParsing="false" onAction="#prodd" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Produits">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/colis.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="comm1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-27.0" layoutY="129.0" mnemonicParsing="false" onAction="#commandeinterf" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commandes">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/discuter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="172.0" mnemonicParsing="false" onAction="#livraisoninterf" prefHeight="41.0" prefWidth="256.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Livraisons">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="255.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="241.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Reservations">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout1111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="297.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Evenements">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout11111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-17.0" layoutY="339.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="241.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Participation">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout1111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="381.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Quiz">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout11111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="423.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Questions">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout111111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="465.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Utilisateur">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout11112" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="503.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Réclamation">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout11" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-19.0" layoutY="213.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="256.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Bon plans">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout111121" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-14.0" layoutY="543.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commentaires">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout1111211" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Avis">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btnSignout11112111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-12.0" layoutY="627.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Déconnexion">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
+      <Label layoutX="829.0" layoutY="25.0" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Gestion commande" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

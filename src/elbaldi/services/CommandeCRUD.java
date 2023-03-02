@@ -40,7 +40,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 ps.setInt(2, c.getPan().getId_panier());
                 ps.setString(3, c.getEtat());
                 ps.setDate(4, c.getDate_cmd());
-                ps.setFloat(5, c.getPan().getTotal_panier());
+                ps.setFloat(5, c.getTotal());
                 ps.setString(6, c.getAdresse());
                 ps.executeUpdate();
                 System.out.println("commande ajouté!!!");
@@ -53,7 +53,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                     String req = "INSERT INTO `commande` (`id_panier`, `total`,`adresse`) VALUES (?,?,?)";
                     PreparedStatement ps = conn.prepareStatement(req);
                     ps.setInt(1, c.getPan().getId_panier());
-                    ps.setFloat(2, c.getPan().getTotal_panier());
+                    ps.setFloat(2, c.getTotal());
                     ps.setString(3, c.getAdresse());
 
                     ps.executeUpdate();
@@ -68,7 +68,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                     ps.setInt(1, c.getPan().getId_panier());
                     ps.setString(2, c.getEtat());
                     ps.setDate(3, c.getDate_cmd());
-                    ps.setFloat(4, c.getPan().getTotal_panier());
+                    ps.setFloat(4, c.getTotal());
                     ps.setString(5, c.getAdresse());
                     ps.executeUpdate();
                     System.out.println("commande ajouté!!!");
@@ -128,7 +128,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = RS.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-                c.setTotal(pan);
+                c.setTotal2(RS.getFloat(5));
                 list.add(c);
             }
 
@@ -158,7 +158,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = RS.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-                c.setTotal(pan);
+                c.setTotal2(RS.getFloat(5));
                 c.setAdresse(RS.getString(6));
                 commandes.add(c);
             }
@@ -186,7 +186,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = RS.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-                c.setTotal(pan);
+                c.setTotal2(RS.getFloat(5));
                 c.setAdresse(RS.getString(6));
 
             }
@@ -213,7 +213,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = rs.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-                c.setTotal(pan);
+                c.setTotal2(rs.getFloat(5));
                 c.setAdresse(rs.getString(6));
 
                 commandes.add(c);
@@ -242,7 +242,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = rs.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-                c.setTotal(pan);
+                c.setTotal2(rs.getFloat(5));
                 c.setAdresse(rs.getString(6));
 
                 commandes.add(c);
@@ -271,7 +271,7 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 int pan_id = rs.getInt(2);
                 panier pan = pc.filtreByidPanier(pan_id);
                 c.setPan(pan);
-                c.setTotal(pan);
+                c.setTotal2(rs.getFloat(5));
                 c.setAdresse(rs.getString(6));
 
             }

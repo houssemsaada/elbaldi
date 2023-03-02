@@ -37,8 +37,6 @@ import javafx.scene.layout.HBox;
 public class LivraisoninterfaceController implements Initializable {
 
     @FXML
-    private Button addBtn;
-    @FXML
     private Button updBtn;
     @FXML
     private Button delBtn;
@@ -52,6 +50,38 @@ public class LivraisoninterfaceController implements Initializable {
     ObservableList<livraison> livraisonObservableList = FXCollections.observableArrayList();
     @FXML
     private ListView<livraison> ListView;
+    @FXML
+    private Button Home1;
+    @FXML
+    private Button categorie1;
+    @FXML
+    private Button produit1;
+    @FXML
+    private Button comm1;
+    @FXML
+    private Button btnSignout1;
+    @FXML
+    private Button btnSignout111;
+    @FXML
+    private Button btnSignout1111;
+    @FXML
+    private Button btnSignout11111;
+    @FXML
+    private Button btnSignout1111111;
+    @FXML
+    private Button btnSignout11111111;
+    @FXML
+    private Button btnSignout111111111;
+    @FXML
+    private Button btnSignout11112;
+    @FXML
+    private Button btnSignout11;
+    @FXML
+    private Button btnSignout111121;
+    @FXML
+    private Button btnSignout1111211;
+    @FXML
+    private Button btnSignout11112111;
 
     /**
      * Initializes the controller class.
@@ -119,7 +149,6 @@ public class LivraisoninterfaceController implements Initializable {
         ListView.setItems(livraisonObservableList);
     }
 
-    @FXML
     private void addBtnOnAction(ActionEvent event) {
         commandeGUI.changeScene(event, "livraisonajout.fxml", "Ajouter livraison");
     }
@@ -142,6 +171,22 @@ public class LivraisoninterfaceController implements Initializable {
     private void refreshOnAction(ActionEvent event) {
         refreshTable();
 
+    }
+
+    @FXML
+    private void catt(ActionEvent event) {
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    @FXML
+    private void commandeinterf(ActionEvent event) {
+    }
+
+    @FXML
+    private void livraisoninterf(ActionEvent event) {
     }
 
 }
