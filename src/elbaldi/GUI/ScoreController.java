@@ -60,9 +60,9 @@ public class ScoreController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    String qrCodeText = "";
+   
     
-    public void setscoree(float score) throws IOException, WriterException {
+    public void setscore(float score) throws IOException {
           
           this.score=score;       
           System.out.println(score);

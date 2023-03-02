@@ -48,6 +48,5 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="codeqr" fitHeight="119.0" fitWidth="135.0" layoutX="164.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

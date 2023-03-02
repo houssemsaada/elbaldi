@@ -150,7 +150,7 @@ public class JouerQuizController implements Initializable {
         ScoreController scoreController = loader.getController();
         float score = calculateScore(questions, reponsesUtilisateur);
      
-        scoreController.setscoree((float) score);
+        scoreController.setscore((float) score);
          
         Scene scene = new Scene(root);
         Stage stage = (Stage) fixsuivante.getScene().getWindow();
@@ -240,4 +240,3 @@ public float calculateScore(List<question> questions, List<String> userAnswers) 
 }
 }
 }
-
