@@ -46,6 +46,7 @@ public class quiz {
         this.imgview = imgview;
     }
 
+    
     public int getId_quiz() {
         return id_quiz;
     }

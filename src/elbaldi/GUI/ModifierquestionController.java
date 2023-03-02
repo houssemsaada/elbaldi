@@ -161,7 +161,7 @@ public class ModifierquestionController implements Initializable {
     private void goBack(ActionEvent event) {
            // Redirection vers BrouillonController
     // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("Questionback.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);

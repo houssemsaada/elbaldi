@@ -13,6 +13,28 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import elbaldi.GUI.JouerQuizController;
+import java.io.IOException;
+import java.util.Hashtable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -24,22 +46,58 @@ public class ScoreController implements Initializable {
     private float score;
     
     @FXML
-    private Text fxscore;
+    private Label fxscore;
+    @FXML
+    private Label reduction;
+    @FXML
+    private Label termine;
+    @FXML
+    private Label bravo;
+    @FXML
+    private Label codeqr;
+    @FXML
+    private Label echec;
     /**
      * Initializes the controller class.
      */
+    String qrCodeText = "";
     
-    
-    public void setscoree(float score) {
+    public void setscoree(float score) throws IOException, WriterException {
           
           this.score=score;       
           System.out.println(score);
-          float scorePercentage = score * 100;
-          System.out.println(scorePercentage + "%");
+          fxscore.setText(Float.toString(score));
+
+          fxscore.setText(String.format("%.0f%%", score));
+
+           if (score == 100.0) {
+               bravo.setText(" Bravo !");                 
+              termine.setText("Quiz terminé avec succés");
+              reduction.setText("Vous bénéficiez d'une réduction de 15%");
+              codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
+             
+          } else if (score >= 75.0 && score <= 99.99) {
+               bravo.setText(" Bravo !");                 
+              termine.setText("Quiz terminé avec succés");
+              reduction.setText("Vous bénéficiez d'une réduction de 10%");
+               codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
+              
+          } else if (score >= 0.45 && score <= 74.99) {
+              bravo.setText(" Bravo !");                 
+              termine.setText("Quiz terminé avec succés");
+              reduction.setText("Vous bénéficiez d'une réduction de 8%");
+              codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
+              
+          } else {
+            echec.setText("Désolé, vous n'avez pas réussi le quiz !!!"); 
+          }
+
+}
+
+           
+    
+    
           
-          fxscore.setText(String.valueOf(scorePercentage));
-       
-    }       
     
 
     @Override

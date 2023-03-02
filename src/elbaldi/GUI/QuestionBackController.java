@@ -131,7 +131,7 @@ public class QuestionBackController implements Initializable {
     @FXML
     private void ajouter(ActionEvent event) {
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterQuestion.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);

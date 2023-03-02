@@ -149,7 +149,9 @@ public class JouerQuizController implements Initializable {
         Parent root = loader.load();
         ScoreController scoreController = loader.getController();
         float score = calculateScore(questions, reponsesUtilisateur);
+     
         scoreController.setscoree((float) score);
+         
         Scene scene = new Scene(root);
         Stage stage = (Stage) fixsuivante.getScene().getWindow();
         stage.setScene(scene);
@@ -190,17 +192,19 @@ public class JouerQuizController implements Initializable {
 
 // Métier Calculer Score      
 public float calculateScore(List<question> questions, List<String> userAnswers) {
-    float score = 0.0f;
+    float scoree = 0.0f;
     for (int i = 0; i < questions.size(); i++) {
         question q = questions.get(i);
         String correctAnswer = q.getSolution();
         String userAnswer = userAnswers.get(i);
         if (correctAnswer.equals(userAnswer)) {
-            score += 1.0;
+            scoree += 1.0;
         }
+       
     }
-    return score ;
-}
+   float totalQuestions = questions.size();
+    float score = (scoree / totalQuestions) * 100.0f;
+    return score;}
 
 
 
