@@ -7,8 +7,13 @@ import elbaldi.interfaces.InterfaceCRUD;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
 import elbaldi.utils.MyConnection;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.paint.Color;
+import org.ini4j.Wini;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -144,9 +149,94 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
     return u;
     }
 
-    
-    
-    
+
+    public Utilisateur GetUserByMail(String mail, String password) {
+        Utilisateur user = null;
+        String pass = "";
+        Role role = null;
+        try {
+            String requete = "Select role,mdp, email from utilisateur where email = ?";
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setString(1, mail);
+            ResultSet rs;
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                pass = rs.getString("mdp");
+                role = Role.valueOf(rs.getString("role"));
+            }
+
+            if (BCrypt.checkpw(password, pass)) {
+
+                requete = "SELECT nom,prenom,email,dateDeNaissance,numTel,ville FROM utilisateur WHERE email like ?";
+                pst = conn.prepareStatement(requete);
+                pst.setString(1, mail);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    user = new Utilisateur(
+                            rs.getString("nom"),
+                            rs.getString("prenom"),
+                            mail,
+                            rs.getDate("dateDeNaissance"),
+                            rs.getInt("numTel"),
+                            rs.getString("ville"),
+                            pass,
+                            role
+                    );
+
+                }
+                System.out.println(user);
+
+            } else {
+                System.out.println("aaazzzzzz");
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        } catch (StringIndexOutOfBoundsException ex) {
+            /*Login_pageController lc = new Login_pageController();
+            new animatefx.animation.Shake(lc.getPasswordtxt()).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            lc.getPasswordtxt().setEffect(in);
+             */
+            return null;
+        }
+        return user;
+    }
+    public void createiniFile(String path, String user, String pass) {
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            Wini wini = new Wini(new File(path));
+            wini.put("Login data", "Email", user);
+            wini.put("Login data", "Password", pass);
+            wini.store();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void Deleteinfo(String path, String user, String pass) {
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            Wini wini = new Wini(new File(path));
+            wini.remove("Login data", "Email");
+            wini.remove("Login data", "Password");
+            wini.store();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
     @Override
     public List<Utilisateur> Filter_utilisateur(String S, String SS) {
         List<Utilisateur> list = new ArrayList<>();

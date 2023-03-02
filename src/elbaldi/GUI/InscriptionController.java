@@ -50,6 +50,10 @@ import static sun.security.jgss.GSSUtil.login;
  * @author mEtrOpOliS
  */
 public class InscriptionController implements Initializable {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     @FXML
     private DatePicker daten;
 
@@ -81,7 +85,7 @@ public class InscriptionController implements Initializable {
     void signup(ActionEvent event) {
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
         if (event.getSource() == signup) {
-            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt)) {
+            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt) &validateTel(numteltext)) {
 
                 user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
                         emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
@@ -91,10 +95,7 @@ public class InscriptionController implements Initializable {
             }
         }
     }
-    ObservableList<String> cbRoleList = FXCollections.observableArrayList("client","admin");
 
-
-  
      UtilisateurCRUD cRUD = new UtilisateurCRUD();
     private Button btnValider;
     private Utilisateur user;
@@ -128,7 +129,13 @@ public class InscriptionController implements Initializable {
     }
 
     @FXML
-    private void redirect_login(ActionEvent event) {
+    private void redirect_login(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Login.fxml")));
+        stage.setScene(scene);
+        stage.show();
     }
 
 
@@ -146,23 +153,6 @@ public class InscriptionController implements Initializable {
         } else {
             name.setEffect(null);
             return true;
-        }
-    }
-
-    private boolean validateCin(TextField cin) {
-        Pattern p = Pattern.compile("^\\d{8}$");
-        Matcher m = p.matcher(cin.getText());
-
-        if ((cin.getText().length() == 8)
-                || (m.find() && m.group().equals(cin.getText()))) {
-            cin.setEffect(null);
-            return true;
-        } else {
-            new animatefx.animation.Shake(cin).play();
-            InnerShadow in = new InnerShadow();
-            in.setColor(Color.web("#f80000"));
-            cin.setEffect(in);
-            return false;
         }
     }
 
