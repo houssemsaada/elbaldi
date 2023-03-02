@@ -5,14 +5,44 @@
  */
 package elbaldi.GUI;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import elbaldi.models.Role;
+import elbaldi.models.Utilisateur;
+import elbaldi.services.UtilisateurCRUD;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import static sun.security.jgss.GSSUtil.login;
 
 /**
  * FXML Controller class
@@ -20,36 +50,172 @@ import javafx.scene.control.TextField;
  * @author mEtrOpOliS
  */
 public class InscriptionController implements Initializable {
+    @FXML
+    private DatePicker daten;
 
     @FXML
-    private TextField tfNom;
+    private TextField emailtext;
+
     @FXML
-    private TextField tfPrenom;
+    private TextField nomtext;
+
     @FXML
-    private TextField tfEmail;
+    private TextField numteltext;
+
     @FXML
-    private TextField tfNumTel;
+    private TextField passwordtxt;
+
     @FXML
-    private DatePicker tfDateNaissance;
+    private TextField prenomtext;
+
     @FXML
-    private TextField tfVille;
+    private Button signup;
+
     @FXML
-    private TextField tfLogin;
+    private TextField usernametxt;
+
     @FXML
-    private TextField tfMdp;
+    private TextField villetext;
+
     @FXML
+    void signup(ActionEvent event) {
+        java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
+        if (event.getSource() == signup) {
+            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt)) {
+
+                user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
+                        emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
+                        Role.client);
+                cRUD.ajouterUtlisateur(user);
+
+            }
+        }
+    }
+    ObservableList<String> cbRoleList = FXCollections.observableArrayList("client","admin");
+
+
+  
+     UtilisateurCRUD cRUD = new UtilisateurCRUD();
     private Button btnValider;
+    private Utilisateur user;
 
     /**
      * Initializes the controller class.
+    
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+  
+    }
 
     @FXML
-    private void saveUser(ActionEvent event) {
+    private void mini(MouseEvent event) {
+        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        s.setIconified(true);
     }
+
+    @FXML
+    private void max(MouseEvent event) {
+        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        s.setFullScreen(true);
+    }
+
+    @FXML
+    private void close(javafx.scene.input.MouseEvent event) {
+        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        s.close();
+
+    }
+
+    @FXML
+    private void redirect_login(ActionEvent event) {
+    }
+
+
     
+    private boolean validatenGuest_Name(TextField name) {
+        Pattern p = Pattern.compile("[a-zA-Z0-9_]+");
+        Matcher m = p.matcher(name.getText());
+        if ((name.getText().length() == 0)
+                || (!m.find() && m.group().equals(name.getText()))) {
+            new animatefx.animation.Shake(name).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            name.setEffect(in);
+            return false;
+        } else {
+            name.setEffect(null);
+            return true;
+        }
+    }
+
+    private boolean validateCin(TextField cin) {
+        Pattern p = Pattern.compile("^\\d{8}$");
+        Matcher m = p.matcher(cin.getText());
+
+        if ((cin.getText().length() == 8)
+                || (m.find() && m.group().equals(cin.getText()))) {
+            cin.setEffect(null);
+            return true;
+        } else {
+            new animatefx.animation.Shake(cin).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            cin.setEffect(in);
+            return false;
+        }
+    }
+
+    private boolean validateTel(TextField tel) {
+        Pattern p = Pattern.compile("^\\d{8}$");
+        Matcher m = p.matcher(tel.getText());
+
+        if ((tel.getText().length() == 8)
+                || (m.find() && m.group().equals(tel.getText()))) {
+            tel.setEffect(null);
+            return true;
+        } else {
+            new animatefx.animation.Shake(tel).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            tel.setEffect(in);
+            return false;
+        }
+    }
+
+    private boolean validatenGuest_Email(TextField email) {
+
+        Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher m = p.matcher(email.getText());
+        if (((email.getText().length() > 8))
+                && (m.find() && m.group().equals(email.getText()))) {
+            email.setEffect(null);
+            return true;
+        } else {
+            new animatefx.animation.Shake(email).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            email.setEffect(in);
+            return false;
+        }
+
+    }
+
+    private boolean validatenGuest_Password(TextField password) {
+
+        Pattern p = Pattern.compile("[a-zA-Z_0-9]+");
+        Matcher m = p.matcher(password.getText());
+        if (((password.getText().length() > 7))
+                && (m.find() && m.group().equals(password.getText()))) {
+            password.setEffect(null);
+            return true;
+        } else {
+            new animatefx.animation.Shake(password).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            password.setEffect(in);
+            return false;
+        }
+
+    }
 }

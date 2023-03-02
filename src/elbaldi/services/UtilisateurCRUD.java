@@ -7,7 +7,11 @@ import elbaldi.interfaces.InterfaceCRUD;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
 import elbaldi.utils.MyConnection;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,31 +21,51 @@ import java.util.List;
 
 
 
+public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
 
-public class UtilisateurCRUD implements InterfaceCRUD{
-    Statement ste;
-    Connection conn = MyConnection.getInstance().getConn();
+    private Connection conn;
+    private PreparedStatement pst;
+    private Statement ste;
 
+    public UtilisateurCRUD() {
+        conn = MyConnection.getInstance().getConn();
+
+    }
     @Override
-    public void ajouterUtlisateur(Utilisateur u){
-        try {
-            String req ="INSERT INTO `utilisateur`(`nom`, `prenom`, `email`, `dateDeNaissance`, `numTel`, `ville`, `login`, `mdp`, `role`) VALUES ('"+u.getNom()+"','"+u.getPrenom()+"','"+u.getEmail()+"','"+u.getDateNaissance()+"','"+u.getNumTel()+"','"+u.getVille()+"','"+u.getLogin()+"','"+u.getMdp()+"','"+u.getRole()+"')";
-            ste = conn.createStatement();
-            ste.executeUpdate(req);
-            System.out.println("Utilisateur ajouté!!!");
-        } catch (SQLException ex) {
-            System.out.println("Utilisateur non ajouté");
-                      }
- }
+    public boolean ajouterUtlisateur(Utilisateur user) {
+        Statement stmt;
 
-   
-    
-    
+        try {
+            String requete = "INSERT INTO `utilisateur` (`nom`,`prenom`,`email`,`dateDeNaissance`,`numTel`,`ville`,`mdp`,`role`) VALUES (?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setString(1, user.getNom());
+            pst.setString(2, user.getPrenom());
+            pst.setString(3, user.getEmail());
+            pst.setDate(4, user.getDateNaissance());
+            pst.setInt(5, user.getNumTel());
+            pst.setString(6, user.getVille());
+            pst.setString(7, BCrypt.hashpw(user.getMdp(), BCrypt.gensalt() ));
+            pst.setString(8, user.getRole().toString());
+
+            if (pst.executeUpdate() > 0) {
+                System.out.println("You have registered successfully.");
+                return true;
+            } else {
+                System.out.println("Something went wrong.");
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
 
     @Override
     public void modifierUtilisateur(Utilisateur u ,int id_user) {{
         try {
-            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() +"',`email` = '" + u.getEmail()+ "',`dateDeNaissance` = '" + u.getDateNaissance()+ "',`numTel` = '" + u.getNumTel()+ "',`ville` = '" + u.getVille()+ "',`login` = '" + u.getLogin()+ "',`mdp` = '" + u.getMdp()+ "',`role` = '" + u.getRole()+ "' WHERE `id_user` = " + id_user;
+            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() +"',`email` = '" + u.getEmail()+ "',`dateDeNaissance` = '" + u.getDateNaissance()+ "',`numTel` = '" + u.getNumTel()+ "',`ville` = '" + u.getVille()+ "',`login` = '" + "',`mdp` = '" + u.getMdp()+ "',`role` = '" + u.getRole()+ "' WHERE `id_user` = " + id_user;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur updated !");
@@ -70,10 +94,9 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setNom(RS.getString(2));
              u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
-               u.setDateNaissance(RS.getString(5));
+               u.setDateNaissance(RS.getDate(5));
                 u.setNumTel(RS.getInt(6));
                  u.setVille(RS.getString(7));
-                  u.setLogin(RS.getString(8));
                    u.setMdp(RS.getString(9));
                     u.setRole(Role.valueOf(RS.getString(10)));
              list.add(u);
@@ -111,12 +134,11 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setNom(RS.getString(2));
               u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
-               u.setDateNaissance(RS.getString(5));
+               u.setDateNaissance(RS.getDate(5));
                 u.setNumTel(RS.getInt(6));
                  u.setVille(RS.getString(7));
-                  u.setLogin(RS.getString(8));
-                   u.setMdp(RS.getString(9));
-                    u.setRole(Role.valueOf(RS.getString(10)));
+                   u.setMdp(RS.getString(8));
+                    u.setRole(Role.valueOf(RS.getString(9)));
             
         }
     return u;
@@ -140,12 +162,11 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setNom(RS.getString(2));
               u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
-               u.setDateNaissance(RS.getString(5));
+               u.setDateNaissance(RS.getDate(5));
                 u.setNumTel(RS.getInt(6));
                  u.setVille(RS.getString(7));
-                  u.setLogin(RS.getString(8));
-                   u.setMdp(RS.getString(9));
-                    u.setRole(Role.valueOf(RS.getString(10)));
+                   u.setMdp(RS.getString(8));
+                    u.setRole(Role.valueOf(RS.getString(9)));
                 
 
                     list.add(u);
@@ -160,12 +181,11 @@ public class UtilisateurCRUD implements InterfaceCRUD{
               u.setNom(RS.getString(2));
               u.setPrenom(RS.getString(3));
               u.setEmail(RS.getString(4));
-               u.setDateNaissance(RS.getString(5));
+               u.setDateNaissance(RS.getDate(5));
                 u.setNumTel(RS.getInt(6));
                  u.setVille(RS.getString(7));
-                  u.setLogin(RS.getString(8));
-                   u.setMdp(RS.getString(9));
-                    u.setRole(Role.valueOf(RS.getString(10)));
+                   u.setMdp(RS.getString(8));
+                    u.setRole(Role.valueOf(RS.getString(9)));
                     list.add(u);
                 }
             }

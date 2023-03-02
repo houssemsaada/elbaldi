@@ -22,7 +22,7 @@ public interface InterfaceCRUD  <T>{
     
    public List<Utilisateur> Filter_utilisateur(String S, String SS);
    public Utilisateur getUserByID(int id_user ) throws SQLException;
-    public void ajouterUtlisateur(Utilisateur u);
+    public boolean ajouterUtlisateur(Utilisateur u);
     void supprimerUtilisateur(int id_user);
     void modifierUtilisateur(Utilisateur u,int id_user);
     List<Utilisateur> afficherUtilisateur();
