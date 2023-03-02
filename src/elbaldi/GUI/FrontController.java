@@ -46,6 +46,38 @@ public class FrontController implements Initializable {
     private GridPane gridfx;
     @FXML
     private Button ajoutfx;
+    @FXML
+    private Button Home1;
+    @FXML
+    private Button categorie1;
+    @FXML
+    private Button produit1;
+    @FXML
+    private Button comm1;
+    @FXML
+    private Button btnSignout1;
+    @FXML
+    private Button btnSignout111;
+    @FXML
+    private Button btnSignout1111;
+    @FXML
+    private Button btnSignout11111;
+    @FXML
+    private Button btnSignout1111111;
+    @FXML
+    private Button btnSignout11111111;
+    @FXML
+    private Button btnSignout111111111;
+    @FXML
+    private Button btnSignout11112;
+    @FXML
+    private Button btnSignout11;
+    @FXML
+    private Button btnSignout111121;
+    @FXML
+    private Button btnSignout1111211;
+    @FXML
+    private Button btnSignout11112111;
 
     /**
      * Initializes the controller class.
@@ -113,6 +145,18 @@ public class FrontController implements Initializable {
     @FXML
     private void se(MouseEvent event) {
         
+    }
+
+    @FXML
+    private void catt(ActionEvent event) {
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    @FXML
+    private void commen(ActionEvent event) {
     }
 
    

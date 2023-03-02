@@ -6,6 +6,7 @@
 package elbaldi.services;
 
 import elbaldi.interfaces.InterfaceCRUDpromotion;
+import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
@@ -25,15 +26,15 @@ public class PromotionCRUD implements InterfaceCRUDpromotion {
    
      @Override
      public void ajouterpromotion(promotion p) {
-          if (p.isValid()){
+        
     try { 
-        String req = "INSERT INTO `promotion`(`code_promo`, `taux`, `date_debut`, `date_fin`) VALUES (?,?,?,?)" ;
+        String req = "INSERT INTO `promotion`(`code_promo`, `taux`,`id_user`) VALUES (?,?,?)" ;
         PreparedStatement ps = conn.prepareStatement(req); 
         
         ps.setString(1, p.getCode_promo());
         ps.setFloat(2, p.getTaux());
-        ps.setDate(3, p.getDate_debut());
-        ps.setDate(4,p.getDate_fin());
+        ps.setInt(3, p.getU().getid_user());
+        
             
         ps.executeUpdate();
             
@@ -41,15 +42,12 @@ public class PromotionCRUD implements InterfaceCRUDpromotion {
     } catch (SQLException ex) {
         System.out.println("Promotion non ajoutée");  
     }
-    } else {
-             System.out.println(" la date de début doit être antérieure à la date de fin");
-    
-          }}
+   }
           
   
      @Override
 public void modifierpromotion(promotion p) {
-    if (p.isValid()){
+    
     try {
       
        String req = "UPDATE `promotion` SET `code_promo` = ?, `taux` = ?, `date_debut` = ?, `date_fin` = ?  WHERE `id_promotion` = ?";
@@ -57,17 +55,13 @@ public void modifierpromotion(promotion p) {
        PreparedStatement ps = conn.prepareStatement(req);
         ps.setString(1, p.getCode_promo());
         ps.setFloat(2, p.getTaux());
-        ps.setDate(3,(p.getDate_debut()));
-        ps.setDate(4,(p.getDate_fin()));
         ps.setInt(5, p.getId_promotion());
         ps.executeUpdate();
         System.out.println("promotion modifiée !");
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
-}else {
-             System.out.println(" la date de début doit être antérieure à la date de fin");
-} }
+ }
 
 
 
@@ -97,8 +91,7 @@ public void modifierpromotion(promotion p) {
          p.setId_promotion(RS.getInt("id_promotion"));
          p.setCode_promo(RS.getString(2));
          p.setTaux(RS.getFloat("taux"));
-        p.setDate_debut(RS.getDate("date_debut"));
-          p.setDate_fin(RS.getDate("date_fin"));
+      
          
          
          listpromotion.add(p);
@@ -123,8 +116,7 @@ public void modifierpromotion(promotion p) {
             p.setId_promotion(rs.getInt("id_promotion"));
             p.setCode_promo(rs.getString("code_promo"));
             p.setTaux(rs.getFloat("taux"));
-            p.setDate_debut(rs.getDate("date_debut"));
-             p.setDate_fin(rs.getDate("date_fin"));
+           
             
         }
     } catch (SQLException ex) {
@@ -148,8 +140,7 @@ public void modifierpromotion(promotion p) {
            
             p.setCode_promo(rs.getString("code_promo"));
             p.setTaux(rs.getFloat("taux"));
-            p.setDate_debut(rs.getDate("date_debut"));
-            p.setDate_fin(rs.getDate("date_fin"));
+     
             
             list.add(p);
         }

@@ -13,7 +13,7 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="termine" layoutX="67.0" layoutY="227.0" prefHeight="27.0" prefWidth="382.0">
+      <Label fx:id="termine" layoutX="86.0" layoutY="227.0" prefHeight="27.0" prefWidth="382.0">
          <font>
             <Font name="Cambria Bold" size="22.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="codeqr" layoutX="15.0" layoutY="318.0">
+      <Label fx:id="codeqr" layoutX="40.0" layoutY="318.0" prefHeight="28.0" prefWidth="456.0">
          <font>
             <Font name="Cambria Bold Italic" size="23.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font name="Cambria Bold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="echec" layoutX="23.0" layoutY="280.0" prefHeight="30.0" prefWidth="480.0">
+      <Label fx:id="echec" layoutX="9.0" layoutY="280.0" prefHeight="30.0" prefWidth="480.0">
          <font>
             <Font name="Cambria Bold" size="24.0" />
          </font>

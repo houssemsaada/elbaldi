@@ -5,6 +5,7 @@
  */
 package elbaldi.interfaces;
 
+import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
 import java.util.List;
 

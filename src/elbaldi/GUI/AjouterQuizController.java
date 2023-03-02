@@ -27,7 +27,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -74,7 +76,7 @@ public class AjouterQuizController implements Initializable {
          String difficulte = fxdifficulte.getValue(); 
     // String difficulte = fxdifficulte.getText();
      String nom = fxnom.getText();
-    String img = imgfx.getText();
+     String img = imgfx.getText();
   
     
     

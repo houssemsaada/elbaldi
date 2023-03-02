@@ -6,8 +6,12 @@
             <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/FirstWindow.java</file>
             <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ScoreController.java</file>
             <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ClientController.java</file>
-            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/EncodeHintType.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ItemQuizController.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/interfaces/InterfaceCRUDpromotion.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/promotion.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/PromotionCRUD.java</file>
             <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/JouerQuizController.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/Modifierpromotion.java</file>
         </group>
     </open-files>
 </project-private>

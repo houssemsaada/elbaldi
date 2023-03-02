@@ -38,8 +38,8 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="imgfx" layoutX="203.0" layoutY="233.0" prefHeight="103.0" prefWidth="149.0" />
             <ComboBox fx:id="fxdifficulte" layoutX="203.0" layoutY="187.0" prefWidth="150.0" />
+            <TextField fx:id="imgfx" layoutX="204.0" layoutY="277.0" />
          </children>
       </AnchorPane>
    </children>
