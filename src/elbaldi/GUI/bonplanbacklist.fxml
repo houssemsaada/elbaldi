@@ -4,37 +4,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="657.0" prefWidth="832.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AfficherReservationBackController">
+<AnchorPane id="AnchorPane" prefHeight="665.0" prefWidth="1028.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BonplanbacklistController">
    <children>
-      <Label layoutX="317.0" layoutY="40.0" prefHeight="54.0" prefWidth="521.0" stylesheets="@style.css" text="Afficher la liste des  Réservations" textFill="#a20812">
+      <ScrollPane fx:id="scroll" layoutX="275.0" layoutY="111.0" prefHeight="470.0" prefWidth="751.0">
+         <content>
+            <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="ajoutfx" layoutX="921.0" layoutY="24.0" mnemonicParsing="false" onAction="#ajouter" text="ajouter bonplan" />
+      <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="885.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Downloads/elbaldi-selim/elbaldi-selim/src/Ressource/ajouter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="showC" layoutX="941.0" layoutY="60.0" mnemonicParsing="false" onAction="#refresh" prefHeight="23.0" prefWidth="100.0" text="Rafraîchir" />
+      <Label layoutX="291.0" layoutY="32.0" prefHeight="53.0" prefWidth="353.0" text="Gestion bonplan" textFill="#a20812">
          <font>
-            <Font size="33.0" />
+            <Font name="Arial Black" size="33.0" />
          </font>
       </Label>
-      <Button fx:id="confirmer" layoutX="317.0" layoutY="506.0" mnemonicParsing="false" onAction="#boutonConfirmer" prefHeight="31.0" prefWidth="200.0" text="Confirmer" />
-      <Button fx:id="refuser" layoutX="614.0" layoutY="506.0" mnemonicParsing="false" onAction="#boutonRefuser" prefHeight="31.0" prefWidth="200.0" text="Refuser" />
-      <TableView fx:id="TableView" layoutX="286.0" layoutY="198.0" prefHeight="262.0" prefWidth="629.0">
-         <columns>
-            <TableColumn fx:id="nombre" prefWidth="70.39996337890625" text="nombre" />
-            <TableColumn fx:id="statut" prefWidth="131.20001220703125" text="statut" />
-            <TableColumn fx:id="date" prefWidth="127.19998168945312" text="date" />
-            <TableColumn fx:id="nom" prefWidth="149.5999755859375" text="nom" />
-            <TableColumn fx:id="lieu" prefWidth="149.5999755859375" text="lieu" />
-         </columns>
-      </TableView>
-      <TextField fx:id="searchTextField" layoutX="317.0" layoutY="164.0" />
-      <Text layoutX="477.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" />
-      <VBox alignment="TOP_CENTER" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;" stylesheets="@style.css">
+      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="9.0" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="112.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -63,7 +64,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="categorie1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-21.0" layoutY="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Catégories">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-21.0" layoutY="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Catégories">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -75,7 +76,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="produit1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-22.0" layoutY="86.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Produits">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-22.0" layoutY="86.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Produits">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -87,7 +88,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="comm1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commandes">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commandes">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -111,7 +112,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="res" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="255.0" mnemonicParsing="false" onAction="#rs" prefHeight="41.0" prefWidth="241.0" text="Reservations">
+                        <Button fx:id="rs" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="255.0" mnemonicParsing="false" onAction="#rsss" prefHeight="41.0" prefWidth="241.0" text="Reservations">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -195,7 +196,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="bpp" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-19.0" layoutY="213.0" mnemonicParsing="false" onAction="#bp" prefHeight="41.0" prefWidth="256.0" text="Bon plans">
+                        <Button fx:id="bonp" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-19.0" layoutY="213.0" mnemonicParsing="false" onAction="#bppp" prefHeight="41.0" prefWidth="256.0" text="Bon plans">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -219,7 +220,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="aviss" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" onAction="#avis" prefHeight="41.0" prefWidth="240.0" text="Avis">
+                        <Button fx:id="avis" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" onAction="#avisss" prefHeight="41.0" prefWidth="240.0" text="Avis">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -249,10 +250,5 @@
             </ScrollPane>
          </children>
       </VBox>
-      <ImageView fx:id="datetrie" fitHeight="31.0" fitWidth="35.0" layoutX="873.0" layoutY="163.0" onMouseClicked="#datedec" onMousePressed="#datecroi" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../ressources/datee.PNG" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="258.0" prefWidth="171.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="elbaldi.GUI.ItembpFrontController">
+   <children>
+      <ImageView fx:id="imagefx" fitHeight="207.0" fitWidth="227.0" layoutX="-10.0" onMouseClicked="#details" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/le28/elbaldi/src/Ressources/Logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="titrebp" layoutX="52.0" layoutY="212.0" prefHeight="51.0" prefWidth="120.0" text="titre bonplan">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

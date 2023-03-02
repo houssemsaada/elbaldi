@@ -47,12 +47,13 @@ public class ReservationCrud implements InterfaceReservationCrud {
     @Override
     public void modifierReservation(Reservation R) {
         try {
-            String req = "UPDATE `Reservation` SET `nombre_personnes` = '" + R.getNombre_personnes() + "', `date_reservation` = '" + R.getDate_reservation() +  "', `statut_reservation` = '" + R.getStatut_reservation() + "', `id_bonplan` = '" + R.getBonplan2() + "', `id_user` = '" + R.getUser2() + "' WHERE `Reservation`.`id_reservation` = " + R.getId_reservation();
+            String req = "UPDATE `Reservation` SET `nombre_personnes` = '" + R.getNombre_personnes() + "', `date_reservation` = '" + R.getDate_reservation() +  "', `statut_reservation` = '" + R.getStatut_reservation() + "', `id_bonplan` = '" + R.getBonplan2().getId_bonplan() + "', `id_user` = '" + R.getUser2().getid_user() + "' WHERE `Reservation`.`id_reservation` = " + R.getId_reservation();
             Statement st = connection.createStatement();
+            System.out.println(req);
             st.executeUpdate(req);
             System.out.println("Reservation updated !");
         } catch (SQLException ex) {
-            System.out.println("Reservation non updated !");
+            System.out.println(ex);
         }
     }
     
@@ -60,6 +61,8 @@ public class ReservationCrud implements InterfaceReservationCrud {
      @Override
     public List<Reservation> afficherReservation() {
        List<Reservation> list = new ArrayList<>();
+       BonplanCrud bp=new BonplanCrud();
+       UtilisateurCRUD user=new UtilisateurCRUD();
         try {
             String req = "Select * from Reservation";
             Statement st = connection.createStatement();
@@ -71,6 +74,9 @@ public class ReservationCrud implements InterfaceReservationCrud {
              R.setNombre_personnes(RS.getInt("nombre_personnes"));
              R.setDate_reservation(RS.getDate("date_reservation"));
              R.setStatut_reservation(RS.getString("statut_reservation"));
+             R.setBonplan2(bp.getByIdBonplan(RS.getInt("id_bonplan")));
+             R.setUser2(user.getUserByID(RS.getInt("id_user")));
+             
             
              list.add(R);
             }
@@ -142,6 +148,60 @@ public class ReservationCrud implements InterfaceReservationCrud {
     }
     return reservations;
 }
+    
+     public List<Reservation> triepardatedecr() {
+       List<Reservation> list = new ArrayList<>();
+       BonplanCrud bp=new BonplanCrud();
+       UtilisateurCRUD user=new UtilisateurCRUD();
+        try {
+            String req = "Select * from Reservation order by `date_reservation` desc";
+            Statement st = connection.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Reservation R = new Reservation();
+             R.setId_reservation(RS.getInt("id_reservation"));
+             R.setNombre_personnes(RS.getInt("nombre_personnes"));
+             R.setDate_reservation(RS.getDate("date_reservation"));
+             R.setStatut_reservation(RS.getString("statut_reservation"));
+             R.setBonplan2(bp.getByIdBonplan(RS.getInt("id_bonplan")));
+             R.setUser2(user.getUserByID(RS.getInt("id_user")));
+             
+            
+             list.add(R);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
 
+        return list;
+    }
+  public List<Reservation> triepardatecrois() {
+       List<Reservation> list = new ArrayList<>();
+       BonplanCrud bp=new BonplanCrud();
+       UtilisateurCRUD user=new UtilisateurCRUD();
+        try {
+            String req = "Select * from Reservation order by `date_reservation` asc";
+            Statement st = connection.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Reservation R = new Reservation();
+             R.setId_reservation(RS.getInt("id_reservation"));
+             R.setNombre_personnes(RS.getInt("nombre_personnes"));
+             R.setDate_reservation(RS.getDate("date_reservation"));
+             R.setStatut_reservation(RS.getString("statut_reservation"));
+             R.setBonplan2(bp.getByIdBonplan(RS.getInt("id_bonplan")));
+             R.setUser2(user.getUserByID(RS.getInt("id_user")));
+             
+            
+             list.add(R);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
     
 }

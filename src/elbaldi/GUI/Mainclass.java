@@ -29,12 +29,29 @@ public class Mainclass extends Application {
        
         Parent root;
         try {
-           //root=FXMLLoader.load(getClass().getResource("AfficherReservationBack.fxml"));
-                    root=FXMLLoader.load(getClass().getResource("AfficherBonplan.fxml"));
+//root=FXMLLoader.load(getClass().getResource("AfficherReservationBack.fxml"));
+                 // root=FXMLLoader.load(getClass().getResource("BonPlanFront.fxml"));
+          // root=FXMLLoader.load(getClass().getResource("AfficherBonplan.fxml"));
 
+          //   root=FXMLLoader.load(getClass().getResource("Avisback.fxml"));
+            //root=FXMLLoader.load(getClass().getResource("AvisbackController.fxml"));
+          // root=FXMLLoader.load(getClass().getResource("BpFront.fxml"));
+             //root=FXMLLoader.load(getClass().getResource("BonPlanFront.fxml"));
+             // root=FXMLLoader.load(getClass().getResource("AjouReservationFront1.fxml"));
+           // root=FXMLLoader.load(getClass().getResource("bonplanbacklist.fxml"));
+             
+             
+             
+             
+             
+             
+              root=FXMLLoader.load(getClass().getResource("BpFront.fxml"));
+             
+             //root=FXMLLoader.load(getClass().getResource("Bonplanbacklist.fxml"));
+             
              Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Affichage des bonplans");
+        primaryStage.setTitle("Application Elbaldi");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {

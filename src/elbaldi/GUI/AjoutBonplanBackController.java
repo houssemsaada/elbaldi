@@ -8,6 +8,10 @@ package elbaldi.GUI;
 import elbaldi.models.Upload2;
 import elbaldi.models.bonplan;
 import elbaldi.services.BonplanCrud;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -24,11 +28,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -55,14 +62,19 @@ public class AjoutBonplanBackController implements Initializable {
     private Button annuler;
     @FXML
     private Button ajouterBTN;
-    @FXML
     private TextField typeF;
+    @FXML
+    private AnchorPane typ;
+    @FXML
+    private ComboBox<String> typeFx;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        typeFx.getItems().add("restaurant");
+        typeFx.getItems().add("Hotel");
         // TODO
 
 //        Ajout.setOnAction(new EventHandler<ActionEvent>() {
@@ -133,7 +145,7 @@ public class AjoutBonplanBackController implements Initializable {
                
             String Description_bonplan = descriptionBP.getText();
                 
-            String type = typeF.getText();
+            String type = typeFx.getSelectionModel().getSelectedItem().toString();
                 
             if (selectedfile != null) {
                 String file = selectedfile.getName();
@@ -152,6 +164,7 @@ public class AjoutBonplanBackController implements Initializable {
             alert0.setHeaderText(null);
             alert0.setContentText("Ajout avec succes ");
             alert0.show();
+            ((Node) event.getSource()).getScene().getWindow().hide();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause(); }
@@ -168,7 +181,7 @@ public class AjoutBonplanBackController implements Initializable {
     }
 
     @FXML
-        private void insererOnClick(ActionEvent event) {
+        private void insererOnClick(ActionEvent event) throws IOException {
        
 
                 FileChooser fc = new FileChooser();
@@ -177,13 +190,17 @@ public class AjoutBonplanBackController implements Initializable {
             );
             selectedfile = fc.showOpenDialog(null);
             if (selectedfile != null) {
-
-                Upload2 u = new Upload2();
-                try {
-                    u.upload(selectedfile);
-                } catch (IOException ex) {
-                    Logger.getLogger(AjoutBonplanBackController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+               //BufferedImage bufferedImage = ImageIO.read(selectedfile);
+                //Image image = bufferedImage.getScaledInstance(600, 400, Image.SCALE_DEFAULT);
+                System.out.println(selectedfile);
+                //ImageIO.write((RenderedImage) image, "png", new File("C:\\xampp\\htdocs\\images\\1.png"));
+                resizeFile(selectedfile.getAbsolutePath(),"C:\\xampp\\htdocs\\images\\"+selectedfile.getName(),500,500);
+//                Upload2 u = new Upload2();
+//                try {
+//                    u.upload(selectedfile);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(AjoutBonplanBackController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
                 imageBP.getItems().add(selectedfile.getName());
 
                 path_img = selectedfile.getAbsolutePath();
@@ -198,12 +215,33 @@ public class AjoutBonplanBackController implements Initializable {
     private void AnnulerOnClick(ActionEvent event) throws IOException {
         titreBP.clear();
         descriptionBP.clear();
-        typeF.clear();
+        //typeF.clear();
         imageBP.getItems().clear();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("AfficherBonplan.fxml"));
-        Parent root = loader.load();
-        annuler.getScene().setRoot(root);
+        //FXMLLoader loader = new FXMLLoader();
+        //loader.setLocation(getClass().getResource("AfficherBonplan.fxml"));
+       // Parent root = loader.load();
+       // annuler.getScene().setRoot(root);
+    }
+    
+     public void resizeFile(String imagePathToRead,
+                              String imagePathToWrite, int resizeWidth, int resizeHeight)
+            throws IOException {
+
+        File fileToRead = new File(imagePathToRead);
+        BufferedImage bufferedImageInput = ImageIO.read(fileToRead);
+
+        BufferedImage bufferedImageOutput = new BufferedImage(resizeWidth,
+                resizeHeight, bufferedImageInput.getType());
+
+        Graphics2D g2d = bufferedImageOutput.createGraphics();
+        g2d.drawImage(bufferedImageInput, 0, 0, resizeWidth, resizeHeight, null);
+        g2d.dispose();
+
+        String formatName = imagePathToWrite.substring(imagePathToWrite
+                .lastIndexOf(".") + 1);
+
+        ImageIO.write(bufferedImageOutput, formatName, new File(imagePathToWrite));
+        
     }
 
     }

@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -147,6 +148,14 @@ public class BonplanCrud implements InterfaceBonplanCrud {
     }
     return bonPlans;
 }
+      public List<bonplan> rechercher(String titre) throws SQLException {
+        List<bonplan> result = afficherBonplan().stream().
+                filter(line -> line.getTitre_bonplan().toString().toLowerCase().contains(titre.toLowerCase()))
+                .collect(Collectors.toList());
+        //System.out.println("----------");
+        //result.forEach(System.out::println);
+        return result;
+    }
 
     
     

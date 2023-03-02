@@ -10,13 +10,13 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="7.0" layoutY="11.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label layoutX="216.0" layoutY="25.0" text="Modifier Bon plan" textFill="#b91010">
+            <Label layoutX="216.0" layoutY="25.0" text="Modifier Reservation" textFill="#b91010">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="modifier" layoutX="132.0" layoutY="503.0" mnemonicParsing="false" onAction="#modifierBP" prefHeight="25.0" prefWidth="155.0" text="modifier" />
-            <Button fx:id="annuler" layoutX="344.0" layoutY="490.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
+            <Button fx:id="modifier" layoutX="98.0" layoutY="392.0" mnemonicParsing="false" onAction="#modifierRsv" prefHeight="25.0" prefWidth="155.0" text="modifier" />
+            <Button fx:id="annuler" layoutX="341.0" layoutY="392.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
          </children>
       </AnchorPane>
       <Label layoutX="85.0" layoutY="93.0" prefHeight="27.0" prefWidth="192.0" text="Nombre de personnes">

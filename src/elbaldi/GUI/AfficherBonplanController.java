@@ -232,4 +232,3 @@ public class AfficherBonplanController implements Initializable {
     }
      
 }
-

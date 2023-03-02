@@ -6,35 +6,38 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="657.0" prefWidth="832.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AfficherReservationBackController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AvisbackController">
    <children>
-      <Label layoutX="317.0" layoutY="40.0" prefHeight="54.0" prefWidth="521.0" stylesheets="@style.css" text="Afficher la liste des  Réservations" textFill="#a20812">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <Button fx:id="confirmer" layoutX="317.0" layoutY="506.0" mnemonicParsing="false" onAction="#boutonConfirmer" prefHeight="31.0" prefWidth="200.0" text="Confirmer" />
-      <Button fx:id="refuser" layoutX="614.0" layoutY="506.0" mnemonicParsing="false" onAction="#boutonRefuser" prefHeight="31.0" prefWidth="200.0" text="Refuser" />
-      <TableView fx:id="TableView" layoutX="286.0" layoutY="198.0" prefHeight="262.0" prefWidth="629.0">
-         <columns>
-            <TableColumn fx:id="nombre" prefWidth="70.39996337890625" text="nombre" />
-            <TableColumn fx:id="statut" prefWidth="131.20001220703125" text="statut" />
-            <TableColumn fx:id="date" prefWidth="127.19998168945312" text="date" />
-            <TableColumn fx:id="nom" prefWidth="149.5999755859375" text="nom" />
-            <TableColumn fx:id="lieu" prefWidth="149.5999755859375" text="lieu" />
-         </columns>
-      </TableView>
-      <TextField fx:id="searchTextField" layoutX="317.0" layoutY="164.0" />
-      <Text layoutX="477.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" />
-      <VBox alignment="TOP_CENTER" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;" stylesheets="@style.css">
+      <Pane fx:id="pnlOverview" layoutX="226.0" layoutY="3.0" prefHeight="594.0" prefWidth="949.0" style="-fx-background-color: #ffff;">
+         <children>
+            <Label layoutX="57.0" layoutY="25.0" prefHeight="50.0" prefWidth="502.0" text="Gestion des avis" textFill="#a20812">
+               <font>
+                  <Font name="Arial Black" size="33.0" />
+               </font>
+            </Label>
+            <TableView fx:id="table" layoutX="50.0" layoutY="160.0" prefHeight="336.0" prefWidth="803.0">
+               <columns>
+                  <TableColumn fx:id="Note" prefWidth="193.60003662109375" text="Note" />
+                  <TableColumn fx:id="date" prefWidth="179.99993896484375" text="Date" />
+                  <TableColumn fx:id="client" prefWidth="189.60003662109375" text=" Client" />
+                  <TableColumn fx:id="bonplan" prefWidth="239.0" text="bonplan" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="42.0" fitWidth="66.0" layoutX="729.0" layoutY="547.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/le28/elbaldi/src/Ressources/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <VBox alignment="TOP_CENTER" layoutY="14.0" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="112.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -63,7 +66,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="categorie1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-21.0" layoutY="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Catégories">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-21.0" layoutY="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Catégories">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -75,7 +78,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="produit1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-22.0" layoutY="86.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Produits">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-22.0" layoutY="86.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Produits">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -87,7 +90,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="comm1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commandes">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commandes">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -99,7 +102,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="btnSignout1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="172.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="256.0" text="Livraisons">
+                        <Button fx:id="btnSignout1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="170.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="256.0" text="Livraisons">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -111,7 +114,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="res" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="255.0" mnemonicParsing="false" onAction="#rs" prefHeight="41.0" prefWidth="241.0" text="Reservations">
+                        <Button fx:id="reservation1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="255.0" mnemonicParsing="false" onAction="#reservationBp" prefHeight="41.0" prefWidth="241.0" text="Reservations">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -195,7 +198,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="bpp" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-19.0" layoutY="213.0" mnemonicParsing="false" onAction="#bp" prefHeight="41.0" prefWidth="256.0" text="Bon plans">
+                        <Button fx:id="bonplan1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-19.0" layoutY="213.0" mnemonicParsing="false" onAction="#Bonplans" prefHeight="41.0" prefWidth="256.0" text="Bon plans">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -219,7 +222,7 @@
                               <Insets left="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="aviss" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" onAction="#avis" prefHeight="41.0" prefWidth="240.0" text="Avis">
+                        <Button fx:id="avis1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" onAction="#avisBp" prefHeight="41.0" prefWidth="240.0" text="Avis">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -249,10 +252,5 @@
             </ScrollPane>
          </children>
       </VBox>
-      <ImageView fx:id="datetrie" fitHeight="31.0" fitWidth="35.0" layoutX="873.0" layoutY="163.0" onMouseClicked="#datedec" onMousePressed="#datecroi" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../ressources/datee.PNG" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

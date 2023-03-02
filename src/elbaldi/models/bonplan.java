@@ -105,6 +105,11 @@ public class bonplan {
         this.image_bonplan = image_bonplan;
     }
 
+    @Override
+    public String toString() {
+        return "bonplan{" + "id_bonplan=" + id_bonplan + ", titre_bonplan=" + titre_bonplan + ", description_bonplan=" + description_bonplan + ", type_bonplan=" + type_bonplan + ", image_bonplan=" + image_bonplan + ", imgview=" + imgview + '}';
+    }
+
 
 
 

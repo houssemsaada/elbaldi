@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BpFrontController">
+   <children>
+      <ImageView fitHeight="449.0" fitWidth="798.0" layoutX="261.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+      <ScrollPane fx:id="scroll" layoutX="215.0" layoutY="123.0" prefHeight="469.0" prefWidth="853.0">
+         <content>
+            <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="973.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="92.0" fitWidth="110.0" layoutX="20.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/le28/elbaldi/src/Ressources/Logo.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="Typefx" layoutX="863.0" layoutY="91.0" onAction="#filtrer" prefHeight="31.0" prefWidth="193.0" promptText="Type Bon plan" />
+      <Accordion layoutX="14.0" layoutY="231.0" />
+      <HBox layoutX="571.0" layoutY="91.0" prefHeight="42.0" prefWidth="287.0" />
+      <TextField fx:id="search" layoutX="215.0" layoutY="91.0" onAction="#search" />
+   </children>
+</AnchorPane>

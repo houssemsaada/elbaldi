@@ -28,12 +28,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 
@@ -54,7 +56,6 @@ public class ModifierBonplanBackController implements Initializable {
     private Button annuler;
     @FXML
     private TextField titreBP;
-    @FXML
     private TextField typeBP;
     @FXML
     private ImageView img;
@@ -67,6 +68,8 @@ public class ModifierBonplanBackController implements Initializable {
     String path_img;
 
     Upload2 u = new Upload2();
+    @FXML
+    private ComboBox<String> typeFx;
     /**
      * Initializes the controller class.
      */
@@ -74,7 +77,7 @@ public class ModifierBonplanBackController implements Initializable {
         bnp=c;
         this.titreBP.setText(c.getTitre_bonplan());
         this.descriptionBP.setText(c.getDescription_bonplan());
-        this.typeBP.setText(c.getType_bonplan());
+        this.typeFx.getSelectionModel().select(c.getType_bonplan());
         //this.imageBP.setAccessibleText();
         String imageURI = new File("C:\\xampp\\htdocs\\images"+c.getImage_bonplan().toString()).toURI().toString();
         System.out.println(imageURI);
@@ -106,22 +109,22 @@ public class ModifierBonplanBackController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        typeFx.getItems().add("restaurant");
+        typeFx.getItems().add("Hotel");
         // TODO
         
     }    
 
-    @FXML
-    private void prefixe(MouseEvent event) {
-    }
+ 
 
     @FXML
-    private void modifierBP(ActionEvent event) {
+    private void modifierBP(ActionEvent event) throws IOException {
         BonplanCrud bp= new BonplanCrud();
                 bonplan c = new bonplan();
                 c.setId_bonplan(bnp.getId_bonplan());
                 c.setTitre_bonplan(titreBP.getText());
                 c.setDescription_bonplan(descriptionBP.getText());
-                c.setType_bonplan(typeBP.getText());
+                c.setType_bonplan(typeFx.getSelectionModel().getSelectedItem().toString());
                     if (selectedfile != null) {
                 c.setImage_bonplan(selectedfile.getName());
                     }
@@ -138,6 +141,7 @@ public class ModifierBonplanBackController implements Initializable {
                 alert0.setContentText("Votre modification est enregistrée avec succes ");
                 alert0.show();
                 ((Node) event.getSource()).getScene().getWindow().hide();
+                
 
                
 
@@ -162,11 +166,36 @@ public class ModifierBonplanBackController implements Initializable {
                 imageBP.getItems().add(selectedfile.getName());
 
                 path_img = selectedfile.getAbsolutePath();
+                
+                //String imagePath = "C:\\xampp\\htdocs\\images\\"+c.getImage_bonplan().toString();
+        
+        // Create an ImageView object
+        ImageView imageView = new ImageView();
+        
+        // Create a File object with the path of your image
+        File file = new File(path_img);
+        
+        // Check if the file exists
+        if (file.exists()) {
+            
+            // Create an Image object with the file path
+            Image image = new Image(file.toURI().toString());
+            
+            // Set the image to the ImageView
+            imageView.setImage(image);
+            this.img.setImage(image);
+        } else {
+            System.out.println("Image not found.");
+        }
 
             } else {
                 System.out.println("Fichier erroné");
             }
 
+    }
+
+    void setbonplan(bonplan bonplan1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -24,7 +24,12 @@ public class Reservation {
     public Reservation(int id_reservation) {
         this.id_reservation = id_reservation;
     }
-    
+    public Reservation(int nombre_personnes, Date date_reservation,bonplan bonplan2, Utilisateur user2) {
+        this.nombre_personnes = nombre_personnes;
+        this.date_reservation = date_reservation;
+        this.bonplan2 = bonplan2;
+        this.user2 = user2;
+    }
     
 
     public Reservation(int nombre_personnes, Date date_reservation, String statut_reservation, bonplan bonplan2, Utilisateur user2) {
@@ -33,6 +38,10 @@ public class Reservation {
         this.statut_reservation = statut_reservation;
         this.bonplan2 = bonplan2;
         this.user2 = user2;
+    }
+
+    public Reservation(int nombre_personnes, java.sql.Date date_reservation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId_reservation() {
