@@ -24,7 +24,7 @@ public class MailerService {
         String password = "eymmlmaxtvwotrzo";
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "false");
+        properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         String host = "localhost";
@@ -38,7 +38,7 @@ public class MailerService {
     }
 
     public void sendCommandeMail(commande c) {
-        session.setDebug(true);
+       // session.setDebug(true);
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(ourMail));

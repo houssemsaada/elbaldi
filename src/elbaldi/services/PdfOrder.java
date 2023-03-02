@@ -29,20 +29,23 @@ public class PdfOrder {
             document.open();
             com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
             com.itextpdf.text.Font fontgras = FontFactory.getFont(FontFactory.TIMES_BOLD, 16, BaseColor.BLACK);
-
-            Chunk chunk = new Chunk("                                                      Facture ", fontgras);
+                        com.itextpdf.text.Font fontgrastitre = FontFactory.getFont(FontFactory.TIMES_BOLD,28, BaseColor.BLACK);
+ document.add(new Paragraph("\n"));
+            Chunk chunk = new Chunk("                              Facture ", fontgrastitre);
             
             document.add(chunk);
-            document.add(new Paragraph("\n\n"));
+            document.add(new Paragraph("\n\n\n"));
             PdfPTable pdfPTable = new PdfPTable(1);
             
             PdfPCell pdfPCell1 = new PdfPCell();
             pdfPCell1.setBorderColor(BaseColor.BLACK);
             pdfPCell1.setBorderWidth(2);
             Image image = Image.getInstance("http://localhost/images/Al%20Baldi.png");
-            image.scaleToFit(150, 150);
-            document.add(new Paragraph("                              "));
+            image.scaleToFit(200, 200);
+            image.setAbsolutePosition(190, 520);
+            
            document.add(image);
+            document.add(new Paragraph("\n\n\n\n\n\n\n\n\n\n\n\n\n\n"));
             
             pdfPCell1.addElement(new Paragraph("\n\n"));
             chunk = new Chunk("    Client : ",fontgras);

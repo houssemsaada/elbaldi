@@ -14,6 +14,7 @@ import elbaldi.models.panier;
 import elbaldi.models.produit;
 import elbaldi.services.CategorieCRUD;
 import elbaldi.services.CommandeCRUD;
+import elbaldi.services.PdfOrder;
 import elbaldi.services.ProduitCRUD;
 import elbaldi.services.UtilisateurCRUD;
 import elbaldi.services.livraisonCRUD;
@@ -43,7 +44,7 @@ public class houssem {
         ProduitCRUD prod = new ProduitCRUD();
         // prod.ajouterProduit(p1);
 //---------------------- module commande--------------------------------------------------------------------        
-        //     commande com1 = new commande(128, pan1, "aaaaaa", date_com);
+//             commande com1 = new commande(128, pan1, "aaaaaa", date_com);
         //     commande com2 = new commande(129, pan1, "aaaaaa", date_com);
 
         CommandeCRUD comm = new CommandeCRUD();
@@ -68,6 +69,7 @@ public class houssem {
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
         panier pan1 = new panier(15);
+        pan1.setU1(u1);
         panierCRUD pan = new panierCRUD();
         //pan.ajouterPanier(pan1);
         //pan.ajouterProdPanier(pan1, p1,10);
@@ -77,6 +79,10 @@ public class houssem {
         //System.out.println(pan.afficherPanier());
         //System.out.println(pan.filtreByuser(u1));
         //System.out.println(pan.afficherListProduitPanier(pan1));
-        pan.modifierQteProdPanier(pan1, p1, 8);
+       // pan.modifierQteProdPanier(pan1, p1, 8);
+                    commande com1 = new commande(128, pan1, "aaaaaa", date_com);
+
+       PdfOrder pdf = new PdfOrder();
+            pdf.orderPdf(com1);
     }
 }
