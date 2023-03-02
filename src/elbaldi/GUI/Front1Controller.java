@@ -84,9 +84,21 @@ public class Front1Controller implements Initializable {
         }
     });
    
-     afficher();
-     
-     searchField.setPromptText("Rechercher...");
+     searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Texte changé : " + oldValue + " -> " + newValue);
+            if(newValue!="")
+            {
+                search(newValue);
+            }
+            else{
+                afficher();
+            }
+            
+        });
+
+        afficher();
+
+        searchField.setPromptText("Rechercher...");
 
 // Création d'un filtre pour la liste de données
 //FilteredList<produit> filteredData = new FilteredList<>(produitObservableList, b -> true);
@@ -243,6 +255,38 @@ public class Front1Controller implements Initializable {
         loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
         Parent root = loader.load();
         prodfx.getScene().setRoot(root);
+    }
+    public void search(String libelle) {
+        try {
+            grid.getChildren().remove(0, listeProduit.size());
+            listeProduit = ds.rechercher(libelle);
+
+//             String searchTerm = searchField.getText().toLowerCase();
+//        if (!searchTerm.isEmpty()) {
+//            listeProduit = listeProduit.stream()
+//                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
+//                .collect(Collectors.toList());
+//        }
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemController itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+
+        } catch (IOException ex) {
+        }
     }
 
 

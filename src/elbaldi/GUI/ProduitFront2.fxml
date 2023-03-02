@@ -57,7 +57,6 @@
                   <Button fx:id="filtrefx" mnemonicParsing="false" onAction="#filtrerparprix" prefHeight="31.0" prefWidth="50.0" stylesheets="@style.css" text="Ok" />
                </children>
             </HBox>
-            <TextField fx:id="searchField" layoutX="205.0" layoutY="71.0" />
             <VBox layoutY="113.0" prefHeight="279.0" prefWidth="202.0">
                <children>
                   <Button fx:id="Home1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="205.0" stylesheets="@style.css" text="Profil" textFill="#e7e5e5">
@@ -152,6 +151,22 @@
                   </Button>
                </children>
             </VBox>
+            <TextField fx:id="searchField" layoutX="204.0" layoutY="77.0" />
+            <ImageView fx:id="decfx" fitHeight="31.0" fitWidth="36.0" layoutX="518.0" layoutY="81.0" onMousePressed="#decroissant" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/decroissant.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="croifx" fitHeight="31.0" fitWidth="36.0" layoutX="486.0" layoutY="81.0" onMousePressed="#croissant" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/croiss.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="356.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/search.png" />
+               </image>
+            </ImageView>
          </children>
          <effect>
             <DropShadow color="#1b1eeb" />

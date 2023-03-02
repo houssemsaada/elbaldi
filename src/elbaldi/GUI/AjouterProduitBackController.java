@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package elbaldi.GUI;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import java.util.List;
 
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
@@ -98,7 +102,7 @@ public class AjouterProduitBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //reffx.setText("TUN61900");
-
+        
         ListerCategorie();
         insérer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -159,7 +163,12 @@ public class AjouterProduitBackController implements Initializable {
                 alert0.setContentText("Ajout avec succes ");
                 alert0.show();
                 ((Node) event.getSource()).getScene().getWindow().hide();
-                /*
+                
+              
+                
+                
+                
+                
                 String[] phoneNumbersArray = {"+21697618378", "21628845537"};
 //List<String> phoneNumbers = new ArrayList<>("97618378");
                 List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);
@@ -167,7 +176,7 @@ public class AjouterProduitBackController implements Initializable {
 // les ajouter à la liste phoneNumbers
                 SMSNotifier notifier = new SMSNotifier();
                 notifier.notifyClients(phoneNumbers, "Votre message ici");
-                 */
+                
             }
         });
         annulerfx.setOnAction(new EventHandler<ActionEvent>() {

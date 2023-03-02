@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -209,6 +210,71 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
     }
     return list;
 }
+        public List<produit> rechercher(String libelle) throws SQLException {
+        List<produit> result = afficherProduit().stream().
+                filter(line -> line.getLibelle().toString().toLowerCase().contains(libelle.toLowerCase()))
+                .collect(Collectors.toList());
+        //System.out.println("----------");
+        //result.forEach(System.out::println);
+        return result;
+    }
+        public List<produit>triecroissant () throws SQLException{
+              List<produit> list = new ArrayList<>();
+        try {
+            String req = "Select * from produit order by `prix_vente` asc";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             produit p = new produit();
+             p.setRef_produit(RS.getString(1));
+             p.setLibelle(RS.getString(2));
+             p.setDescription(RS.getString(3));
+             p.setImage(RS.getString(4));
+             p.setPrix_vente(RS.getFloat(5));
+             p.setQuantite(RS.getInt(6));
+             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+             int categorieId = RS.getInt(7);
+             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+             p.setCategoriee(categoriee);
+             list.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+            
+        }
+         public List<produit>triedec () throws SQLException{
+              List<produit> list = new ArrayList<>();
+        try {
+            String req = "Select * from produit order by `prix_vente` desc";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             produit p = new produit();
+             p.setRef_produit(RS.getString(1));
+             p.setLibelle(RS.getString(2));
+             p.setDescription(RS.getString(3));
+             p.setImage(RS.getString(4));
+             p.setPrix_vente(RS.getFloat(5));
+             p.setQuantite(RS.getInt(6));
+             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+             int categorieId = RS.getInt(7);
+             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+             p.setCategoriee(categoriee);
+             list.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+            
+        }
+    
 
 
 

@@ -34,6 +34,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -48,7 +50,7 @@ public class ProduitFront2Controller implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
-     private List<produit> listeProduit = new ArrayList<>();
+    private List<produit> listeProduit = new ArrayList<>();
     ProduitCRUD ds = new ProduitCRUD();
     @FXML
     private ComboBox<categorie> categoriefx;
@@ -60,7 +62,7 @@ public class ProduitFront2Controller implements Initializable {
     private Button filtrefx;
     @FXML
     private TextField searchField;
-    ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
+    //ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
     @FXML
     private Button prodfx;
     @FXML
@@ -73,25 +75,41 @@ public class ProduitFront2Controller implements Initializable {
     private Button Home11111;
     @FXML
     private Button Home111111;
+    @FXML
+    private ImageView decfx;
+    @FXML
+    private ImageView croifx;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         ListerCategorie();
-          categoriefx.setOnAction(e -> {
-        categorie selectedCategorie = categoriefx.getSelectionModel().getSelectedItem();
-        if (selectedCategorie != null && selectedCategorie.getId_categorie()!=0 ) {
-            afficherProduitsParCategorie(selectedCategorie.getId_categorie());
-        } else {
-            afficher();
-        }
-    });
-   
-     afficher();
-     
-     searchField.setPromptText("Rechercher...");
+        ListerCategorie();
+        categoriefx.setOnAction(e -> {
+            categorie selectedCategorie = categoriefx.getSelectionModel().getSelectedItem();
+            if (selectedCategorie != null && selectedCategorie.getId_categorie() != 0) {
+                afficherProduitsParCategorie(selectedCategorie.getId_categorie());
+            } else {
+                afficher();
+            }
+        });
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Texte changé : " + oldValue + " -> " + newValue);
+            if(newValue!="")
+            {
+                search(newValue);
+            }
+            else{
+                afficher();
+            }
+            
+        });
+
+        afficher();
+
+        searchField.setPromptText("Rechercher...");
 
 // Création d'un filtre pour la liste de données
 //FilteredList<produit> filteredData = new FilteredList<>(produitObservableList, b -> true);
@@ -111,27 +129,26 @@ public class ProduitFront2Controller implements Initializable {
 //        return false;
 //    });
 //});
+    }
 
-    }  
-    public void afficher(){
+    public void afficher() {
         try {
             grid.getChildren().remove(0, listeProduit.size());
             listeProduit = ds.afficherProduit();
-            
+
 //             String searchTerm = searchField.getText().toLowerCase();
 //        if (!searchTerm.isEmpty()) {
 //            listeProduit = listeProduit.stream()
 //                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
 //                .collect(Collectors.toList());
 //        }
-            
             int column = 0;
             int row = 1;
             for (int i = 0; i < listeProduit.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-               ProduitItemController itemController = fxmlLoader.getController();
+                ProduitItemController itemController = fxmlLoader.getController();
                 itemController.setData(listeProduit.get(i));
                 if (column == 3) {
                     column = 0;
@@ -146,28 +163,28 @@ public class ProduitFront2Controller implements Initializable {
         } catch (IOException ex) {
         }
     }
-     private void ListerCategorie() {
+
+    private void ListerCategorie() {
 
         CategorieCRUD categoriecrud = new CategorieCRUD();
         ObservableList<categorie> list = FXCollections.observableArrayList();
         try {
             String req = " select id_categorie,`nom_categorie`,`description` from `categorie`  ";
-            
-           Connection conn = MyConnection.getInstance().getConn();
 
-            PreparedStatement pst=conn.prepareStatement(req);
+            Connection conn = MyConnection.getInstance().getConn();
+
+            PreparedStatement pst = conn.prepareStatement(req);
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 categorie c = new categorie(rs.getInt(1), rs.getString(2), rs.getString(3));
                 list.add(c);
             }
-          
-   
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        categorie all=new categorie(0, "Tous", "");
+        categorie all = new categorie(0, "Tous", "");
 
         categoriefx.setItems(null);
         categoriefx.setItems(list);
@@ -175,81 +192,180 @@ public class ProduitFront2Controller implements Initializable {
 
     }
 
-   private void afficherProduitsParCategorie(int id_categorie) {
-    try {
-        listeProduit = ds.filtreByCategorie(id_categorie);
-        
-        // effacer le contenu précédent
-        grid.getChildren().clear();
-        
-        int column = 0;
-        int row = 1;
-        for (int i = 0; i < listeProduit.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
-            AnchorPane anchorpane = fxmlLoader.load();
-            ProduitItemController itemController = fxmlLoader.getController();
-            itemController.setData(listeProduit.get(i));
-            if (column == 3) {
-                column = 0;
-                row++;
-            }
+    private void afficherProduitsParCategorie(int id_categorie) {
+        try {
+            listeProduit = ds.filtreByCategorie(id_categorie);
 
-            grid.add(anchorpane, column++, row);
-            GridPane.setMargin(anchorpane, new Insets(10));
+            // effacer le contenu précédent
+            grid.getChildren().clear();
+
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemController itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    } catch (IOException ex) {
-        ex.printStackTrace();
     }
-}
 
     @FXML
     private void filtrerparprix(ActionEvent event) throws IOException {
         float min = Float.parseFloat(prixmin.getText());
-    float max = Float.parseFloat(prixmax.getText());
-    try {
-        ProduitCRUD produitCRUD = new ProduitCRUD(); // instancier un objet de la classe ProduitCRUD
-       listeProduit = ds.filtreByPrixVente(min, max); // appeler la méthode filtreByPrixVente avec les paramètres min et max
-        // afficher les produits récupérés
-        // effacer le contenu précédent
-        grid.getChildren().clear();
-        
-        int column = 0;
-        int row = 1;
-        for (int i = 0; i < listeProduit.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
-            AnchorPane anchorpane = fxmlLoader.load();
-            ProduitItemController itemController = fxmlLoader.getController();
-            itemController.setData(listeProduit.get(i));
-            if (column == 3) {
-                column = 0;
-                row++;
+        float max = Float.parseFloat(prixmax.getText());
+        try {
+            ProduitCRUD produitCRUD = new ProduitCRUD(); // instancier un objet de la classe ProduitCRUD
+            listeProduit = ds.filtreByPrixVente(min, max); // appeler la méthode filtreByPrixVente avec les paramètres min et max
+            // afficher les produits récupérés
+            // effacer le contenu précédent
+            grid.getChildren().clear();
+
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemController itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
 
-            grid.add(anchorpane, column++, row);
-            GridPane.setMargin(anchorpane, new Insets(10));
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    
-    }
 
-    
-    
     }
 
     @FXML
     private void produitsf(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
         Parent root = loader.load();
         prodfx.getScene().setRoot(root);
     }
 
-   
+    public void search(String libelle) {
+        try {
+            grid.getChildren().remove(0, listeProduit.size());
+            listeProduit = ds.rechercher(libelle);
+
+//             String searchTerm = searchField.getText().toLowerCase();
+//        if (!searchTerm.isEmpty()) {
+//            listeProduit = listeProduit.stream()
+//                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
+//                .collect(Collectors.toList());
+//        }
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemController itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+
+        } catch (IOException ex) {
+        }
+    }
+
+    @FXML
+    private void decroissant(MouseEvent event) {
+             try {
+            grid.getChildren().remove(0, listeProduit.size());
+            listeProduit = ds.triedec();
+
+//             String searchTerm = searchField.getText().toLowerCase();
+//        if (!searchTerm.isEmpty()) {
+//            listeProduit = listeProduit.stream()
+//                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
+//                .collect(Collectors.toList());
+//        }
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemController itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+
+        } catch (IOException ex) {
+        }
+        
+    }
+
+    @FXML
+    private void croissant(MouseEvent event) {
+             try {
+            grid.getChildren().remove(0, listeProduit.size());
+            listeProduit = ds.triecroissant();
+
+//             String searchTerm = searchField.getText().toLowerCase();
+//        if (!searchTerm.isEmpty()) {
+//            listeProduit = listeProduit.stream()
+//                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
+//                .collect(Collectors.toList());
+//        }
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemController itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+
+        } catch (IOException ex) {
+        }
+    }
+    
 
 }

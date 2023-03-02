@@ -29,9 +29,9 @@ public class FirstWindow extends Application {
         try {
             
             
-             // Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
-              // Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
-            Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
+              Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
+               //Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
+           // Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
           // Parent root = root=FXMLLoader.load(getClass().getResource("catgeorielistBack.fxml"));
           
           
@@ -39,7 +39,7 @@ public class FirstWindow extends Application {
                      
            
             
-            //Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
+          //  Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
             //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
             Scene scene = new Scene(root);
             

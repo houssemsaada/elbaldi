@@ -8,6 +8,7 @@ package elbaldi.models;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -157,8 +158,8 @@ public class produit {
         return p;
     }
 
-
-   
     
+
+
     
 }
