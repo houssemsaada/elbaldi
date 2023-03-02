@@ -36,7 +36,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-    
 
 /**
  * FXML Controller class
@@ -156,14 +155,16 @@ public class CommandeclientController implements Initializable {
 //            l.setAdresse_livraison(adress);
 //            lr.ajouterLivraison(l);
             commandeGUI.AlertShow("order added ! ", "order", Alert.AlertType.INFORMATION);
-              MailerService ms = new MailerService();
-         Utilisateur u = new Utilisateur();
-         u.setEmail("houssem.saada37@gmail.com");
-         u.setPrenom("houssem");
-         
-         ms.sendCommandeMail(c2);
+            MailerService ms = new MailerService();
+//              System.out.println(c2);
+            try {
+                ms.sendCommandeMail(c2);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            PdfOrder pdf = new PdfOrder();
+            pdf.orderPdf(c2);
         }
-       
 
     }
 

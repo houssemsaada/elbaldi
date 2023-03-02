@@ -18,16 +18,18 @@ public class MailerService {
 
     Session session;
     String ourMail = "elbaldinotification@gmail.com";
-
+    
     public MailerService() {
-        String password = "wheppfbzojknzwap";
+        
+        String password = "eymmlmaxtvwotrzo";
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.starttls.enable", "false");
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         String host = "localhost";
         Session newsession = Session.getInstance(properties, new Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(ourMail, password);
             }
@@ -36,7 +38,7 @@ public class MailerService {
     }
 
     public void sendCommandeMail(commande c) {
-
+        session.setDebug(true);
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(ourMail));
@@ -55,6 +57,7 @@ public class MailerService {
             System.out.println("Email sent successfully.");
         } catch (MessagingException e) {
             throw new RuntimeException(e);
+            
         }
     }
 
@@ -64,7 +67,7 @@ public class MailerService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(ourMail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(c.getPan().getU1().getEmail()));
-            message.setSubject("votre collier est en route");
+            message.setSubject("Votre collier est en route!");
             String emailBody = "cher(e) " + c.getPan().getU1().getPrenom() + "!,\n\n"
                     + "Nous vous remercions d'avoir fait vos achats chez nous. Votre numéro de commande :"
                     + c.getId_cmd()
