@@ -8,6 +8,8 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import java.util.List;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import org.apache.http.client.RedirectStrategy;
 
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
@@ -167,16 +169,16 @@ public class AjouterProduitBackController implements Initializable {
               
                 
                 
+                /*
                 
-                
-                String[] phoneNumbersArray = {"+21697618378", "21628845537"};
+                String[] phoneNumbersArray = {"+21697618378", "+21628845537"};
 //List<String> phoneNumbers = new ArrayList<>("97618378");
                 List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);
 // récupérer les numéros de téléphone à partir de la base de données ou du fichier
 // les ajouter à la liste phoneNumbers
                 SMSNotifier notifier = new SMSNotifier();
                 notifier.notifyClients(phoneNumbers, "Votre message ici");
-                
+                */
             }
         });
         annulerfx.setOnAction(new EventHandler<ActionEvent>() {

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package elbaldi.GUI;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 import elbaldi.models.categorie;
 import elbaldi.models.produit;
