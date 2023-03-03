@@ -12,10 +12,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -35,6 +37,38 @@ public class ClientController implements Initializable {
   
      private List<quiz> listeQuiz = new ArrayList<>();
      QuizCRUD ds = new QuizCRUD();
+    @FXML
+    private Button Home1;
+    @FXML
+    private Button categorie1;
+    @FXML
+    private Button produit1;
+    @FXML
+    private Button comm1;
+    @FXML
+    private Button btnSignout1;
+    @FXML
+    private Button btnSignout111;
+    @FXML
+    private Button btnSignout1111;
+    @FXML
+    private Button btnSignout11111;
+    @FXML
+    private Button btnSignout1111111;
+    @FXML
+    private Button btnSignout11111111;
+    @FXML
+    private Button btnSignout111111111;
+    @FXML
+    private Button btnSignout11112;
+    @FXML
+    private Button btnSignout11;
+    @FXML
+    private Button btnSignout111121;
+    @FXML
+    private Button btnSignout1111211;
+    @FXML
+    private Button btnSignout11112111;
     /**
      * Initializes the controller class.
      */
@@ -80,6 +114,18 @@ public class ClientController implements Initializable {
 
         } catch (IOException ex) {
         }
+    }
+
+    @FXML
+    private void catt(ActionEvent event) {
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    @FXML
+    private void commen(ActionEvent event) {
     }
 
     

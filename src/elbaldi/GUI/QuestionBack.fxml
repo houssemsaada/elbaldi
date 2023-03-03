@@ -37,6 +37,5 @@
       </ImageView>
       <TextField fx:id="quizid" layoutX="754.0" layoutY="4.0" prefHeight="14.0" prefWidth="14.0" />
       <Button fx:id="ajouterfx" layoutX="714.0" layoutY="4.0" mnemonicParsing="false" onAction="#ajouter" styleClass="quiz-item" stylesheets="@quiz.css" text="Ajouter Question" />
-      <Button fx:id="fxrafraichir" layoutX="276.0" layoutY="2.0" mnemonicParsing="false" onAction="#rafraichir" text="Rafraichir" />
    </children>
 </AnchorPane>

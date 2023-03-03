@@ -105,6 +105,8 @@ int selectedQuizId = selectedQuiz == null ? 0 : selectedQuiz.getId_quiz();
       if (difficulte.matches(".*[a-zA-Z]{6,}.*")) {
            if (reponse1.equalsIgnoreCase(solution) || reponse2.equalsIgnoreCase(solution) || reponse3.equalsIgnoreCase(solution)) {
                 qcr.ajouterQuestion(qt);
+                
+
                 // Afficher une alerte en fonction de l'état de l'ajout
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");

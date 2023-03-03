@@ -51,8 +51,6 @@ public class QuestionBackController implements Initializable {
     private quiz quiz ; 
     @FXML
     private TextField quizid;
-    @FXML
-    private Button fxrafraichir;
 
     /**
      *
@@ -152,12 +150,6 @@ public class QuestionBackController implements Initializable {
 
     }
 
-    @FXML
-    private void rafraichir(ActionEvent event) {
-        
-    }
-
-   
     }
     
 

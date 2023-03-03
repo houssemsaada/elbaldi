@@ -34,12 +34,12 @@ public class FirstWindow extends Application {
      
   Parent root;
         try {
-                root = FXMLLoader.load(getClass().getResource("client.fxml"));
+                root = FXMLLoader.load(getClass().getResource("front.fxml"));
        
         
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Afficher le module Quiz et promotion");
+        primaryStage.setTitle("QUIZ");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {
