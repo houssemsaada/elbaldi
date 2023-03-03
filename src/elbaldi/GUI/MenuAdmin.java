@@ -55,7 +55,20 @@ public class MenuAdmin {
 
     @FXML
     void ProfileAdmin(ActionEvent event) {
+        grid.getChildren().clear();
+        try {
+            // TODO
+            FXMLLoader cards = new FXMLLoader();
+            cards.setLocation(getClass().getResource("ProfileAdmin.fxml"));
 
+            AnchorPane anchorPane = cards.load();
+
+            grid.add(anchorPane, 1, 1);
+
+            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }

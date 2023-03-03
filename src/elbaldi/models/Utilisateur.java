@@ -35,7 +35,7 @@ public class Utilisateur {
         this.numTel = numTel;
     }
 
-    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role) {
+    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role,Etat etat) {
         this.id_user = id_user;
         this.nom = nom;
         this.prenom = prenom;
@@ -45,6 +45,17 @@ public class Utilisateur {
         this.ville = ville;
         this.mdp = mdp;
         this.role = role;
+        this.etat = etat;
+    }
+    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+
     }
 
     public Utilisateur(String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role,Etat etat) {
@@ -58,6 +69,7 @@ public class Utilisateur {
         this.role = role;
         this.etat = etat;
     }
+
 
     public Utilisateur(String nom, String prenom, String email, Date dateDeNaissance, int numTel, String ville, String mdp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -138,7 +150,7 @@ public class Utilisateur {
         return role;
     }
 
-    public void setRole(Etat etat) {
+    public void setEtat(Etat etat) {
         this.etat = etat;
     }
     public Etat getEtat() {

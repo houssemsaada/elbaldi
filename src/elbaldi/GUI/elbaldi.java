@@ -33,7 +33,7 @@ public class elbaldi extends Application{
       @Override
     public void start(Stage primaryStage) {
         try {
-                    MyConnection.getInstance();
+            MyConnection.getInstance();
             Parent root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("../gui/Styles/controls.css").toExternalForm());

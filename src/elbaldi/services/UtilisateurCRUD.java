@@ -36,6 +36,8 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
     private Connection conn;
     private PreparedStatement pst;
     private Statement ste;
+
+    PreparedStatement stee;
     public String n, m;
     public String passwordF;
 
@@ -145,8 +147,9 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
                u.setDateNaissance(RS.getDate(5));
                 u.setNumTel(RS.getInt(6));
                  u.setVille(RS.getString(7));
-                   u.setMdp(RS.getString(9));
-                    u.setRole(Role.valueOf(RS.getString(10)));
+                   u.setMdp(RS.getString(8));
+                    u.setRole(Role.valueOf(RS.getString(9)));
+                    u.setEtat(Etat.valueOf(RS.getString(10)));
              list.add(u);
             }
         } catch (SQLException ex) {
@@ -190,17 +193,67 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
 
     }
     @Override
-    public void supprimerUtilisateur(int id_user) {
+    public void supprimerUtilisateur(int i ){
+        String req = "DELETE FROM `utilisateur` WHERE id_user =?" ;
         try {
-            String req = "DELETE FROM `utilisateur` WHERE id_user = " + id_user;
-            Statement st = conn.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Utilisateur deleted !");
+            stee=conn.prepareStatement(req);
+            stee.setInt(1, i);
+            stee.executeUpdate();
+            System.out.println("User Deleted");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
+    public void upDateStatus(int i) {
+        String req = "UPDATE `utilisateur` SET etat='accepted' where id_user=?";
+        try {
+            stee=conn.prepareStatement(req);
+            stee.setInt(1, i);
+            stee.executeUpdate();
+            System.out.println("User Approuved");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public boolean UpdateUser(Utilisateur user) {
+        try {
+
+            //if password exist
+
+
+                String  requete = "UPDATE  utilisateur "
+                        + "set nom=?,prenom=?,"
+                        + "datedenaissance=?,"
+                        + "numTel=?,"
+                        + "ville=?"
+                        + " where id_user=?";
+                PreparedStatement pst = conn.prepareStatement(requete);
+
+                pst.setString(1, user.getNom());
+                pst.setString(2, user.getPrenom());
+
+
+                pst.setDate(3, user.getDateNaissance());
+                pst.setInt(4, user.getNumTel());
+                pst.setString(5, user.getVille());
+                pst.setInt(6, user.getid_user());
+
+                if (pst.executeUpdate() > 0) {
+                    System.out.println("You have updated successfully.");
+                    return true;
+                } else {
+                    System.out.println("Something went wrong.");
+                    return false;
+                }
+
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
+
     @Override
     public Utilisateur getUserByID(int id_user ) throws SQLException {
        String querry="SELECT *  FROM utilisateur WHERE `id_user`="+id_user;
@@ -228,10 +281,11 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
 
     public Utilisateur GetUserByMail(String mail, String password) {
         Utilisateur user = null;
+        int id= 0;
         String pass = "";
         Role role = null;
         try {
-            String requete = "Select role,mdp, email from utilisateur where email = ?";
+            String requete = "Select id_user,role,mdp, email from utilisateur where email = ?";
             PreparedStatement pst = conn.prepareStatement(requete);
             pst.setString(1, mail);
             ResultSet rs;
@@ -239,6 +293,7 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
 
             if (rs.next()) {
                 pass = rs.getString("mdp");
+                id = rs.getInt("id_user");
                 role = Role.valueOf(rs.getString("role"));
             }
             System.out.println(role);
@@ -251,6 +306,7 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
                 rs = pst.executeQuery();
                 while (rs.next()) {
                     user = new Utilisateur(
+                            id,
                             rs.getString("nom"),
                             rs.getString("prenom"),
                             mail,
@@ -301,6 +357,53 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
                     user = new Utilisateur(
                             mail
                     );
+
+                System.out.println(user);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        } catch (StringIndexOutOfBoundsException ex) {
+            /*Login_pageController lc = new Login_pageController();
+            new animatefx.animation.Shake(lc.getPasswordtxt()).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            lc.getPasswordtxt().setEffect(in);
+             */
+            return null;
+        }
+        return user;
+    }
+    public Utilisateur GetUserByMailSession(String mail) {
+        Utilisateur user = null;
+
+
+        String pass = "";
+        Role role = null;
+        try {
+            String requete = "Select id_user,role,mdp, email from utilisateur where email = ?";
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setString(1, mail);
+            ResultSet rs;
+            rs = pst.executeQuery();
+
+            requete = "SELECT id_user,nom,prenom,email,dateDeNaissance,numTel,ville,etat FROM utilisateur WHERE email like ?";
+            pst = conn.prepareStatement(requete);
+            pst.setString(1, mail);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                user = new Utilisateur(
+                        rs.getInt("id_user"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        mail,
+                        rs.getDate("dateDeNaissance"),
+                        rs.getInt("numTel"),
+                        rs.getString("ville"),
+                        pass,
+                        role,
+                        Etat.valueOf(rs.getString("etat"))
+                );
 
                 System.out.println(user);
             }

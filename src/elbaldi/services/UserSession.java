@@ -14,6 +14,7 @@ public class UserSession {
     public static Date userDate;
     private final UtilisateurCRUD userService = new UtilisateurCRUD();
 
+
     public void setUserId(String email,String mail)
     {
         if(Objects.equals(email, "")) return ;
@@ -51,7 +52,7 @@ public class UserSession {
     
     public Utilisateur getUser()
     {
-        return userService.GetUserByMailE(userMail);
+        return userService.GetUserByMailSession(userMail);
     }
 
 
