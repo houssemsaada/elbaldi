@@ -2,6 +2,7 @@ package elbaldi.GUI;
 
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
+import elbaldi.services.UserSession;
 import elbaldi.services.UtilisateurCRUD;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -72,16 +73,15 @@ public class Login implements Initializable {
             if (validatenGuest_Email(emailLogin) & validatenGuest_Password(PasswordLogin)) {
 
                 Utilisateur utilisateur = userService.GetUserByMail(emailLogin.getText(), PasswordLogin.getText());
-                //UserService.userSession = new UserSession();
+                UtilisateurCRUD.userSession = new UserSession();
 
                 Role role = utilisateur.getRole();
-                System.out.println(role);
                 if (null != role) {
                     switch (role) {
                         case client:
-                            if (!remember_me.isSelected()) {
+                            if (remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
-                                //UserService.userSession.setUserCin(user.getCin());
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 Parent root = FXMLLoader.load(getClass().getResource("ClientMainScreeen.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -90,7 +90,7 @@ public class Login implements Initializable {
 
                             } else if (remember_me.isSelected()) {
                                 userService.createiniFile(path, emailLogin.getText(), PasswordLogin.getText());
-                                //UserService.userSession.setUserCin(user.getCin());
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 Parent root = FXMLLoader.load(getClass().getResource("ClientMainScreeen.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -101,7 +101,7 @@ public class Login implements Initializable {
                         case gerant:
                             if (!remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
-                               // UserService.userSession.setUserCin(user.getCin());
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 Parent root = FXMLLoader.load(getClass().getResource("GerantMainScreen.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -109,9 +109,9 @@ public class Login implements Initializable {
                                 stage.show();
 
                             } else if (remember_me.isSelected()) {
-                                userService.createiniFile(path, PasswordLogin.getText(), PasswordLogin.getText());
-                               // UserService.userSession.setUserCin(user.getCin());
-                               // System.out.println(UserSession.userString);
+                                userService.createiniFile(path, emailLogin.getText(), PasswordLogin.getText());
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
+                                System.out.println(UserSession.userString);
                                 Parent root = FXMLLoader.load(getClass().getResource("GerantMainScreen.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -123,9 +123,9 @@ public class Login implements Initializable {
                         case admin:
                             if (!remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
-                                //UserService.userSession = new UserSession();
-                               // UserService.userSession.setUserCin(user.getCin());
-                                //System.out.println(UserService.userSession.getUser());
+                                UtilisateurCRUD.userSession = new UserSession();
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
+                                System.out.println(UtilisateurCRUD.userSession.getUser());
                                 Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -133,9 +133,9 @@ public class Login implements Initializable {
                                 stage.show();
 
                             } else if (remember_me.isSelected()) {
-                                //userService.createiniFile(path, emailtxt.getText(), passwordtxt.getText());
-                               // UserService.userSession = new UserSession();
-                               // UserService.userSession.setUserCin(user.getCin());
+                                userService.createiniFile(path, emailLogin.getText(), PasswordLogin.getText());
+                                UtilisateurCRUD.userSession = new UserSession();
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -147,7 +147,7 @@ public class Login implements Initializable {
                         case livreur:
                             if (!remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
-                                // UserService.userSession.setUserCin(user.getCin());
+                                UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 Parent root = FXMLLoader.load(getClass().getResource("LivreurMainScreen.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -155,9 +155,9 @@ public class Login implements Initializable {
                                 stage.show();
 
                             } else if (remember_me.isSelected()) {
-                                userService.createiniFile(path, PasswordLogin.getText(), PasswordLogin.getText());
-                                // UserService.userSession.setUserCin(user.getCin());
-                                // System.out.println(UserSession.userString);
+                                userService.createiniFile(path, emailLogin.getText(), PasswordLogin.getText());
+                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
+                                 System.out.println(UserSession.userString);
                                 Parent root = FXMLLoader.load(getClass().getResource("LivreurMainScreen.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
@@ -271,7 +271,6 @@ public class Login implements Initializable {
             });
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-            ;
         }
     }
 
@@ -283,6 +282,7 @@ public class Login implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        UtilisateurCRUD userService = new UtilisateurCRUD();
+        userService.readinifile(path, emailLogin, PasswordLogin, remember_me);
     }
 }

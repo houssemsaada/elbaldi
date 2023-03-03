@@ -3,11 +3,15 @@
 
 package elbaldi.services;
 
+import com.jfoenix.controls.JFXRadioButton;
 import elbaldi.interfaces.InterfaceCRUD;
 import elbaldi.models.Etat;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
 import elbaldi.utils.MyConnection;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.Color;
 import org.ini4j.Wini;
@@ -34,6 +38,9 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
     private Statement ste;
     public String n, m;
     public String passwordF;
+
+    public static UserSession userSession;
+
 
     public UtilisateurCRUD() {
         conn = MyConnection.getInstance().getConn();
@@ -311,6 +318,24 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
         }
         return user;
     }
+    public void readinifile(String path, TextField userid, PasswordField passid, CheckBox remember_me) {
+        File file = new File(path);
+        if (file.exists()) {
+            try {
+                Wini wini = new Wini(new File(path));
+                String username = wini.get("Login data", "Email");
+                String password = wini.get("Login data", "Password");
+                if ((username != null && !username.equals("")) && (password != null && !password.equals(""))) {
+                    userid.setText(username);
+                    passid.setText(password);
+                    remember_me.setSelected(true);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(UtilisateurCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
 
     public void createiniFile(String path, String user, String pass) {
         try {
