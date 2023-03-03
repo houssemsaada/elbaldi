@@ -79,7 +79,7 @@ public class Login implements Initializable {
                 if (null != role) {
                     switch (role) {
                         case client:
-                            if (remember_me.isSelected()) {
+                            if (!remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 Parent root = FXMLLoader.load(getClass().getResource("ClientMainScreeen.fxml"));

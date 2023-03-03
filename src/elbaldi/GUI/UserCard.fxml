@@ -96,8 +96,7 @@
                 <Insets left="-30.0" />
             </padding>
          <stylesheets>
-            <URL value="@../../../../../Desktop/JAVA/shared-desktop-main/src/shared/GUI/Styles/cardoffres.css" />
-            <URL value="@Styles/cardoffres.css" />
+             <URL value="@Styles/cardoffres.css" />
          </stylesheets>
         </AnchorPane>
     </children>
