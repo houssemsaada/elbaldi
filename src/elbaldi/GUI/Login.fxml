@@ -16,19 +16,14 @@
 
 <StackPane fx:id="parentContainer" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.Login">
     <children>
-        <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
+        <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F7F1E5;" styleClass="mainFxmlClass">
 
             <children>
-                <ImageView fx:id="anchorPane" fitHeight="780.0" fitWidth="1396.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../resources/bg_image.jpg" />
-                    </image>
-                </ImageView>
-                <Button fx:id="login_button" layoutX="794.0" layoutY="478.0" mnemonicParsing="false" onAction="#attempteToLogin" prefHeight="32.0" prefWidth="127.0" styleClass="button1" stylesheets="@Style/controls.css" text="Login" wrapText="true" />
-                <Button fx:id="Register_button" layoutX="1151.0" layoutY="54.0" mnemonicParsing="false" onAction="#signUp" onMouseClicked="#registerClicked" prefHeight="32.0" prefWidth="181.0" styleClass="button1" stylesheets="@Style/controls.css" text="Sign Up" wrapText="true" />
-                <Label layoutX="990.0" layoutY="63.0" styleClass="label1" stylesheets="@Style/controls.css" text="Not a member ?" />
-                <Hyperlink fx:id="fp_hyperlink" layoutX="627.0" layoutY="724.0" onAction="#forgetPassword" styleClass="Fpss" stylesheets="@Style/controls.css" text="Forgot your password?" />
-                <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="1383.0" styleClass="FontAwesomeIcon" stylesheets="@Style/controls.css">
+                <Button fx:id="login_button" layoutX="732.0" layoutY="478.0" mnemonicParsing="false" onAction="#attempteToLogin" prefHeight="32.0" prefWidth="127.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Login" wrapText="true" />
+                <Button fx:id="Register_button" layoutX="1151.0" layoutY="54.0" mnemonicParsing="false" onAction="#signUp" onMouseClicked="#registerClicked" prefHeight="32.0" prefWidth="181.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Sign Up" wrapText="true" />
+                <Label layoutX="990.0" layoutY="63.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Not a member ?" />
+                <Hyperlink fx:id="fp_hyperlink" layoutX="565.0" layoutY="687.0" onAction="#forgetPassword" styleClass="Fpss" stylesheets="@Styles/controls.css" text="Forgot your password?" />
+                <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="1383.0" styleClass="FontAwesomeIcon" stylesheets="@Styles/controls.css">
                     <children>
                         <FontAwesomeIcon fill="#ffa781" glyphName="MINUS" onMouseClicked="#mini" size="1.5em" text="">
                             <HBox.margin>
@@ -47,19 +42,14 @@
                         </FontAwesomeIcon>
                     </children>
                 </HBox>
-                <ImageView fitHeight="90.0" fitWidth="24.0" layoutX="555.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../resources/icons8-login-50.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="552.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../resources/icons8-lock-50.png" />
-                    </image>
-                </ImageView>
-            <TextField fx:id="emailLogin" layoutX="599.0" layoutY="366.0" prefHeight="26.0" prefWidth="230.0" />
-            <PasswordField fx:id="PasswordLogin" layoutX="599.0" layoutY="421.0" prefHeight="26.0" prefWidth="230.0" />
-            <CheckBox fx:id="remember_me" layoutX="579.0" layoutY="494.0" mnemonicParsing="false" text="rememeber me" textFill="WHITE" />
+            <TextField fx:id="emailLogin" layoutX="537.0" layoutY="366.0" prefHeight="26.0" prefWidth="230.0" promptText="Email" />
+            <PasswordField fx:id="PasswordLogin" layoutX="537.0" layoutY="421.0" prefHeight="26.0" prefWidth="230.0" promptText="Password" />
+            <CheckBox fx:id="remember_me" layoutX="517.0" layoutY="494.0" mnemonicParsing="false" style="-fx-text-fill: #000;" text="rememeber me" />
+            <ImageView fitHeight="257.0" fitWidth="249.0" layoutX="528.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logo.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
     </children>

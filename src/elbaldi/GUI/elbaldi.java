@@ -36,7 +36,7 @@ public class elbaldi extends Application{
                     MyConnection.getInstance();
             Parent root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             Scene scene = new Scene(root);
-            //scene.getStylesheets().add(getClass().getResource("../gui/Style/controls.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("../gui/Styles/controls.css").toExternalForm());
            primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.show();

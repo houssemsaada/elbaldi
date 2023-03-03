@@ -6,6 +6,8 @@
 package elbaldi.GUI;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
+import elbaldi.models.Etat;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
 import elbaldi.services.UtilisateurCRUD;
@@ -32,12 +34,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -50,6 +47,12 @@ import static sun.security.jgss.GSSUtil.login;
  * @author mEtrOpOliS
  */
 public class InscriptionController implements Initializable {
+
+    private String[] roles = {
+            "client",
+            "livreur",
+            "gerant"
+    };
 
     private Stage stage;
     private Scene scene;
@@ -67,7 +70,7 @@ public class InscriptionController implements Initializable {
     private TextField numteltext;
 
     @FXML
-    private TextField passwordtxt;
+    private PasswordField passwordtxt;
 
     @FXML
     private TextField prenomtext;
@@ -81,16 +84,28 @@ public class InscriptionController implements Initializable {
     @FXML
     private TextField villetext;
 
+
+    @FXML
+    private ChoiceBox<String> role;
+
     @FXML
     void signup(ActionEvent event) {
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
+        Role rolee = Role.valueOf(role.getValue());
         if (event.getSource() == signup) {
             if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt) &validateTel(numteltext)) {
+                if(rolee.equals(Role.client)){
+                    user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
+                            emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
+                            rolee, Etat.accepted);
+                    cRUD.ajouterUtlisateur(user);
+                }else {
+                    user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
+                            emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
+                            rolee, Etat.pending);
+                    cRUD.ajouterUtlisateur(user);
+                }
 
-                user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
-                        emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
-                        Role.client);
-                cRUD.ajouterUtlisateur(user);
 
             }
         }
@@ -106,7 +121,7 @@ public class InscriptionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-  
+        role.getItems().addAll(roles);
     }
 
     @FXML
@@ -141,7 +156,7 @@ public class InscriptionController implements Initializable {
 
     
     private boolean validatenGuest_Name(TextField name) {
-        Pattern p = Pattern.compile("[a-zA-Z0-9_]+");
+        Pattern p = Pattern.compile("[a-zA-Z_]+");
         Matcher m = p.matcher(name.getText());
         if ((name.getText().length() == 0)
                 || (!m.find() && m.group().equals(name.getText()))) {

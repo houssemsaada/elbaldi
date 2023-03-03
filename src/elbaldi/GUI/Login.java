@@ -75,6 +75,7 @@ public class Login implements Initializable {
                 //UserService.userSession = new UserSession();
 
                 Role role = utilisateur.getRole();
+                System.out.println(role);
                 if (null != role) {
                     switch (role) {
                         case client:
@@ -125,7 +126,7 @@ public class Login implements Initializable {
                                 //UserService.userSession = new UserSession();
                                // UserService.userSession.setUserCin(user.getCin());
                                 //System.out.println(UserService.userSession.getUser());
-                                Parent root = FXMLLoader.load(getClass().getResource("AdminMainScreen.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
@@ -135,7 +136,7 @@ public class Login implements Initializable {
                                 //userService.createiniFile(path, emailtxt.getText(), passwordtxt.getText());
                                // UserService.userSession = new UserSession();
                                // UserService.userSession.setUserCin(user.getCin());
-                                Parent root = FXMLLoader.load(getClass().getResource("AdminMainScreen.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
@@ -231,8 +232,24 @@ public class Login implements Initializable {
     }
 
     @FXML
-    void forgetPassword(ActionEvent event) {
+        void forgetPassword(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("forgetPassword.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            root.translateYProperty().set(stage.getHeight());
+            parentContainer.getChildren().add(root);
+            Timeline timeline = new Timeline();
+            KeyValue keyValue = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+            KeyFrame keyFrame = new KeyFrame(Duration.millis(300), keyValue);
+            timeline.getKeyFrames().add(keyFrame);
+            timeline.play();
+            timeline.setOnFinished((ActionEvent event3) -> {
+                parentContainer.getChildren().remove(rootPane);
 
+            });
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 

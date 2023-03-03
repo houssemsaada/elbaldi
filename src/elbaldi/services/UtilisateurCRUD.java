@@ -4,6 +4,7 @@
 package elbaldi.services;
 
 import elbaldi.interfaces.InterfaceCRUD;
+import elbaldi.models.Etat;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
 import elbaldi.utils.MyConnection;
@@ -22,8 +23,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
@@ -31,6 +32,8 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
     private Connection conn;
     private PreparedStatement pst;
     private Statement ste;
+    public String n, m;
+    public String passwordF;
 
     public UtilisateurCRUD() {
         conn = MyConnection.getInstance().getConn();
@@ -41,7 +44,7 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
         Statement stmt;
 
         try {
-            String requete = "INSERT INTO `utilisateur` (`nom`,`prenom`,`email`,`dateDeNaissance`,`numTel`,`ville`,`mdp`,`role`) VALUES (?,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO `utilisateur` (`nom`,`prenom`,`email`,`dateDeNaissance`,`numTel`,`ville`,`mdp`,`role`,`etat`) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = conn.prepareStatement(requete);
             pst.setString(1, user.getNom());
             pst.setString(2, user.getPrenom());
@@ -51,6 +54,7 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
             pst.setString(6, user.getVille());
             pst.setString(7, BCrypt.hashpw(user.getMdp(), BCrypt.gensalt() ));
             pst.setString(8, user.getRole().toString());
+            pst.setString(9, user.getEtat().toString());
 
             if (pst.executeUpdate() > 0) {
                 System.out.println("You have registered successfully.");
@@ -81,7 +85,39 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
   
     }
 
-   
+
+    public boolean UpdateUserPassword(Utilisateur user) {
+        try {
+
+            //if password exist
+
+            if (!user.getMdp().equals("")) {
+
+                String  requete = "UPDATE  utilisateur "
+                        + "set "
+                        + "mdp=?"
+                        + " where email=?";
+                PreparedStatement pst = conn.prepareStatement(requete);
+
+
+                pst.setString(1, BCrypt.hashpw(user.getMdp(), BCrypt.gensalt()));
+                pst.setString(2, user.getEmail());
+
+
+                if (pst.executeUpdate() > 0) {
+                    System.out.println("You have updated successfully.");
+                    return true;
+                } else {
+                    System.out.println("Something went wrong.");
+                    return false;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return false;
+    }
 
     
     @Override
@@ -112,7 +148,40 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
 
         return list;
     }
+    public Integer GetuserBytel(String email) {
+        Utilisateur user = null;
+        int number = 0;
+        try {
+            String requete = "Select numTel from utilisateur where email = ?";
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setString(1, email);
+            ResultSet rs;
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                number = rs.getInt("numTel");
+                user = new Utilisateur(
+                        rs.getInt("numTel"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UtilisateurCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return number;
+    }
 
+    public String sendMail(String mail) throws SQLException {
+
+        String requete = "SELECT email FROM utilisateur WHERE email=? ";
+        PreparedStatement pst = conn.prepareStatement(requete);
+        pst.setString(1, mail);
+        ResultSet rs;
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            mail = rs.getString("email");
+            //password = rs.getString("password");
+        }
+        return mail;
+
+    }
     @Override
     public void supprimerUtilisateur(int id_user) {
         try {
@@ -165,10 +234,11 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
                 pass = rs.getString("mdp");
                 role = Role.valueOf(rs.getString("role"));
             }
+            System.out.println(role);
 
             if (BCrypt.checkpw(password, pass)) {
 
-                requete = "SELECT nom,prenom,email,dateDeNaissance,numTel,ville FROM utilisateur WHERE email like ?";
+                requete = "SELECT nom,prenom,email,dateDeNaissance,numTel,ville,etat FROM utilisateur WHERE email like ?";
                 pst = conn.prepareStatement(requete);
                 pst.setString(1, mail);
                 rs = pst.executeQuery();
@@ -181,7 +251,8 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
                             rs.getInt("numTel"),
                             rs.getString("ville"),
                             pass,
-                            role
+                            role,
+                            Etat.valueOf(rs.getString("etat"))
                     );
 
                 }
@@ -206,6 +277,41 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
         }
         return user;
     }
+    public Utilisateur GetUserByMailE(String mail) {
+        Utilisateur user = null;
+        try {
+            String requete = "Select email from utilisateur where email = ?";
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setString(1, mail);
+            ResultSet rs;
+            rs = pst.executeQuery();
+
+                requete = "SELECT email FROM utilisateur WHERE email like ?";
+                pst = conn.prepareStatement(requete);
+                pst.setString(1, mail);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    user = new Utilisateur(
+                            mail
+                    );
+
+                System.out.println(user);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        } catch (StringIndexOutOfBoundsException ex) {
+            /*Login_pageController lc = new Login_pageController();
+            new animatefx.animation.Shake(lc.getPasswordtxt()).play();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            lc.getPasswordtxt().setEffect(in);
+             */
+            return null;
+        }
+        return user;
+    }
+
     public void createiniFile(String path, String user, String pass) {
         try {
             File file = new File(path);
@@ -284,6 +390,24 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
         }
 
         return list;
+    }
+    public String sendInfo(String mail) throws SQLException {
+        String requete = "SELECT email,mdp FROM utilisateur WHERE email=? ";
+        PreparedStatement pst = conn.prepareStatement(requete);
+        pst.setString(1, sendMail(mail));
+        ResultSet rs;
+        rs = pst.executeQuery();
+        System.out.println(m + "" + n + "hehhe");
+        while (rs.next()) {
+            mail = rs.getString("email");
+            passwordF = rs.getString("password");
+
+        }
+        BCrypt.checkpw(mail, passwordF);
+        System.out.println(passwordF);
+        System.out.println("qqqq");
+        return passwordF;
+
     }
 
     public boolean afficherReclamation() {
