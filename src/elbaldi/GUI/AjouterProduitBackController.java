@@ -171,13 +171,14 @@ public class AjouterProduitBackController implements Initializable {
                 
                 /*
                 
-                String[] phoneNumbersArray = {"+21697618378", "+21628845537"};
+                String[] phoneNumbersArray = {"+21697618378"};
 //List<String> phoneNumbers = new ArrayList<>("97618378");
                 List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);
 // récupérer les numéros de téléphone à partir de la base de données ou du fichier
 // les ajouter à la liste phoneNumbers
                 SMSNotifier notifier = new SMSNotifier();
-                notifier.notifyClients(phoneNumbers, "Votre message ici");
+                String mess="cher(e) client , Profitez de notre nouveauté ,un nouvelle produit est disponible sur notre application ELBALDI. Attention : stock limité. Faites vite ! ".
+                notifier.notifyClients(phoneNumbers, mess);
                 */
             }
         });

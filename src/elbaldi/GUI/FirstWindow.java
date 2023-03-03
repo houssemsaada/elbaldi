@@ -29,10 +29,13 @@ public class FirstWindow extends Application {
         try {
             
             
-              Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
-               //Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
-           // Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
-          // Parent root = root=FXMLLoader.load(getClass().getResource("catgeorielistBack.fxml"));
+             // Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
+               Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
+          // Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
+           
+           
+           
+            // Parent root = root=FXMLLoader.load(getClass().getResource("catgeorielistBack.fxml"));
           
           
         

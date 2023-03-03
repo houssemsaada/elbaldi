@@ -124,6 +124,19 @@ public List<categorie> filtrerCategorie(String nomCategorie) throws SQLException
     }
     return list;
 }
+ public boolean NomExiste(String nom) {
+   
+    String sql = "SELECT * FROM categorie WHERE nom_categorie = ?";
+    try {
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, nom);
+        ResultSet rs = pstmt.executeQuery();
+        return rs.next();
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
+ }
 
     
 }

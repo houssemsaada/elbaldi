@@ -58,7 +58,7 @@ public class CategorieBackAjoutController implements Initializable {
                 
                 CategorieCRUD categorieCRUD = new CategorieCRUD();
                 try {
-                    if (!nom.getText().equalsIgnoreCase("") && !descriptionC.getText().equalsIgnoreCase("")) {
+                    if (!nom.getText().equalsIgnoreCase("") && !descriptionC.getText().equalsIgnoreCase("") && !categorieCRUD.NomExiste(nom.getText())) {
                         categorieCRUD.ajouterCategorie(cat);
                         Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
                         alert0.setTitle("information Dialog");
