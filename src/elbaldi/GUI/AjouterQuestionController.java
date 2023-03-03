@@ -86,9 +86,18 @@ public class AjouterQuestionController implements Initializable {
     String solution = fxsolution.getText(); 
     /// Récupérer le quiz sélectionné
     quiz selectedQuiz = fxid_quiz.getSelectionModel().getSelectedItem();
-    int selectedQuizId = selectedQuiz.getId_quiz();
-    // Créer l'objet question avec le quiz sélectionné
     
+int selectedQuizId = selectedQuiz == null ? 0 : selectedQuiz.getId_quiz();
+
+    // Créer l'objet question avec le quiz sélectionné
+     if (difficulte.isEmpty() || questionn.isEmpty() || reponse1.isEmpty() || reponse2.isEmpty() || reponse3.isEmpty() || solution.isEmpty() || fxid_quiz.getSelectionModel().isEmpty()) {
+        // Afficher une alerte si l'un des champs est vide
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez remplir tous les champs.");
+        alert.showAndWait();
+    } else {
    
         question qt = new question(questionn,difficulte,reponse1,reponse2,reponse3,solution,selectedQuiz);
         QuestionCRUD qcr = new QuestionCRUD();
@@ -119,7 +128,7 @@ public class AjouterQuestionController implements Initializable {
             alert.showAndWait();
         }
     }
-      
+    }
     @FXML
     private void goBack(ActionEvent event) {
        

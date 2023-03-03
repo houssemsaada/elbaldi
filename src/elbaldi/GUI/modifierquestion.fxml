@@ -10,9 +10,9 @@
 <AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ModifierquestionController">
    <children>
       <Button fx:id="backfx" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" onAction="#goBack" text="&lt;-  Back" />
-      <Label layoutX="337.0" layoutY="24.0" prefHeight="22.0" prefWidth="168.0" text="Modifier Question">
+      <Label layoutX="215.0" layoutY="16.0" prefHeight="25.0" prefWidth="321.0" text="Modifier Question" textFill="#e11616">
          <font>
-            <Font name="Arial Black" size="14.0" />
+            <Font name="Cambria Bold Italic" size="34.0" />
          </font>
       </Label>
       <Label layoutX="57.0" layoutY="104.0" text="Question">

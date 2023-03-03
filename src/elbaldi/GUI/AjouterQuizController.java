@@ -30,6 +30,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -53,7 +54,7 @@ public class AjouterQuizController implements Initializable {
     @FXML
     private TextField fxnom;
     @FXML
-    private TextField imgfx;
+    private Text imgfx;
  
     /**
      * Initializes the controller class.
@@ -74,18 +75,34 @@ public class AjouterQuizController implements Initializable {
     private void ajouter_Quiz(ActionEvent event) {
        
          String difficulte = fxdifficulte.getValue(); 
-    // String difficulte = fxdifficulte.getText();
+
      String nom = fxnom.getText();
      String img = imgfx.getText();
-  
+  if (difficulte == null || difficulte.isEmpty() || nom.isEmpty() || fxid_user.getSelectionModel().isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez remplir tous les champs nécessaires.");
+        alert.showAndWait();
+        return;
+    }
     
     
     Utilisateur u = fxid_user.getSelectionModel().getSelectedItem();
     int selecteduserId = u.getid_user();
     
+     
     
     quiz q = new quiz(nom,difficulte,u,img);
     QuizCRUD qc = new QuizCRUD();
+     if (qc.quizExiste(nom)) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Le nom du quiz est déjà utilisé. Veuillez choisir un autre nom.");
+        alert.showAndWait();
+        return;}
+     
     qc.ajouterQuiz(q);
     
     // Créer une alerte
@@ -96,6 +113,7 @@ public class AjouterQuizController implements Initializable {
 
     // Afficher l'alerte
     alert.showAndWait();
+    
     }
 
     @FXML

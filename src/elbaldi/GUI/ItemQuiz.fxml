@@ -9,9 +9,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="224.0" style="-fx-background-color: #ffffff;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemQuizController">
    <children>
-      <ImageView fx:id="imglabel" fitHeight="108.0" fitWidth="171.0" layoutX="44.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="11.0">
+      <ImageView fx:id="imglabel" fitHeight="108.0" fitWidth="171.0" layoutX="63.0" layoutY="11.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="59.847259521484375" AnchorPane.topAnchor="11.0">
          <image>
-            <Image url="@../../Ressource/Nabeul.PNG" />
+            <Image url="@../../Ressource/qui.PNG" />
          </image>
       </ImageView>
       <Label layoutX="18.0" layoutY="146.0" text="Nom :   ">

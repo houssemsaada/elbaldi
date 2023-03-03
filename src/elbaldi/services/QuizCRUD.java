@@ -179,7 +179,32 @@ public quiz getById(int id) {
 
     return list;
 }
-
+   
+  public boolean quizExiste(String nom) {
+   
+    String sql = "SELECT * FROM quiz WHERE nom = ?";
+    try {
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, nom);
+        ResultSet rs = pstmt.executeQuery();
+        return rs.next();
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
 }
+  
+    
+    
+    
+    
+    
+    
+}
+
+    
+    
+    
+
 
 

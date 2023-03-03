@@ -9,16 +9,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.gui.AjouterQuestionController">
    <children>
-      <Text layoutX="247.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Question" textAlignment="CENTER" wrappingWidth="217.314453125">
+      <Text fill="#e11616" layoutX="177.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Question" textAlignment="CENTER" wrappingWidth="320.314453125">
          <font>
-            <Font size="14.0" />
+            <Font name="Cambria Bold Italic" size="34.0" />
          </font>
       </Text>
       <Text layoutX="16.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 3" />
       <Text layoutX="11.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté" />
       <Text layoutX="14.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 1" />
       <Text layoutX="14.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse 2" />
-      <Text layoutX="-9.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER" wrappingWidth="79.0" />
+      <Text layoutX="-5.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER" wrappingWidth="79.0" />
       <Text layoutX="18.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution" />
       <Button fx:id="ajoutQuestion" layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter Question" />
       <TextField fx:id="fxquestion" layoutX="102.0" layoutY="81.0" />

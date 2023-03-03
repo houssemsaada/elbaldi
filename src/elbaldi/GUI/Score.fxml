@@ -33,7 +33,7 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="codeqr" layoutX="40.0" layoutY="318.0" prefHeight="28.0" prefWidth="456.0">
+      <Label fx:id="codeqr" layoutX="56.0" layoutY="318.0" prefHeight="28.0" prefWidth="456.0">
          <font>
             <Font name="Cambria Bold Italic" size="23.0" />
          </font>

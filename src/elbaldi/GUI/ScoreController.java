@@ -85,22 +85,22 @@ public class ScoreController implements Initializable {
             String promoCode = generatePromoCode((int) score);
 
             // Affichage du code promo généré dans le label codeqr
-            codeqr.setText("avec le code Promo" + promoCode);
+            codeqr.setText("avec le code Promo " + promoCode);
 
         } else if (score >= 75.0 && score <= 99.99) {
             bravo.setText(" Bravo !");
             termine.setText("Quiz terminé avec succés");
             reduction.setText("Vous bénéficiez d'une réduction de 10%");
-            codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
+            //codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
             String promoCode = generatePromoCode((int) score);
 
             // Affichage du code promo généré dans le label codeqr
-            codeqr.setText("avec le code Promo" + promoCode);
+            codeqr.setText("avec le code Promo " + promoCode);
         } else if (score >= 0.45 && score <= 74.99) {
             bravo.setText(" Bravo !");
             termine.setText("Quiz terminé avec succés");
             reduction.setText("Profitez d'une réduction de 8%");
-            codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
+            //codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
             String promoCode = generatePromoCode((int) score);
 
             // Affichage du code promo généré dans le label codeqr

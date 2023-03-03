@@ -12,35 +12,30 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="-11.0" prefHeight="506.0" prefWidth="766.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Text layoutX="352.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Quiz" textAlignment="CENTER" wrappingWidth="217.314453125">
+            <Text fill="#e11616" layoutX="352.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Quiz" textAlignment="CENTER" wrappingWidth="217.314453125">
                <font>
-                  <Font name="Cambria Bold" size="24.0" />
+                  <Font name="Cambria Bold Italic" size="34.0" />
                </font>
             </Text>
-            <Text layoutX="114.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté">
+            <Text layoutX="124.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté">
                <font>
                   <Font name="Cambria" size="19.0" />
                </font></Text>
-            <Button fx:id="ModifierQuiz" layoutX="346.0" layoutY="456.0" mnemonicParsing="false" onAction="#Modifier_Quiz" text="Modifier Quiz" />
-            <Text layoutX="112.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_user" textAlignment="CENTER" wrappingWidth="79.0">
+            <Button fx:id="ModifierQuiz" layoutX="327.0" layoutY="422.0" mnemonicParsing="false" onAction="#Modifier_Quiz" text="Modifier Quiz" />
+            <Text layoutX="122.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_user" textAlignment="CENTER" wrappingWidth="79.0">
                <font>
                   <Font name="Cambria" size="19.0" />
                </font></Text>
             <Button fx:id="backfix" layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#goback" text="&lt;-  Back" />
-            <ComboBox fx:id="fxid_user" layoutX="259.0" layoutY="415.0" prefHeight="25.0" prefWidth="264.0" />
-            <Label layoutX="122.0" layoutY="101.0" text="Nom">
+            <ComboBox fx:id="fxid_user" layoutX="251.0" layoutY="302.0" prefHeight="25.0" prefWidth="264.0" />
+            <Label layoutX="131.0" layoutY="140.0" text="Nom">
                <font>
                   <Font name="Cambria" size="19.0" />
                </font>
             </Label>
-            <TextField id="idLabel2" fx:id="idLabel2" layoutX="258.0" layoutY="100.0" />
-            <Label layoutX="117.0" layoutY="273.0" text="Image">
-               <font>
-                  <Font name="Cambria" size="19.0" />
-               </font>
-            </Label>
-            <TextField fx:id="imgfx" layoutX="259.0" layoutY="231.0" prefHeight="145.0" prefWidth="197.0" />
-            <ComboBox fx:id="fxdifficulte" layoutX="258.0" layoutY="170.0" prefWidth="150.0" />
+            <TextField id="idLabel2" fx:id="idLabel2" layoutX="252.0" layoutY="139.0" />
+            <ComboBox fx:id="fxdifficulte" layoutX="252.0" layoutY="215.0" prefWidth="150.0" />
+            <Text fx:id="imgfx" layoutX="729.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
    </children>

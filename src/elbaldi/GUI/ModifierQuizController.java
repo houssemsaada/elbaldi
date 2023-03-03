@@ -37,6 +37,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -56,7 +57,7 @@ public class ModifierQuizController implements Initializable {
     private Button backfix;
   
     @FXML
-    private TextField imgfx;
+    private Text imgfx;
 
      private quiz quiz;
     @FXML
@@ -79,17 +80,26 @@ public class ModifierQuizController implements Initializable {
     
     
     
-    
-    
+ 
     ModifierQuiz.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
             System.out.println("eeeeeee");
             QuizCRUD quizcrud = new QuizCRUD();
+             
+        String nom = idLabel2.getText();
             if (!idLabel2.getText().equalsIgnoreCase("") && !fxdifficulte.getValue().equalsIgnoreCase("") && fxid_user.getValue()!= null) {
-                quiz.setNom(idLabel2.getText());
+                if (quizcrud.quizExiste(nom)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Echec de la modification");
+                alert.setHeaderText(null);
+                alert.setContentText("Le nom du quiz existe déjà !");
+                alert.showAndWait();
+            } else {
+                quiz.setNom(nom);
                 quiz.setDifficulte(fxdifficulte.getValue());
                 quizcrud.modifierquiz(quiz, quiz.getId_quiz());
+             
              
                // Alerte si la modification est effectuée avec succeés 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -97,7 +107,7 @@ public class ModifierQuizController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Le quiz a été modifiée avec succès !");
                alert.showAndWait();
-         
+                }
             } else{
         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Echec de la modification");
