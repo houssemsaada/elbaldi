@@ -15,8 +15,8 @@ import java.util.List;
  */
 public interface InterfaceCRUDquestion {
     
-     
-     public void ajouterQuestion(question qq) ;
+     public void ajouterQuestion(question qq, int selectedQuizId);
+     //public void ajouterQuestion(question qq) ;
      public void modifierquestion(question qq,int id_question);
      public void supprimerquestion(question qq);
      public List<question> afficherQuestion() ;

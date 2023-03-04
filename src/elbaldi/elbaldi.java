@@ -150,25 +150,7 @@ public class elbaldi {
         
       */  
          
-//-----------------------------Module Promotion---------------------------------------------------                 
-                
-      // créer un objet Promotion
-          promotion prom1 = new promotion(1,"TYIBF67", 0.25f, Date.valueOf("2023-3-1"), Date.valueOf("2023-3-21"));
-     // appeler la méthode pour ajouter la promotion
-          PromotionCRUD pc2 = new PromotionCRUD();
-  
-         //Ajout d'une Promotion
-               //pc2.ajouterpromotion(prom1);
-         //Modification d'une Promotion        
-               // pc2.modifierpromotion(prom1);
-         //Suppression d'une Promotion 
-              //  pc2.supprimerpromotion(2);
-         //Affichage d'une Promotion
-               //System.out.println( pc2.afficherpromotion());
-         //Get By Id 
-              //System.out.println(pc2.getById(4));
-         //Filtre By difficulte
-              //System.out.println(pc2.filtreBytaux(0.25f));
+
               
              
 
@@ -181,7 +163,7 @@ public class elbaldi {
         //Ajout d'un Quiz 
                  //qu.ajouterQuiz(q1);
         //Modification d'un Quiz          
-                 qu.modifierquiz(q1,0);
+               //  qu.modifierquiz(q1,0);
         //Suppression d'un Quiz 
                // qu.supprimerquiz(q1);
         //Affichage d'un Quiz 
@@ -203,7 +185,7 @@ public class elbaldi {
         System.out.println(qq.filtreByidquiz(q5));
    
        //Ajout d'une Question      
-               //  qq.ajouterQuestion(qq3);
+              // qq.ajouterQuestion(qq3,11);
        //Modification d'une Question    
                  qq.modifierquestion(qq1,178);   
        //Suppression d'une Question  

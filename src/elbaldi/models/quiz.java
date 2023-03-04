@@ -21,6 +21,9 @@ public class quiz {
     public quiz() {
     }
 
+    
+    
+    
     public quiz(String nom, String difficulte, Utilisateur id_user, String imgview) {
         this.nom = nom;
         this.difficulte = difficulte;

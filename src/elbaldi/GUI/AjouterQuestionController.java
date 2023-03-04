@@ -12,7 +12,10 @@ import elbaldi.services.QuestionCRUD;
 import elbaldi.services.QuizCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -49,13 +53,17 @@ public class AjouterQuestionController implements Initializable {
     @FXML
     private TextField fxreponse3;
     @FXML
-    private TextField fxsolution;
-    @FXML
-    private ComboBox<quiz> fxid_quiz;
+    private ComboBox<String> fxsolution;
+   
     @FXML
     private Button backfix;
 
-    
+    private quiz qui;
+
+    public void setQuizz(quiz selectedQuiz) {
+        this.qui = selectedQuiz;
+        System.out.println("aaaa"+selectedQuiz);
+    }
 
     /**
      * Initializes the controller class.
@@ -63,13 +71,15 @@ public class AjouterQuestionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         QuizCRUD quizCRUD = new QuizCRUD();
-    List<quiz> quizList = quizCRUD.afficherQuiz();
-    fxid_quiz.getItems().addAll(quizList);
+  
+        
     
         ObservableList<String> difficultes = FXCollections.observableArrayList("Facile", "Moyenne", "Difficile");
         fxdifficulte.setItems(difficultes);
         
-     
+     ObservableList<String> solutions = FXCollections.observableArrayList("Réponse1", "Réponse2", "Réponse3");
+fxsolution.setItems(solutions);
+
 }
 
 
@@ -83,14 +93,22 @@ public class AjouterQuestionController implements Initializable {
     String reponse1 = fxreponse1.getText();
     String reponse2 = fxreponse2.getText();
     String reponse3 = fxreponse3.getText();
-    String solution = fxsolution.getText(); 
+    String solution = fxsolution.getValue(); 
     /// Récupérer le quiz sélectionné
-    quiz selectedQuiz = fxid_quiz.getSelectionModel().getSelectedItem();
-    
+quiz selectedQuiz = this.qui;
 int selectedQuizId = selectedQuiz == null ? 0 : selectedQuiz.getId_quiz();
 
+ // Créer un Map qui associe chaque réponse à sa valeur correspondante
+    Map <String, String> reponses = new HashMap<>();
+    reponses.put("Réponse1", reponse1);
+    reponses.put("Réponse2", reponse2);
+    reponses.put("Réponse3", reponse3);
+
+    // Récupérer la valeur de la réponse correspondant à la solution sélectionnée
+    String solutionValue = reponses.get(solution);
+
     // Créer l'objet question avec le quiz sélectionné
-     if (difficulte.isEmpty() || questionn.isEmpty() || reponse1.isEmpty() || reponse2.isEmpty() || reponse3.isEmpty() || solution.isEmpty() || fxid_quiz.getSelectionModel().isEmpty()) {
+     if (difficulte.isEmpty() || questionn.isEmpty() || reponse1.isEmpty() || reponse2.isEmpty() || reponse3.isEmpty() || solution.isEmpty() ) {
         // Afficher une alerte si l'un des champs est vide
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Erreur");
@@ -99,28 +117,19 @@ int selectedQuizId = selectedQuiz == null ? 0 : selectedQuiz.getId_quiz();
         alert.showAndWait();
     } else {
    
-        question qt = new question(questionn,difficulte,reponse1,reponse2,reponse3,solution,selectedQuiz);
+        question qt = new question(questionn,difficulte,reponse1,reponse2,reponse3,solutionValue);
         QuestionCRUD qcr = new QuestionCRUD();
         
       if (difficulte.matches(".*[a-zA-Z]{6,}.*")) {
-           if (reponse1.equalsIgnoreCase(solution) || reponse2.equalsIgnoreCase(solution) || reponse3.equalsIgnoreCase(solution)) {
-                qcr.ajouterQuestion(qt);
-                
-
+           
+    qcr.ajouterQuestion(qt, selectedQuiz.getId_quiz());
+    
                 // Afficher une alerte en fonction de l'état de l'ajout
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText(null);
                 alert.setContentText("La question a été ajoutée avec succès.");
                 alert.showAndWait();
-            } else {
-                // Afficher une alerte en fonction de l'état de l'ajout
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Erreur");
-                alert.setHeaderText(null);
-                alert.setContentText("La solution doit être compatible avec une des réponses.");
-                alert.showAndWait();
-            }
         } else {
             // Afficher une alerte en fonction de l'état de l'ajout
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

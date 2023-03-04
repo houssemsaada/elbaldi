@@ -28,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import elbaldi.gui.AjouterQuestionController;
 
 /**
  * FXML Controller class
@@ -58,6 +59,7 @@ public class QuestionBackController implements Initializable {
      */
     public void setQuiz(quiz quiz) {
         this.quiz = quiz;
+        System.out.println(quiz);
          try {
             listeQuestion = ds.filtreByidquiz(quiz);
             
@@ -132,6 +134,9 @@ public class QuestionBackController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterQuestion.fxml"));
     try {
         Parent root = loader.load();
+        AjouterQuestionController b = new AjouterQuestionController();
+        b = loader.getController();
+        b.setQuizz(quiz);
         Scene scene = new Scene(root);
         Stage stage = (Stage) back.getScene().getWindow(); // backButton est le bouton de retour
         stage.setScene(scene);

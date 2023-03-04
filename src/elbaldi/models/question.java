@@ -21,6 +21,15 @@ public class question {
     
     public question() {
     }
+
+    public question(String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution) {
+        this.difficulte = difficulte;
+        this.questionn = questionn;
+        this.reponse1 = reponse1;
+        this.reponse2 = reponse2;
+        this.reponse3 = reponse3;
+        this.solution = solution;
+    }
     
     
     public question(String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution, quiz id_quiz) {

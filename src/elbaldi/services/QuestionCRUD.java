@@ -24,11 +24,33 @@ import java.util.List;
 public class QuestionCRUD implements InterfaceCRUDquestion{
      Connection conn = MyConnection.getInstance().getConn();
    
-      @Override
-     public void ajouterQuestion(question qq) {
-    try { 
-        String req = "INSERT INTO `question`(`difficulte`, `questionn`, `reponse1`, `reponse2`, `reponse3`, `solution`,`id_quiz`) VALUES (?,?,?,?,?,?,?)" ;
-        PreparedStatement ps = conn.prepareStatement(req); 
+//      @Override
+//     public void ajouterQuestion(question qq) {
+//    try { 
+//        String req = "INSERT INTO `question`(`difficulte`, `questionn`, `reponse1`, `reponse2`, `reponse3`, `solution`, `id_quiz`) VALUES (?,?,?,?,?,?,?)" ;
+//        PreparedStatement ps = conn.prepareStatement(req); 
+//        
+//        ps.setString(1, qq.getDifficulte());
+//        ps.setString(2, qq.getQuestionn());
+//        ps.setString(3, qq.getReponse1());
+//        ps.setString(4, qq.getReponse2());
+//        ps.setString(5, qq.getReponse3());
+//        ps.setString(6, qq.getSolution());
+//        ps.setInt(7, qq.getquiz().getId_quiz());
+//            
+//        ps.executeUpdate();
+//            
+//       
+//        System.out.println("Question ajoutée!!!");
+//    } catch (SQLException ex) {
+//        System.out.println("Question non ajoutée");                  
+//    }   
+//}
+     
+     public void ajouterQuestion(question qq, int selectedQuizId) {
+    try {
+        String req = "INSERT INTO `question`(`difficulte`, `questionn`, `reponse1`, `reponse2`, `reponse3`, `solution`, `id_quiz`) VALUES (?,?,?,?,?,?,?)";
+        PreparedStatement ps = conn.prepareStatement(req);
         
         ps.setString(1, qq.getDifficulte());
         ps.setString(2, qq.getQuestionn());
@@ -36,16 +58,20 @@ public class QuestionCRUD implements InterfaceCRUDquestion{
         ps.setString(4, qq.getReponse2());
         ps.setString(5, qq.getReponse3());
         ps.setString(6, qq.getSolution());
-        ps.setInt(7, qq.getquiz().getId_quiz());
+        ps.setInt(7, selectedQuizId);
             
         ps.executeUpdate();
             
-       
         System.out.println("Question ajoutée!!!");
     } catch (SQLException ex) {
-        System.out.println("Question non ajoutée");                  
+        System.out.println("Question non ajoutée");
+        ex.printStackTrace();
     }   
 }
+
+     
+     
+     
 
      public void modifierquestion(question qqn, int id_question) {
     try {
