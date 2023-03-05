@@ -36,9 +36,9 @@
                 <Image url="@../resources/logo.png" />
             </image>
         </ImageView>
-        <Label layoutX="438.0" layoutY="186.0" styleClass="labelF" stylesheets="@Styles/controls.css" text="Enter Verification Code" textFill="WHITE" />
-        <Button fx:id="btnid" layoutX="574.0" layoutY="418.0" mnemonicParsing="false" onAction="#SendMail" prefHeight="38.0" prefWidth="200.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Submit" />
-        <Label layoutX="449.0" layoutY="268.0" styleClass="labelf1" stylesheets="@Styles/controls.css" text="we've send you a 5-digit verification  code enter it below" textFill="WHITE" />
+        <Label layoutX="373.0" layoutY="186.0" styleClass="labelF" stylesheets="@Styles/controls.css" text="Enter le code de vérification !!" textFill="WHITE" />
+        <Button fx:id="btnid" layoutX="574.0" layoutY="418.0" mnemonicParsing="false" onAction="#SendMail" prefHeight="38.0" prefWidth="200.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Valider" />
+        <Label layoutX="449.0" layoutY="268.0" styleClass="labelf1" stylesheets="@Styles/controls.css" text="Nous avons envoyé un code de vérification à 5 symboles" textFill="WHITE" />
       <TextField fx:id="mailid" layoutX="574.0" layoutY="321.0" prefHeight="26.0" prefWidth="193.0" promptText="Code" />
     </children>
 

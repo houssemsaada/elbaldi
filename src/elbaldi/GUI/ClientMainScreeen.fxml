@@ -51,7 +51,7 @@
                                         <Insets left="50.0" />
                                     </padding>
                                     <VBox.margin>
-                                        <Insets top="450.0" />
+                                        <Insets top="480.0" />
                                     </VBox.margin>
                                 </Button>
                             </children>
