@@ -23,6 +23,16 @@ public class ClientMainScreeen {
 
     @FXML
     private Pane pnlCustomer;
+    @FXML
+    private Button produitfx;
+    @FXML
+    private Button Bonplanfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button btnSignout1;
 
     @FXML
     void ProfileUser(ActionEvent event) {
@@ -40,6 +50,22 @@ public class ClientMainScreeen {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
     }
 
 }

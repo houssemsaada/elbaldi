@@ -58,5 +58,7 @@
       </ImageView>
       <ChoiceBox fx:id="role" layoutX="829.0" layoutY="475.0" prefHeight="26.0" prefWidth="164.0" />
       <Label layoutX="708.0" layoutY="477.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Je suis un .." />
+      <PasswordField fx:id="passwordtxt1" layoutX="472.0" layoutY="522.0" />
+      <Label layoutX="292.0" layoutY="523.0" styleClass="label1" stylesheets="@Styles/controls.css" text="confirm mot de pass" />
    </children>
 </AnchorPane>

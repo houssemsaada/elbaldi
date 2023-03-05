@@ -31,19 +31,23 @@ import javafx.stage.StageStyle;
 public class elbaldi extends Application{
 
       @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
+       
         try {
             MyConnection.getInstance();
             Parent root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("../gui/Styles/controls.css").toExternalForm());
+            //scene.getStylesheets().add(getClass().getResource("../gui/Styles/controls.css").toExternalForm());
            primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
             Logger.getLogger(elbaldi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        }  
+
+}
+
+    
 
     /**
      * @param args the command line arguments

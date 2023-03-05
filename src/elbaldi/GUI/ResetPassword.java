@@ -43,7 +43,6 @@ public class ResetPassword {
         System.out.println(newMdp);
         String confirmMdp = newPassword1.getText();
         if (newMdp.equals(confirmMdp)) {
-
             UtilisateurCRUD us = new UtilisateurCRUD();
             Utilisateur utilisateur = us.GetUserByMailE(SharedData.data);
             utilisateur.setMdp(newMdp);

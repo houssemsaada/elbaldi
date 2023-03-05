@@ -78,8 +78,6 @@ public class InscriptionController implements Initializable {
     @FXML
     private Button signup;
 
-    @FXML
-    private TextField usernametxt;
 
     @FXML
     private TextField villetext;
@@ -87,14 +85,21 @@ public class InscriptionController implements Initializable {
 
     @FXML
     private ChoiceBox<String> role;
+    @FXML
+    private PasswordField passwordtxt1;
 
     @FXML
     void signup(ActionEvent event) {
-        java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
+         String confirmMdp = passwordtxt1.getText();
+         String Mdp = passwordtxt.getText();
+
         Role rolee = Role.valueOf(role.getValue());
         if (event.getSource() == signup) {
-            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt) &validateTel(numteltext)) {
-                if(rolee.equals(Role.client)){
+            
+            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt) &validateTel(numteltext) & TestDate() &validatenGuest_Password(passwordtxt1)) {
+                       java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
+                       if(confirmMdp.equals(Mdp)){
+                             if(rolee.equals(Role.client)){
                     user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
                             emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
                             rolee, Etat.accepted);
@@ -105,6 +110,8 @@ public class InscriptionController implements Initializable {
                             rolee, Etat.pending);
                     cRUD.ajouterUtlisateur(user);
                 }
+                       }
+              
 
 
             }
@@ -168,6 +175,33 @@ public class InscriptionController implements Initializable {
         } else {
             name.setEffect(null);
             return true;
+        }
+    }
+    
+    private boolean TestDate() {
+        java.sql.Date birthday = java.sql.Date.valueOf(daten.getValue());
+        long millis = System.currentTimeMillis();
+        java.sql.Date now = new java.sql.Date(millis);
+        
+        if ( birthday.compareTo(now) < 0) {
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            daten.setEffect(in);
+            return true;
+
+        } else {
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            daten.setEffect(in);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Syntaxe Email");
+            alert.setHeaderText(null);
+            alert.setContentText("S'il vous plait saisir une date valide");
+            alert.showAndWait();
+
+            return false;
         }
     }
 

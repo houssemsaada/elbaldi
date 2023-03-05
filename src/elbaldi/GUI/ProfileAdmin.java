@@ -20,8 +20,6 @@ import java.util.ResourceBundle;
 
 public class ProfileAdmin implements Initializable {
 
-    @FXML
-    private Circle HostPic;
 
     @FXML
     private TextField adminpageaddress;
@@ -44,12 +42,24 @@ public class ProfileAdmin implements Initializable {
     @FXML
     private Button updateadmin;
 
-    @FXML
     void image_admin(MouseEvent event) {
 
     }
 
-    @FXML
+   
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        UserSession userSession = new UserSession();
+        UtilisateurCRUD userService = new UtilisateurCRUD();
+        LocalDate ddn = userSession.getUser().getDateNaissance().toLocalDate();
+        adminpagename.setText(userSession.getUser().getNom());
+        adminpagelastname.setText(userSession.getUser().getPrenom());
+        adminpagetel.setText(String.valueOf(userSession.getUser().getNumTel()));
+        adminpageaddress.setText(userSession.getUser().getVille());
+        adminpagedate.setValue(ddn);
+    }
+     @FXML
     void updtahost(ActionEvent event) {
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(adminpagedate.getValue());
         UtilisateurCRUD u = new UtilisateurCRUD();
@@ -66,15 +76,4 @@ public class ProfileAdmin implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        UserSession userSession = new UserSession();
-        UtilisateurCRUD userService = new UtilisateurCRUD();
-        LocalDate ddn = userSession.getUser().getDateNaissance().toLocalDate();
-        adminpagename.setText(userSession.getUser().getNom());
-        adminpagelastname.setText(userSession.getUser().getPrenom());
-        adminpagetel.setText(String.valueOf(userSession.getUser().getNumTel()));
-        adminpageaddress.setText(userSession.getUser().getVille());
-        adminpagedate.setValue(ddn);
-    }
 }

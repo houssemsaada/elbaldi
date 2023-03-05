@@ -12,8 +12,6 @@ import java.io.IOException;
 
 public class MenuAdmin {
 
-    @FXML
-    private Button ApprouveOffres;
 
     @FXML
     private Button btnMenus;
@@ -29,6 +27,24 @@ public class MenuAdmin {
 
     @FXML
     private Pane pnlCustomer;
+    @FXML
+    private Button Accueilfx;
+    @FXML
+    private Button categoriefx;
+    @FXML
+    private Button produitfx;
+    @FXML
+    private Button commandefx;
+    @FXML
+    private Button Livrfx;
+    @FXML
+    private Button Bonplanfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button participationfx;
 
     @FXML
     void ApprouverOffres(ActionEvent event) {
@@ -48,7 +64,6 @@ public class MenuAdmin {
         }
     }
 
-    @FXML
     void DashboardAdmin(ActionEvent event) {
 
     }
@@ -69,6 +84,42 @@ public class MenuAdmin {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void accueilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void categ(ActionEvent event) {
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    @FXML
+    private void commandesAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void LivraisonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void participationaction(ActionEvent event) {
     }
 
 }
