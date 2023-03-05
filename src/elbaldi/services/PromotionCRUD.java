@@ -150,4 +150,21 @@ public void modifierpromotion(promotion p) {
 
     return list;
 }
+   
+   public boolean promocodeExiste(String code_promo) {
+    try {
+       
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM promotion WHERE code_promo=?");
+        ps.setString(1, code_promo);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return false;
+}
+
 }

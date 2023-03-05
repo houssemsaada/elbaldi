@@ -29,8 +29,8 @@ public class elbaldi {
          System.out.println("                              PARTIE UTILISATEUR");
          System.out.println("-------------------------------------------------------------------------------");
      
-       
-       
+       PromotionCRUD e = new PromotionCRUD();
+       System.out.println(e.promocodeExiste("ELBALDI753"));
       
         Utilisateur u1 = new Utilisateur("ben mahmoud", "khaled","test@test","10/16/2000",2345564,"tunis","test","test",client);
         UtilisateurCRUD uti = new UtilisateurCRUD();

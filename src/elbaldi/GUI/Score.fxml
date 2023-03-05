@@ -38,15 +38,16 @@
             <Font name="Cambria Bold Italic" size="23.0" />
          </font>
       </Label>
-      <Label fx:id="reduction" layoutX="44.0" layoutY="275.0" prefHeight="27.0" prefWidth="409.0" textFill="#d30c0c">
+      <Label fx:id="reduction" layoutX="125.0" layoutY="275.0" prefHeight="27.0" prefWidth="349.0" textFill="#d30c0c">
          <font>
             <Font name="Cambria Bold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="echec" layoutX="9.0" layoutY="280.0" prefHeight="30.0" prefWidth="480.0">
+      <Label fx:id="echec" layoutX="28.0" layoutY="280.0" prefHeight="30.0" prefWidth="435.0">
          <font>
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
+      <ImageView fx:id="qrfix" fitHeight="109.0" fitWidth="125.0" layoutX="165.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
