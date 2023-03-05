@@ -12,13 +12,18 @@
          <image>
             <Image url="@../../Ressources/Logo.png" />
          </image></ImageView>
-      <Label fx:id="libellefx" layoutX="12.0" layoutY="211.0" prefHeight="51.0" prefWidth="165.0" text="Libelle Produit">
+      <Label fx:id="libellefx" layoutX="12.0" layoutY="211.0" prefHeight="51.0" prefWidth="207.0" text="Libelle Produit" textFill="#a44949">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label fx:id="prixfx" layoutX="150.0" layoutY="256.0" prefHeight="32.0" prefWidth="62.0" text="Prix">
+      <Label fx:id="prixfx" layoutX="140.0" layoutY="262.0" prefHeight="32.0" prefWidth="62.0" text="Prix">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font></Label>
+      <Label layoutX="200.0" layoutY="268.0" text="dt">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -31,6 +31,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -68,6 +70,10 @@ public class Front1Controller implements Initializable {
     private Button cnx;
     @FXML
     private Button insc;
+    @FXML
+    private ImageView decfx;
+    @FXML
+    private ImageView croifx;
 
     /**
      * Initializes the controller class.
@@ -136,9 +142,9 @@ public class Front1Controller implements Initializable {
             int row = 1;
             for (int i = 0; i < listeProduit.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItemfront1.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-               ProduitItemController itemController = fxmlLoader.getController();
+               ProduitItemfront1Controller itemController = fxmlLoader.getController();
                 itemController.setData(listeProduit.get(i));
                 if (column == 3) {
                     column = 0;
@@ -193,9 +199,9 @@ public class Front1Controller implements Initializable {
         int row = 1;
         for (int i = 0; i < listeProduit.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItemfront1.fxml"));
             AnchorPane anchorpane = fxmlLoader.load();
-            ProduitItemController itemController = fxmlLoader.getController();
+            ProduitItemfront1Controller itemController = fxmlLoader.getController();
             itemController.setData(listeProduit.get(i));
             if (column == 3) {
                 column = 0;
@@ -227,9 +233,9 @@ public class Front1Controller implements Initializable {
         int row = 1;
         for (int i = 0; i < listeProduit.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItemfront1.fxml"));
             AnchorPane anchorpane = fxmlLoader.load();
-            ProduitItemController itemController = fxmlLoader.getController();
+            ProduitItemfront1Controller itemController = fxmlLoader.getController();
             itemController.setData(listeProduit.get(i));
             if (column == 3) {
                 column = 0;
@@ -271,9 +277,9 @@ public class Front1Controller implements Initializable {
             int row = 1;
             for (int i = 0; i < listeProduit.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItemfront1.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ProduitItemController itemController = fxmlLoader.getController();
+                ProduitItemfront1Controller itemController = fxmlLoader.getController();
                 itemController.setData(listeProduit.get(i));
                 if (column == 3) {
                     column = 0;
@@ -296,6 +302,74 @@ public class Front1Controller implements Initializable {
 
     @FXML
     private void inscr(ActionEvent event) {
+    }
+
+    @FXML
+    private void decroissant(MouseEvent event) {
+        try {
+            grid.getChildren().remove(0, listeProduit.size());
+            listeProduit = ds.triedec();
+
+//             String searchTerm = searchField.getText().toLowerCase();
+//        if (!searchTerm.isEmpty()) {
+//            listeProduit = listeProduit.stream()
+//                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
+//                .collect(Collectors.toList());
+//        }
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItemfront1.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemfront1Controller itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+
+        } catch (IOException ex) {
+        }
+    }
+
+    @FXML
+    private void croissant(MouseEvent event) {
+             try {
+            grid.getChildren().remove(0, listeProduit.size());
+            listeProduit = ds.triecroissant();
+
+//             String searchTerm = searchField.getText().toLowerCase();
+//        if (!searchTerm.isEmpty()) {
+//            listeProduit = listeProduit.stream()
+//                .filter(p -> p.getLibelle().toLowerCase().contains(searchTerm))
+//                .collect(Collectors.toList());
+//        }
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listeProduit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItemfront1.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ProduitItemfront1Controller itemController = fxmlLoader.getController();
+                itemController.setData(listeProduit.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (SQLException ex) {
+
+        } catch (IOException ex) {
+        }
     }
     
 }

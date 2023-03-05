@@ -130,17 +130,21 @@ public class ProduitDetailsFrontController implements Initializable {
     }
 
     public List<commentaire> afficherCommentaires(produit produit) {
-        // Récupérer les commentaires du produit à partir de la base de données
-        List<commentaire> commentaires = null;
-        try {
-            commentaires = comm.getCommentairesByArticle(produit);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         // Récupérer les commentaires du produit à partir de la base de données
+    List<commentaire> commentaires = null;
+    try {
+        commentaires = comm.getCommentairesByArticle(produit);
+    } catch (SQLException ex) {
+        Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
+    }
 
-        // Ajouter les commentaires à la ListView
-        listfx.getItems().setAll(commentaires);
-        return commentaires;
+    // Définir la cellule personnalisée pour la ListView
+    listfx.setCellFactory(list -> new CommentaireCell());
+
+    // Ajouter les commentaires à la ListView
+    listfx.getItems().setAll(commentaires);
+    return commentaires;
+//       
     }
 
     @FXML

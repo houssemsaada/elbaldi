@@ -7,7 +7,6 @@ package elbaldi.GUI;
 
 import elbaldi.models.commentaire;
 import elbaldi.models.produit;
-import elbaldi.services.ProduitCRUD;
 import elbaldi.services.commentaireCRUD;
 import java.io.File;
 import java.io.IOException;
@@ -22,20 +21,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author USER
  */
-public class ProddetailsbackController implements Initializable {
+public class ProduitDetailsFront1Controller implements Initializable {
 
     @FXML
     private ImageView img;
@@ -48,51 +45,30 @@ public class ProddetailsbackController implements Initializable {
     @FXML
     private Label prixfx;
     @FXML
-    private Button modifierfx;
+    private ListView<commentaire> listfx;
     @FXML
     private Button retourfx;
-    private produit produitt;
-     commentaireCRUD comm = new commentaireCRUD();
-    @FXML
-    private ListView<commentaire> listefx;
-
+  private produit produitt;
+   commentaireCRUD comm = new commentaireCRUD();
     /**
      * Initializes the controller class.
      */
     public void setProduit(produit produit) {
         this.produitt = produit;
         libellefx.setText(produit.getLibelle());
-         descfx.setText(produit.getDescription());
-          reffx.setText(produit.getRef_produit());
+        descfx.setText(produit.getDescription());
+        reffx.setText(produit.getRef_produit());
         prixfx.setText(produit.getPrix_vente() + " ");
         File f = new File("C:\\xampp\\htdocs\\images\\" + produitt.getImage());
 
-          img.setImage(new Image(f.toURI().toString()));
-           afficherCommentaires(produit); // Afficher les commentaires pour ce produit
-          
+        img.setImage(new Image(f.toURI().toString()));
+        afficherCommentaires(produit); // Afficher les commentaires pour ce produit
 
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void modifier(ActionEvent event) throws IOException, SQLException {
-         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("ModifierProduitBack.fxml"));
-        Parent root = loader.load();
-        
-
-        ModifierProduitBackController cb = loader.getController();
-        cb.setProduit(produitt);
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.showAndWait();
-        ProduitCRUD sc=new ProduitCRUD();
-        setProduit(sc.getByRefProduit(produitt.getRef_produit()));
-    }
  public List<commentaire> afficherCommentaires(produit produit) {
          // Récupérer les commentaires du produit à partir de la base de données
     List<commentaire> commentaires = null;
@@ -103,17 +79,17 @@ public class ProddetailsbackController implements Initializable {
     }
 
     // Définir la cellule personnalisée pour la ListView
-    listefx.setCellFactory(list -> new CommentaireCell());
+    listfx.setCellFactory(list -> new CommentaireCell());
 
     // Ajouter les commentaires à la ListView
-    listefx.getItems().setAll(commentaires);
+    listfx.getItems().setAll(commentaires);
     return commentaires;
 //       
     }
     @FXML
     private void back(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("prodbacklist.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Front1.fxml"));
         Parent root = loader.load();
         retourfx.getScene().setRoot(root);
     }

@@ -44,7 +44,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionfx" layoutX="384.0" layoutY="170.0" prefHeight="77.0" prefWidth="186.0" />
+            <TextArea fx:id="descriptionfx" layoutX="384.0" layoutY="170.0" prefHeight="86.0" prefWidth="341.0" />
             <TextField fx:id="prixfx" layoutX="383.0" layoutY="271.0" prefHeight="31.0" prefWidth="186.0" />
             <Label layoutX="196.0" layoutY="260.0" prefHeight="50.0" prefWidth="129.0" text="Prix de vente:">
                <font>
@@ -58,8 +58,8 @@
                </font>
             </Label>
             <ComboBox fx:id="categoriefx" layoutX="382.0" layoutY="398.0" prefHeight="31.0" prefWidth="186.0" />
-            <TextField fx:id="reffx" layoutX="386.0" layoutY="79.0" onMouseClicked="#prefixe" />
-            <TextField fx:id="libellefx" layoutX="386.0" layoutY="125.0" prefHeight="31.0" prefWidth="186.0" />
+            <TextField fx:id="reffx" layoutX="386.0" layoutY="79.0" onMouseClicked="#prefixe" prefHeight="31.0" prefWidth="341.0" />
+            <TextField fx:id="libellefx" layoutX="386.0" layoutY="125.0" prefHeight="31.0" prefWidth="341.0" />
             <Label layoutX="227.0" layoutY="338.0" prefHeight="27.0" prefWidth="106.0" text="Quantite:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />

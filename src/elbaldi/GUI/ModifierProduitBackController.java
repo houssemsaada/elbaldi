@@ -63,8 +63,6 @@ public class ModifierProduitBackController implements Initializable {
     @FXML
     private TextField prixfx;
     @FXML
-    private Button annulerfx;
-    @FXML
     private ComboBox<categorie> categoriefx;
     @FXML
     private TextField reffx;

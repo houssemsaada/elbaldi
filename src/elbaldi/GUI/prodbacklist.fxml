@@ -2,8 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProdbacklistController">
    <children>
-      <ScrollPane fx:id="scroll" layoutX="300.0" layoutY="117.0" prefHeight="469.0" prefWidth="837.0">
+      <ScrollPane fx:id="scroll" layoutX="285.0" layoutY="117.0" prefHeight="485.0" prefWidth="895.0">
          <content>
             <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
                <rowConstraints>
@@ -24,9 +26,9 @@
          </content>
       </ScrollPane>
       <Button fx:id="ajoutfx" layoutX="1015.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouter" stylesheets="@style.css" text="Ajouter produit" />
-      <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="979.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="981.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Downloads/elbaldi-selim/elbaldi-selim/src/Ressource/ajouter.png" />
+            <Image url="@../../Ressources/ajouter.png" />
          </image>
       </ImageView>
       <Button fx:id="showC" layoutX="1035.0" layoutY="50.0" mnemonicParsing="false" onAction="#refresh" prefHeight="23.0" prefWidth="100.0" stylesheets="@style.css" text="Rafraîchir" />
@@ -250,5 +252,12 @@
             </ScrollPane>
          </children>
       </VBox>
+      <TextField fx:id="searchField" layoutX="285.0" layoutY="81.0" promptText="Recherche..." />
+      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="472.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Ressources/search.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="categoriesfx" layoutX="838.0" layoutY="81.0" prefHeight="31.0" prefWidth="187.0" promptText="Categories Produits" />
    </children>
 </AnchorPane>

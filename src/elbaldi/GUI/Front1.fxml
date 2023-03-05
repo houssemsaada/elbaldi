@@ -98,6 +98,16 @@
             </VBox>
             <Button fx:id="cnx" layoutX="929.0" layoutY="9.0" mnemonicParsing="false" onAction="#connecter" prefHeight="41.0" prefWidth="114.0" stylesheets="@style.css" text="Se connecter" />
             <Button fx:id="insc" layoutX="805.0" layoutY="9.0" mnemonicParsing="false" onAction="#inscr" prefHeight="41.0" prefWidth="114.0" stylesheets="@style.css" text="S'inscrire" />
+            <ImageView fx:id="decfx" fitHeight="31.0" fitWidth="36.0" layoutX="526.0" layoutY="81.0" onMousePressed="#decroissant" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/decroissant.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="croifx" fitHeight="31.0" fitWidth="36.0" layoutX="497.0" layoutY="81.0" onMousePressed="#croissant" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/croiss.png" />
+               </image>
+            </ImageView>
          </children>
          <effect>
             <DropShadow color="#1b1eeb" />

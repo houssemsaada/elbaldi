@@ -21,7 +21,7 @@
                   <Font name="Arial Black" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="Modifierfx" layoutX="253.0" layoutY="543.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Modifier" />
+            <Button fx:id="Modifierfx" layoutX="329.0" layoutY="543.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Modifier" />
             <Label layoutX="222.0" layoutY="84.0" prefHeight="27.0" prefWidth="155.0" text="Réference :">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
@@ -44,22 +44,21 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionfx" layoutX="429.0" layoutY="177.0" prefHeight="77.0" prefWidth="174.0" />
+            <TextArea fx:id="descriptionfx" layoutX="429.0" layoutY="177.0" prefHeight="91.0" prefWidth="333.0" />
             <TextField fx:id="prixfx" layoutX="428.0" layoutY="278.0" prefHeight="25.0" prefWidth="174.0" />
             <Label layoutX="212.0" layoutY="266.0" prefHeight="50.0" prefWidth="129.0" text="Prix de vente:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="annulerfx" layoutX="437.0" layoutY="542.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
             <Label layoutX="235.0" layoutY="407.0" prefHeight="27.0" prefWidth="106.0" text="Catégorie :">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
             <ComboBox fx:id="categoriefx" layoutX="429.0" layoutY="405.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="reffx" layoutX="429.0" layoutY="86.0" onMouseClicked="#prefixe" prefHeight="31.0" prefWidth="174.0" />
-            <TextField fx:id="libellefx" layoutX="428.0" layoutY="132.0" prefHeight="31.0" prefWidth="174.0" />
+            <TextField fx:id="reffx" layoutX="429.0" layoutY="86.0" onMouseClicked="#prefixe" prefHeight="31.0" prefWidth="333.0" />
+            <TextField fx:id="libellefx" layoutX="428.0" layoutY="132.0" prefHeight="31.0" prefWidth="333.0" />
             <Label layoutX="239.0" layoutY="343.0" prefHeight="27.0" prefWidth="106.0" text="Quantite:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />

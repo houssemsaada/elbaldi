@@ -21,20 +21,19 @@
                   <Font name="Arial Black" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="104.0" layoutY="148.0" prefHeight="27.0" prefWidth="155.0" text="Nom catégorie:">
+            <Label layoutX="132.0" layoutY="148.0" prefHeight="27.0" prefWidth="155.0" text="Nom catégorie:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="nom" layoutX="310.0" layoutY="146.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="nom" layoutX="310.0" layoutY="140.0" prefHeight="37.0" prefWidth="295.0" />
             <Label layoutX="134.0" layoutY="239.0" prefHeight="27.0" prefWidth="174.0" text="Description:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionC" layoutX="311.0" layoutY="214.0" prefHeight="77.0" prefWidth="172.0" />
-            <Button fx:id="annuler" layoutX="325.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Annuler" />
-            <Button fx:id="updateCat" layoutX="123.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Modifier catégorie" />
+            <TextArea fx:id="descriptionC" layoutX="310.0" layoutY="204.0" prefHeight="97.0" prefWidth="295.0" />
+            <Button fx:id="updateCat" layoutX="269.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Modifier catégorie" />
             <ImageView fitHeight="44.0" fitWidth="51.0" layoutX="644.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/Logo.png" />

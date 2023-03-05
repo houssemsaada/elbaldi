@@ -36,8 +36,6 @@ public class CategorieBackModifierController implements Initializable {
     private TextField nom;
     @FXML
     private TextArea descriptionC;
-    @FXML
-    private Button annuler;
     public static categorie categ;
     @FXML
     private Button updateCat;

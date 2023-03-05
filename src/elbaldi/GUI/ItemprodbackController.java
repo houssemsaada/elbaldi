@@ -102,7 +102,7 @@ public class ItemprodbackController implements Initializable {
     @FXML
     private void supprimer(ActionEvent event) throws SQLException, IOException {
            ProduitCRUD produitcrud = new ProduitCRUD();
-      produitcrud.supprimerProduit(Refproduit);
+     // produitcrud.supprimerProduit(Refproduit);
   
    
         Alert alert2=new Alert(Alert.AlertType.CONFIRMATION);
@@ -116,16 +116,18 @@ alert2.getButtonTypes().setAll(confirmerButton, cancelButton);
 
 Optional<ButtonType> result = alert2.showAndWait();
 if (result.get() == confirmerButton){
-                
+       produitcrud.supprimerProduit(Refproduit);         
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Information Dialog");
       alert.setHeaderText(null);
       alert.setContentText("produit a été supprimé avec succés!");
       alert.show();
-    }
+    
+
    Parent loader = FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
      libellefx.getScene().setRoot(loader);
-//    }
+}
+
     }
     
 }
