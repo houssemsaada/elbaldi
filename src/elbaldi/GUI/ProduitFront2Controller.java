@@ -67,19 +67,19 @@ public class ProduitFront2Controller implements Initializable {
     @FXML
     private Button prodfx;
     @FXML
-    private Button Home111;
-    @FXML
-    private Button Home1111;
-    @FXML
-    private Button Home1;
-    @FXML
-    private Button Home11111;
-    @FXML
-    private Button Home111111;
-    @FXML
     private ImageView decfx;
     @FXML
     private ImageView croifx;
+    @FXML
+    private Button profilfx;
+    @FXML
+    private Button bonplanfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button decofx;
 
     /**
      * Initializes the controller class.
@@ -366,6 +366,30 @@ public class ProduitFront2Controller implements Initializable {
 
         } catch (IOException ex) {
         }
+    }
+
+    @FXML
+    private void panierAction(MouseEvent event) {
+    }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void bonplanAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void EventAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
     }
     
 

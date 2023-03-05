@@ -63,10 +63,6 @@ public class Front1Controller implements Initializable {
     @FXML
     private Button prodfx;
     @FXML
-    private Button Home111;
-    @FXML
-    private Button Home1111;
-    @FXML
     private Button cnx;
     @FXML
     private Button insc;
@@ -74,6 +70,10 @@ public class Front1Controller implements Initializable {
     private ImageView decfx;
     @FXML
     private ImageView croifx;
+    @FXML
+    private Button bonplanfx;
+    @FXML
+    private Button eventfx;
 
     /**
      * Initializes the controller class.
@@ -258,7 +258,7 @@ public class Front1Controller implements Initializable {
     private void produitsf(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
+        loader.setLocation(getClass().getResource("Front1.fxml"));
         Parent root = loader.load();
         prodfx.getScene().setRoot(root);
     }
@@ -370,6 +370,14 @@ public class Front1Controller implements Initializable {
 
         } catch (IOException ex) {
         }
+    }
+
+    @FXML
+    private void bonplanAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventAction(ActionEvent event) {
     }
     
 }
