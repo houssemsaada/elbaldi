@@ -259,7 +259,7 @@ public class AfficherReservationBackController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Supression avec succes");
+            alert.setContentText("confirmation de reservation");
             alert.show();
          
               Afficher();   
@@ -285,7 +285,7 @@ public class AfficherReservationBackController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Supression avec succes");
+            alert.setContentText("refus de reservation");
             alert.show();
          
               Afficher();   

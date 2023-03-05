@@ -50,7 +50,7 @@ public class BpDetailsBackController implements Initializable {
      */
      public void setbonplan(bonplan bonplan11) {
         this.bonplan1 = bonplan11;
-        titrefx.setText(bonplan11.getImage_bonplan());
+        titrefx.setText(bonplan11.getTitre_bonplan());
          typefx.setText(bonplan11.getType_bonplan());
           descfx.setText(bonplan11.getDescription_bonplan());
              

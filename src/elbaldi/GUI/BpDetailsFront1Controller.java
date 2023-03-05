@@ -15,19 +15,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author user
  */
-public class BpDetailsFrontController implements Initializable {
+public class BpDetailsFront1Controller implements Initializable {
 
     @FXML
     private ImageView img;
@@ -39,14 +37,12 @@ public class BpDetailsFrontController implements Initializable {
     private Label typefx;
     @FXML
     private Button retourfx;
-    @FXML
-    private Button reserverfx;
-     private bonplan bonplan1;
+       private bonplan bonplan1;
 
     /**
      * Initializes the controller class.
      */
-     public void setbonplan(bonplan bonplan11) {
+     public void setbonplan(bonplan bonplan11) throws IOException {
         this.bonplan1 = bonplan11;
         titrefx.setText(bonplan11.getTitre_bonplan());
          typefx.setText(bonplan11.getType_bonplan());
@@ -72,36 +68,27 @@ public class BpDetailsFrontController implements Initializable {
         } else {
             System.out.println("Image not found.");
         }
-
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
+    
+    
+     }
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader();
+         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("BpFront.fxml"));
         Parent root = loader.load();
         retourfx.getScene().setRoot(root);
     }
-
-    @FXML
-    private void reserver(ActionEvent event) throws IOException {
-       
-        
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("AjouReservationFront1.fxml"));
-        Parent root = loader.load();
-        
-        AjouReservationFront1Controller cb = loader.getController();
-        cb.setBonplan1(bonplan1);
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.showAndWait();
-    }
     
+    
+//}
+//     @Override
+//    public void initialize(URL url, ResourceBundle rb) {
+//        // TODO
+//    }    
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

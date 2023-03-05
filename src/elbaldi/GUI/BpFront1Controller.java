@@ -35,7 +35,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author user
  */
-public class BpFrontController implements Initializable {
+public class BpFront1Controller implements Initializable {
 
     @FXML
     private ScrollPane scroll;
@@ -57,6 +57,11 @@ public class BpFrontController implements Initializable {
     private Button Home111111;
     @FXML
     private Button bonplan1;
+    @FXML
+    private Button insc;
+    @FXML
+    private Button cnx;
+
 
     /**
      * Initializes the controller class.
@@ -189,6 +194,14 @@ public class BpFrontController implements Initializable {
         loader.setLocation(getClass().getResource("BpFront.fxml"));
         Parent root = loader.load();
         bonplan1.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void inscr(ActionEvent event) {
+    }
+
+    @FXML
+    private void connecter(ActionEvent event) {
     }
 
     

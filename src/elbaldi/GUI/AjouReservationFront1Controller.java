@@ -44,6 +44,10 @@ public class AjouReservationFront1Controller implements Initializable {
     private bonplan bonplan1;
     BonplanCrud bp= new BonplanCrud();
 
+    public void setBonplan1(bonplan bonplan1) {
+        this.bonplan1 = bonplan1;
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -73,10 +77,10 @@ public class AjouReservationFront1Controller implements Initializable {
             int nombre_personnes = Integer.parseInt(nombreR.getText());
              LocalDate date_selectionnee = dateR.getValue();
              Date date_reservation = java.sql.Date.valueOf(date_selectionnee);
-
+             
              ReservationCrud R= new ReservationCrud();
              UtilisateurCRUD uti = new UtilisateurCRUD();
-           Reservation res = new Reservation(nombre_personnes, date_reservation,"En attente",bp.getByIdBonplan(171),uti.getUserByID(2462));
+           Reservation res = new Reservation(nombre_personnes, date_reservation,"En attente",bonplan1,uti.getUserByID(2459));
              R.ajouterReservation(res);
                
             Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
