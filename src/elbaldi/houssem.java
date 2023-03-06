@@ -37,7 +37,7 @@ public class houssem {
         UtilisateurCRUD uti = new UtilisateurCRUD();
         Utilisateur u2 = new Utilisateur(2462);
         // uti.ajouterUtlisateur(u1);
-        categorie c1 = new categorie(2, "art");
+     //   categorie c1 = new categorie(2, "art");
         CategorieCRUD categ = new CategorieCRUD();
         // categ.ajouterCategorie(c1);
         produit p1 = new produit("f03");

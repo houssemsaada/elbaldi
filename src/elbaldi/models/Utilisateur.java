@@ -26,21 +26,20 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-<<<<<<< HEAD
-    public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, String numTel, String ville, String login, String mdp, Role role) {
-=======
+
+  
     public Utilisateur(int id_user) {
         this.id_user = id_user;
     }
     
     public Utilisateur(int id_user, String nom, String prenom, String email, String dateNaissance, int numTel, String ville, String login, String mdp, Role role) {
->>>>>>> origin/houssem
+
         this.id_user = id_user;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.dateNaissance = dateNaissance;
-        this.numTel = numTel;
+       // this.numTel = numTel;
         this.ville = ville;
         this.login = login;
         this.mdp = mdp;
