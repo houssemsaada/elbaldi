@@ -33,7 +33,15 @@ public class produit {
         this.ref_produit=ref_produit;
     }
 
+<<<<<<< HEAD
     public produit(String ref_produit, String libelle, String description, String image, float prix_vente, int quantite,categorie categoriee) {
+=======
+    public produit(String ref_produit) {
+        this.ref_produit = ref_produit;
+    }
+
+    public produit(String ref_produit, String libelle, String description, String image, float prix_achat, float marge, float prix_vente, int quantite, int id_user, int id_categorie) {
+>>>>>>> origin/houssem
         this.ref_produit = ref_produit;
         this.libelle = libelle;
         this.description = description;
