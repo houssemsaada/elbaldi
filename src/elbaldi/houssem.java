@@ -33,7 +33,7 @@ public class houssem {
         Date date_com = Date.valueOf(date_comm);
         String date_liv = "2023-02-18";
         Date date_livr = Date.valueOf(date_liv);
-        Utilisateur u1 = new Utilisateur(2460, "ben mahmoud", "khaled", "test@test", "10/16/2000", 2345564, "tunis", "test", "test", client);
+    //    Utilisateur u1 = new Utilisateur(2460, "ben mahmoud", "khaled", "test@test", "10/16/2000", 2345564, "tunis", "test", "test", client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
         Utilisateur u2 = new Utilisateur(2462);
         // uti.ajouterUtlisateur(u1);
@@ -69,7 +69,7 @@ public class houssem {
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
         panier pan1 = new panier(15);
-        pan1.setU1(u1);
+       // pan1.setU1(u1);
         panierCRUD pan = new panierCRUD();
         //pan.ajouterPanier(pan1);
         //pan.ajouterProdPanier(pan1, p1,10);

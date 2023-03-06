@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProfileAdmin">
+   <stylesheets>
+      <URL value="@Styles/controls.css" />
+   </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="656.0" prefWidth="1216.0" stylesheets="@Styles/controls.css">
+         <children>
+            <Pane fx:id="pnlOverview" layoutX="30.0" layoutY="10.0" prefHeight="716.0" prefWidth="1182.0" style="-fx-background-color: F7F1E5;">
+               <children>
+                  <Label layoutX="357.0" layoutY="39.0" prefHeight="65.0" prefWidth="1002.0" text="Admin Profile">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="543.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Name" />
+                  <Label layoutX="665.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Lastname" />
+                  <Label layoutX="819.0" layoutY="242.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Phone Number" />
+                  <TextField fx:id="adminpagename" layoutX="482.0" layoutY="292.0" />
+                  <TextField fx:id="adminpagelastname" layoutX="649.0" layoutY="292.0" />
+                  <TextField fx:id="adminpagetel" layoutX="819.0" layoutY="292.0" />
+                  <Label layoutX="567.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Ville" />
+                  <TextField fx:id="adminpageaddress" layoutX="516.0" layoutY="412.0" />
+                  <DatePicker fx:id="adminpagedate" layoutX="723.0" layoutY="412.0" />
+                  <Label layoutX="765.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Birthday" />
+                  <Button fx:id="updateadmin" layoutX="612.0" layoutY="623.0" mnemonicParsing="false" onAction="#updtahost" prefHeight="37.0" prefWidth="198.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Update Profile" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

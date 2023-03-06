@@ -17,15 +17,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import com.fasterxml.jackson.databind.JsonMappingException;
+
+//import com.fasterxml.jackson.databind.JsonMappingException;
 /**
  *
  * @author Yasmine
+=======
+
+/**
+ *
+ * @author mEtrOpOliS
+>>>>>>> Origin/sami
  */
 public class FirstWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+
         try {
             
             
@@ -50,9 +58,23 @@ public class FirstWindow extends Application {
             primaryStage.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Inscription.fxml"));
+            
+            
+            Scene scene = new Scene(root);
+            
+            primaryStage.setTitle("Inscription");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex2) {
+            System.out.println(ex2.getMessage());       
+
         }
     }
-
+    }
     /**
      * @param args the command line arguments
      */

@@ -8,6 +8,7 @@ package elbaldi.services;
 import elbaldi.interfaces.panierInterfaceCRUD;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
+import elbaldi.models.categorie;
 import elbaldi.models.commande;
 import elbaldi.models.panier;
 import elbaldi.models.produit;
@@ -309,7 +310,9 @@ public class panierCRUD implements panierInterfaceCRUD {
                     p1.setImage(rr.getString(4));
                     p1.setPrix_vente(rr.getFloat(7));
                     p1.setQuantite(quantite);
-                    p1.setId_categorie(rr.getInt(10));
+                    categorie cc = new categorie();
+                    cc.setId_categorie(rr.getInt(10));
+                    p1.setCategoriee(cc);
                     list_p.add(p1);
                 }
 
