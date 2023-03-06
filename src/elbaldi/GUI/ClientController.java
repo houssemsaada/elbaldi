@@ -38,37 +38,17 @@ public class ClientController implements Initializable {
      private List<quiz> listeQuiz = new ArrayList<>();
      QuizCRUD ds = new QuizCRUD();
     @FXML
-    private Button Home1;
+    private Button profilfx;
     @FXML
-    private Button categorie1;
+    private Button prodfx;
     @FXML
-    private Button produit1;
+    private Button bonplanfx;
     @FXML
-    private Button comm1;
+    private Button Eventfx;
     @FXML
-    private Button btnSignout1;
+    private Button Quizfx;
     @FXML
-    private Button btnSignout111;
-    @FXML
-    private Button btnSignout1111;
-    @FXML
-    private Button btnSignout11111;
-    @FXML
-    private Button btnSignout1111111;
-    @FXML
-    private Button btnSignout11111111;
-    @FXML
-    private Button btnSignout111111111;
-    @FXML
-    private Button btnSignout11112;
-    @FXML
-    private Button btnSignout11;
-    @FXML
-    private Button btnSignout111121;
-    @FXML
-    private Button btnSignout1111211;
-    @FXML
-    private Button btnSignout11112111;
+    private Button decofx;
     /**
      * Initializes the controller class.
      */
@@ -117,15 +97,27 @@ public class ClientController implements Initializable {
     }
 
     @FXML
-    private void catt(ActionEvent event) {
+    private void profilAction(ActionEvent event) {
     }
 
     @FXML
-    private void prodd(ActionEvent event) {
+    private void produitsf(ActionEvent event) {
     }
 
     @FXML
-    private void commen(ActionEvent event) {
+    private void bonplanAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void EventAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
     }
 
     

@@ -74,8 +74,11 @@ public class ItemQuizController implements Initializable {
             Parent root = loader.load();
             JouerQuizController qbc= loader.getController();
             qbc.setQuiz(qcc);
-            nomLabel.getScene().setRoot(root);
-            
+            //nomLabel.getScene().setRoot(root);
+            Scene scene = new Scene(root);
+        Stage stage = (Stage) nomLabel.getScene().getWindow(); // backButton est le bouton de retour
+        stage.setScene(scene);
+        stage.show();
     } catch (IOException ex) {
         ex.printStackTrace();
     }

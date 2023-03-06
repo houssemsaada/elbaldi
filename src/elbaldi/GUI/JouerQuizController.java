@@ -5,6 +5,7 @@
  */
 package elbaldi.GUI;
 
+import com.google.zxing.WriterException;
 import elbaldi.models.question;
 import elbaldi.models.quiz;
 import elbaldi.services.QuestionCRUD;
@@ -111,7 +112,7 @@ public class JouerQuizController implements Initializable {
     }
 
    @FXML
-    private void suivante() throws IOException {
+    private void suivante() throws IOException, WriterException {
         // Enregistrer la réponse de l'utilisateur
         String reponse = null;
         if (fixreponse1.isSelected()) {

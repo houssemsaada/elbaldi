@@ -53,6 +53,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -86,6 +87,8 @@ public class ScoreController implements Initializable {
     Utilisateur u = new Utilisateur(2462);
     @FXML
     private ImageView qrfix;
+    @FXML
+    private Button email;
 
     public void setscore(float score) throws IOException, WriterException {
 

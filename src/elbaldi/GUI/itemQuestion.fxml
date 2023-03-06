@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="itemPane" prefHeight="251.0" prefWidth="870.0" style="-fx-background-color: #ffffff;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemQuestionController">
+<AnchorPane id="AnchorPane" fx:id="itemPane" prefHeight="159.0" prefWidth="1180.0" style="-fx-background-color: #ffffff;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemQuestionController">
    <children>
       <Label layoutX="10.0" layoutY="8.0" prefHeight="22.0" prefWidth="92.0" text="Question : ">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fixquestion" layoutX="120.0" layoutY="9.0" prefHeight="17.0" prefWidth="726.0">
+      <Label fx:id="fixquestion" layoutX="120.0" layoutY="9.0" prefHeight="22.0" prefWidth="977.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
@@ -23,7 +23,7 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fixdiffculte" layoutX="121.0" layoutY="41.0" prefHeight="17.0" prefWidth="209.0">
+      <Label fx:id="fixdiffculte" layoutX="121.0" layoutY="41.0" prefHeight="22.0" prefWidth="690.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
@@ -32,7 +32,7 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fixreponse1" layoutX="120.0" layoutY="72.0" prefHeight="17.0" prefWidth="440.0">
+      <Label fx:id="fixreponse1" layoutX="120.0" layoutY="72.0" prefHeight="22.0" prefWidth="797.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
@@ -51,15 +51,15 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="fxrep2" layoutX="120.0" layoutY="106.0" prefHeight="17.0" prefWidth="552.0">
+      <Label fx:id="fxrep2" layoutX="120.0" layoutY="106.0" prefHeight="22.0" prefWidth="808.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
-      <Label fx:id="fixrep3" layoutX="120.0" layoutY="139.0" prefHeight="17.0" prefWidth="507.0">
+      <Label fx:id="fixrep3" layoutX="120.0" layoutY="139.0" prefHeight="22.0" prefWidth="963.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
-      <Label fx:id="fxsolution" layoutX="120.0" layoutY="173.0" prefHeight="17.0" prefWidth="472.0">
+      <Label fx:id="fxsolution" layoutX="120.0" layoutY="173.0" prefHeight="22.0" prefWidth="891.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
@@ -68,17 +68,17 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="quizfx" layoutX="119.0" layoutY="206.0" prefHeight="17.0" prefWidth="737.0">
+      <Label fx:id="quizfx" layoutX="119.0" layoutY="206.0" prefHeight="22.0" prefWidth="922.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
-      <ImageView fitHeight="94.0" fitWidth="98.0" layoutX="676.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="94.0" fitWidth="98.0" layoutX="1045.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Ressource/question.png" />
          </image>
       </ImageView>
-      <Button fx:id="fixsupp" layoutX="698.0" layoutY="195.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-      <Button fx:id="fxmodifier" layoutX="617.0" layoutY="195.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
+      <Button fx:id="fixsupp" layoutX="1094.0" layoutY="195.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
+      <Button fx:id="fxmodifier" layoutX="1015.0" layoutY="195.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
       <Label fx:id="idLabel" layoutX="709.0" layoutY="70.0">
          <font>
             <Font size="1.0" />

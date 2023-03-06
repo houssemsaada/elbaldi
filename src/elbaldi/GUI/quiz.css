@@ -22,3 +22,28 @@ and open the template in the editor.
     -fx-background-radius: 30;
 }
 
+.button
+{
+-fx-background-color : #a20812;
+-fx-text-fill : #e7e5e5;
+}
+.button:hover{
+-fx-background-color : #EBEAEA;
+}
+.button:pressed
+{
+-fx-background-color : #fdf6e9;
+}
+
+/*.scroll-pane {
+    -fx-background-color: #02030A;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}*/
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}

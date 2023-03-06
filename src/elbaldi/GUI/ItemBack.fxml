@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="273.0" style="-fx-background-color: #ffffff;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemBackController">
+<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemBackController">
    <children>
       <Label layoutX="41.0" layoutY="141.0" text="Nom : ">
          <font>
