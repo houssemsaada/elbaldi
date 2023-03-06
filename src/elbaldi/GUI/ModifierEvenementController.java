@@ -77,39 +77,31 @@ private static int idd;
     @FXML
     private Button annulUpd;
     @FXML
-    private Button Home1;
-    @FXML
-    private Button categorie1;
-    @FXML
-    private Button produit1;
-    @FXML
-    private Button comm1;
-    @FXML
-    private Button btnSignout1;
-    @FXML
-    private Button btnSignout111;
-    @FXML
-    private Button btnSignout1111;
-    @FXML
-    private Button btnSignout11111;
-    @FXML
-    private Button btnSignout1111111;
-    @FXML
-    private Button btnSignout11111111;
-    @FXML
-    private Button btnSignout111111111;
-    @FXML
-    private Button btnSignout11112;
-    @FXML
-    private Button btnSignout11;
-    @FXML
-    private Button btnSignout111121;
-    @FXML
-    private Button btnSignout1111211;
-    @FXML
-    private Button btnSignout11112111;
-    @FXML
     private TextField award;
+    @FXML
+    private Button Accueilfx;
+    @FXML
+    private Button profilfx;
+    @FXML
+    private Button categoriefx;
+    @FXML
+    private Button produitfx;
+    @FXML
+    private Button commandefx;
+    @FXML
+    private Button Livrfx;
+    @FXML
+    private Button Bonplanfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button participationfx;
+    @FXML
+    private Button GestUser;
+    @FXML
+    private Button Decofx;
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -179,15 +171,52 @@ private static int idd;
            nom.getScene().setRoot(loader);
     }
 
-    @FXML
-    private void catt(ActionEvent event) {
-    }
 
     @FXML
     private void prodd(ActionEvent event) {
     }
 
     @FXML
-    private void commen(ActionEvent event) {
+    private void accueilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void categ(ActionEvent event) {
+    }
+
+    @FXML
+    private void commandesAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void LivraisonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void participationaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void GestuserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void decoAction(ActionEvent event) {
     }
 }

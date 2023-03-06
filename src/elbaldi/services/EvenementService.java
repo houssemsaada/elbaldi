@@ -25,7 +25,7 @@ import elbaldi.utils.MyConnection;
  *
  * @author Meddeb sofien
  */
-public class EvenementService implements InterfaceParticipationCRUD<Evenement>{
+public class EvenementService implements InterfaceParticipationCRUD<Evenement,Participation>{
      
     
     
@@ -34,7 +34,7 @@ public class EvenementService implements InterfaceParticipationCRUD<Evenement>{
      Connection cnx = MyConnection.getInstance().getcnn(); 
      
     @Override
-    public void ajouter(Evenement t) throws SQLException {
+    public void ajouter(Evenement t,Participation p) throws SQLException {
          try {
    String req = "INSERT INTO evenement (nom,description,date_debut_event,date_fin_event,awards) VALUES("
                 + "'" + t.getNom()+ "','" + t.getDescription()+ "','" + t.getDate_debut()+ "','" + t.getDate_fin() + "','" +t.getAwards()+ "'" + ")";
@@ -83,8 +83,8 @@ public class EvenementService implements InterfaceParticipationCRUD<Evenement>{
    }
     }
 
-    @Override
-    public List<Evenement> recuperer(Evenement t) throws SQLException {
+     @Override
+    public List<Evenement> recuperer() throws SQLException {
 List<Evenement> event = new ArrayList<>();
         try {
             
@@ -100,7 +100,7 @@ List<Evenement> event = new ArrayList<>();
                 E.setDate_fin(rs.getString(5));
                
                 E.setAwards(rs.getString(7));
-                
+                System.out.println("affiché");
                 event.add(E);
             }
             
@@ -173,6 +173,8 @@ List<Evenement> event = new ArrayList<>();
             System.out.println(ex.getMessage());        }
         return C;
     }
+
+
     
    
 }

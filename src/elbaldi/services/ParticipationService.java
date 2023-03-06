@@ -23,19 +23,19 @@ import elbaldi.utils.MyConnection;
  *
  * @author Meddeb sofien
  */
-public class ParticipationService implements  InterfaceParticipationCRUD<Participation>{
+public class ParticipationService implements  InterfaceParticipationCRUD<Participation,Evenement>{
     Connection cnx ;
 
     public ParticipationService() {
         cnx=MyConnection.getInstance().getcnn();
     }
     
-
     @Override
-    public void ajouter(Participation t) throws SQLException {
+
+    public void ajouter(Participation t,Evenement e) throws SQLException {
  try{ 
-     String req = "insert into participation(id_user, id_event) VALUES ("
-             + "'"+t.getId_user()+ "','"+t.getId_event()+ "')";
+     String req = "insert into participation(id_user, id_event,date) VALUES ("
+             + "'"+t.getId_user()+ "','"+t.getId_event()+"','"+e.getDate_debut()+ "')";
      
      Statement st = cnx.createStatement();
      st.executeUpdate(req);
@@ -73,7 +73,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
       }
 
     @Override
-    public List<Participation> recuperer(Participation t) throws SQLException {
+    public List<Participation> recuperer() throws SQLException {
       List<Participation> lP = new ArrayList<Participation>();
         try{
           String req = "SELECT  * FROM participation ";
@@ -82,8 +82,8 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
           while(rs.next()){
               Participation P = new Participation();
               P.setId_participation(rs.getInt(1));
-              P.setId_user(rs.getInt(2));
-              P.setId_event(rs.getInt(3));
+              P.setId_user(rs.getInt(3));
+              P.setId_event(rs.getInt(4));
               
               lP.add(P);
           }

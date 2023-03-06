@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package elbaldi.GUI;
-
 import elbaldi.models.Evenement;
 import elbaldi.models.Participation;
 import elbaldi.services.EvenementService;
@@ -31,7 +29,7 @@ import javafx.scene.control.Label;
  *
  * @author Meddeb sofien
  */
-public class ParticipationcontrolController implements Initializable {
+public class ParticipationController implements Initializable {
 
     @FXML
     private Label ideventlabel;
@@ -130,3 +128,4 @@ public class ParticipationcontrolController implements Initializable {
 
     
 }
+

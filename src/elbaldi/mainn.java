@@ -27,7 +27,7 @@ public class mainn {
        es.ajouter(e1);
       //es.modifier(e1); 
       //es.supprimer(e1);
-        System.out.println(es.recuperer(e1));   
+       // System.out.println(es.recuperer(e1));   
         
         
          System.out.println("*********************PARTICIPATION***************");

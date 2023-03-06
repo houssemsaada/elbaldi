@@ -24,7 +24,11 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
          try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterEvenement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("afficher participation.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterEvenement.fxml"));
+            
+                   //FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherevenFront.fxml"));
+
             Parent root = loader.load();
             Scene sc = new Scene(root);
             primaryStage.setTitle("Personnes");

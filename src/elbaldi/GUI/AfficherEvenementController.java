@@ -40,37 +40,29 @@ public class AfficherEvenementController implements Initializable {
     @FXML
     private Button retour_btn;
     @FXML
-    private Button Home1;
+    private Button Accueilfx;
     @FXML
-    private Button categorie1;
+    private Button profilfx;
     @FXML
-    private Button produit1;
+    private Button categoriefx;
     @FXML
-    private Button comm1;
+    private Button produitfx;
     @FXML
-    private Button btnSignout1;
+    private Button commandefx;
     @FXML
-    private Button btnSignout111;
+    private Button Livrfx;
     @FXML
-    private Button btnSignout1111;
+    private Button Bonplanfx;
     @FXML
-    private Button btnSignout11111;
+    private Button Quizfx;
     @FXML
-    private Button btnSignout1111111;
+    private Button Eventfx;
     @FXML
-    private Button btnSignout11111111;
+    private Button participationfx;
     @FXML
-    private Button btnSignout111111111;
+    private Button GestUser;
     @FXML
-    private Button btnSignout11112;
-    @FXML
-    private Button btnSignout11;
-    @FXML
-    private Button btnSignout111121;
-    @FXML
-    private Button btnSignout1111211;
-    @FXML
-    private Button btnSignout11112111;
+    private Button Decofx;
     /**
      * Initializes the controller class.
      */
@@ -78,7 +70,7 @@ public class AfficherEvenementController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
          try {
              
-            List<Evenement> events = es.recuperer(e1);
+            List<Evenement> events = es.recuperer();
             int row = 0;
             int column = 0;
             for (int i = 0; i < events.size(); i++) {
@@ -128,17 +120,67 @@ public class AfficherEvenementController implements Initializable {
             System.out.println(ex.getMessage());        }
     }
 
-    @FXML
-    private void catt(ActionEvent event) {
-    }
 
     @FXML
     private void prodd(ActionEvent event) {
     }
 
     @FXML
-    private void commen(ActionEvent event) {
+    private void accueilAction(ActionEvent event) {
     }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void categ(ActionEvent event) {
+    }
+
+    @FXML
+    private void commandesAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void LivraisonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("AfficherEvenement.fxml"));
+        Parent root = loader.load();
+        Eventfx.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void participationaction(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("afficher Participation.fxml"));
+        Parent root = loader.load();
+        participationfx.getScene().setRoot(root);
+        
+    }
+
+    @FXML
+    private void GestuserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void decoAction(ActionEvent event) {
+    }
+
+    
     
     
 }

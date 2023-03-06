@@ -11,7 +11,7 @@ package elbaldi.models;
  */
 public class Participation {
       private int id_participation,id_user,id_event;
-
+      
     public Participation() {
     }
 

@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author MSI
  */
-public interface InterfaceParticipationCRUD <T> {
+public interface InterfaceParticipationCRUD <T,V> {
     
-     public void ajouter(T t) throws SQLException;
+     public void ajouter(T t,V v) throws SQLException;
      public void modifier(T t) throws SQLException;
      public void supprimer(T t) throws SQLException;
-     public List<T> recuperer(T t) throws SQLException;
+     public List<T> recuperer() throws SQLException;
     
     
 }

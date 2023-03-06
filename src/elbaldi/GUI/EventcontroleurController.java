@@ -187,7 +187,7 @@ public class EventcontroleurController implements Initializable {
 
      
     
-            ps.ajouter(p);
+            ps.ajouter(p,e);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
               alert.setTitle("Information Dialog");
@@ -197,8 +197,6 @@ public class EventcontroleurController implements Initializable {
               alert.setContentText("Evenement insérée avec succés!");
 
               alert.show();
-               Parent loader = FXMLLoader.load(getClass().getResource("AfficherParticipation.fxml"));
-           id_label.getScene().setRoot(loader);
            
       
             
