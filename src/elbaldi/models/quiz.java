@@ -10,55 +10,60 @@ package elbaldi.models;
  * @author selim
  */
 public class quiz {
-      private int id_quiz;
+   private int id_quiz;
+   private String nom ;
    private String difficulte;
    private int score;
-   private int id_promotion;
-   private int id_user;
+
+   private Utilisateur id_user;
+   private String imgview;
    
     public quiz() {
     }
 
-    public quiz(int id_quiz, String difficulte, int score) {
-        this.id_quiz = id_quiz;
+    
+    
+    
+    public quiz(String nom, String difficulte, Utilisateur id_user, String imgview) {
+        this.nom = nom;
         this.difficulte = difficulte;
-        this.score = score;
-    }
-
-    public quiz(int id_quiz, String difficulte) {
-        this.id_quiz = id_quiz;
-        this.difficulte = difficulte;
-    }
-
-    public quiz(int id_quiz, String difficulte, int score, int id_promotion) {
-        this.id_quiz = id_quiz;
-        this.difficulte = difficulte;
-        this.score = score;
-        this.id_promotion = id_promotion;
-    }
-
-    public quiz(String difficulte, int score, int id_promotion) {
-        this.difficulte = difficulte;
-        this.score = score;
-        this.id_promotion = id_promotion;
-    }
-
-    public quiz(String difficulte, int score, int id_promotion, int id_user) {
-       
-        this.difficulte = difficulte;
-        this.score = score;
-        this.id_promotion = id_promotion;
         this.id_user = id_user;
+        this.imgview = imgview;
     }
 
     
-   
+    public quiz(int id_quiz, String nom, String difficulte, int score, Utilisateur id_user, String imgview) {
+        this.id_quiz = id_quiz;
+        this.nom = nom;
+        this.difficulte = difficulte;
+        this.score = score;
+        this.id_user = id_user;
+        this.imgview = imgview;
+    }
+
+    public quiz(String nom, String difficulte, int score, Utilisateur id_user, String imgview) {
+        this.nom = nom;
+        this.difficulte = difficulte;
+        this.score = score;
+        this.id_user = id_user;
+        this.imgview = imgview;
+    }
+
+    
     public int getId_quiz() {
         return id_quiz;
     }
 
     public void setId_quiz(int id_quiz) {
         this.id_quiz = id_quiz;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getDifficulte() {
@@ -77,26 +82,44 @@ public class quiz {
         this.score = score;
     }
 
-    public int getId_promotion() {
-        return id_promotion;
-    }
-
-    public void setId_promotion(int id_promotion) {
-        this.id_promotion = id_promotion;
-    }
-
-    public int getId_user() {
+    public Utilisateur getuser() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setuser(Utilisateur id_user) {
         this.id_user = id_user;
+    }
+
+    public String getImgview() {
+        return imgview;
+    }
+
+    public void setImgview(String imgview) {
+        this.imgview = imgview;
     }
 
     @Override
     public String toString() {
-        return "quiz{" + "id_quiz=" + id_quiz + ", difficulte=" + difficulte + ", score=" + score + ", id_promotion=" + id_promotion + ", id_user=" + id_user + '}';
+        return   nom ;
     }
+
+
+  
+    
+    
+    
+
+   
+
+  
+
+    
+    
+    
+
+    
+
+   
 
     
     

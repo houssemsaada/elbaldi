@@ -37,6 +37,7 @@ public class Utilisateur {
 
 
 
+
   
     public Utilisateur(int id_user) {
         this.id_user = id_user;
@@ -60,29 +61,15 @@ public class Utilisateur {
 
 
 
-    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville) {
-        this.id_user = id_user;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.dateNaissance = dateNaissance;
-        this.numTel = numTel;
-        this.ville = ville;
 
-    }
 
-    public Utilisateur(String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role,Etat etat) {
 
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.dateNaissance = dateNaissance;
-        this.numTel = numTel;
-        this.ville = ville;
-        this.mdp = mdp;
-        this.role = role;
-        this.etat = etat;
-    }
+    
+    
+ 
+
+    
+
 
 
     public Utilisateur(String nom, String prenom, String email, Date dateDeNaissance, int numTel, String ville, String mdp) {
@@ -187,7 +174,9 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id_user=" + id_user + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", dateNaissance=" + dateNaissance + ", numTel=" + numTel + ", ville=" + ville + ", login=" + ", mdp=" + mdp + ", role=" + role + '}';
+
+        return  nom ;
+
     }
 
  

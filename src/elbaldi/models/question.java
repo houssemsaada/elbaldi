@@ -10,19 +10,29 @@ package elbaldi.models;
  * @author selim
  */
 public class question {
-     private int id_question;
+    private int id_question;
     private String difficulte;
     private String questionn;
     private String reponse1;
     private String reponse2;
     private String reponse3;
     private String solution;
-    private int id_quiz;
+    private quiz id_quiz;
     
     public question() {
     }
 
-    public question(String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution, int id_quiz) {
+    public question(String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution) {
+        this.difficulte = difficulte;
+        this.questionn = questionn;
+        this.reponse1 = reponse1;
+        this.reponse2 = reponse2;
+        this.reponse3 = reponse3;
+        this.solution = solution;
+    }
+    
+    
+    public question(String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution, quiz id_quiz) {
         this.difficulte = difficulte;
         this.questionn = questionn;
         this.reponse1 = reponse1;
@@ -32,7 +42,10 @@ public class question {
         this.id_quiz = id_quiz;
     }
 
-    public question(int id_question, String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution, int id_quiz) {
+    
+   
+
+    public question(int id_question, String difficulte, String questionn, String reponse1, String reponse2, String reponse3, String solution, quiz id_quiz) {
         this.id_question = id_question;
         this.difficulte = difficulte;
         this.questionn = questionn;
@@ -42,7 +55,8 @@ public class question {
         this.solution = solution;
         this.id_quiz = id_quiz;
     }
-
+    
+    
   
    
 
@@ -105,19 +119,21 @@ public class question {
         this.solution = solution;
     }
 
-    public int getId_quiz() {
+    public quiz getquiz() {
         return id_quiz;
     }
 
-    public void setId_quiz(int id_quiz) {
+    public void setquiz(quiz id_quiz) {
         this.id_quiz = id_quiz;
     }
 
     @Override
     public String toString() {
-        return "question{" + "id_question=" + id_question + ", difficulte=" + difficulte + ", questionn=" + questionn + ", reponse1=" + reponse1 + ", reponse2=" + reponse2 + ", reponse3=" + reponse3 + ", solution=" + solution + ", id_quiz=" + id_quiz + '}';
+        return "question{" /*+ "id_question=" + id_question */+ ", difficulte=" + difficulte + ", questionn=" + questionn + ", reponse1=" + reponse1 + ", reponse2=" + reponse2 + ", reponse3=" + reponse3 + ", solution=" + solution + ", id_quiz=" + id_quiz + '}';
     }
+    
 
+    
    
 }
    

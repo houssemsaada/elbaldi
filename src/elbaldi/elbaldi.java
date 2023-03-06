@@ -5,6 +5,7 @@
  */
 package elbaldi;
 
+import elbaldi.GUI.ItemBackController;
 import elbaldi.models.*;
 import static elbaldi.models.Role.client;
 import elbaldi.services.*;
@@ -31,12 +32,12 @@ public class elbaldi {
          System.out.println("                              PARTIE UTILISATEUR");
          System.out.println("-------------------------------------------------------------------------------");
      
-       
-       
+       PromotionCRUD e = new PromotionCRUD();
+       System.out.println(e.promocodeExiste("ELBALDI753"));
       
         Utilisateur u1 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000",2345564,"tunis","test","test",client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
-        
+       /* 
         uti.ajouterUtlisateur(u1);
         uti.supprimerUtilisateur(2459);
         Utilisateur mod = new Utilisateur(2460,"abc", "test","test@test","10/16/2000",2345564,"tunis","test","test",client);
@@ -102,12 +103,13 @@ public class elbaldi {
          ProduitCRUD prod = new ProduitCRUD();  
          //categorie c2 = new categorie( 2,"test","ttttt");
         //ajouter produit
-        produit p1 = new produit("64","tableautest","rrrrr aaaaaa","zzz",45.5f,5,categ.getCategorieById(1));
-        prod.ajouterProduit(p1);
+      //  produit p1 = new produit("64","tableautest","rrrrr aaaaaa","zzz",45.5f,5,categ.getCategorieById(1));
+     //   prod.ajouterProduit(p1);
         
         //afficher
         System.out.println(prod.afficherProduit());
         
+
         //recuperer produit par reference produit
        System.out.println(prod.getByRefProduit("TUN6190090"));
         
@@ -115,7 +117,7 @@ public class elbaldi {
         
         //Récupérer un produit existant avec une référence de produit existante
         //Modifier le libellé de produit
-       prod.modifierProduit(p1); //Appeler la méthode pour mettre à jour le produit       
+     //  prod.modifierProduit(p1); //Appeler la méthode pour mettre à jour le produit       
 
        //filtrer les produits par prix de vente entre une valeur maximale et minimale 
        System.out.println(prod.filtreByPrixVente(45.0f, 55.5f));
@@ -133,13 +135,13 @@ public class elbaldi {
         
         
 
-        Utilisateur u2 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000","2345564","tunis","test","test",client);
+       // Utilisateur u2 = new Utilisateur("youssef", "selim","selim@tesprit.tn","10/16/2000","2345564","tunis","test","test",client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
-        uti.ajouterUtlisateur(u2);
+  //      uti.ajouterUtlisateur(u2);
         //ajouter commentaire
         commentaireCRUD comment = new commentaireCRUD();
-        commentaire commentaire1 = new commentaire("aaaa",p1,uti.getUserByID(1));
-        comment.ajouterCommentaire(commentaire1);
+  //      commentaire commentaire1 = new commentaire("aaaa",p1,uti.getUserByID(1));
+    //    comment.ajouterCommentaire(commentaire1);
         
         //modifier commentaire 
         commentaire cmm = comment.getCommentaireById(42); 
@@ -157,7 +159,7 @@ public class elbaldi {
         Date date_comment = Date.valueOf(date_commentai);
       System.out.println(comment.filterParDate(date_comment));
       //afficher commentaire par article 
-      System.out.println(comment.getCommentairesByArticle(p1));
+    //  System.out.println(comment.getCommentairesByArticle(p1));
       
       
       
@@ -173,39 +175,66 @@ public class elbaldi {
 /*
         
         quiz q1= new quiz("facile",0,1,1);
+=======
+      */  
+         
+
+              
+             
+
+//----------------------------Module QUIZ-----------------------------
+
+        Utilisateur ui = new Utilisateur(1);
+      
+        quiz q1= new quiz(5,"Sousse","facile",0,ui,"aaa");
         QuizCRUD qu= new QuizCRUD();
         //Ajout d'un Quiz 
-                  qu.ajouterQuiz(q1);
+                 //qu.ajouterQuiz(q1);
         //Modification d'un Quiz          
                   //qu.modifierquiz(q1);
+               //  qu.modifierquiz(q1,0);
         //Suppression d'un Quiz 
-                 //qu.supprimerquiz(4);
+               // qu.supprimerquiz(q1);
         //Affichage d'un Quiz 
                 //System.out.println( qu.afficherQuiz());
+               // System.out.println( qu.afficherQuiz());
+
         //Get By Id 
-               //System.out.println(qu.getById(2));
+              // System.out.println(qu.getById(65));
         //Filtre By difficulte
+
              //  System.out.println(qu.filtreByDifficulte("Moyenne"));
+
+               //System.out.println(qu.filtreByDifficulte("aa"));
+              
+
         
-        
-//-----------------------------Module Question------------------------------------------------               
-               
-       question qq1= new question("Facile"," Quelle est la plus gande ville de la Tunisie?","Tunis","Sousse","Sfax","Tunis",8);
+          
+  //-----------------------------Module Question------------------------------------------------               
+       quiz q5= new quiz();
+       q5.setId_quiz(81);
+       question qq1= new question("Facile","Quel est le nom du plat national tunisien à base de semoule et de légumes?","Brik","Couscous","Chorba","Couscous",q5);
+       question qq2= new question("Facile","Quel est le nom de la ville tunisienne connue pour ses maisons blanches et bleues?","Sidi Bou Said","Hammamet","Tozeur","Sidi Bou Said",q5);
+       question qq3= new question("Facile","Quel est le nom du célèbre festival de musique qui se déroule chaque été à Hammamet?","Jazz à Carthage","Festival de Carthage","Festival international de Hammamet","Festival international de Hammamet",q5);
        QuestionCRUD qq= new QuestionCRUD();
+        System.out.println(qq.filtreByidquiz(q5));
    
        //Ajout d'une Question      
-                  qq.ajouterQuestion(qq1);
+              // qq.ajouterQuestion(qq3,11);
        //Modification d'une Question    
                  // qq.modifierquestion(qq1);   
+
+                 qq.modifierquestion(qq1,178);   
+
        //Suppression d'une Question  
-                 //qq.supprimerquestion(3);
+                // qq.supprimerquestion(qq1);
        //Affichage d'une Question 
+
                 // System.out.println( qq.afficherQuestion());
        //Get By Id 
                 //System.out.println(qq.getById(2));
        //Filtre By difficulte
-                // System.out.println(qq.filtreByDifficulte("difficile"));
-    */
+ 
 
    /*             
 //-----------------------------Module Promotion---------------------------------------------------                 
@@ -237,6 +266,19 @@ public class elbaldi {
               
           
         String date_comm = "2024-02-14";
+=======
+                 //System.out.println( qq.afficherQuestion());
+       //Get By Id 
+              //System.out.println(qq.getById(39));
+       //Filtre By difficulte
+                //System.out.println(qq.filtreByDifficulte("facile"));
+    
+/*           
+
+//----------------------------------------------------------------------------------------------------------------------                
+/*
+        String date_comm = "2023-02-10";
+>>>>>>> Origin/selim
         Date date_com = Date.valueOf(date_comm);
         String date_liv = "2023-02-18";
         Date date_livr = Date.valueOf(date_liv);
@@ -369,6 +411,9 @@ panier pan1 = new panier("f03",5,5,22);
          //System.out.println(res1.filtreByDate(datefiltre));
          //ou bien
          System.out.println(res1.filtreByDate(Date.valueOf("2023-02-15")));
+<<<<<<< HEAD
       */  
     }
 }
+
+

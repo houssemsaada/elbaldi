@@ -15,10 +15,11 @@ import java.util.List;
 public interface InterfaceCRUDQ {
      
     public void ajouterQuiz(quiz q) ;
-    public void modifierquiz(quiz q) ;
-    public void supprimerquiz(int id) ;
+    public void modifierquiz(quiz q,int id_quiz) ;
+    public void supprimerquiz(quiz q) ;
     public List<quiz> afficherQuiz();
     public quiz getById(int id);
     public List<quiz> filtreByDifficulte(String difficulte);
+    
     
 }
