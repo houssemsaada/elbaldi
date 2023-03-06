@@ -36,6 +36,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -398,3 +399,121 @@ ReservationCrud resCRUD = new  ReservationCrud();
         
     }
     }
+
+//@FXML
+//private ListView<Reservation> ListView;
+//@FXML
+//private TextField searchTextField;
+//@FXML
+//private Button Home1;
+//@FXML
+//private Button categorie1;
+//@FXML
+//private Button produit1;
+//@FXML
+//private Button comm1;
+//@FXML
+//private Button btnSignout1;
+//@FXML
+//private Button btnSignout1111;
+//@FXML
+//private Button btnSignout11111;
+//@FXML
+//private Button btnSignout1111111;
+//@FXML
+//private Button btnSignout11111111;
+//@FXML
+//private Button btnSignout111111111;
+//@FXML
+//private Button btnSignout11112;
+//@FXML
+//private Button btnSignout111121;
+//@FXML
+//private Button btnSignout11112111;
+//@FXML
+//private Button res;
+//@FXML
+//private Button bpp;
+//@FXML
+//private Button aviss;
+//@FXML
+//private Button confirmer;
+//@FXML
+//private Button refuser;
+//ObservableList<Reservation> commandeObservableList = FXCollections.observableArrayList();
+//    @FXML
+//    private TableView<?> TableView;
+//    @FXML
+//    private TableColumn<?, ?> nombre;
+//    @FXML
+//    private TableColumn<?, ?> statut;
+//    @FXML
+//    private TableColumn<?, ?> date;
+//    @FXML
+//    private TableColumn<?, ?> nom;
+//    @FXML
+//    private TableColumn<?, ?> lieu;
+//    @FXML
+//    private ImageView datetrie;
+//
+///**
+// * Initializes the controller class.
+// */
+//@Override
+//public void initialize(URL url, ResourceBundle rb) {
+//    ReservationCrud cc = new ReservationCrud();
+//    commandeObservableList = FXCollections.observableList(cc.afficherReservation());
+//    ListView.setItems(commandeObservableList);
+//
+//    //search bar 
+//    FilteredList<Reservation> filteredData = new FilteredList<>(commandeObservableList, b -> true);
+//    searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+//        filteredData.setPredicate(Reservation -> {
+//            if (newValue == null || newValue.isEmpty()) {
+//                return true;
+//            }
+//
+//            String searchKeywords = newValue.toLowerCase();
+//
+//            if (Reservation.getStatut_reservation().toLowerCase().contains(searchKeywords)) {
+//                return true;
+//            }
+//            if ((Reservation.getDate_reservation() + "").toLowerCase().contains(searchKeywords)) {
+//                return true;
+//            }
+//            return (Reservation.getNombre_personnes()+ "").toLowerCase().contains(searchKeywords);
+//        });
+//    });
+//    // wrap the FilteredList in a SortedList.
+//    SortedList<Reservation> sortedList = new SortedList<>(filteredData);
+//    ListView.setItems(sortedList);
+//}
+//
+//    @FXML
+//    private void boutonConfirmer(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void boutonRefuser(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void rs(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void bp(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void avis(ActionEvent event) {
+//    }
+//
+//    @FXML
+//    private void datedec(MouseEvent event) {
+//    }
+//
+//    @FXML
+//    private void datecroi(MouseEvent event) {
+//    }
+//}

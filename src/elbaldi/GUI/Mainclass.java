@@ -45,9 +45,9 @@ public class Mainclass extends Application {
              
              
              
-   //root=FXMLLoader.load(getClass().getResource("BpFront.fxml"));
+  //root=FXMLLoader.load(getClass().getResource("BpFront.fxml"));
            //  root=FXMLLoader.load(getClass().getResource("BpFront1.fxml"));
-   root=FXMLLoader.load(getClass().getResource("Bonplanbacklist.fxml"));
+ root=FXMLLoader.load(getClass().getResource("Bonplanbacklist.fxml"));
              
              Scene scene = new Scene(root);
         

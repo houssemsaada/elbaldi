@@ -14,14 +14,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -41,41 +46,68 @@ public class BonplanbacklistController implements Initializable {
     private Button ajoutfx;
     @FXML
     private Button showC;
-    @FXML
-    private Button Home1;
-    @FXML
-    private Button btnSignout1;
-    @FXML
-    private Button btnSignout1111;
-    @FXML
-    private Button btnSignout11111;
-    @FXML
-    private Button btnSignout1111111;
-    @FXML
-    private Button btnSignout11111111;
-    @FXML
-    private Button btnSignout111111111;
-    @FXML
-    private Button btnSignout11112;
-    @FXML
-    private Button btnSignout111121;
-    @FXML
-    private Button btnSignout11112111;
     private List<bonplan> listebonplan = new ArrayList<>();
     BonplanCrud bp = new BonplanCrud();
-    @FXML
-    private Button rs;
-    @FXML
     private Button bonp;
     @FXML
-    private Button avis;
+    private Button Accueilfx;
+    @FXML
+    private Button profilfx;
+    @FXML
+    private Button categoriefx;
+    @FXML
+    private Button produitfx;
+    @FXML
+    private Button commandefx;
+    @FXML
+    private Button Livrfx;
+    @FXML
+    private Button Bonplanfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button participationfx;
+    @FXML
+    private Button GestUser;
+    @FXML
+    private Button Decofx;
+    @FXML
+    private ComboBox<String> Typefx;
+    @FXML
+    private TextField searchField;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        afficher();
+            Typefx.getItems().add("restaurant");
+            Typefx.getItems().add("Hotel");
+            Typefx.getItems().add("Tous");
+        
+          afficher();
+                searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Texte changé : " + oldValue + " -> " + newValue);
+//            if (!"".equals(newValue)) {
+                try {
+                    grid.getChildren().remove(0, listebonplan.size());
+
+                    searchField(newValue);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BpFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//            } else {
+//                afficher();
+//            }
+
+        });
+
+        // afficher();
+        searchField.setPromptText("Rechercher...");
+          
+          
     }    
 public void afficher() {
         try {
@@ -153,18 +185,37 @@ public void afficher() {
         }
     }
 
-    @FXML
-    private void rsss(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
+   
 
-        loader.setLocation(getClass().getResource("AfficherReservationBack.fxml"));
-        Parent root = loader.load();
-        rs.getScene().setRoot(root);
+   
+
+    @FXML
+    private void accueilAction(ActionEvent event) {
     }
 
     @FXML
-    private void bppp(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void categ(ActionEvent event) {
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    @FXML
+    private void commandesAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void LivraisonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void BonpalnsAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("bonplanbacklist.fxml"));
         Parent root = loader.load();
@@ -172,12 +223,83 @@ public void afficher() {
     }
 
     @FXML
-    private void avisss(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(getClass().getResource("avisback.fxml"));
-        Parent root = loader.load();
-        avis.getScene().setRoot(root);
+    private void QuizAction(ActionEvent event) {
     }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void participationaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void GestuserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void decoAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void filtrer(ActionEvent event) {
+         try {
+            if (Typefx.getSelectionModel().getSelectedItem().toString() == "Tous") {
+                afficher();
+            } else {
+                //System.out.println(Typefx.getSelectionModel().toString());
+                listebonplan = bp.filtreByType(Typefx.getSelectionModel().getSelectedItem().toString());
+                grid.getChildren().clear();
+                int column = 0;
+                int row = 1;
+                for (int i = 0; i < listebonplan.size(); i++) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
+                    AnchorPane anchorpane = fxmlLoader.load();
+                    ItembpFrontController itemController = fxmlLoader.getController();
+                    itemController.setData(listebonplan.get(i));
+                    if (column == 3) {
+                        column = 0;
+                        row++;
+                    }
+
+                    grid.add(anchorpane, column++, row);
+                    GridPane.setMargin(anchorpane, new Insets(10));
+                }
+            }
+        } catch (IOException ex) {
+        }
+
+    }
+    
+     public void searchField(String titre) throws SQLException {
+        try {
+            listebonplan = bp.rechercher(titre);
+
+            //listebonplan = bp.afficherBonplan();
+            //grid.getChildren().remove(0, listebonplan.size());
+
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < listebonplan.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
+                AnchorPane anchorpane = fxmlLoader.load();
+                ItembpFrontController itemController = fxmlLoader.getController();
+                itemController.setData(listebonplan.get(i));
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorpane, column++, row);
+                GridPane.setMargin(anchorpane, new Insets(10));
+            }
+        } catch (IOException ex) {
+        }
+        
+    }
+
     
 }
