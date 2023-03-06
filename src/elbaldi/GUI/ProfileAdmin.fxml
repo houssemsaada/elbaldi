@@ -16,24 +16,24 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="656.0" prefWidth="1216.0" stylesheets="@Styles/controls.css">
          <children>
-            <Pane fx:id="pnlOverview" layoutX="30.0" layoutY="10.0" prefHeight="716.0" prefWidth="1182.0" style="-fx-background-color: F7F1E5;">
+            <Pane fx:id="pnlOverview" layoutX="33.0" layoutY="3.0" prefHeight="716.0" prefWidth="1182.0" style="-fx-background-color: F7F1E5;">
                <children>
-                  <Label layoutX="357.0" layoutY="39.0" prefHeight="65.0" prefWidth="1002.0" text="Admin Profile">
+                  <Label layoutX="357.0" layoutY="39.0" prefHeight="65.0" prefWidth="1002.0" text="Profile">
                      <font>
                         <Font size="44.0" />
                      </font>
                   </Label>
-                  <Label layoutX="543.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Name" />
-                  <Label layoutX="665.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Lastname" />
-                  <Label layoutX="819.0" layoutY="242.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Phone Number" />
-                  <TextField fx:id="adminpagename" layoutX="482.0" layoutY="292.0" />
-                  <TextField fx:id="adminpagelastname" layoutX="649.0" layoutY="292.0" />
-                  <TextField fx:id="adminpagetel" layoutX="819.0" layoutY="292.0" />
-                  <Label layoutX="567.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Ville" />
-                  <TextField fx:id="adminpageaddress" layoutX="516.0" layoutY="412.0" />
-                  <DatePicker fx:id="adminpagedate" layoutX="723.0" layoutY="412.0" />
-                  <Label layoutX="765.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Birthday" />
-                  <Button fx:id="updateadmin" layoutX="612.0" layoutY="623.0" mnemonicParsing="false" onAction="#updtahost" prefHeight="37.0" prefWidth="198.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Update Profile" />
+                  <Label layoutX="318.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Prénom" />
+                  <Label layoutX="531.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Nom" />
+                  <Label layoutX="745.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Numéro de téléphone" />
+                  <TextField fx:id="adminpagename" layoutX="318.0" layoutY="292.0" />
+                  <TextField fx:id="adminpagelastname" layoutX="531.0" layoutY="292.0" />
+                  <TextField fx:id="adminpagetel" layoutX="745.0" layoutY="292.0" />
+                  <Label layoutX="531.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Ville" />
+                  <TextField fx:id="adminpageaddress" layoutX="531.0" layoutY="412.0" />
+                  <DatePicker fx:id="adminpagedate" layoutX="745.0" layoutY="412.0" />
+                  <Label layoutX="746.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Date de naissance" />
+                  <Button fx:id="updateadmin" layoutX="423.0" layoutY="624.0" mnemonicParsing="false" onAction="#updtahost" prefHeight="37.0" prefWidth="198.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Modifier" />
                </children>
             </Pane>
          </children>
