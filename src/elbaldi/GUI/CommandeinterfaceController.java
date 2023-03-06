@@ -59,8 +59,6 @@ public class CommandeinterfaceController implements Initializable {
 
     private TextField userField;
     @FXML
-    private Button addBtn;
-    @FXML
     private Button updBtn;
     @FXML
     private Button delBtn;
@@ -79,6 +77,30 @@ public class CommandeinterfaceController implements Initializable {
     private ListView<commande> ListView;
     @FXML
     private Button addBtn1;
+    @FXML
+    private Button Accueilfx;
+    @FXML
+    private Button profilfx;
+    @FXML
+    private Button categoriefx;
+    @FXML
+    private Button produitfx;
+    @FXML
+    private Button commandefx;
+    @FXML
+    private Button Livrfx;
+    @FXML
+    private Button Bonplanfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button participationfx;
+    @FXML
+    private Button GestUser;
+    @FXML
+    private Button Decofx;
 
     /**
      * Initializes the controller class.
@@ -145,20 +167,71 @@ public class CommandeinterfaceController implements Initializable {
         ListView.setItems(commandeObservableList);
     }
 
-    @FXML
     private void addBtnOnAction(ActionEvent event) {
         commandeGUI.changeScene(event, "commandeajout.fxml", "Ajouter commande");
     }
 
     @FXML
     private void updateBtnOnAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeupdate.fxml", "modifier commande");
+try {
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order to update", "No order selected", Alert.AlertType.ERROR);
+                return;
+            }
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+
+//        commande c = ListView.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("commandeupdate2.fxml"));
+        try {
+            Parent root = loader.load();
+           Commandeupdate2Controller dc = loader.getController();
+//            dc.setIdField(c.getId_cmd()+"");
+//            dc.setEtatField(c.getEtat());
+//            dc.setDateField(c.getDate_cmd()+"");
+//            dc.setPanierField(c.getPan().getId_panier()+"");
+            searchTextField.getScene().setRoot(root);
+           dc.setCom(ListView.getSelectionModel().getSelectedItem());
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
     private void deleteBtnOnAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeDelete.fxml", "supprimer commande");
-    }
+        try {
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order to delete", "No order selected", Alert.AlertType.ERROR);
+                return;
+            }
+
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+        try {
+            commande c = new commande();
+            CommandeCRUD cc = new CommandeCRUD();
+            c.setId_cmd(ListView.getSelectionModel().getSelectedItem().getId_cmd());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you sure you want to delete the order ?");
+            alert.setHeaderText("Please confirm your action");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // if the user confirms the deletion
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                cc.supprimerCommande(c);
+                refreshTable();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }    }
 
     @FXML
     private void exitCommandeScene(ActionEvent event) {
@@ -196,6 +269,66 @@ public class CommandeinterfaceController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+
+    @FXML
+    private void prodd(ActionEvent event) {
+    }
+
+    private void commandeinterf(ActionEvent event) {
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
+    }
+
+    private void livraisoninterf(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
+    }
+
+    @FXML
+    private void accueilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void categ(ActionEvent event) {
+    }
+
+     @FXML
+    private void commandesAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
+
+    }
+
+    @FXML
+    private void LivraisonAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
+
+    }
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void participationaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void GestuserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void decoAction(ActionEvent event) {
     }
 
 }

@@ -43,8 +43,6 @@ public class PanieritemController implements Initializable {
     private ImageView imageprod;
     Image image = new Image("http://localhost/images/2349066.png");
     private produit prod;
-    @FXML
-    private ImageView deleteimg;
     private panier pan;
 
     /**

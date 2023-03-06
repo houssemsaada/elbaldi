@@ -129,204 +129,189 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ImageView>
-            <ScrollPane prefHeight="518.0" prefWidth="214.0" style="-fx-background-color: #FFFFFF;">
+            <ScrollPane prefHeight="492.0" prefWidth="263.0" style="-fx-background-color: #FFFFFF;">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="216.0" style="-fx-background-color: #FFFFFF; -fx-background-color: ;">
                      <children>
-                        <Button fx:id="Home1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Accueil" textFill="#e7e5e5">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/accueil.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <Button fx:id="Accueilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" mnemonicParsing="false" onAction="#accueilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Accueil" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="categorie1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="43.0" mnemonicParsing="false" onAction="#catt" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Catégories">
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/categorisation.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="produit1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="86.0" mnemonicParsing="false" onAction="#prodd" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Produits">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/colis.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="comm1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-27.0" layoutY="129.0" mnemonicParsing="false" onAction="#commandeinterf" prefHeight="42.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commandes">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/discuter.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="btnSignout1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-20.0" layoutY="172.0" mnemonicParsing="false" onAction="#livraisoninterf" prefHeight="41.0" prefWidth="256.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Livraisons">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/accueil.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="255.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="241.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Reservations">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/utilisateur.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="categoriefx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-9.0" layoutY="90.0" mnemonicParsing="false" onAction="#categ" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Catégories" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout1111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-18.0" layoutY="297.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Evenements">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/categorie.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="produitfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-9.0" layoutY="135.0" mnemonicParsing="false" onAction="#prodd" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Produits" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout11111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-17.0" layoutY="339.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="241.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Participation">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/produit.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="commandefx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-9.0" layoutY="180.0" mnemonicParsing="false" onAction="#commandesAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Commandes" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout1111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="381.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Quiz">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/colis.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="Livrfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-9.0" layoutY="225.0" mnemonicParsing="false" onAction="#LivraisonAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Livraisons" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout11111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="423.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Questions">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/livraison-rapide.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="Bonplanfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-8.0" layoutY="270.0" mnemonicParsing="false" onAction="#BonpalnsAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Bon plans" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Ressources/tunisie.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Button fx:id="btnSignout111111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="465.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Utilisateur">
+                        <Button fx:id="Quizfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-8.0" layoutY="315.0" mnemonicParsing="false" onAction="#QuizAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Quiz" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/idees.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="Eventfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-8.0" layoutY="359.0" mnemonicParsing="false" onAction="#eventaction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Evènements" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout11112" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-16.0" layoutY="503.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="249.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Réclamation">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/un-evenement.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="participationfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-8.0" layoutY="404.0" mnemonicParsing="false" onAction="#participationaction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Participations" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout11" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-19.0" layoutY="213.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="256.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Bon plans">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/les-mains-en-lair.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="GestUser" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-7.0" layoutY="449.0" mnemonicParsing="false" onAction="#GestuserAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Gestion utilisateurs" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout111121" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-14.0" layoutY="543.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Commentaires">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/silhouette-dutilisateurs-multiples.png" />
                                  </image>
                               </ImageView>
                            </graphic>
+                        </Button>
+                        <Button fx:id="Decofx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-7.0" layoutY="494.0" mnemonicParsing="false" onAction="#decoAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Déconnexion" textFill="#e7e5e5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <padding>
                               <Insets left="50.0" />
                            </padding>
-                        </Button>
-                        <Button fx:id="btnSignout1111211" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-13.0" layoutY="585.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Avis">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
+                                    <Image url="@../../Ressources/se-deconnecter.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="btnSignout11112111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-12.0" layoutY="627.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="240.0" stylesheets="@../../../../../../../Downloads/VVVV/elbaldi/src/elbaldi/GUI/style.css" text="Déconnexion">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../Downloads/VVVV/elbaldi/src/Ressources/se-deconnecter.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
                         </Button>
                      </children>
                   </AnchorPane>

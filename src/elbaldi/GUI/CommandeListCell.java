@@ -8,6 +8,8 @@ package elbaldi.GUI;
 import elbaldi.models.commande;
 import javafx.geometry.Pos;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -20,6 +22,7 @@ import javafx.scene.text.Text;
  * @author houss
  */
 class CommandeListCell extends ListCell<commande> {
+    private final Image image = new Image("/Ressources/colis.png");
 
     @Override
 
@@ -36,7 +39,10 @@ class CommandeListCell extends ListCell<commande> {
             VBox vbox2 = new VBox();
             vbox2.setAlignment(Pos.CENTER);
             vbox2.setSpacing(8);
-
+                        
+            ImageView imageprod = new ImageView(image);
+            imageprod.setFitWidth(30);
+            imageprod.setFitHeight(30);
             // create labels to display the commande properties
             //  Label idLabel = new Label("Ref commande " + item.getId_cmd());
             Text idText = new Text("Ref commande: ");
@@ -76,7 +82,7 @@ class CommandeListCell extends ListCell<commande> {
             // Label totalLabel = new Label("total: " + item.getPan().getTotal_panier());
             Text totalText = new Text("total: ");
             totalText.setStyle("-fx-font-weight: bold");
-            Text totalValue = new Text(item.getPan().getTotal_panier() + "");
+            Text totalValue = new Text(item.getTotal() + "");
             HBox totalbox = new HBox(totalText, totalValue);
             // add the labels to the VBox
             vbox.getChildren().addAll(idbox, etatbox, datebox, userbox);
@@ -92,7 +98,7 @@ class CommandeListCell extends ListCell<commande> {
             HBox.setHgrow(rightPane, Priority.ALWAYS);
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS);
-            HBox graphbox = new HBox(leftPane, rightPane);
+            HBox graphbox = new HBox(imageprod,leftPane, rightPane);
 
             // set the VBox as the cell content
             setText(null);

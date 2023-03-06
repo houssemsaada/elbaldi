@@ -34,8 +34,9 @@ public class commandeGUI extends Application {
 
         try {
      //  Parent  root = FXMLLoader.load(getClass().getResource("consulterPanier.fxml"));
-         Parent root = FXMLLoader.load(getClass().getResource("livraisoninterface.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("livraisoninterface.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("commandeinterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
         
             Scene scene = new Scene(root);
             primaryStage.setTitle("commande");

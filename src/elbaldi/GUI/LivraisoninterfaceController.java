@@ -7,8 +7,10 @@ package elbaldi.GUI;
 
 import elbaldi.models.*;
 import elbaldi.services.livraisonCRUD;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,8 +20,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -51,37 +57,29 @@ public class LivraisoninterfaceController implements Initializable {
     @FXML
     private ListView<livraison> ListView;
     @FXML
-    private Button Home1;
+    private Button Accueilfx;
     @FXML
-    private Button categorie1;
+    private Button profilfx;
     @FXML
-    private Button produit1;
+    private Button categoriefx;
     @FXML
-    private Button comm1;
+    private Button produitfx;
     @FXML
-    private Button btnSignout1;
+    private Button commandefx;
     @FXML
-    private Button btnSignout111;
+    private Button Livrfx;
     @FXML
-    private Button btnSignout1111;
+    private Button Bonplanfx;
     @FXML
-    private Button btnSignout11111;
+    private Button Quizfx;
     @FXML
-    private Button btnSignout1111111;
+    private Button Eventfx;
     @FXML
-    private Button btnSignout11111111;
+    private Button participationfx;
     @FXML
-    private Button btnSignout111111111;
+    private Button GestUser;
     @FXML
-    private Button btnSignout11112;
-    @FXML
-    private Button btnSignout11;
-    @FXML
-    private Button btnSignout111121;
-    @FXML
-    private Button btnSignout1111211;
-    @FXML
-    private Button btnSignout11112111;
+    private Button Decofx;
 
     /**
      * Initializes the controller class.
@@ -155,13 +153,64 @@ public class LivraisoninterfaceController implements Initializable {
 
     @FXML
     private void updateBtnOnAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "livraisonupdate.fxml", "modifier livraison");
-    }
+try {
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order to update", "No order selected", Alert.AlertType.ERROR);
+                return;
+            }
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+
+        livraison liv = ListView.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("livraisonupdate2.fxml"));
+        try {
+            Parent root = loader.load();
+            Livraisonupdate2Controller lc = loader.getController();
+            lc.setLivrai(liv);
+            lc.setAdresseField(liv.getAdresse_livraison());
+           // lc.setStatusField(liv.getStatus_livraison());
+            lc.setDateField(liv.getDate_livraison());
+            
+            searchTextField.getScene().setRoot(root);
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }    }
 
     @FXML
     private void deleteBtnOnAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "livraisonDelete.fxml", "supprimer livraison");
-    }
+try {
+            if (ListView.getSelectionModel().getSelectedItem() == null) {
+                commandeGUI.AlertShow("Please select an order to delete", "No order selected", Alert.AlertType.ERROR);
+                return;
+            }
+
+        } catch (Exception ewww) {
+            ewww.printStackTrace();
+            ewww.getCause();
+        }
+        try {
+            livraison liv = new livraison();
+            livraisonCRUD lv= new livraisonCRUD();
+          
+            liv.setId_livraison(ListView.getSelectionModel().getSelectedItem().getId_livraison());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you sure you want to delete the order ?");
+            alert.setHeaderText("Please confirm your action");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // if the user confirms the deletion
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                lv.supprimerLivraison(liv);
+               refreshTable();           }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }    }
 
     @FXML
     private void exitCommandeScene(ActionEvent event) {
@@ -173,20 +222,64 @@ public class LivraisoninterfaceController implements Initializable {
 
     }
 
-    @FXML
-    private void catt(ActionEvent event) {
-    }
 
     @FXML
     private void prodd(ActionEvent event) {
     }
 
-    @FXML
     private void commandeinterf(ActionEvent event) {
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
+    }
+
+    private void livraisoninterf(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
     }
 
     @FXML
-    private void livraisoninterf(ActionEvent event) {
+    private void accueilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void categ(ActionEvent event) {
+    }
+
+     @FXML
+    private void commandesAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
+
+    }
+
+    @FXML
+    private void LivraisonAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
+
+    }
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void participationaction(ActionEvent event) {
+    }
+
+    @FXML
+    private void GestuserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void decoAction(ActionEvent event) {
     }
 
 }

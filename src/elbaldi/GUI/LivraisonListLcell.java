@@ -9,6 +9,8 @@ import elbaldi.models.commande;
 import elbaldi.models.livraison;
 import javafx.geometry.Pos;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -22,6 +24,8 @@ import javafx.scene.text.Text;
  */
 class LivraisonListCell extends ListCell<livraison> {
 
+    private final Image image = new Image("/Ressources/livraison-rapide.png");
+
     @Override
     protected void updateItem(livraison item, boolean empty) {
         super.updateItem(item, empty);
@@ -31,12 +35,18 @@ class LivraisonListCell extends ListCell<livraison> {
         } else {
             // create a VBox to hold the cell content
             VBox vbox = new VBox();
-            vbox.setAlignment(Pos.CENTER_LEFT);
+            vbox.setAlignment(Pos.CENTER_RIGHT);
             vbox.setSpacing(8);
             VBox vbox2 = new VBox();
             vbox2.setAlignment(Pos.CENTER);
             vbox2.setSpacing(8);
-
+            VBox vbox0 = new VBox();
+            vbox0.setAlignment(Pos.CENTER_LEFT);
+            vbox0.setSpacing(8);
+            
+            ImageView imageprod = new ImageView(image);
+            imageprod.setFitWidth(30);
+            imageprod.setFitHeight(30);
             // create labels to display the Livraison properties
             Text idText = new Text("Ref livraison: ");
             idText.setStyle("-fx-font-weight: bold");
@@ -67,17 +77,17 @@ class LivraisonListCell extends ListCell<livraison> {
             telText.setStyle("-fx-font-weight: bold");
             Text telValue = new Text(item.getC1().getPan().getU1().getNumTel() + "");
             HBox telbox = new HBox(telText, telValue);
-            
+
             Text emailText = new Text("Email: ");
             emailText.setStyle("-fx-font-weight: bold");
             Text emailValue = new Text(item.getC1().getPan().getU1().getEmail());
             HBox emailbox = new HBox(emailText, emailValue);
-            
-                     Text dateccmdText = new Text("Date commande: ");
+
+            Text dateccmdText = new Text("Date commande: ");
             dateccmdText.setStyle("-fx-font-weight: bold");
-            Text dateccmdValue = new Text(item.getC1().getDate_cmd()+"");
+            Text dateccmdValue = new Text(item.getC1().getDate_cmd() + "");
             HBox dateccmdbox = new HBox(dateccmdText, dateccmdValue);
-            
+
             Text articleText = new Text("Nombre d'articles: ");
             articleText.setStyle("-fx-font-weight: bold");
             Text articleValue = new Text(item.getC1().getPan().getNombre_article() + "");
@@ -90,7 +100,8 @@ class LivraisonListCell extends ListCell<livraison> {
 
             // add the labels to the VBox
             vbox.getChildren().addAll(idbox, etatbox, datebox, clientbox, adressebox);
-            vbox2.getChildren().addAll(telbox,emailbox,dateccmdbox, articlebox, totalbox);
+            vbox2.getChildren().addAll(telbox, emailbox, dateccmdbox, articlebox, totalbox);
+            vbox0.getChildren().add(imageprod);
             Pane leftPane = new Pane(vbox);
 
             HBox.setHgrow(leftPane, Priority.ALWAYS);
@@ -100,7 +111,12 @@ class LivraisonListCell extends ListCell<livraison> {
             HBox.setHgrow(rightPane, Priority.ALWAYS);
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS);
-            HBox graphbox = new HBox(leftPane, rightPane);
+            Pane sPane = new Pane(vbox0);
+
+            HBox.setHgrow(sPane, Priority.ALWAYS);
+            sPane.setMaxWidth(5);
+            sPane.setMinWidth(5);
+            HBox graphbox = new HBox(imageprod, leftPane, rightPane);
 
             // set the VBox as the cell content
             setText(null);
