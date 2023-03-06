@@ -37,7 +37,7 @@ import javafx.scene.image.ImageView;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ProduitDetailsFrontController implements Initializable {
 
@@ -96,7 +96,7 @@ public class ProduitDetailsFrontController implements Initializable {
                     String texte = commfx.getText();
 
                     UtilisateurCRUD uti = new UtilisateurCRUD();
-                    commentaire commentaire = new commentaire(texte, produitt, uti.getUserByID(2462));
+                    commentaire commentaire = new commentaire(texte, produitt, uti.getUserByID(2498));
 
                     commentaireCRUD comm = new commentaireCRUD();
 

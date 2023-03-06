@@ -5,7 +5,6 @@
  */
 package elbaldi.GUI;
 
-
 import elbaldi.models.categorie;
 import elbaldi.models.produit;
 import elbaldi.services.CategorieCRUD;
@@ -37,27 +36,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-
-
 /**
  * FXML Controller class
  *
-<<<<<<< HEAD
- * @author USER
-=======
- * @author houss
->>>>>>> origin/houssem
+ * @author Yasmine
  */
 public class ProdbacklistController implements Initializable {
 
     @FXML
-
     private GridPane grid;
     private List<produit> listeProduit = new ArrayList<>();
     ProduitCRUD ds = new ProduitCRUD();
@@ -67,23 +53,19 @@ public class ProdbacklistController implements Initializable {
     private Button ajoutfx;
     @FXML
     private Button showC;
-
-    private Button Accueilfx;
-    @FXML
-    private Button profilfx;
-
     @FXML
     private Button categoriefx;
     @FXML
     private Button produitfx;
-
     private Button comm1;
     @FXML
     private TextField searchField;
     @FXML
     private ComboBox<categorie> categoriesfx;
- 
-
+    @FXML
+    private Button Accueilfx;
+    @FXML
+    private Button profilfx;
     @FXML
     private Button commandefx;
     @FXML
@@ -106,7 +88,6 @@ public class ProdbacklistController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         //afficher();
             ListerCategorie();
         categoriesfx.setOnAction(e -> {
@@ -201,9 +182,9 @@ public class ProdbacklistController implements Initializable {
             int row = 1;
             for (int i = 0; i < listeProduit.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itemprodback.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ProduitItemController itemController = fxmlLoader.getController();
+               ItemprodbackController itemController = fxmlLoader.getController();
                 itemController.setData(listeProduit.get(i));
                 if (column == 3) {
                     column = 0;
@@ -234,9 +215,9 @@ public class ProdbacklistController implements Initializable {
             int row = 1;
             for (int i = 0; i < listeProduit.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/ProduitItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itemprodback.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ProduitItemController itemController = fxmlLoader.getController();
+                ItemprodbackController itemController = fxmlLoader.getController();
                 itemController.setData(listeProduit.get(i));
                 if (column == 3) {
                     column = 0;
@@ -320,19 +301,8 @@ public class ProdbacklistController implements Initializable {
 
         loader.setLocation(getClass().getResource("catgeorielistBack.fxml"));
         Parent root = loader.load();
-
-        // TODO
+        categoriefx.getScene().setRoot(root);
     }
-
-    private void commandeinterf(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
-    }
-
-    private void livraisoninterf(ActionEvent event) {
-        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
-    }
-
-
 
     @FXML
     private void accueilAction(ActionEvent event) {
@@ -342,21 +312,12 @@ public class ProdbacklistController implements Initializable {
     private void profilAction(ActionEvent event) {
     }
 
-
-
     @FXML
     private void commandesAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
-
-
     }
 
     @FXML
     private void LivraisonAction(ActionEvent event) {
-
-        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
-
-
     }
 
     @FXML
@@ -382,5 +343,7 @@ public class ProdbacklistController implements Initializable {
     @FXML
     private void decoAction(ActionEvent event) {
     }
+
+   
 
 }
