@@ -7,6 +7,12 @@ package elbaldi.GUI;
 
 import elbaldi.models.produit;
 import elbaldi.services.ProduitCRUD;
+import facebook4j.Facebook;
+import facebook4j.FacebookException;
+import facebook4j.FacebookFactory;
+import facebook4j.PostUpdate;
+import facebook4j.auth.AccessToken;
+import facebook4j.auth.OAuthAuthorization;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +51,8 @@ public class ItemprodbackController implements Initializable {
     private Label prixfx;
     private produit produit1;
  private String Refproduit;
+    @FXML
+    private ImageView sharefx;
     
        public String getRefProduit() {
         return Refproduit;
@@ -127,6 +135,22 @@ if (result.get() == confirmerButton){
    Parent loader = FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
      libellefx.getScene().setRoot(loader);
 }
+
+    }
+
+    @FXML
+    private void partagerAction(MouseEvent event) throws FacebookException {
+//        // Créer un objet FacebookFactory en utilisant votre jeton d'accès
+//        FacebookFactory facebookFactory = new FacebookFactory(new OAuthAuthorization(new AccessToken("EAAakIZCni0c8BAPc5ssLTaZCpZCXIr4aLnZCJWrEdIXMmNPSqJf4gTbxOZBs4NesQPwiuwZCV2iLnrKTdKkrFmISLUWAND5D7EUZC9wHogsEfDZCza5HOPq1bj7SsOTBrUzp9xH2X4w8rNqD8hGeZCuPY4mk2MDHWeDXjaj8GBzKSXO8mupsdY4iW")));
+//
+//// Créer un objet Facebook en utilisant FacebookFactory.getInstance()
+//        Facebook facebook = facebookFactory.getInstance();
+//
+//// Créer un objet PostUpdate avec le message que vous voulez partager et l'URL de la page produit
+//        PostUpdate postUpdate = new PostUpdate("Message de partage").setLink(produit1);
+//
+//// Appelez la méthode postFeed avec l'objet PostUpdate pour partager le produit sur Facebook
+//        facebook.postFeed(postUpdate);
 
     }
     
