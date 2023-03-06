@@ -71,7 +71,7 @@ public class ProfileAdmin implements Initializable {
         String lastname = adminpagelastname.getText();
         int tel = Integer.parseInt(adminpagetel.getText());
         String ville = adminpageaddress.getText();
-        Utilisateur user = new Utilisateur(Integer.parseInt(String.valueOf(id)),name, lastname,email, gettedDatePickerDate, tel, ville );
+        Utilisateur user = new Utilisateur(id,name, lastname,email, gettedDatePickerDate, tel, ville );
         u.UpdateUser(user);
 
     }

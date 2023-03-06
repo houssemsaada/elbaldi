@@ -81,6 +81,10 @@ public class Utilisateur {
 
     }
 
+    public Utilisateur(String text, String text0, String text1, Date tedDatePickerDate, int parseInt, String text2, String text3, Role rolee, Etat etat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     public int getid_user() {
         return id_user;

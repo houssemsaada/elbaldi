@@ -28,6 +28,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -283,6 +285,10 @@ public class Login implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UtilisateurCRUD userService = new UtilisateurCRUD();
-        userService.readinifile(path, emailLogin, PasswordLogin, remember_me);
+        try {
+            userService.readinifile(path, emailLogin, PasswordLogin, remember_me);
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

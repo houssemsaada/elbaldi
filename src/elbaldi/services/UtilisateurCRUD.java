@@ -427,7 +427,7 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
         }
         return user;
     }
-    public void readinifile(String path, TextField userid, PasswordField passid, CheckBox remember_me) {
+    public void readinifile(String path, TextField userid, PasswordField passid, CheckBox remember_me) throws IOException {
         File file = new File(path);
         if (file.exists()) {
             Wini wini = new Wini(new File(path));

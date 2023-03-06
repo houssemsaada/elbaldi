@@ -59,6 +59,10 @@ public class produit {
         
     }
 
+    public produit(String ref_produit, String text, String text0, String imgN, float prixx, int q, categorie c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 
     public String getRef_produit() {
