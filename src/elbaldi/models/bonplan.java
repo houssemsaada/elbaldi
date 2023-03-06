@@ -5,6 +5,12 @@
  */
 package elbaldi.models;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author user
@@ -17,19 +23,47 @@ public class bonplan {
     private String description_bonplan;
     private String type_bonplan;
     private String image_bonplan;
-    private int id_user;
+    private ImageView imgview;
 
     public bonplan() {
     }
 
-    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan, int id_user) {
+    public bonplan(int id_bonplan) {
+        this.id_bonplan = id_bonplan;
+    }
+
+    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan) {
         this.id_bonplan = id_bonplan;
         this.titre_bonplan = titre_bonplan;
         this.description_bonplan = description_bonplan;
         this.type_bonplan = type_bonplan;
         this.image_bonplan = image_bonplan;
-        this.id_user = id_user;
     }
+
+    public bonplan(String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan) {
+        this.titre_bonplan = titre_bonplan;
+        this.description_bonplan = description_bonplan;
+        this.type_bonplan = type_bonplan;
+        this.image_bonplan = image_bonplan;
+    }
+
+    public bonplan(int id_bonplan, String titre_bonplan, String description_bonplan, String type_bonplan, String image_bonplan, ImageView imgview) {
+        this.id_bonplan = id_bonplan;
+        this.titre_bonplan = titre_bonplan;
+        this.description_bonplan = description_bonplan;
+        this.type_bonplan = type_bonplan;
+        this.image_bonplan = image_bonplan;
+        this.imgview = imgview;
+    }
+
+    public bonplan(String titre_bonplan, String description_bonplan, String type_bonplan) {
+        this.titre_bonplan = titre_bonplan;
+        this.description_bonplan = description_bonplan;
+        this.type_bonplan = type_bonplan;
+    }
+
+
+    
 
     public int getId_bonplan() {
         return id_bonplan;
@@ -71,18 +105,67 @@ public class bonplan {
         this.image_bonplan = image_bonplan;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
-
     @Override
     public String toString() {
-        return "bonplan{" + "id_bonplan=" + id_bonplan + ", titre_bonplan=" + titre_bonplan + ", description_bonplan=" + description_bonplan + ", type_bonplan=" + type_bonplan + ", image_bonplan=" + image_bonplan + ", id_user=" + id_user + '}';
+        return "bonplan{" + "id_bonplan=" + id_bonplan + ", titre_bonplan=" + titre_bonplan + ", description_bonplan=" + description_bonplan + ", type_bonplan=" + type_bonplan + ", image_bonplan=" + image_bonplan + ", imgview=" + imgview + '}';
     }
 
+
+
+
     
-}
+
+    public ImageView getImgview() {
+        return imgview;
+    }
+
+    public void setImgview(ImageView imgview) {
+        this.imgview = imgview;
+        imgview.setFitHeight(100);
+        imgview.setFitWidth(100);
+        imgview.setPreserveRatio(false);
+    }
+    
+      public static List<bonplan> generateImageViews(List<bonplan> bonplans) {
+        List<bonplan> liste = new ArrayList<bonplan>();
+        for (bonplan bp : bonplans) {
+            File f = new File("C:\\xampp\\htdocs\\images\\"+ bp.getImage_bonplan());
+            bp.setImgview(new ImageView(new Image(f.toURI().toString())));
+            liste.add(bp);
+        }
+        return liste;
+    }
+    public static  ArrayList<bonplan> generateImageViews( ArrayList<bonplan> bonplans) {
+         ArrayList<bonplan> liste = new ArrayList<bonplan>();
+
+        for (bonplan bp : bonplans) {
+            File f = new File("C:\\xampp\\htdocs\\images\\"+bp.getImage_bonplan());
+            bp.setImgview(new ImageView(new Image(f.toURI().toString())));
+            liste.add(bp);
+        }
+        return liste;
+    }
+     public static bonplan generateImageViews(bonplan bonplan) {
+        
+         bonplan bp;
+        
+            File f = new File("C:\\xampp\\htdocs\\images\\"+bonplan.getImage_bonplan());
+            bonplan.setImgview(new ImageView(new Image(f.toURI().toString())));
+            bp=bonplan;
+        
+        return bp;
+    }
+
+   
+        
+    }
+    
+    
+    
+    
+    
+    
+
+    
+    
+    

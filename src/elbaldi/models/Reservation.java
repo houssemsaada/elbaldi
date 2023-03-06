@@ -14,23 +14,42 @@ public class Reservation {
     private int id_reservation;
     private int nombre_personnes;
     private Date date_reservation;
-    private int id_bonplan;
-    private int id_user;
+    private String statut_reservation;
+    private bonplan bonplan2;
+    private Utilisateur  user2;
 
-//mon constructeur par défaut 
-public Reservation() {
+    public Reservation() {
     }
 
-
-//mon constructeur parametre
-
-  
-    public Reservation(int id_reservation, int nombre_personnes, Date date_reservation, int id_bonplan, int id_user) {
+    public Reservation(int id_reservation) {
         this.id_reservation = id_reservation;
+    }
+    public Reservation(int nombre_personnes, Date date_reservation,bonplan bonplan2, Utilisateur user2) {
         this.nombre_personnes = nombre_personnes;
         this.date_reservation = date_reservation;
-        this.id_bonplan = id_bonplan;
-        this.id_user = id_user;
+        this.bonplan2 = bonplan2;
+        this.user2 = user2;
+    }
+    
+
+    public Reservation(int nombre_personnes, Date date_reservation, String statut_reservation, bonplan bonplan2, Utilisateur user2) {
+        this.nombre_personnes = nombre_personnes;
+        this.date_reservation = date_reservation;
+        this.statut_reservation = statut_reservation;
+        this.bonplan2 = bonplan2;
+        this.user2 = user2;
+    }
+
+    public Reservation(int nombre_personnes, java.sql.Date date_reservation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getId_reservation() {
+        return id_reservation;
+    }
+
+    public void setId_reservation(int id_reservation) {
+        this.id_reservation = id_reservation;
     }
 
     public int getNombre_personnes() {
@@ -39,16 +58,6 @@ public Reservation() {
 
     public void setNombre_personnes(int nombre_personnes) {
         this.nombre_personnes = nombre_personnes;
-    }
-    
-    //getters and setters 
-    
-    public int getId_reservation() {
-        return id_reservation;
-    }
-
-    public void setId_reservation(int id_reservation) {
-        this.id_reservation = id_reservation;
     }
 
     public Date getDate_reservation() {
@@ -59,32 +68,39 @@ public Reservation() {
         this.date_reservation = date_reservation;
     }
 
-    public int getId_user() {
-        return id_user;
+    public String getStatut_reservation() {
+        return statut_reservation;
     }
 
-    public int getId_bonplan() {
-        return id_bonplan;
+    public void setStatut_reservation(String statut_reservation) {
+        this.statut_reservation = statut_reservation;
     }
 
-    public void setId_bonplan(int id_bonplan) {
-        this.id_bonplan = id_bonplan;
+    public bonplan getBonplan2() {
+        return bonplan2;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setBonplan2(bonplan bonplan2) {
+        this.bonplan2 = bonplan2;
     }
 
-    
-    //ToString
+    public Utilisateur getUser2() {
+        return user2;
+    }
+
+    public void setUser2(Utilisateur user2) {
+        this.user2 = user2;
+    }
 
     @Override
     public String toString() {
-        return "Reservation{" + "id_reservation=" + id_reservation + ", nombre_personnes=" + nombre_personnes + ", date_reservation=" + date_reservation + ", id_bonplan=" + id_bonplan + ", id_user=" + id_user + '}';
+        return "Reservation{" + "id_reservation=" + id_reservation + ", nombre_personnes=" + nombre_personnes + ", date_reservation=" + date_reservation + ", statut_reservation=" + statut_reservation + ", bonplan2=" + bonplan2 + ", user2=" + user2 + '}';
     }
 
-  
-
-
+    
+    
+    
+    
+    
 
 }
