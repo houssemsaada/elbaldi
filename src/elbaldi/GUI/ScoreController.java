@@ -89,6 +89,8 @@ public class ScoreController implements Initializable {
     private ImageView qrfix;
     @FXML
     private Button email;
+    @FXML
+    private ImageView imgfx;
 
     public void setscore(float score) throws IOException, WriterException {
 

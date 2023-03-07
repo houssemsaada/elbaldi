@@ -26,20 +26,17 @@ import java.util.List;
 public class QuizCRUD implements InterfaceCRUDQ{
     
     Connection conn = MyConnection.getInstance().getConn();
-   
     
     @Override
     public void ajouterQuiz(quiz q) {
-         try { 
-            String req = "INSERT INTO `quiz`(`nom`,`difficulte`,`score`,`id_user`,`image` ) VALUES (?,?,?,?,?)" ;
+        try { 
+            String req = "INSERT INTO `quiz`(`nom`,`difficulte`,`score`) VALUES (?,?,?)" ;
             PreparedStatement ps=conn.prepareStatement(req); 
            
             ps.setString(1,q.getNom());
             ps.setString(2,q.getDifficulte());
             ps.setInt(3,q.getScore());
           
-            ps.setInt(4,q.getuser().getid_user());
-            ps.setString(5,q.getImgview());
             ps.executeUpdate();
             
             System.out.println("Quiz ajouté!!!");
@@ -47,14 +44,14 @@ public class QuizCRUD implements InterfaceCRUDQ{
             System.out.println("Quiz non ajouté");                  
         }   
     }
-     
+
    
     @Override
     public void modifierquiz(quiz q,int id_quiz) {
   
     
     try {
-            String req = "UPDATE `quiz` SET `id_quiz` = '" + q.getId_quiz()+ "', `difficulte` = '" + q.getDifficulte()+  "', `score` = '" + q.getScore()+ "', `id_user` = '" + q.getuser().getid_user()+  "', `nom` = '" + q.getNom()+ "', `image` = '" + q.getImgview()+      "' WHERE `quiz`.`id_quiz` = " + id_quiz;
+            String req = "UPDATE `quiz` SET `id_quiz` = '" + q.getId_quiz()+ "', `difficulte` = '" + q.getDifficulte()+  "', `score` = '" + q.getScore()+ "', `nom` = '" + q.getNom()+ "', `image` = '" + q.getImgview()+      "' WHERE `quiz`.`id_quiz` = " + id_quiz;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Quiz updated !");
@@ -98,14 +95,14 @@ public class QuizCRUD implements InterfaceCRUDQ{
         q.setScore(RS.getInt(3));
          
          
-         
-       UtilisateurCRUD uc = new UtilisateurCRUD();
-         int user = RS.getInt(4);
-         Utilisateur uu = uc.getUserByID(user);
-         q.setuser(uu);
-         
-          q.setNom(RS.getString(5));
-          q.setImgview(RS.getString(6));
+//         
+//       UtilisateurCRUD uc = new UtilisateurCRUD();
+////         int user = RS.getInt(4);
+//         Utilisateur uu = uc.getUserByID(user);
+//         q.setuser(uu);
+////         
+          q.setNom(RS.getString(4));
+          q.setImgview(RS.getString(5));
          
          list.add(q);
         }

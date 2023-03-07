@@ -5,23 +5,32 @@
  */
 package elbaldi;
 
+import elbaldi.models.quiz;
+import elbaldi.services.QuizCRUD;
+import java.sql.SQLException;
+
 /**
  *
  * @author selim
  */
 
 public class selim {
-    /*
+    
+ public static void main(String[] args) throws SQLException {
+        
+    
     //----------------------------Module QUIZ-----------------------------
 
 
         
-        quiz q1= new quiz("facile",0,1,1);
-        QuizCRUD qu= new QuizCRUD();
+
+    quiz q1 = new quiz("facile","aaaa","hhhh");
+
+    QuizCRUD qu= new QuizCRUD();
         //Ajout d'un Quiz 
                   //qu.ajouterQuiz(q1);
         //Modification d'un Quiz          
-                  //qu.modifierquiz(q1);
+                  qu.modifierquiz(q1,22);
         //Suppression d'un Quiz 
                  //qu.supprimerquiz(4);
         //Affichage d'un Quiz 
@@ -30,7 +39,7 @@ public class selim {
                //System.out.println(qu.getById(2));
         //Filtre By difficulte
                //System.out.println(qu.filtreByDifficulte("Moyenne"));
-        
+      /*  
         
 //-----------------------------Module Question------------------------------------------------               
                
@@ -51,28 +60,8 @@ public class selim {
                 // System.out.println(qq.filtreByDifficulte("difficile"));
     
 
-                
-//-----------------------------Module Promotion---------------------------------------------------                 
-                
-      // créer un objet Promotion
-          promotion prom1 = new promotion("TYIBF67", 0.25f, LocalDate.of(2023, 3, 1), LocalDate.of(2023, 3, 21));
-     // appeler la méthode pour ajouter la promotion
-          PromotionCRUD pc2 = new PromotionCRUD();
-  
-         //Ajout d'une Promotion
-                 //pc2.ajouterpromotion(prom1);
-         //Modification d'une Promotion        
-                //pc2.modifierpromotion(prom1);
-         //Suppression d'une Promotion 
-                //pc2.supprimerpromotion(2);
-         //Affichage d'une Promotion
-               //System.out.println( pc2.afficherpromotion());
-         //Get By Id 
-              //System.out.println(pc2.getById(1));
-         //Filtre By difficulte
-              // System.out.println(pc2.filtreBytaux(0.25f));
-          
-}
-*/
+
     
 }
+*/
+ }}

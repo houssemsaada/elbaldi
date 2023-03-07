@@ -9,14 +9,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class ClientMainScreeen {
 
-    @FXML
-    private Button btnMenus;
-
-    @FXML
-    private Button btnSignout;
 
     @FXML
     private GridPane grid;
@@ -24,48 +22,73 @@ public class ClientMainScreeen {
     @FXML
     private Pane pnlCustomer;
     @FXML
-    private Button produitfx;
-    @FXML
-    private Button Bonplanfx;
-    @FXML
     private Button Quizfx;
     @FXML
     private Button Eventfx;
     @FXML
-    private Button btnSignout1;
-
+    private Button profilfx;
     @FXML
+    private Button prodfx;
+    @FXML
+    private Button bonplanfx;
+    @FXML
+    private Button decofx;
+
     void ProfileUser(ActionEvent event) {
-        grid.getChildren().clear();
-        try {
-            // TODO
-            FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
-
-            AnchorPane anchorPane = cards.load();
-
-            grid.add(anchorPane, 1, 1);
-
-            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+//        grid.getChildren().clear();
+//        try {
+//            // TODO
+//            FXMLLoader cards = new FXMLLoader();
+//            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
+//
+//            AnchorPane anchorPane = cards.load();
+//
+//            grid.add(anchorPane, 1, 1);
+//
+//            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//        }
     }
 
-    @FXML
-    private void prodd(ActionEvent event) {
-    }
-
-    @FXML
-    private void BonpalnsAction(ActionEvent event) {
-    }
 
     @FXML
     private void QuizAction(ActionEvent event) {
     }
 
     @FXML
-    private void eventaction(ActionEvent event) {
+    private void profilAction(ActionEvent event) {
+         grid.getChildren().clear();
+        try {
+            // TODO
+            FXMLLoader cards = new FXMLLoader();
+            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
+
+           AnchorPane anchorPane = cards.load();
+
+           grid.add(anchorPane, 1, 1);
+
+            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+ 
+    }
+
+    @FXML
+    private void produitsf(ActionEvent event) {
+    }
+
+    @FXML
+    private void bonplanAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void EventAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
     }
 
 }

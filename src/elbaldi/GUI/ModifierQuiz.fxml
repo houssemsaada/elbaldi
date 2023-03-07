@@ -22,12 +22,7 @@
                   <Font name="System Bold" size="18.0" />
                </font></Text>
             <Button fx:id="ModifierQuiz" layoutX="327.0" layoutY="422.0" mnemonicParsing="false" onAction="#Modifier_Quiz" text="Modifier Quiz" />
-            <Text layoutX="122.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_user : " textAlignment="CENTER" wrappingWidth="79.0">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font></Text>
             <Button fx:id="backfix" layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#goback" text="&lt;-  Back" />
-            <ComboBox fx:id="fxid_user" layoutX="251.0" layoutY="302.0" prefHeight="25.0" prefWidth="264.0" />
             <Label layoutX="116.0" layoutY="140.0" text="Nom Quiz:">
                <font>
                   <Font name="System Bold" size="18.0" />

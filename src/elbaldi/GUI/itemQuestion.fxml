@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="itemPane" prefHeight="159.0" prefWidth="1180.0" style="-fx-background-color: #ffffff;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemQuestionController">
+<AnchorPane id="AnchorPane" fx:id="itemPane" prefHeight="222.0" prefWidth="1180.0" style="-fx-background-color: #ffffff;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemQuestionController">
    <children>
       <Label layoutX="10.0" layoutY="8.0" prefHeight="22.0" prefWidth="92.0" text="Question : ">
          <font>
@@ -63,12 +63,7 @@
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
-      <Label layoutX="11.0" layoutY="205.0" text="Nom_quiz :">
-         <font>
-            <Font name="Cambria" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="quizfx" layoutX="119.0" layoutY="206.0" prefHeight="22.0" prefWidth="922.0">
+      <Label fx:id="quizfx" layoutX="946.0" layoutY="163.0" prefHeight="22.0" prefWidth="220.0">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
@@ -77,8 +72,8 @@
             <Image url="@../../Ressource/question.png" />
          </image>
       </ImageView>
-      <Button fx:id="fixsupp" layoutX="1094.0" layoutY="195.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-      <Button fx:id="fxmodifier" layoutX="1015.0" layoutY="195.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
+      <Button fx:id="fixsupp" layoutX="1094.0" layoutY="183.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
+      <Button fx:id="fxmodifier" layoutX="1015.0" layoutY="182.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
       <Label fx:id="idLabel" layoutX="709.0" layoutY="70.0">
          <font>
             <Font size="1.0" />

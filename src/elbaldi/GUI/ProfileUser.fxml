@@ -9,20 +9,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProfileUser">
+<AnchorPane prefHeight="633.0" prefWidth="1103.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProfileUser">
     <children>
-        <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="779.0" prefWidth="1383.0" stylesheets="@Styles/controls.css">
+        <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="619.0" prefWidth="1093.0" style="-fx-background-color: #ffffff;" stylesheets="@Styles/controls.css">
             <children>
-                <AnchorPane layoutX="-18.0" layoutY="-10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="1402.0" style="-fx-background-color: F7F1E5;">
+                <AnchorPane layoutX="-18.0" layoutY="-10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="1092.0" style="-fx-background-color: #ffffff;">
                     <effect>
                         <DropShadow color="#1b1eeb" />
                     </effect>
                 </AnchorPane>
-                <Pane fx:id="pnlOverview" layoutX="10.0" layoutY="10.0" prefHeight="755.0" prefWidth="1061.0" style="-fx-background-color: F7F1E5;">
+                <Pane fx:id="pnlOverview" layoutX="10.0" layoutY="10.0" prefHeight="609.0" prefWidth="1083.0" style="-fx-background-color: #ffffff;">
                     <children>
-                        <Label layoutX="63.0" layoutY="39.0" prefHeight="65.0" prefWidth="1018.0" stylesheets="@Styles/controls.css" text="Profile">
+                        <Label layoutX="467.0" layoutY="39.0" prefHeight="65.0" prefWidth="174.0" stylesheets="@Styles/controls.css" text="Profile" textFill="#e11616">
                             <font>
-                                <Font size="44.0" />
+                                <Font name="Cambria Bold" size="44.0" />
                             </font>
                         </Label>
                         <Label layoutX="70.0" layoutY="231.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Name" />
@@ -35,7 +35,7 @@
                         <TextField fx:id="adminpageaddress" layoutX="69.0" layoutY="400.0" />
                         <DatePicker fx:id="adminpagedate" layoutX="431.0" layoutY="400.0" />
                         <Label layoutX="433.0" layoutY="351.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Birthday" />
-                        <Button fx:id="updateadmin" layoutX="440.0" layoutY="621.0" mnemonicParsing="false" onAction="#updtahost" styleClass="button1" stylesheets="@Styles/controls.css" text="Update Profile" />
+                        <Button fx:id="updateadmin" layoutX="458.0" layoutY="544.0" mnemonicParsing="false" onAction="#updtahost" styleClass="button1" stylesheets="@Styles/controls.css" text="Update Profile" />
                     </children>
                 </Pane>
             </children>
