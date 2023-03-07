@@ -93,6 +93,8 @@ public class ModifierProduitBackController implements Initializable {
     public void setProduit(produit p) {
         produitP = p;
         this.img.setAccessibleText(produitP.getImage());
+        //String imageURI = new File("C:\\xampp\\htdocs\\images"+p.getImage().toString()).toURI().toString();
+        //System.out.println(imageURI);
         this.prixfx.setText(produitP.getPrix_vente() + "");
         this.reffx.setText(produitP.getRef_produit());
         this.descriptionfx.setText(produitP.getDescription());
