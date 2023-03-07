@@ -37,7 +37,7 @@ public class produit {
 
 
 
-    public produit(String ref_produit, String libelle, String description, String image, float prix_achat, float marge, float prix_vente, int quantite, int id_user, int id_categorie) {
+    public produit(String ref_produit, String libelle, String description, String image, float prix_vente, int quantite,categorie categoriee) {
 
         this.ref_produit = ref_produit;
         this.libelle = libelle;
@@ -59,10 +59,10 @@ public class produit {
         
     }
 
-    public produit(String ref_produit, String text, String text0, String imgN, float prixx, int q, categorie c) {
+    /*public produit(String ref_produit, String text, String text0, String imgN, float prixx, int q, categorie c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+*/
     
 
     public String getRef_produit() {

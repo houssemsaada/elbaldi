@@ -21,7 +21,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
@@ -30,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -50,12 +53,15 @@ public class BpFrontController implements Initializable {
     private TextField search;
     private Button bonplan1;
     @FXML
-    private Button bonplanfx;
-    @FXML
+
     private Button profilfx;
     @FXML
     private Button prodfx;
     @FXML
+
+    private Button bonplanfx;
+    @FXML
+
     private Button Eventfx;
     @FXML
     private Button Quizfx;
@@ -195,24 +201,70 @@ public class BpFrontController implements Initializable {
     }
 
 
+
     @FXML
-    private void profilAction(ActionEvent event) {
+
+    private void produitsf(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
+        Parent root = loader.load();
+        prodfx.getScene().setRoot(root);
     }
 
     @FXML
-    private void produitsf(ActionEvent event) {
+    private void panierAction(MouseEvent event) {
+                try {
+            FXMLLoader fxmlLoader = new FXMLLoader(commandeGUI.class.getResource("consulterPanier.fxml"));
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene1 = new Scene(fxmlLoader.load());
+            stage1.setTitle("Panier");
+            stage1.setScene(scene1);
+            stage1.setResizable(false);
+            stage1.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+        grid.getChildren().clear();
+        try {
+            // TODO
+            FXMLLoader cards = new FXMLLoader();
+            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
+
+            AnchorPane anchorPane = cards.load();
+
+            grid.add(anchorPane, 1, 1);
+
+            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     @FXML
     private void bonplanAction(ActionEvent event) {
+
+                commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
+
     }
 
     @FXML
     private void EventAction(ActionEvent event) {
+
+                    commandeGUI.changeScene(event, "afficherevenFront.fxml", "evenement");
+
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
+
+                commandeGUI.changeScene(event, "Client.fxml", "commande ");
+
     }
 
     @FXML

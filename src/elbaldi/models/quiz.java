@@ -21,6 +21,11 @@ public class quiz {
     public quiz() {
     }
 
+    public quiz(String nom, String difficulte) {
+        this.nom = nom;
+        this.difficulte = difficulte;
+    }
+
     
     
     
@@ -49,6 +54,13 @@ public class quiz {
         this.imgview = imgview;
     }
 
+    public quiz(String nom, String difficulte, String imgview) {
+        this.nom = nom;
+        this.difficulte = difficulte;
+        this.imgview = imgview;
+    }
+
+    
     
     public int getId_quiz() {
         return id_quiz;

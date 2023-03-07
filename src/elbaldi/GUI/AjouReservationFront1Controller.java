@@ -80,7 +80,9 @@ public class AjouReservationFront1Controller implements Initializable {
              
              ReservationCrud R= new ReservationCrud();
              UtilisateurCRUD uti = new UtilisateurCRUD();
-           Reservation res = new Reservation(nombre_personnes, date_reservation,"En attente",bonplan1,uti.getUserByID(2492));
+
+           Reservation res = new Reservation(nombre_personnes, date_reservation,"En attente",bonplan1,uti.getUserByID(2498));
+
              R.ajouterReservation(res);
                
             Alert alert0 = new Alert(Alert.AlertType.INFORMATION);

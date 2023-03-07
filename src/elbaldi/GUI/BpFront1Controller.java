@@ -187,30 +187,47 @@ public class BpFront1Controller implements Initializable {
     private void bpbtn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("BpFront.fxml"));
+        loader.setLocation(getClass().getResource("BpFront1.fxml"));
         Parent root = loader.load();
         bonplan1.getScene().setRoot(root);
     }
 
-    @FXML
-    private void inscr(ActionEvent event) {
+  
+
+       @FXML
+    private void produitsf(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("Front1.fxml"));
+        Parent root = loader.load();
+        prodfx.getScene().setRoot(root);
     }
 
-    @FXML
-    private void connecter(ActionEvent event) {
-    }
-
-    @FXML
-    private void produitsf(ActionEvent event) {
-    }
-
-    @FXML
+       @FXML
     private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront1.fxml", "Login");
+
     }
 
     @FXML
     private void eventAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
+
     }
+
+    @FXML
+    private void connecter(ActionEvent event) {
+        commandeGUI.changeScene(event, "Login.fxml", "Login");
+
+    }
+
+    @FXML
+    private void inscr(ActionEvent event) {
+        commandeGUI.changeScene(event, "inscription.fxml", "Login");
+
+    }
+
+
 
     
 

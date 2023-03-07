@@ -51,8 +51,7 @@ public class ModifierQuizController implements Initializable {
     private Button ModifierQuiz;
     @FXML
     private ComboBox<String> fxdifficulte;
-    @FXML
-    private ComboBox<Utilisateur> fxid_user;
+   
     @FXML
     private Button backfix;
   
@@ -71,13 +70,9 @@ public class ModifierQuizController implements Initializable {
     this.quiz = quiz;
     this.idLabel2.setText(quiz.getNom());
     this.fxdifficulte.setValue(quiz.getDifficulte());
-    UtilisateurCRUD userCRUD = new UtilisateurCRUD();
-        List<Utilisateur> allUsers = userCRUD.afficherUtilisateur();
-        fxid_user.getItems().addAll(allUsers);
+   
 
-        // Set the selected user in the combo box to the one already assigned to the quiz
-        fxid_user.setValue(quiz.getuser());
-    
+       
     
     
  
@@ -88,7 +83,7 @@ public class ModifierQuizController implements Initializable {
             QuizCRUD quizcrud = new QuizCRUD();
              
         String nom = idLabel2.getText();
-            if (!idLabel2.getText().equalsIgnoreCase("") && !fxdifficulte.getValue().equalsIgnoreCase("") && fxid_user.getValue()!= null) {
+            if (!idLabel2.getText().equalsIgnoreCase("") && !fxdifficulte.getValue().equalsIgnoreCase("") ) {
                 if (quizcrud.quizExiste(nom)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Echec de la modification");

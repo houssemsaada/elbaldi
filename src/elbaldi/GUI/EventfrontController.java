@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +37,6 @@ public class EventfrontController implements Initializable {
     private Label nomLabel;
     @FXML
     private Label date_debut_label;
-    @FXML
     private Label date_fin_label;
     @FXML
     private Button modifierEvenbtn;
@@ -45,6 +46,8 @@ public class EventfrontController implements Initializable {
     private Label lblclientt;
     @FXML
     private Label awardslbl;
+    @FXML
+    private Label desclabel;
 
     /**
      * Initializes the controller class.
@@ -59,11 +62,12 @@ public class EventfrontController implements Initializable {
     // ********************
     int a = ps.getidclientt();
     
+    
      public void setEvenement(Evenement  E) {
      
        nomLabel.setText(E.getNom());
         date_debut_label.setText(E.getDate_debut() + " \n " + E.getDate_fin());
-        date_fin_label.setText(E.getDescription());
+        desclabel.setText(E.getDescription());
         
       id_label.setText(String.valueOf(E.getId_event()));
       awardslbl.setText(E.getAwards());
@@ -76,22 +80,23 @@ public class EventfrontController implements Initializable {
     }
 
     @FXML
-    private void modifierEvenement(ActionEvent event) throws IOException, SQLException {
-         Participation p = new Participation();
-          p.setId_event(e.getId_event());
-          //p.setId_user(id_client.getValue());
-          p.setId_user(2460);
-          
+    private void ajouterparticipation(ActionEvent event) {
+        try {
+            Participation p = new Participation();
+            p.setId_event(e.getId_event());
+            //p.setId_user(id_client.getValue());
+            p.setId_user(2498);
+            
             List<Integer> l = new ArrayList<Integer>();
-      l= ps.verif_existance(ps.getidclientt());
-        System.out.println(l);
-        System.out.println(ps.getidev());
-
-        //            System.out.println(ps.getidclientt());
+            l= ps.verif_existance(ps.getidclientt());
+            System.out.println(l);
+            System.out.println(ps.getidev());
+            
+            //            System.out.println(ps.getidclientt());
 //            System.out.println(ps.getidev());
 
 
-
+            System.out.println(e.getDate_debut());
 ps.ajouter(p,e);
 Alert alert = new Alert(Alert.AlertType.INFORMATION);
 alert.setTitle("Information Dialog");
@@ -111,6 +116,9 @@ alert.show();
 //              alert.setContentText("Participation deja Ajouter!");
 //
 //              alert.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(EventfrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
     }
     

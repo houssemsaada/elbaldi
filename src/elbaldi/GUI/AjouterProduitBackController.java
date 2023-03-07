@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
 import elbaldi.models.SMSNotifier;
+import elbaldi.models.Utilisateur;
 import elbaldi.models.categorie;
 import elbaldi.models.produit;
 import elbaldi.services.CategorieCRUD;
@@ -32,12 +33,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import static java.rmi.Naming.list;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import static java.util.Collections.list;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -167,18 +171,27 @@ public class AjouterProduitBackController implements Initializable {
                 ((Node) event.getSource()).getScene().getWindow().hide();
                 
               
+              
+               
                 
                 
-                /*
+             
                 
-                String[] phoneNumbersArray = {"+21697618378"};
-//List<String> phoneNumbers = new ArrayList<>("97618378");
-                List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);
-// récupérer les numéros de téléphone à partir de la base de données ou du fichier
-// les ajouter à la liste phoneNumbers
+                                     
+
+
+              /*
+                
+               // String[] phoneNumbersArray = {"+21697618378"};
+////List<String> phoneNumbers = new ArrayList<>("97618378");
+                //List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);
+                List<String> phoneNumbers =PROD.listesnumTel();
+//// récupérer les numéros de téléphone à partir de la base de données ou du fichier
+//// les ajouter à la liste phoneNumbers
                 SMSNotifier notifier = new SMSNotifier();
-                String mess="cher(e) client , Profitez de notre nouveauté ,un nouvelle produit est disponible sur notre application ELBALDI. Attention : stock limité. Faites vite ! ".
+                String mess="cher(e) client , Profitez de notre nouveauté ,un nouvelle produit est disponible sur notre application ELBALDI. Attention : stock limité. Faites vite ! ";
                 notifier.notifyClients(phoneNumbers, mess);
+               
                 */
             }
         });
