@@ -33,9 +33,9 @@ public class FirstWindowYasmine extends Application {
         try {
             
             
-          //Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
+          Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
            //    Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
-           Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
+         //  Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
            
            
            

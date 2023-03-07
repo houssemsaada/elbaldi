@@ -53,6 +53,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import elbaldi.services.UserSession;
 import javafx.scene.control.Button;
 
 /**
@@ -84,7 +85,9 @@ public class ScoreController implements Initializable {
      * Initializes the controller class.
      */
     PromotionCRUD pc = new PromotionCRUD();
-    Utilisateur u = new Utilisateur(2462);
+   
+     UserSession userSession = new UserSession();
+       Utilisateur u =  userSession.getUser(); 
     @FXML
     private ImageView qrfix;
     @FXML
@@ -208,7 +211,6 @@ public String generatePromoCode(int score) {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
 }

@@ -18,7 +18,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -31,34 +36,20 @@ public class AfficherevenFrontController implements Initializable {
 
     @FXML
     private GridPane gridpane;
+    EvenementService es = new EvenementService();
+    Evenement e1;
     @FXML
-    private Button retour_btn;
+    private TextField searchField;
     @FXML
-    private Button Accueilfx;
+    private Button prodfx;
     @FXML
-    private Button profilfx;
+    private Button bonplanfx;
     @FXML
-    private Button categoriefx;
+    private Button eventfx;
     @FXML
-    private Button produitfx;
+    private Button cnx;
     @FXML
-    private Button commandefx;
-    @FXML
-    private Button Livrfx;
-    @FXML
-    private Button Bonplanfx;
-    @FXML
-    private Button Quizfx;
-    @FXML
-    private Button Eventfx;
-    @FXML
-    private Button participationfx;
-    @FXML
-    private Button GestUser;
-    @FXML
-    private Button Decofx;
-   EvenementService es = new EvenementService();
-      Evenement e1;
+    private Button insc;
     /**
      * Initializes the controller class.
      */
@@ -92,56 +83,43 @@ public class AfficherevenFrontController implements Initializable {
             Logger.getLogger(AfficherevenFrontController.class.getName()).log(Level.SEVERE, null, ex);
         }    }    
 
+
+
+
+
+   
     @FXML
-    private void retournerHome(ActionEvent event) {
+    private void produitsf(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("Front1.fxml"));
+        Parent root = loader.load();
+        prodfx.getScene().setRoot(root);
+    }
+
+       @FXML
+    private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront1.fxml", "Login");
+
     }
 
     @FXML
-    private void accueilAction(ActionEvent event) {
+    private void eventAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
+
     }
 
     @FXML
-    private void profilAction(ActionEvent event) {
+    private void connecter(ActionEvent event) {
+        commandeGUI.changeScene(event, "Login.fxml", "Login");
+
     }
 
     @FXML
-    private void categ(ActionEvent event) {
+    private void inscr(ActionEvent event) {
+        commandeGUI.changeScene(event, "inscription.fxml", "Login");
+
     }
 
-    @FXML
-    private void prodd(ActionEvent event) {
-    }
 
-    @FXML
-    private void commandesAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void LivraisonAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void BonpalnsAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void QuizAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void eventaction(ActionEvent event) {
-    }
-
-    @FXML
-    private void participationaction(ActionEvent event) {
-    }
-
-    @FXML
-    private void GestuserAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void decoAction(ActionEvent event) {
-    }
-    
 }

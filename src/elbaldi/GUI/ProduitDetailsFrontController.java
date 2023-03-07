@@ -7,9 +7,12 @@ package elbaldi.GUI;
 
 import elbaldi.models.Utilisateur;
 import elbaldi.models.commentaire;
+import elbaldi.models.panier;
 import elbaldi.models.produit;
+import elbaldi.services.UserSession;
 import elbaldi.services.UtilisateurCRUD;
 import elbaldi.services.commentaireCRUD;
+import elbaldi.services.panierCRUD;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +67,11 @@ public class ProduitDetailsFrontController implements Initializable {
     private Button retourfx;
     List<String> badWords;
 
+    UserSession userSession = new UserSession();
+    Utilisateur u = userSession.getUser();
+    @FXML
+    private Button ajouterprof;
+
     public void setProduit(produit produit) {
         this.produitt = produit;
         libellefx.setText(produit.getLibelle());
@@ -91,59 +99,49 @@ public class ProduitDetailsFrontController implements Initializable {
 
             @Override
             public void handle(ActionEvent event) {
+                // Récupérer le commentaire à partir de la zone de texte
+                String texte = commfx.getText();
+                UtilisateurCRUD uti = new UtilisateurCRUD();
+                commentaire commentaire = new commentaire(texte, produitt, u);
+                commentaireCRUD comm = new commentaireCRUD();
                 try {
-                    // Récupérer le commentaire à partir de la zone de texte
-                    String texte = commfx.getText();
+                    if (checkComment(commfx.getText(), badWords)) {
+                        comm.ajouterCommentaire(commentaire);
+                        commfx.clear();
 
-                    UtilisateurCRUD uti = new UtilisateurCRUD();
-                    commentaire commentaire = new commentaire(texte, produitt, uti.getUserByID(2498));
-
-                    commentaireCRUD comm = new commentaireCRUD();
-
-                    try {
-                        if (checkComment(commfx.getText(), badWords)) {
-                            comm.ajouterCommentaire(commentaire);
-                            commfx.clear();
-
-                        } else {
-                            //System.out.println("Votre commentaire contient des mots interdits. Veuillez modifier votre commentaire.");
-                             Alert alert = new Alert(Alert.AlertType.ERROR);
+                    } else {
+                        //System.out.println("Votre commentaire contient des mots interdits. Veuillez modifier votre commentaire.");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Echec de l'ajout de ce commentaire");
                         alert.setHeaderText(null);
                         alert.setContentText("Attention ! Votre commentaire est non acceptable ");
                         alert.showAndWait();
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
-                    
-
-                    // Rafraîchir la liste des commentaires
-                    afficherCommentaires(produitt);
                 } catch (SQLException ex) {
                     Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                // Rafraîchir la liste des commentaires
+                afficherCommentaires(produitt);
             }
         });
 
     }
 
     public List<commentaire> afficherCommentaires(produit produit) {
-         // Récupérer les commentaires du produit à partir de la base de données
-    List<commentaire> commentaires = null;
-    try {
-        commentaires = comm.getCommentairesByArticle(produit);
-    } catch (SQLException ex) {
-        Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        // Récupérer les commentaires du produit à partir de la base de données
+        List<commentaire> commentaires = null;
+        try {
+            commentaires = comm.getCommentairesByArticle(produit);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    // Définir la cellule personnalisée pour la ListView
-    listfx.setCellFactory(list -> new CommentaireCell());
+        // Définir la cellule personnalisée pour la ListView
+        listfx.setCellFactory(list -> new CommentaireCell());
 
-    // Ajouter les commentaires à la ListView
-    listfx.getItems().setAll(commentaires);
-    return commentaires;
+        // Ajouter les commentaires à la ListView
+        listfx.getItems().setAll(commentaires);
+        return commentaires;
 //       
     }
 
@@ -162,6 +160,22 @@ public class ProduitDetailsFrontController implements Initializable {
             }
         }
         return true;
+    }
+
+    @FXML
+    private void ajouterproduitaupanier(ActionEvent event) {
+        panierCRUD pc = new panierCRUD();
+        panier pan = pc.filtreByuser(u);
+        
+        if (pc.verifyExistance(pan, produitt)){
+            commandeGUI.AlertShow("Produit deja ajouté ! ", "panier", Alert.AlertType.ERROR);
+        }
+        else {
+            pc.ajouterProdPanier(pan, produitt, 1);
+            commandeGUI.AlertShow("Produit ajouté ! ", "panier", Alert.AlertType.INFORMATION);
+        }
+     
+
     }
 
 }

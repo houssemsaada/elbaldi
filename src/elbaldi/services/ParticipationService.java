@@ -18,6 +18,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import elbaldi.utils.MyConnection;
+import java.sql.Date;
 
 /**
  *
@@ -34,7 +35,8 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
 
     public void ajouter(Participation t,Evenement e) throws SQLException {
  try{ 
-     String req = "insert into participation(id_user, id_event,date) VALUES ("
+    // Date date = Date.valueOf(e.getDate_fin());
+     String req = "insert into participation(id_client, id_event,date) VALUES ("
              + "'"+t.getId_user()+ "','"+t.getId_event()+"','"+e.getDate_debut()+ "')";
      
      Statement st = cnx.createStatement();
@@ -48,7 +50,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
     @Override
     public void modifier(Participation t) throws SQLException {
          try{ 
-      String req = "UPDATE  participation SET id_user = ? , id_event=? ";
+      String req = "UPDATE  participation SET id_client = ? , id_event=? ";
              PreparedStatement ps =cnx.prepareStatement(req);
              ps.setInt(1, t.getId_user());
              ps.setInt(2, t.getId_event());
@@ -97,7 +99,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
     
      public ObservableList<Integer> getidclient() {
        
-        String Req = "select id from utilisateur ";
+        String Req = "select id_user from utilisateur ";
                   
       ObservableList<Integer> l = FXCollections.observableArrayList();
         try {
@@ -118,7 +120,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
      
       public int getidclientt() {
        
-        String Req = "select id from utilisateur ";
+        String Req = "select id_user from utilisateur ";
                   
       //ObservableList<Integer> l = FXCollections.observableArrayList();
       int i = 0;
@@ -139,7 +141,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
     }
       public String getNomParticpant(int id) {
        
-        String Req = "select name from utilisateur where id = " + id +"";
+        String Req = "select name from utilisateur where id_user = " + id +"";
                   
       //ObservableList<Integer> l = FXCollections.observableArrayList();
       String i = null;
@@ -184,7 +186,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
     }
        public int getidus() {
        
-        String Req = "select id from utilisateur ";
+        String Req = "select id_user from utilisateur ";
                   
       //ObservableList<Integer> l = FXCollections.observableArrayList();
       int i = 0;
@@ -206,7 +208,7 @@ public class ParticipationService implements  InterfaceParticipationCRUD<Partici
     }
        public List verif_existance(int idus ) {
        
-        String Req = "select id_event from participation where id_user = " + idus + " ";
+        String Req = "select id_event from participation where id_client = " + idus + " ";
                   
       //ObservableList<Integer> l = FXCollections.observableArrayList();
      // int i = 0;

@@ -76,25 +76,29 @@ public class CommandeclientController implements Initializable {
      * Initializes the controller class.
      *
      * @param p
-     * @param totalTF
      */
     public void setP(panier p) {
         this.p = p;
+        System.out.println("id pan     "+p);
         panierCRUD pc = new panierCRUD();
 
-        p.setId_panier(Integer.parseInt(id_panTF.getText()));
-
-        produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
-
+      //  p.setId_panier(Integer.parseInt(id_panTF.getText()));
+        System.out.println("id2    "+p);
+        System.out.println(pc.afficherListProduitPanier(p));
+    //    produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
+                produitObservableList = FXCollections.observableList(p.getList());
+        System.out.println(produitObservableList);
         listView.setCellFactory(rr -> new MiniPanierListCell());
         listView.setItems(produitObservableList);
 
-        totalTF.setText(p.sommePanier(produitObservableList) + "");
+        totalTF.setText(p.getTotal_panier() + "");
+        
 
     }
 
     public void setTotalTF(String totalTF) {
         this.totalTF.setText(totalTF);
+        System.out.println(totalTF);
     }
 
     public void setId_panTF(TextField id_panTF) {
@@ -141,12 +145,15 @@ public class CommandeclientController implements Initializable {
 
         commande c = new commande(p);
         c.setAdresse(adress);
+        total = Float.parseFloat(totalTF.getText());
+        c.setTotal(total);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Are you sure you want to confirm the order?");
         alert.setHeaderText("Please confirm your action");
         Optional<ButtonType> result = alert.showAndWait();
         // if the user confirms the update action
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println(c);
             cr.ajouterCommande(c);
 
             commande c2 = cr.filtreBypanier(p);
@@ -217,8 +224,8 @@ class MiniPanierListCell extends ListCell<produit> {
 
             HBox.setHgrow(leftPane, Priority.ALWAYS);
             Pane rightPane = new Pane(vbox2);
-            leftPane.setMaxWidth(150);
-            leftPane.setMinWidth(150);
+            leftPane.setMaxWidth(190);
+            leftPane.setMinWidth(190);
             HBox.setHgrow(rightPane, Priority.ALWAYS);
 
             HBox graphbox = new HBox(leftPane, rightPane);

@@ -1,0 +1,88 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package elbaldi.GUI;
+
+import elbaldi.models.bonplan;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+
+/**
+ * FXML Controller class
+ *
+ * @author user
+ */
+public class ItembpFront1Controller implements Initializable {
+
+    @FXML
+    private AnchorPane dest;
+    @FXML
+    private ImageView imagefx;
+    @FXML
+    private Label titrebp;
+     private bonplan bonplan1;
+    private int id_bonplan;
+
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        
+    }    
+    public void setData(bonplan dest) {
+       this.bonplan1 = dest;
+        id_bonplan=dest.getId_bonplan();
+        this.titrebp.setText(bonplan1.getTitre_bonplan());
+        
+        //Image f = new Image("C:\\xampp\\htdocs\\images\\" + bonplan1.getImage_bonplan());
+
+        //imagefx.setImage(f);
+         String imagePath = "C:\\xampp\\htdocs\\images\\"+ bonplan1.getImage_bonplan().toString();
+       
+        // Create an ImageView object
+        ImageView imageView = new ImageView();
+        // Create a File object with the path of your image
+        File file = new File(imagePath);
+       
+        // Check if the file exists
+        if (file.exists()) {
+            // Create an Image object with the file path
+            Image image = new Image(file.toURI().toString());
+            // Set the image to the ImageView
+            this.imagefx.setImage(image);
+        } else {
+            System.out.println("Image not found.");
+        }
+
+    }
+
+    @FXML
+    private void details(MouseEvent event) throws IOException {
+        
+         FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("BpDetailsFront1.fxml"));
+   
+    Parent root = loader.load();
+    BpDetailsFront1Controller controller = loader.getController();
+      
+    controller.setbonplan(bonplan1); // pass the selected product to the details view
+    imagefx.getScene().setRoot(root);
+    }
+    
+}

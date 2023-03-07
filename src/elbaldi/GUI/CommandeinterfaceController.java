@@ -273,58 +273,69 @@ try {
 
 
     @FXML
-    private void prodd(ActionEvent event) {
-    }
-
-    private void commandeinterf(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
-    }
-
-    private void livraisoninterf(ActionEvent event) {
-        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
-    }
-
-    @FXML
     private void accueilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "templateBack.fxml", "Acceuil");
+
     }
 
     @FXML
     private void profilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "ProfileAdmin.fxml", "Profile");
+
     }
 
     @FXML
     private void categ(ActionEvent event) {
+        commandeGUI.changeScene(event, "catgeorielistback.fxml", "Categories");
+
     }
 
-     @FXML
-    private void commandesAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande interface");
+    @FXML
+    private void prodd(ActionEvent event) {
+        commandeGUI.changeScene(event, "prodbacklist.fxml", "Produits");
 
+    }
+
+    @FXML
+    private void commandesAction(ActionEvent event) {
+
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande ");
     }
 
     @FXML
     private void LivraisonAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "livraisoninterface.fxml", "commande interface");
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "livraison ");
 
     }
+
     @FXML
     private void BonpalnsAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "bonplanbacklist.fxml", "bonplans ");
+
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "front.fxml", "quiz ");
+
     }
 
     @FXML
     private void eventaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+
     }
 
     @FXML
     private void participationaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "afficher participation.fxml", "participation ");
+
     }
 
     @FXML
     private void GestuserAction(ActionEvent event) {
+            commandeGUI.changeScene(event, "MenuAdmin.fxml", "gestion utilisateurs ");
+
     }
 
     @FXML

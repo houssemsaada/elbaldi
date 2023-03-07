@@ -30,7 +30,7 @@
       <TextArea fx:id="commfx" layoutX="456.0" layoutY="406.0" prefHeight="49.0" prefWidth="487.0" />
       <ListView fx:id="listfx" layoutX="457.0" layoutY="248.0" prefHeight="155.0" prefWidth="603.0" />
       <Button fx:id="commenterfx" layoutX="956.0" layoutY="412.0" mnemonicParsing="false" text="Commenter" />
-      <Button layoutX="492.0" layoutY="482.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="254.0" text="Ajouter au panier" />
+      <Button fx:id="ajouterprof" layoutX="492.0" layoutY="482.0" mnemonicParsing="false" onAction="#ajouterproduitaupanier" prefHeight="31.0" prefWidth="254.0" text="Ajouter au panier" />
       <Button fx:id="retourfx" layoutX="8.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />
       <Label layoutX="537.0" layoutY="218.0" text="dt">
          <font>

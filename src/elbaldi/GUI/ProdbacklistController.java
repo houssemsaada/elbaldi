@@ -48,12 +48,6 @@ public class ProdbacklistController implements Initializable {
     private List<produit> listeProduit = new ArrayList<>();
     ProduitCRUD ds = new ProduitCRUD();
     @FXML
-    private ScrollPane scroll;
-    @FXML
-    private Button ajoutfx;
-    @FXML
-    private Button showC;
-    @FXML
     private Button categoriefx;
     @FXML
     private Button produitfx;
@@ -82,6 +76,12 @@ public class ProdbacklistController implements Initializable {
     private Button GestUser;
     @FXML
     private Button Decofx;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private Button ajoutfx;
+    @FXML
+    private Button showC;
 
     /**
      * Initializes the controller class.
@@ -251,7 +251,6 @@ public class ProdbacklistController implements Initializable {
     }
 
     @FXML
-
     private void ajouter(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("AjouterProduitBack.fxml"));
@@ -266,7 +265,7 @@ public class ProdbacklistController implements Initializable {
         afficher();
 
     }
-@FXML
+    @FXML
     private void refresh(ActionEvent event) {
         try {
             grid.getChildren().remove(0, listeProduit.size());
@@ -304,40 +303,60 @@ public class ProdbacklistController implements Initializable {
         categoriefx.getScene().setRoot(root);
     }
 
+ 
     @FXML
     private void accueilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "templateBack.fxml", "Acceuil");
+
     }
 
     @FXML
     private void profilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "ProfileAdmin.fxml", "Profile");
+
     }
+
 
     @FXML
     private void commandesAction(ActionEvent event) {
+
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande ");
     }
 
     @FXML
     private void LivraisonAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "livraison ");
+
     }
 
     @FXML
     private void BonpalnsAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "bonplanbacklist.fxml", "bonplans ");
+
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "front.fxml", "quiz ");
+
     }
 
     @FXML
     private void eventaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+
     }
 
     @FXML
     private void participationaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "afficher participation.fxml", "participation ");
+
     }
 
     @FXML
     private void GestuserAction(ActionEvent event) {
+            commandeGUI.changeScene(event, "MenuAdmin.fxml", "gestion utilisateurs ");
+
     }
 
     @FXML

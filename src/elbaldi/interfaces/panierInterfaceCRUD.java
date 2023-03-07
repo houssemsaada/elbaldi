@@ -25,7 +25,7 @@ public interface panierInterfaceCRUD {
 
     public List<panier> afficherPanier();
 
-    public List<panier> filtreByuser(Utilisateur u1);
+    public panier filtreByuser(Utilisateur u1);
     public panier filtreByidPanier(int pan) ;
     public void supprimerProdPanier(panier p,produit prod);
     public List<produit> afficherListProduitPanier(panier p);

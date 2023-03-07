@@ -35,6 +35,10 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
+    public Utilisateur(String email) {
+        this.email = email;
+    }
+
 
 
 
@@ -52,42 +56,59 @@ public class Utilisateur {
         this.prenom = prenom;
         this.email = email;
         this.dateNaissance = dateNaissance;
-       // this.numTel = numTel;
+        this.numTel = numTel;
         this.ville = ville;
         this.mdp = mdp;
         this.role = role;
         this.etat = etat;
     }
 
-
-
-
-
-
-    
-    
- 
-
-    
-
-
-
-    public Utilisateur(String nom, String prenom, String email, Date dateDeNaissance, int numTel, String ville, String mdp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Utilisateur(String email ){
+    public Utilisateur(String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role, Etat etat) {
+        this.nom = nom;
+        this.prenom = prenom;
         this.email = email;
-
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+        this.mdp = mdp;
+        this.role = role;
+        this.etat = etat;
     }
 
-    public Utilisateur(String text, String text0, String text1, Date tedDatePickerDate, int parseInt, String text2, String text3, Role rolee, Etat etat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur(String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+        this.mdp = mdp;
     }
 
-    public Utilisateur(int id, String name, String lastname, String email, Date tedDatePickerDate, int tel, String ville) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+        this.mdp = mdp;
     }
+
+    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+    }
+
+
+ 
+    
 
 
     public int getid_user() {

@@ -68,9 +68,11 @@ public class houssem {
         //System.out.println(liv.sortlivraisonByDate());
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
-        panier pan1 = new panier(15);
+        panier pan1 = new panier(21);
+                panierCRUD pan = new panierCRUD();
+
+        System.out.println(pan.afficherListProduitPanier(pan1));
        // pan1.setU1(u1);
-        panierCRUD pan = new panierCRUD();
         //pan.ajouterPanier(pan1);
         //pan.ajouterProdPanier(pan1, p1,10);
         //pan.supprimerProdPanier(pan1,p1) ; 
@@ -83,6 +85,6 @@ public class houssem {
                     commande com1 = new commande(128, pan1, "aaaaaa", date_com);
 
        PdfOrder pdf = new PdfOrder();
-            pdf.orderPdf(com1);
+           // pdf.orderPdf(com1);
     }
 }

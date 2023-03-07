@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ConsulterPanierController">
+<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #EBEAEA;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ConsulterPanierController">
    <children>
       <Pane layoutX="962.0" layoutY="2.0" prefHeight="596.0" prefWidth="252.0" style="-fx-background-color: #EBEAEA;">
          <children>
@@ -24,8 +24,6 @@
                   <Font name="System Italic" size="34.0" />
                </font>
             </Label>
-            <TextField fx:id="panieridTF" layoutX="168.0" layoutY="482.0" prefHeight="25.0" prefWidth="56.0" text="15" />
-            <Text layoutX="173.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id panier" />
          </children>
       </Pane>
       <Pane layoutY="523.0" prefHeight="74.0" prefWidth="1214.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 3px;">
