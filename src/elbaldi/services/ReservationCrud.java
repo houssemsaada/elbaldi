@@ -40,7 +40,8 @@ public class ReservationCrud implements InterfaceReservationCrud {
              ps.executeUpdate();
             System.out.println("reservation ajouté");
         } catch (SQLException ex) {
-           System.out.println("reservation non ajouté");                 
+           System.out.println("reservation non ajouté");   
+           System.out.println(ex.getMessage());
         }   
     }
 
