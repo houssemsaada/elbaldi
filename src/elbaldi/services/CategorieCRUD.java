@@ -35,7 +35,8 @@ public class CategorieCRUD implements InterfaceCategorieCRUD {
             ps.executeUpdate();
             System.out.println("categorie ajoutee avec succes");
         } catch (SQLException ex) {
-            System.out.println("categorie non ajoutee !!");                  
+            System.out.println("categorie non ajoutee !!");    
+            System.out.println(ex.getMessage());
         }  
     }
 

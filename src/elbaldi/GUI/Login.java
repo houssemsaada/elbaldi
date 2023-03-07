@@ -84,7 +84,7 @@ public class Login implements Initializable {
                             if (!remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
-                                Parent root = FXMLLoader.load(getClass().getResource("ClientMainScreeen.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
@@ -93,7 +93,7 @@ public class Login implements Initializable {
                             } else if (remember_me.isSelected()) {
                                 userService.createiniFile(path, emailLogin.getText(), PasswordLogin.getText());
                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
-                                Parent root = FXMLLoader.load(getClass().getResource("ClientMainScreeen.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
@@ -128,7 +128,7 @@ public class Login implements Initializable {
                                 UtilisateurCRUD.userSession = new UserSession();
                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
                                 System.out.println(UtilisateurCRUD.userSession.getUser());
-                                Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
@@ -138,7 +138,7 @@ public class Login implements Initializable {
                                 userService.createiniFile(path, emailLogin.getText(), PasswordLogin.getText());
                                 UtilisateurCRUD.userSession = new UserSession();
                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
-                                Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);

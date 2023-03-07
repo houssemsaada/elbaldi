@@ -30,7 +30,7 @@ import javafx.scene.image.ImageView;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ProduitDetailsFront1Controller implements Initializable {
 
@@ -75,7 +75,7 @@ public class ProduitDetailsFront1Controller implements Initializable {
     try {
         commentaires = comm.getCommentairesByArticle(produit);
     } catch (SQLException ex) {
-        Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(ProduitDetailsFront1Controller.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     // Définir la cellule personnalisée pour la ListView

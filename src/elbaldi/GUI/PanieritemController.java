@@ -41,7 +41,7 @@ public class PanieritemController implements Initializable {
     private Label totallabel;
     @FXML
     private ImageView imageprod;
-    Image image = new Image("http://localhost/images/2349066.png");
+    
     private produit prod;
     private panier pan;
 
@@ -54,8 +54,9 @@ public class PanieritemController implements Initializable {
     }
 
     public void setProduct(produit product) {
-      
+        
         this.prod = product;
+        Image image = new Image("http://localhost/images/"+product.getImage());
         imageprod.setImage(image);
         reflabel.setText(product.getRef_produit());
         libellelabel.setText(product.getLibelle());

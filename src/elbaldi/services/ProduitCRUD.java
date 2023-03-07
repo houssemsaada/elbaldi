@@ -274,6 +274,28 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
         return list;
             
         }
+         public List<String> listesnumTel() {
+              List<Integer> listInt = new ArrayList<>();
+              try{
+                  String req = "Select numTel from utilisateur";
+            Statement st = conn.createStatement();
+           
+                 ResultSet RS = st.executeQuery(req);
+                 while (RS.next()) {
+                     int numero = RS.getInt("num_tel");
+                     listInt.add(numero);
+                 }
+             } catch (SQLException ex) {
+                 System.out.println(ex.getMessage());
+             }
+             List<String> listString = new ArrayList<>();
+             for (Integer numeroInt : listInt) {
+                 String numString = String.valueOf(numeroInt);
+                 listString.add(numString);
+             }
+             return listString;
+
+         }
     
 
 

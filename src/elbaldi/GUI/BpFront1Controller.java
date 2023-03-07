@@ -47,20 +47,17 @@ public class BpFront1Controller implements Initializable {
     private ComboBox<String> Typefx;
     @FXML
     private TextField search;
-    @FXML
-    private Button Home1;
-    @FXML
-    private Button Home1111;
-    @FXML
-    private Button Home11111;
-    @FXML
-    private Button Home111111;
-    @FXML
     private Button bonplan1;
     @FXML
     private Button insc;
     @FXML
     private Button cnx;
+    @FXML
+    private Button prodfx;
+    @FXML
+    private Button bonplanfx;
+    @FXML
+    private Button eventfx;
 
 
     /**
@@ -103,9 +100,9 @@ public class BpFront1Controller implements Initializable {
             int row = 1;
             for (int i = 0; i < listebonplan.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront1.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ItembpFrontController itemController = fxmlLoader.getController();
+                ItembpFront1Controller itemController = fxmlLoader.getController();
                 itemController.setData(listebonplan.get(i));
                 if (column == 3) {
                     column = 0;
@@ -132,9 +129,9 @@ public class BpFront1Controller implements Initializable {
                 int row = 1;
                 for (int i = 0; i < listebonplan.size(); i++) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront1.fxml"));
                     AnchorPane anchorpane = fxmlLoader.load();
-                    ItembpFrontController itemController = fxmlLoader.getController();
+                    ItembpFront1Controller itemController = fxmlLoader.getController();
                     itemController.setData(listebonplan.get(i));
                     if (column == 3) {
                         column = 0;
@@ -161,9 +158,9 @@ public class BpFront1Controller implements Initializable {
             int row = 1;
             for (int i = 0; i < listebonplan.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront1.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ItembpFrontController itemController = fxmlLoader.getController();
+                ItembpFront1Controller itemController = fxmlLoader.getController();
                 itemController.setData(listebonplan.get(i));
                 if (column == 3) {
                     column = 0;
@@ -187,21 +184,47 @@ public class BpFront1Controller implements Initializable {
 //    }
 
 
-    @FXML
     private void bpbtn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("BpFront.fxml"));
+        loader.setLocation(getClass().getResource("BpFront1.fxml"));
         Parent root = loader.load();
         bonplan1.getScene().setRoot(root);
     }
 
+  
+
+       @FXML
+    private void produitsf(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("Front1.fxml"));
+        Parent root = loader.load();
+        prodfx.getScene().setRoot(root);
+    }
+
+       @FXML
+    private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront1.fxml", "Login");
+
+    }
+
     @FXML
-    private void inscr(ActionEvent event) {
+    private void eventAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
+
     }
 
     @FXML
     private void connecter(ActionEvent event) {
+        commandeGUI.changeScene(event, "Login.fxml", "Login");
+
+    }
+
+    @FXML
+    private void inscr(ActionEvent event) {
+        commandeGUI.changeScene(event, "inscription.fxml", "Login");
+
     }
 
     

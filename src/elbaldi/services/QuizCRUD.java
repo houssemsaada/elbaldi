@@ -198,10 +198,3 @@ public quiz getById(int id) {
     
     
 }
-
-    
-    
-    
-
-
-
