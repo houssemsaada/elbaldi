@@ -7,20 +7,34 @@ package elbaldi.models;
 
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public class categorie  {
    private int id_categorie ;
    private String nom_categorie;
+   private String Description;
    
    
     public categorie(){
     
     }
-    public categorie(int id_categorie, String nom_categorie) {
-        this.id_categorie = id_categorie;
+
+    public categorie(String nom_categorie) {
         this.nom_categorie = nom_categorie;
     }
+    
+    public categorie(int id_categorie, String nom_categorie,String Description) {
+        this.id_categorie = id_categorie;
+        this.nom_categorie = nom_categorie;
+        this.Description=Description;
+    }
+     public categorie(String nom_categorie,String Description) {
+      
+        this.nom_categorie = nom_categorie;
+        this.Description=Description;
+    }
+    
+
 
     public int getId_categorie() {
         return id_categorie;
@@ -38,11 +52,20 @@ public class categorie  {
         this.nom_categorie = nom_categorie;
     }
 
-    @Override
-    public String toString() {
-        return "categorie{" + "id_categorie=" + id_categorie + ", nom_categorie=" + nom_categorie + '}';
+    public String getDescription() {
+        return Description;
     }
 
-  
+    public void setDescription(String Description) {
+        this.Description = Description;
+    }
+
+    @Override
+    public String toString() {
+        return nom_categorie ;
+    }
+
+    
+    
    
 }

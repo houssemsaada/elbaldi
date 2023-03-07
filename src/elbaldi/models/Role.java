@@ -9,6 +9,6 @@ package elbaldi.models;
 
 
 public enum Role {
-    client,admin;
+    client,admin,livreur,gerant;
     
     }

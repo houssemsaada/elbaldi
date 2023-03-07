@@ -6,6 +6,9 @@
 package elbaldi.services;
 
 import elbaldi.interfaces.InterfaceCRUDQ;
+import elbaldi.models.Evenement;
+import elbaldi.models.Utilisateur;
+import elbaldi.models.promotion;
 import elbaldi.models.quiz;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
@@ -28,13 +31,15 @@ public class QuizCRUD implements InterfaceCRUDQ{
     @Override
     public void ajouterQuiz(quiz q) {
          try { 
-            String req = "INSERT INTO `quiz`(`difficulte`,`score`,`id_promotion`,`id_user` ) VALUES (?,?,?,?)" ;
+            String req = "INSERT INTO `quiz`(`nom`,`difficulte`,`score`,`id_user`,`image` ) VALUES (?,?,?,?,?)" ;
             PreparedStatement ps=conn.prepareStatement(req); 
            
-            ps.setString(1,q.getDifficulte());
-            ps.setInt(2,q.getScore());
-            ps.setInt(3,q.getId_promotion());
-            ps.setInt(4,q.getId_user());
+            ps.setString(1,q.getNom());
+            ps.setString(2,q.getDifficulte());
+            ps.setInt(3,q.getScore());
+          
+            ps.setInt(4,q.getuser().getid_user());
+            ps.setString(5,q.getImgview());
             ps.executeUpdate();
             
             System.out.println("Quiz ajouté!!!");
@@ -43,39 +48,38 @@ public class QuizCRUD implements InterfaceCRUDQ{
         }   
     }
      
-    
-    
-    @Override
-    public void modifierquiz(quiz q) {
-    try {
-        String req = "UPDATE `quiz` SET `difficulte` = ?, `score` = ?, `id_promotion` = ?,`id_user` = ? WHERE `id_quiz` = ?";
-        PreparedStatement ps = conn.prepareStatement(req);
-        ps.setString(1, q.getDifficulte());
-        ps.setInt(2, q.getScore());
-        ps.setInt(3, q.getId_promotion());
-        ps.setInt(4, q.getId_user());
-
-        ps.setInt(5, q.getId_quiz());
-       
-        ps.executeUpdate();
-        System.out.println("Quiz modifié !");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-}
-
    
-      @Override
-    public void supprimerquiz(int id) {
-        try {
-            String req = "DELETE FROM `quiz` WHERE `id_quiz` = " + id;
+    @Override
+    public void modifierquiz(quiz q,int id_quiz) {
+  
+    
+    try {
+            String req = "UPDATE `quiz` SET `id_quiz` = '" + q.getId_quiz()+ "', `difficulte` = '" + q.getDifficulte()+  "', `score` = '" + q.getScore()+ "', `id_user` = '" + q.getuser().getid_user()+  "', `nom` = '" + q.getNom()+ "', `image` = '" + q.getImgview()+      "' WHERE `quiz`.`id_quiz` = " + id_quiz;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
-            System.out.println("Quiz deleted !");
+            System.out.println("Quiz updated !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+
+
+   
+      @Override
+    public void supprimerquiz(quiz q) {
+        try {
+  
+         String req = " DELETE FROM quiz where nom  = ?   ";
+       
+             PreparedStatement ps = conn.prepareStatement(req);
+             ps.setString(1, q.getNom());
+             ps.executeUpdate();
+              System.out.println("Quiz deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     
     
    @Override
@@ -88,10 +92,21 @@ public class QuizCRUD implements InterfaceCRUDQ{
         ResultSet RS= st.executeQuery(req);
         while(RS.next()){
          quiz q = new quiz ();
-         q.setId_quiz(RS.getInt("id_quiz"));
+        q.setId_quiz(RS.getInt("id_quiz"));
+        
          q.setDifficulte(RS.getString(2));
-         q.setScore(RS.getInt(3));
-         q.setId_promotion(RS.getInt(4));
+        q.setScore(RS.getInt(3));
+         
+         
+         
+       UtilisateurCRUD uc = new UtilisateurCRUD();
+         int user = RS.getInt(4);
+         Utilisateur uu = uc.getUserByID(user);
+         q.setuser(uu);
+         
+          q.setNom(RS.getString(5));
+          q.setImgview(RS.getString(6));
+         
          list.add(q);
         }
     } catch (SQLException ex) {
@@ -110,10 +125,19 @@ public quiz getById(int id) {
         ResultSet RS = st.executeQuery(req);
         if (RS.next()) {
             
+            
             q.setId_quiz(RS.getInt("id_quiz"));
+           
             q.setDifficulte(RS.getString(2));
             q.setScore(RS.getInt(3));
-            q.setId_promotion(RS.getInt("id_promotion"));
+           
+         
+         UtilisateurCRUD uc = new UtilisateurCRUD();
+         int user = RS.getInt(4);
+         Utilisateur uu = uc.getUserByID(user);
+          q.setNom(RS.getString(5));
+         q.setImgview(RS.getString(6));
+         q.setuser(uu);
         }
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
@@ -134,9 +158,19 @@ public quiz getById(int id) {
         while (RS.next()) {
             quiz q = new quiz();
             q.setId_quiz(RS.getInt("id_quiz"));
+         
             q.setDifficulte(RS.getString(2));
             q.setScore(RS.getInt(3));
-            q.setId_promotion(RS.getInt(4));
+         
+         
+         UtilisateurCRUD uc = new UtilisateurCRUD();
+         int user = RS.getInt(4);
+         Utilisateur uu = uc.getUserByID(user);
+         q.setNom(RS.getString(5));
+         q.setImgview(RS.getString(6));
+         q.setuser(uu);
+         
+      
             list.add(q);
         }
     } catch (SQLException ex) {
@@ -145,7 +179,32 @@ public quiz getById(int id) {
 
     return list;
 }
-
+   
+  public boolean quizExiste(String nom) {
+   
+    String sql = "SELECT * FROM quiz WHERE nom = ?";
+    try {
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, nom);
+        ResultSet rs = pstmt.executeQuery();
+        return rs.next();
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
 }
+  
+    
+    
+    
+    
+    
+    
+}
+
+    
+    
+    
+
 
 

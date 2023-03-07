@@ -6,6 +6,7 @@
 package elbaldi.services;
 
 import elbaldi.interfaces.InterfaceCRUDpromotion;
+import elbaldi.models.Utilisateur;
 import elbaldi.models.promotion;
 import elbaldi.utils.MyConnection;
 import java.sql.Connection;
@@ -25,15 +26,15 @@ public class PromotionCRUD implements InterfaceCRUDpromotion {
    
      @Override
      public void ajouterpromotion(promotion p) {
-          if (p.isValid()){
+        
     try { 
-        String req = "INSERT INTO `promotion`(`code_promo`, `taux`, `date_debut`, `date_fin`) VALUES (?,?,?,?)" ;
+        String req = "INSERT INTO `promotion`(`code_promo`, `taux`,`id_user`) VALUES (?,?,?)" ;
         PreparedStatement ps = conn.prepareStatement(req); 
         
         ps.setString(1, p.getCode_promo());
         ps.setFloat(2, p.getTaux());
-        ps.setDate(3, java.sql.Date.valueOf(p.getDate_debut()));
-        ps.setDate(4, java.sql.Date.valueOf(p.getDate_fin()));
+        ps.setInt(3, p.getU().getid_user());
+        
             
         ps.executeUpdate();
             
@@ -41,15 +42,12 @@ public class PromotionCRUD implements InterfaceCRUDpromotion {
     } catch (SQLException ex) {
         System.out.println("Promotion non ajoutée");  
     }
-    } else {
-             System.out.println(" la date de début doit être antérieure à la date de fin");
-    
-          }}
+   }
           
   
      @Override
 public void modifierpromotion(promotion p) {
-    if (p.isValid()){
+    
     try {
       
        String req = "UPDATE `promotion` SET `code_promo` = ?, `taux` = ?, `date_debut` = ?, `date_fin` = ?  WHERE `id_promotion` = ?";
@@ -57,17 +55,13 @@ public void modifierpromotion(promotion p) {
        PreparedStatement ps = conn.prepareStatement(req);
         ps.setString(1, p.getCode_promo());
         ps.setFloat(2, p.getTaux());
-        ps.setDate(3, java.sql.Date.valueOf(p.getDate_debut()));
-        ps.setDate(4, java.sql.Date.valueOf(p.getDate_fin()));
         ps.setInt(5, p.getId_promotion());
         ps.executeUpdate();
         System.out.println("promotion modifiée !");
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
-}else {
-             System.out.println(" la date de début doit être antérieure à la date de fin");
-} }
+ }
 
 
 
@@ -96,8 +90,8 @@ public void modifierpromotion(promotion p) {
          promotion p = new promotion();
          p.setId_promotion(RS.getInt("id_promotion"));
          p.setCode_promo(RS.getString(2));
-        p.setDate_debut(RS.getDate("date_debut").toLocalDate());
-          p.setDate_fin(RS.getDate("date_fin").toLocalDate());
+         p.setTaux(RS.getFloat("taux"));
+      
          
          
          listpromotion.add(p);
@@ -122,8 +116,7 @@ public void modifierpromotion(promotion p) {
             p.setId_promotion(rs.getInt("id_promotion"));
             p.setCode_promo(rs.getString("code_promo"));
             p.setTaux(rs.getFloat("taux"));
-            p.setDate_debut(rs.getDate("date_debut").toLocalDate());
-             p.setDate_fin(rs.getDate("date_fin").toLocalDate());
+           
             
         }
     } catch (SQLException ex) {
@@ -147,8 +140,7 @@ public void modifierpromotion(promotion p) {
            
             p.setCode_promo(rs.getString("code_promo"));
             p.setTaux(rs.getFloat("taux"));
-            p.setDate_debut(rs.getDate("date_debut").toLocalDate());
-            p.setDate_fin(rs.getDate("date_fin").toLocalDate());
+     
             
             list.add(p);
         }
@@ -158,4 +150,21 @@ public void modifierpromotion(promotion p) {
 
     return list;
 }
+   
+   public boolean promocodeExiste(String code_promo) {
+    try {
+       
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM promotion WHERE code_promo=?");
+        ps.setString(1, code_promo);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return false;
+}
+
 }

@@ -5,17 +5,18 @@
  */
 package elbaldi.interfaces;
 import elbaldi.models.categorie;
+import java.sql.SQLException;
 import java.util.List;
 /**
  *
- * @author USER
+ * @author Yasmine
  */
 public interface InterfaceCategorieCRUD {
-    public void ajouterCategorie(categorie c);
-    public void modifierCategorie(categorie c);
-    public void supprimerCategorie(int id) ;
-    public List<categorie> affichercategorie();
-    public categorie getCategorieById(int id);
-    public List<categorie> filtrerCategorie(String nomCategorie);
+    public void ajouterCategorie(categorie c) throws SQLException;
+    public void modifierCategorie(categorie c,int id) throws SQLException;
+    public void supprimerCategorie(categorie c) throws SQLException ;
+    public List<categorie> affichercategorie()throws SQLException;
+    public categorie getCategorieById(int id) throws SQLException;
+    public List<categorie> filtrerCategorie(String nomCategorie) throws SQLException;
     
 }

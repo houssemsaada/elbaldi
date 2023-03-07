@@ -27,6 +27,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -47,16 +48,19 @@ public class BpFrontController implements Initializable {
     private ComboBox<String> Typefx;
     @FXML
     private TextField search;
-    @FXML
-    private Button Home1;
-    @FXML
-    private Button Home1111;
-    @FXML
-    private Button Home11111;
-    @FXML
-    private Button Home111111;
-    @FXML
     private Button bonplan1;
+    @FXML
+    private Button bonplanfx;
+    @FXML
+    private Button profilfx;
+    @FXML
+    private Button prodfx;
+    @FXML
+    private Button Eventfx;
+    @FXML
+    private Button Quizfx;
+    @FXML
+    private Button decofx;
 
     /**
      * Initializes the controller class.
@@ -182,7 +186,6 @@ public class BpFrontController implements Initializable {
 //    }
 
 
-    @FXML
     private void bpbtn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
@@ -190,6 +193,32 @@ public class BpFrontController implements Initializable {
         Parent root = loader.load();
         bonplan1.getScene().setRoot(root);
     }
+
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void produitsf(ActionEvent event) {
+    }
+
+    @FXML
+    private void bonplanAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void EventAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
+    }
+
 
     
 

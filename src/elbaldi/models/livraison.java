@@ -12,7 +12,8 @@ import java.sql.Date ;
  * @author houss
  */
 public class livraison {
-    private int id_livraison,id_cmd ;
+    private int id_livraison ;
+    private commande c1 ; 
     private String status_livraison,adresse_livraison;
     private Date  date_livraison ; 
     //constructeur par defaut
@@ -21,16 +22,16 @@ public class livraison {
     }
     ///constructeur parametre 
 
-    public livraison(int id_livraison, String status_livraison, String adresse_livraison, Date  date_livraison,commande c) {
+    public livraison(int id_livraison, String status_livraison, String adresse_livraison, Date  date_livraison,commande c1) {
         this.id_livraison = id_livraison;
-        this.id_cmd = c.getId_cmd();
+        this.c1 = c1;
         this.status_livraison = status_livraison;
         this.adresse_livraison = adresse_livraison;
         this.date_livraison = date_livraison;
     }
 
-    public livraison( String status_livraison, String adresse_livraison, Date  date_livraison,commande c) {
-        this.id_cmd = c.getId_cmd();
+    public livraison( String status_livraison, String adresse_livraison, Date  date_livraison,commande c1) {
+        this.c1 = c1;
         this.status_livraison = status_livraison;
         this.adresse_livraison = adresse_livraison;
         this.date_livraison = date_livraison;
@@ -40,8 +41,8 @@ public class livraison {
         return id_livraison;
     }
 
-    public int getId_cmd() {
-        return id_cmd;
+    public commande getC1() {
+        return c1;
     }
 
     public String getStatus_livraison() {
@@ -60,9 +61,10 @@ public class livraison {
         this.id_livraison = id_livraison;
     }
 
-    public void setId_cmd(int id_cmd) {
-        this.id_cmd = id_cmd;
+    public void setC1(commande c1) {
+        this.c1 = c1;
     }
+
 
     public void setStatus_livraison(String status_livraison) {
         this.status_livraison = status_livraison;
@@ -78,10 +80,10 @@ public class livraison {
 
     @Override
     public String toString() {
-        return "livraison{" + "id_livraison=" + id_livraison + ", id_cmd=" + id_cmd + ", status_livraison=" + status_livraison + ", adresse_livraison=" + adresse_livraison + ", date_livraison=" + date_livraison + '}';
+        return "livraison{" + "id_livraison=" + id_livraison + ", commande=" + c1 + ", status_livraison=" + status_livraison + ", adresse_livraison=" + adresse_livraison + ", date_livraison=" + date_livraison + '}';
     }
-    
 
+    
     
    
 }

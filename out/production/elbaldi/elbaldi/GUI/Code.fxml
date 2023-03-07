@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="583.0" prefWidth="1382.0" style="-fx-background-color: F7F1E5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.Code">
+    <children>
+        <HBox alignment="CENTER_RIGHT" layoutX="30.0" layoutY="7.0" prefHeight="52.0" prefWidth="1352.0">
+            <children>
+                <FontAwesomeIcon fill="#ffa781" glyphName="MINUS" onMouseClicked="#mini" size="1.5em" text="">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </FontAwesomeIcon>
+                <FontAwesomeIcon fill="#ffa781" glyphName="CIRCLE" onMouseClicked="#max">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </FontAwesomeIcon>
+                <FontAwesomeIcon fill="#ffa781" glyphName="CLOSE" onMouseClicked="#close" size="2em">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </FontAwesomeIcon>
+            </children>
+        </HBox>
+        <ImageView fitHeight="121.0" fitWidth="128.0" layoutX="610.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/logo.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="438.0" layoutY="186.0" styleClass="labelF" stylesheets="@Styles/controls.css" text="Enter Verification Code" textFill="WHITE" />
+        <Button fx:id="btnid" layoutX="574.0" layoutY="418.0" mnemonicParsing="false" onAction="#SendMail" prefHeight="38.0" prefWidth="200.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Submit" />
+        <Label layoutX="449.0" layoutY="268.0" styleClass="labelf1" stylesheets="@Styles/controls.css" text="we've send you a 5-digit verification  code enter it below" textFill="WHITE" />
+      <TextField fx:id="mailid" layoutX="574.0" layoutY="321.0" prefHeight="26.0" prefWidth="193.0" promptText="Code" />
+    </children>
+
+</AnchorPane>

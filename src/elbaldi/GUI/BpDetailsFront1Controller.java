@@ -75,7 +75,7 @@ public class BpDetailsFront1Controller implements Initializable {
     @FXML
     private void back(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("BpFront.fxml"));
+        loader.setLocation(getClass().getResource("BpFront1.fxml"));
         Parent root = loader.load();
         retourfx.getScene().setRoot(root);
     }
@@ -89,6 +89,5 @@ public class BpDetailsFront1Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

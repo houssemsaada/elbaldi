@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="elbaldi.GUI.BpFront1Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BpFront1Controller">
    <children>
       <ImageView fitHeight="449.0" fitWidth="798.0" layoutX="271.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
       <ScrollPane fx:id="scroll" layoutX="215.0" layoutY="131.0" prefHeight="472.0" prefWidth="864.0">
@@ -37,9 +36,23 @@
       <Accordion layoutX="24.0" layoutY="241.0" />
       <HBox layoutX="581.0" layoutY="101.0" prefHeight="42.0" prefWidth="287.0" />
       <TextField fx:id="search" layoutX="213.0" layoutY="101.0" />
-      <VBox layoutX="10.0" layoutY="132.0" prefHeight="279.0" prefWidth="202.0">
+      <ImageView fitHeight="92.0" fitWidth="110.0" layoutX="70.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/le28/elbaldi-yasmine/src/Ressources/Logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="insc" layoutX="815.0" layoutY="19.0" mnemonicParsing="false" onAction="#inscr" prefHeight="41.0" prefWidth="114.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="S'inscrire" />
+      <Button fx:id="cnx" layoutX="939.0" layoutY="19.0" mnemonicParsing="false" onAction="#connecter" prefHeight="41.0" prefWidth="114.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Se connecter" />
+      <VBox layoutX="11.0" layoutY="133.0" prefHeight="135.0" prefWidth="202.0" stylesheets="@style.css">
          <children>
-            <Button fx:id="Home1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Profil" textFill="#e7e5e5">
+            <Button fx:id="prodfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#produitsf" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Downloads/style.css" text="Produits" textFill="#e7e5e5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/produit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -47,7 +60,14 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Produits" textFill="#e7e5e5">
+            <Button fx:id="bonplanfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#bonplanAction" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Downloads/style.css" text="Bons plans" textFill="#e7e5e5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/tunisie.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -55,31 +75,14 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="bonplan1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#bpbtn" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Bons plans" textFill="#e7e5e5">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="Home1111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="94.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Evènements" textFill="#e7e5e5">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="Home11111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="136.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="209.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Quiz" textFill="#e7e5e5">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="Home111111" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="178.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="210.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Déconnexion" textFill="#e7e5e5">
+            <Button fx:id="eventfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="94.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="42.0" prefWidth="205.0" stylesheets="@../../../../../../Downloads/style.css" text="Evènements" textFill="#e7e5e5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/un-evenement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -89,12 +92,10 @@
             </Button>
          </children>
       </VBox>
-      <ImageView fitHeight="92.0" fitWidth="110.0" layoutX="70.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="17.0" fitWidth="18.0" layoutX="370.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/le28/elbaldi-yasmine/src/Ressources/Logo.png" />
+            <Image url="@../../ressources/search.png" />
          </image>
       </ImageView>
-      <Button fx:id="insc" layoutX="815.0" layoutY="19.0" mnemonicParsing="false" onAction="#inscr" prefHeight="41.0" prefWidth="114.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="S'inscrire" />
-      <Button fx:id="cnx" layoutX="939.0" layoutY="19.0" mnemonicParsing="false" onAction="#connecter" prefHeight="41.0" prefWidth="114.0" stylesheets="@../../../../../../Desktop/le28/elbaldi-yasmine/src/elbaldi/GUI/style.css" text="Se connecter" />
    </children>
 </AnchorPane>
