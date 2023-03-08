@@ -26,6 +26,8 @@ public class MailerService {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
         properties.put("mail.smtp.port", "587");
         String host = "localhost";
         Session newsession = Session.getInstance(properties, new Authenticator() {

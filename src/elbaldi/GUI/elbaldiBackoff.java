@@ -7,32 +7,32 @@ package elbaldi.GUI;
 
 import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author MSI
+ * @author USER
  */
-public class NewFXMain extends Application {
-    
-    @Override
+public class elbaldiBackoff extends Application {
+       @Override
     public void start(Stage primaryStage) {
-         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("afficher participation.fxml"));
-       // FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterEvenement.fxml"));
-            
-            //       FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherevenFront.fxml"));
 
-            Parent root = loader.load();
-            Scene sc = new Scene(root);
-            primaryStage.setTitle("Personnes");
-            primaryStage.setScene(sc);
+        try {
+     
+       Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
+               // Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            //    Parent root = FXMLLoader.load(getClass().getResource("Front1.fxml"));
+
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("login");
+            primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -48,4 +48,3 @@ public class NewFXMain extends Application {
     }
     
 }
-

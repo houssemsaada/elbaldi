@@ -14,15 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProdbacklistController">
    <children>
       <ScrollPane fx:id="scroll" layoutX="285.0" layoutY="117.0" prefHeight="485.0" prefWidth="895.0">
-=======
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProdbacklistController">
-   <children>
-      <ScrollPane fx:id="scroll" layoutX="285.0" layoutY="117.0" prefHeight="656.0" prefWidth="1216.0">
->>>>>>> Origin/sami
          <content>
             <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
                <rowConstraints>
@@ -31,22 +25,13 @@
             </GridPane>
          </content>
       </ScrollPane>
-<<<<<<< HEAD
       <Button fx:id="ajoutfx" layoutX="1048.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouter" stylesheets="@style.css" text="Ajouter produit" />
       <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="1009.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-=======
-      <Button fx:id="ajoutfx" layoutX="1015.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouter" stylesheets="@style.css" text="Ajouter produit" />
-      <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="981.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
->>>>>>> Origin/sami
          <image>
             <Image url="@../../Ressources/ajouter.png" />
          </image>
       </ImageView>
-<<<<<<< HEAD
       <Button fx:id="showC" layoutX="1070.0" layoutY="50.0" mnemonicParsing="false" onAction="#refresh" prefHeight="23.0" prefWidth="100.0" stylesheets="@style.css" text="Rafraîchir" />
-=======
-      <Button fx:id="showC" layoutX="1035.0" layoutY="50.0" mnemonicParsing="false" onAction="#refresh" prefHeight="23.0" prefWidth="100.0" stylesheets="@style.css" text="Rafraîchir" />
->>>>>>> Origin/sami
       <Label layoutX="281.0" layoutY="22.0" prefHeight="53.0" prefWidth="353.0" text="Gestion Produits" textFill="#a20812">
          <font>
             <Font name="Arial Black" size="33.0" />
@@ -54,7 +39,6 @@
       </Label>
       <VBox alignment="TOP_CENTER" prefHeight="656.0" prefWidth="276.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000">
          <children>
-<<<<<<< HEAD
             <ImageView fitHeight="112.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/Logo.png" />
@@ -62,12 +46,6 @@
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
-=======
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/logo.png" />
-               </image>
->>>>>>> Origin/sami
             </ImageView>
             <ScrollPane prefHeight="492.0" prefWidth="263.0" style="-fx-background-color: #FFFFFF;">
                <content>
@@ -83,11 +61,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/accueil%20(1).png" />
-=======
-                                    <Image url="@../resources/accueil.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -102,11 +76,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/utilisateur.png" />
-=======
-                                    <Image url="@../resources/utilisateur.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -121,11 +91,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/categorie.png" />
-=======
-                                    <Image url="@../resources/categorie.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -140,11 +106,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/produit.png" />
-=======
-                                    <Image url="@../resources/produit.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -159,11 +121,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/colis%20(1).png" />
-=======
-                                    <Image url="@../resources/colis.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -178,11 +136,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/livraison-rapide.png" />
-=======
-                                    <Image url="@../resources/livraison-rapide.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -197,11 +151,7 @@
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/tunisie.png" />
-=======
-                                    <Image url="@../resources/tunisie.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -216,11 +166,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/idees.png" />
-=======
-                                    <Image url="@../resources/idees.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -235,11 +181,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/un-evenement.png" />
-=======
-                                    <Image url="@../resources/un-evenement.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -254,11 +196,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/les-mains-en-lair.png" />
-=======
-                                    <Image url="@../resources/les-mains-en-lair.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -273,11 +211,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/silhouette-dutilisateurs-multiples.png" />
-=======
-                                    <Image url="@../resources/silhouette-dutilisateurs-multiples.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>
@@ -292,11 +226,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-<<<<<<< HEAD
                                     <Image url="@../../Ressources/se-deconnecter.png" />
-=======
-                                    <Image url="@../resources/se-deconnecter.png" />
->>>>>>> Origin/sami
                                  </image>
                               </ImageView>
                            </graphic>

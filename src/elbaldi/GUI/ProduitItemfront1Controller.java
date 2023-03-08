@@ -23,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ProduitItemfront1Controller implements Initializable {
 
