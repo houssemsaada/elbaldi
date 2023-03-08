@@ -13,6 +13,7 @@ import facebook4j.FacebookFactory;
 import facebook4j.PostUpdate;
 import facebook4j.auth.AccessToken;
 import facebook4j.auth.OAuthAuthorization;
+import facebook4j.conf.ConfigurationBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -151,6 +152,33 @@ if (result.get() == confirmerButton){
 //
 //// Appelez la méthode postFeed avec l'objet PostUpdate pour partager le produit sur Facebook
 //        facebook.postFeed(postUpdate);
+String appId = "1869324283466191";
+    String appSecret = "d8f014c3aa96d7c15fe58942ad50abe1";
+    String accessTokenString = "EAAakIZCni0c8BAPZC2n7Aqz6ZBAdcCxUVvILSakGx4IGSvkmZAtBMDcEpHu3nKjdm0w3ZCe6IxBSccl82XXA4D4ZBnrvbvDeakRw9WxbdMsbsX8APYsHSxEeTIGc9tZBfEanmRRMNE2pP54CKKFKJvVPRCZCjr250GI8aRXU93H9OmrsunjE73QImDING9bYLCevCKN9vc8AGow6xdRakH4Q";
+   
+AccessToken accessTokenObj = new AccessToken(accessTokenString);
+    ConfigurationBuilder cb = new ConfigurationBuilder();
+cb.setDebugEnabled(true)
+  .setOAuthAppId(appId)
+  .setOAuthAppSecret(appSecret)
+   .setOAuthAccessToken(accessTokenString);
+ // .setOAuthAccessToken(new AccessToken(accessTokenString));
+
+Facebook facebook = new FacebookFactory(cb.build()).getInstance();
+    //Facebook facebook = new FacebookFactory().getInstance(new OAuthAuthorization(appId, appSecret, new AccessToken(accessTokenString)));
+
+    // build the message to share
+    String message = "Découvrez notre produit " + produit1.getLibelle() + " à seulement " + produit1.getPrix_vente() + "€ sur notre site !";
+
+    // share the message
+    try {
+        PostUpdate post = new PostUpdate(new URL("https://www.facebook.com/Elbaldi En Ligne")).message(message);
+        facebook.postFeed(post);
+        JOptionPane.showMessageDialog(null, "Le produit a été partagé sur Facebook !");
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(null, "Une erreur s'est produite lors du partage sur Facebook : " + ex.getMessage());
+    }
+
 
     }
     

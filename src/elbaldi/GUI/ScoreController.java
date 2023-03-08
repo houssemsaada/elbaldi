@@ -191,7 +191,7 @@ public String generatePromoCode(int score) {
         for (int i = 0; i < 4; i++) {
             promoCode += String.valueOf(random.nextInt(10));
         }
-        codeExiste = pc.promocodeExiste(promoCode);
+      codeExiste = pc.promocodeExiste(promoCode);
     }
     if (score == 100) {
         taux = 0.15f;

@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="290.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.UserCard">
+<AnchorPane prefHeight="290.0" prefWidth="420.0" style="-fx-background-color: #ffffff;" stylesheets="@Styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.UserCard">
     <children>
-        <AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="420.0" styleClass="AnchorPane1">
+        <AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="420.0" style="-fx-background-color: #ffffff;" styleClass="AnchorPane1">
             <children>
-                <VBox prefHeight="287.0" prefWidth="420.0" styleClass="VBox" stylesheets="@../style/Styles/cardoffres.css">
+                <VBox prefHeight="287.0" prefWidth="420.0" stylesheets="@../style/Styles/cardoffres.css">
                     <children>
                         <HBox prefHeight="29.0" prefWidth="321.0" />
                         <VBox prefHeight="64.0" prefWidth="265.0">
@@ -23,6 +24,9 @@
                                             <HBox.margin>
                                                 <Insets top="20.0" />
                                             </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
                                         </Label>
                                         <Label fx:id="user_email" prefHeight="23.0" prefWidth="176.0" styleClass="label1">
                                             <HBox.margin>
@@ -37,6 +41,9 @@
                                             <HBox.margin>
                                                 <Insets top="20.0" />
                                             </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
                                         </Label>
                                         <Label fx:id="user_number" prefHeight="23.0" prefWidth="180.0" styleClass="label1">
                                             <HBox.margin>
@@ -51,6 +58,9 @@
                                             <HBox.margin>
                                                 <Insets top="20.0" />
                                             </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
                                         </Label>
                                         <Label fx:id="user_role" alignment="TOP_CENTER" prefHeight="23.0" prefWidth="181.0" styleClass="label1">
                                             <HBox.margin>
@@ -65,6 +75,9 @@
                                  <HBox.margin>
                                     <Insets top="20.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
                               </Label>
                               <Label fx:id="user_status" alignment="TOP_CENTER" prefHeight="23.0" prefWidth="173.0" styleClass="label1">
                                  <HBox.margin>
@@ -75,9 +88,9 @@
                         </HBox>
                             </children>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="304.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="304.0" stylesheets="@Styles/style.css">
                             <children>
-                                <Button graphicTextGap="2.0" mnemonicParsing="false" onAction="#approveUser" prefHeight="31.0" prefWidth="99.0" styleClass="button8" text="Approve" textFill="WHITE">
+                                <Button graphicTextGap="2.0" mnemonicParsing="false" onAction="#approveUser" prefHeight="31.0" prefWidth="99.0" stylesheets="@Styles/style.css" text="Approve" textFill="WHITE">
                                     <HBox.margin>
                                         <Insets left="10.0" top="20.0" />
                                     </HBox.margin>
@@ -96,7 +109,8 @@
                 <Insets left="-30.0" />
             </padding>
          <stylesheets>
-             <URL value="@Styles/cardoffres.css" />
+            <URL value="@Styles/style_1.css" />
+            <URL value="@quiz.css" />
          </stylesheets>
         </AnchorPane>
     </children>

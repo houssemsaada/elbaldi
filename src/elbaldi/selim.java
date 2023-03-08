@@ -5,7 +5,10 @@
  */
 package elbaldi;
 
+import elbaldi.models.Utilisateur;
+import elbaldi.models.promotion;
 import elbaldi.models.quiz;
+import elbaldi.services.PromotionCRUD;
 import elbaldi.services.QuizCRUD;
 import java.sql.SQLException;
 
@@ -30,7 +33,7 @@ public class selim {
         //Ajout d'un Quiz 
                   //qu.ajouterQuiz(q1);
         //Modification d'un Quiz          
-                  qu.modifierquiz(q1,22);
+                //  qu.modifierquiz(q1,22);
         //Suppression d'un Quiz 
                  //qu.supprimerquiz(4);
         //Affichage d'un Quiz 
@@ -63,5 +66,9 @@ public class selim {
 
     
 }
-*/
+*/    
+      Utilisateur po = new Utilisateur(2492);
+      promotion p = new promotion("ELBALDI5893",0.15f,po);
+      PromotionCRUD pc = new PromotionCRUD();
+      System.out.println(pc.promocodeExistePourUtilisateur(p, po));
  }}

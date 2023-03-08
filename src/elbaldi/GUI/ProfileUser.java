@@ -19,8 +19,6 @@ import java.util.ResourceBundle;
 
 public class ProfileUser implements Initializable {
 
-    @FXML
-    private Circle HostPic;
 
     @FXML
     private TextField adminpageaddress;
@@ -43,7 +41,6 @@ public class ProfileUser implements Initializable {
     @FXML
     private Button updateadmin;
 
-    @FXML
     void image_admin(MouseEvent event) {
 
     }

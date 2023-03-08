@@ -150,7 +150,7 @@ public void modifierpromotion(promotion p) {
 
     return list;
 }
-   
+    @Override
    public boolean promocodeExiste(String code_promo) {
     try {
        
@@ -167,4 +167,20 @@ public void modifierpromotion(promotion p) {
     return false;
 }
 
+      @Override
+  public boolean promocodeExistePourUtilisateur(promotion p, Utilisateur user) {
+    try {
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM promotion WHERE code_promo=? AND id_user=?");
+        ps.setString(1, p.getCode_promo());
+        ps.setInt(2, user.getId_user());
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return false;
+}
 }
