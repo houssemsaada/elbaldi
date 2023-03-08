@@ -11,8 +11,11 @@ import elbaldi.models.panier;
 import elbaldi.models.*;
 import elbaldi.services.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,6 +61,7 @@ public class CommandeclientController implements Initializable {
     @FXML
     private TextField totalTF;
     ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
+    ObservableList<produit> yasObservableList = FXCollections.observableArrayList();
 
     @FXML
     private TextField nomTF;
@@ -71,6 +75,9 @@ public class CommandeclientController implements Initializable {
     private TextField id_panTF;
     @FXML
     private ListView<produit> listView;
+    UserSession userSession = new UserSession();
+    Utilisateur u = userSession.getUser();
+    //ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -79,20 +86,17 @@ public class CommandeclientController implements Initializable {
      */
     public void setP(panier p) {
         this.p = p;
-        System.out.println("id pan     "+p);
         panierCRUD pc = new panierCRUD();
 
-      //  p.setId_panier(Integer.parseInt(id_panTF.getText()));
-        System.out.println("id2    "+p);
-        System.out.println(pc.afficherListProduitPanier(p));
-    //    produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
-                produitObservableList = FXCollections.observableList(p.getList());
+        //  p.setId_panier(Integer.parseInt(id_panTF.getText()));
+//        p.setId_panier(Integer.parseInt(panieridTF.getText()));
+        yasObservableList = FXCollections.observableList(pc.afficherListProduityasmine(p));
+        //    produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
+        produitObservableList = FXCollections.observableList(p.getList());
         System.out.println(produitObservableList);
         listView.setCellFactory(rr -> new MiniPanierListCell());
         listView.setItems(produitObservableList);
-
-        totalTF.setText(p.getTotal_panier() + "");
-        
+       // totalTF.setText(p.getTotal_panier() + "");
 
     }
 
@@ -141,6 +145,7 @@ public class CommandeclientController implements Initializable {
 
         CommandeCRUD cr = new CommandeCRUD();
         livraisonCRUD lr = new livraisonCRUD();
+        panierCRUD pc = new panierCRUD();
         String adress = addrTF.getText();
 
         commande c = new commande(p);
@@ -153,17 +158,36 @@ public class CommandeclientController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         // if the user confirms the update action
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            System.out.println(c);
-            cr.ajouterCommande(c);
-
-            commande c2 = cr.filtreBypanier(p);
-//            livraison l = new livraison();
-//            l.setC1(c2);
-//            l.setAdresse_livraison(adress);
-//            lr.ajouterLivraison(l);
+            ProduitCRUD pcc = new ProduitCRUD();
             commandeGUI.AlertShow("order added ! ", "order", Alert.AlertType.INFORMATION);
+
+         
+            
+            cr.ajouterCommande(c);
+            commande c2 = cr.filtreBypanier(p);
+            System.out.println("l'id de nouvelle commande"+c2.getId_cmd());
+               for (int i = 0; i < yasObservableList.size(); i++) {
+                produit element1 = yasObservableList.get(i);
+                 produit element2 = produitObservableList.get(i);
+                for (int j = 0; j < element2.getQuantite(); j++) {
+                cr.ajouterProdCommande(c2, element2);
+               }
+                try {
+                    int quantite = element2.getQuantite();  //qte panier
+                    // quantite += element1.getQuantite();
+                    // System.out.println(quantite);
+                    element1.setQuantite(quantite + element1.getQuantite());
+                    pc.supprimerProdPanier(p, element2);
+                    panier p1  = p ;
+                    p1.setNombre_article(0);
+                    p1.setTotal_panier(0);
+                    pc.modifierPanier(p1);
+                    pcc.modifierProduit(element1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommandeclientController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             MailerService ms = new MailerService();
-//              System.out.println(c2);
             try {
                 ms.sendCommandeMail(c2);
             } catch (Exception e) {

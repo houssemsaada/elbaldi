@@ -123,6 +123,7 @@ public class ConsulterPanierController implements Initializable {
             dc.setP(p);
             dc.setNomTF(p.getU1().getNom());
             dc.setPrenomTF(p.getU1().getPrenom());
+            dc.setTotalTF(totalTF.getText());
             totalTF.getScene().setRoot(root);
 
         } catch (IOException ex) {

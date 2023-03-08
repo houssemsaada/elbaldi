@@ -46,34 +46,34 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
                 ex.printStackTrace();
             }
         } else {
-             if (l.getStatus_livraison()==null && l.getDate_livraison() == null) {
-                 try {
-                String req = "INSERT INTO `livraison` (`id_cmd`, `adresse_livraison`) VALUES (?,?)";
-                PreparedStatement ps = conn.prepareStatement(req);
-                ps.setInt(1, l.getC1().getId_cmd());
-              
-                ps.setString(2, l.getAdresse_livraison());
-               
-                ps.executeUpdate();
-                System.out.println("livraison ajouté!!!");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+            if (l.getStatus_livraison() == null && l.getDate_livraison() == null) {
+                try {
+                    String req = "INSERT INTO `livraison` (`id_cmd`, `adresse_livraison`) VALUES (?,?)";
+                    PreparedStatement ps = conn.prepareStatement(req);
+                    ps.setInt(1, l.getC1().getId_cmd());
+
+                    ps.setString(2, l.getAdresse_livraison());
+
+                    ps.executeUpdate();
+                    System.out.println("livraison ajouté!!!");
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                try {
+                    String req = "INSERT INTO `livraison` (`id_cmd`, `status_livraison`, `adresse_livraison`, `date_livraison`) VALUES (?,?,?,?)";
+                    PreparedStatement ps = conn.prepareStatement(req);
+                    ps.setInt(1, l.getC1().getId_cmd());
+                    ps.setString(2, l.getStatus_livraison());
+                    ps.setString(3, l.getAdresse_livraison());
+                    ps.setDate(4, l.getDate_livraison());
+                    ps.executeUpdate();
+                    System.out.println("livraison ajouté!!!");
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
-             }else {
-                 try {
-                String req = "INSERT INTO `livraison` (`id_cmd`, `status_livraison`, `adresse_livraison`, `date_livraison`) VALUES (?,?,?,?)";
-                PreparedStatement ps = conn.prepareStatement(req);
-                ps.setInt(1, l.getC1().getId_cmd());
-                ps.setString(2, l.getStatus_livraison());
-                ps.setString(3, l.getAdresse_livraison());
-                ps.setDate(4, l.getDate_livraison());
-                ps.executeUpdate();
-                System.out.println("livraison ajouté!!!");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-             }
-            
+
         }
 
     }
@@ -213,4 +213,22 @@ public class livraisonCRUD implements livraisonInterfaceCRUD {
         return list;
     }
 
+    public int pendingliv() {
+        int pend = 0;
+        try {
+            String req = "SELECT COUNT(*) as order_count FROM livraison WHERE status_livraison = 'En attente'";
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                pend = RS.getInt("order_count");
+                return pend;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return pend;
+    }
 }

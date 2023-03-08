@@ -20,6 +20,7 @@ import elbaldi.services.UtilisateurCRUD;
 import elbaldi.services.livraisonCRUD;
 import elbaldi.services.panierCRUD;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -33,11 +34,11 @@ public class houssem {
         Date date_com = Date.valueOf(date_comm);
         String date_liv = "2023-02-18";
         Date date_livr = Date.valueOf(date_liv);
-    //    Utilisateur u1 = new Utilisateur(2460, "ben mahmoud", "khaled", "test@test", "10/16/2000", 2345564, "tunis", "test", "test", client);
+        //    Utilisateur u1 = new Utilisateur(2460, "ben mahmoud", "khaled", "test@test", "10/16/2000", 2345564, "tunis", "test", "test", client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
         Utilisateur u2 = new Utilisateur(2462);
         // uti.ajouterUtlisateur(u1);
-     //   categorie c1 = new categorie(2, "art");
+        //   categorie c1 = new categorie(2, "art");
         CategorieCRUD categ = new CategorieCRUD();
         // categ.ajouterCategorie(c1);
         produit p1 = new produit("f03");
@@ -48,6 +49,19 @@ public class houssem {
         //     commande com2 = new commande(129, pan1, "aaaaaa", date_com);
 
         CommandeCRUD comm = new CommandeCRUD();
+        //  System.out.println(comm.totalsales());
+        //  System.out.println(comm.pendingorders());
+        System.out.println(prod.prodCount());
+        // System.out.println());
+        ResultSet rs = prod.categorieprodcount();
+        while (rs.next()) {
+            String category = rs.getString("nom_categorie");
+            int count = rs.getInt("product_count");
+            System.out.println(category + ": " + count);
+        }
+        
+        
+        System.out.println(comm.top5prod());
         //comm.ajouterCommande(com2);
         //comm.modifierCommande(com1);
         //comm.supprimerCommande(1);
@@ -58,8 +72,8 @@ public class houssem {
 //----------------------module livraison--------------------------------------------------------------------        
         //   livraison l1 = new livraison("le", "nabeul", date_livr, com1);
         //  livraison l2 = new livraison("le", "nabeul", date_livr, com2);
-
         livraisonCRUD liv = new livraisonCRUD();
+        System.out.println(liv.pendingliv());
         //liv.ajouterLivraison(l2);
         //liv.modifierLivraison(l1);
         //liv.supprimerLivraison(6);
@@ -69,22 +83,22 @@ public class houssem {
         //System.out.println(liv.filtreBycommande(com2));
 //----------------------module panier------------------------------------------------------------------------
         panier pan1 = new panier(21);
-                panierCRUD pan = new panierCRUD();
+        panierCRUD pan = new panierCRUD();
 
-        System.out.println(pan.afficherListProduitPanier(pan1));
-       // pan1.setU1(u1);
+      //  System.out.println(pan.afficherListProduitPanier(pan1));
+        // pan1.setU1(u1);
         //pan.ajouterPanier(pan1);
         //pan.ajouterProdPanier(pan1, p1,10);
         //pan.supprimerProdPanier(pan1,p1) ; 
-       //  pan.modifierPanier(pan1);
+        //  pan.modifierPanier(pan1);
         //pan.supprimerPanier(3);
         //System.out.println(pan.afficherPanier());
         //System.out.println(pan.filtreByuser(u1));
         //System.out.println(pan.afficherListProduitPanier(pan1));
-       // pan.modifierQteProdPanier(pan1, p1, 8);
-                    commande com1 = new commande(128, pan1, "aaaaaa", date_com);
+        // pan.modifierQteProdPanier(pan1, p1, 8);
+        commande com1 = new commande(128, pan1, "aaaaaa", date_com);
 
-       PdfOrder pdf = new PdfOrder();
-           // pdf.orderPdf(com1);
+        PdfOrder pdf = new PdfOrder();
+        // pdf.orderPdf(com1);
     }
 }

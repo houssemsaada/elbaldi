@@ -172,6 +172,10 @@ public class ProduitDetailsFrontController implements Initializable {
         }
         else {
             pc.ajouterProdPanier(pan, produitt, 1);
+             panier p1  = pan ;
+                    p1.setNombre_article(pan.getNombre_article()+1);
+                    p1.setTotal_panier(pan.getTotal_panier()+produitt.getPrix_vente());
+                    pc.modifierPanier(p1);
             commandeGUI.AlertShow("Produit ajouté ! ", "panier", Alert.AlertType.INFORMATION);
         }
      

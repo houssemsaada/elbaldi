@@ -140,7 +140,7 @@ public class panierCRUD implements panierInterfaceCRUD {
                 while (rr.next()) {
                     produit p1 = new produit();
                     p1.setRef_produit(rr.getString(1));
-                    p1.setPrix_vente(rr.getFloat(7));
+                    p1.setPrix_vente(rr.getFloat(5));
                     p1.setQuantite(quantite);
                     list_p.add(p1);
                 }
@@ -291,6 +291,42 @@ public class panierCRUD implements panierInterfaceCRUD {
                     p1.setImage(rr.getString(4));
                     p1.setPrix_vente(rr.getFloat(5));
                     p1.setQuantite(quantite);
+                    categorie cc = new categorie();
+                    cc.setId_categorie(rr.getInt(7));
+                    p1.setCategoriee(cc);
+                    list_p.add(p1);
+                }
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(panierCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list_p;
+    }
+@Override
+    public List<produit> afficherListProduityasmine(panier p) {
+        List<produit> list_p = new ArrayList<>();
+        try {
+            // list des produits
+
+            String produitfilter = "SELECT *  FROM panier_produit WHERE `id_panier`= ?";
+            PreparedStatement psp = conn.prepareStatement(produitfilter);
+            psp.setInt(1, p.getId_panier());
+            ResultSet rp = psp.executeQuery();
+
+            while (rp.next()) {
+                String filter = "SELECT *  FROM produit WHERE `ref_produit`= ?";
+                PreparedStatement pss = conn.prepareStatement(filter);
+                pss.setString(1, rp.getString(2));
+                ResultSet rr = pss.executeQuery();
+                while (rr.next()) {
+                    produit p1 = new produit();
+                    p1.setRef_produit(rr.getString(1));
+                    p1.setLibelle(rr.getString(2));
+                    p1.setDescription(rr.getString(3));
+                    p1.setImage(rr.getString(4));
+                    p1.setPrix_vente(rr.getFloat(5));
+                    p1.setQuantite(rr.getInt(6));
                     categorie cc = new categorie();
                     cc.setId_categorie(rr.getInt(7));
                     p1.setCategoriee(cc);

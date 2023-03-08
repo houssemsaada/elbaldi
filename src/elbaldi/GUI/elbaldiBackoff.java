@@ -26,9 +26,9 @@ public class elbaldiBackoff extends Application {
 
         try {
      
-   //     Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
                // Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-                Parent root = FXMLLoader.load(getClass().getResource("Front1.fxml"));
+            //    Parent root = FXMLLoader.load(getClass().getResource("Front1.fxml"));
 
             Scene scene = new Scene(root);
             primaryStage.setTitle("login");

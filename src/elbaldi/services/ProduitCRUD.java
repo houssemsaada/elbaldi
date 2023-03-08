@@ -23,36 +23,36 @@ import java.util.stream.Collectors;
  * @author Yasmine
  */
 public class ProduitCRUD implements InterfaceProduitCRUD {
-    
+
     Connection conn = MyConnection.getInstance().getConn();
+
     @Override
-    public void ajouterProduit(produit p) throws SQLException{
-           try {
+    public void ajouterProduit(produit p) throws SQLException {
+        try {
             String req = "INSERT INTO `produit`(`ref_produit`, `libelle`, `description`, `image`, `prix_vente`, `quantite`, `id_categorie`) VALUES (?,?,?,?,?,?,?)";
-            PreparedStatement ps=conn.prepareStatement(req);
-          
+            PreparedStatement ps = conn.prepareStatement(req);
+
             ps.setString(1, p.getRef_produit());
             ps.setString(2, p.getLibelle());
             ps.setString(3, p.getDescription());
             ps.setString(4, p.getImage());
             ps.setFloat(5, p.getPrix_vente());
             ps.setInt(6, p.getQuantite());
-            ps.setInt(7, p.getCategoriee().getId_categorie());        
+            ps.setInt(7, p.getCategoriee().getId_categorie());
             ps.executeUpdate();
             System.out.println("Produit ajoutee avec succes ");
         } catch (SQLException ex) {
-            System.out.println("Produit non ajoutee !!"); 
-               System.out.println(ex.getMessage());  
-        }   
+            System.out.println("Produit non ajoutee !!");
+            System.out.println(ex.getMessage());
+        }
     }
-
 
     @Override
     public void modifierProduit(produit p) throws SQLException {
         try {
-            String req = "UPDATE `produit` SET `libelle` = '" + p.getLibelle() 
-                    + "', `description` = '" + p.getDescription()+ "', `image` = '" + p.getImage()
-                    + "', `prix_vente` = '" + p.getPrix_vente()+ "', `quantite` = '" + p.getQuantite()
+            String req = "UPDATE `produit` SET `libelle` = '" + p.getLibelle()
+                    + "', `description` = '" + p.getDescription() + "', `image` = '" + p.getImage()
+                    + "', `prix_vente` = '" + p.getPrix_vente() + "', `quantite` = '" + p.getQuantite()
                     + "', `id_categorie` = '" + p.getCategoriee().getId_categorie()
                     + "' WHERE `produit`.`ref_produit` = '" + p.getRef_produit() + "'";
             Statement st = conn.createStatement();
@@ -65,7 +65,7 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
 
     @Override
     public void supprimerProduit(String ref) throws SQLException {
-          try {
+        try {
             String req = "DELETE FROM `produit` WHERE `ref_produit` = '" + ref + "'";
             Statement st = conn.createStatement();
             st.executeUpdate(req);
@@ -76,26 +76,26 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
     }
 
     @Override
-    public List<produit> afficherProduit() throws SQLException{
-         List<produit> list = new ArrayList<>();
+    public List<produit> afficherProduit() throws SQLException {
+        List<produit> list = new ArrayList<>();
         try {
             String req = "Select * from produit";
             Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             produit p = new produit();
-             p.setRef_produit(RS.getString(1));
-             p.setLibelle(RS.getString(2));
-             p.setDescription(RS.getString(3));
-             p.setImage(RS.getString(4));
-             p.setPrix_vente(RS.getFloat(5));
-             p.setQuantite(RS.getInt(6));
-             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
-             int categorieId = RS.getInt(7);
-             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
-             p.setCategoriee(categoriee);
-             list.add(p);
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                produit p = new produit();
+                p.setRef_produit(RS.getString(1));
+                p.setLibelle(RS.getString(2));
+                p.setDescription(RS.getString(3));
+                p.setImage(RS.getString(4));
+                p.setPrix_vente(RS.getFloat(5));
+                p.setQuantite(RS.getInt(6));
+                CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+                int categorieId = RS.getInt(7);
+                categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+                p.setCategoriee(categoriee);
+                list.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -103,9 +103,9 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
 
         return list;
     }
-      
+
     @Override
-    public produit getByRefProduit (String ref) throws SQLException {
+    public produit getByRefProduit(String ref) throws SQLException {
         //produit p = new produit();
         produit p = null;
         //String reff="TUN61900"+ref;
@@ -114,24 +114,25 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
-                p=new produit();
+                p = new produit();
                 p.setRef_produit(RS.getString(1));
                 p.setLibelle(RS.getString(2));
                 p.setDescription(RS.getString(3));
                 p.setImage(RS.getString(4));
                 p.setPrix_vente(RS.getFloat(5));
                 p.setQuantite(RS.getInt(6));
-             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
-             int categorieId = RS.getInt(7);
-             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
-             p.setCategoriee(categoriee);
+                CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+                int categorieId = RS.getInt(7);
+                categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+                p.setCategoriee(categoriee);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return p;
     }
-   @Override
+
+    @Override
     public List<produit> filtreByPrixVente(float min, float max) throws SQLException {
         List<produit> list = new ArrayList<>();
         try {
@@ -146,10 +147,10 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
                 p.setImage(RS.getString(4));
                 p.setPrix_vente(RS.getFloat(5));
                 p.setQuantite(RS.getInt(6));
-             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
-             int categorieId = RS.getInt(7);
-             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
-             p.setCategoriee(categoriee);
+                CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+                int categorieId = RS.getInt(7);
+                categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+                p.setCategoriee(categoriee);
                 list.add(p);
             }
         } catch (SQLException ex) {
@@ -157,60 +158,63 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
         }
         return list;
     }
-    @Override 
-    public List<produit> filtrerProduitParQuantite(int quantite) throws SQLException {
-    List<produit> list = new ArrayList<>();
-    try {
-        String req = "Select * from produit where quantite >= ?";
-        PreparedStatement ps = conn.prepareStatement(req);
-        ps.setInt(1, quantite);
-        ResultSet RS = ps.executeQuery();
-        while (RS.next()) {
-            produit p = new produit();
-            p.setRef_produit(RS.getString(1));
-            p.setLibelle(RS.getString(2));
-            p.setDescription(RS.getString(3));
-            p.setImage(RS.getString(4));
-            p.setPrix_vente(RS.getFloat(5));
-            p.setQuantite(RS.getInt(6));
-            CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
-             int categorieId = RS.getInt(7);
-             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
-             p.setCategoriee(categoriee);
-            list.add(p);
-        }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-    return list;
-}
+
     @Override
-   public List<produit> filtreByCategorie(int idCategorie) throws SQLException {
-    List<produit> list = new ArrayList<>();
-    try {
-        String req = "SELECT * FROM produit WHERE id_categorie = ?";
-        PreparedStatement ps = conn.prepareStatement(req);
-        ps.setInt(1, idCategorie);
-        ResultSet RS = ps.executeQuery();
-        while (RS.next()) {
-            produit p = new produit();
-            p.setRef_produit(RS.getString(1));
-            p.setLibelle(RS.getString(2));
-            p.setDescription(RS.getString(3));
-            p.setImage(RS.getString(4));
-            p.setPrix_vente(RS.getFloat(5));
-            p.setQuantite(RS.getInt(6));
-            CategorieCRUD categorieCRUD = new CategorieCRUD();
-            categorie categoriee = categorieCRUD.getCategorieById(idCategorie);
-            p.setCategoriee(categoriee);
-            list.add(p);
+    public List<produit> filtrerProduitParQuantite(int quantite) throws SQLException {
+        List<produit> list = new ArrayList<>();
+        try {
+            String req = "Select * from produit where quantite >= ?";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, quantite);
+            ResultSet RS = ps.executeQuery();
+            while (RS.next()) {
+                produit p = new produit();
+                p.setRef_produit(RS.getString(1));
+                p.setLibelle(RS.getString(2));
+                p.setDescription(RS.getString(3));
+                p.setImage(RS.getString(4));
+                p.setPrix_vente(RS.getFloat(5));
+                p.setQuantite(RS.getInt(6));
+                CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+                int categorieId = RS.getInt(7);
+                categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+                p.setCategoriee(categoriee);
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        return list;
     }
-    return list;
-}
-        public List<produit> rechercher(String libelle) throws SQLException {
+
+    @Override
+    public List<produit> filtreByCategorie(int idCategorie) throws SQLException {
+        List<produit> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM produit WHERE id_categorie = ?";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, idCategorie);
+            ResultSet RS = ps.executeQuery();
+            while (RS.next()) {
+                produit p = new produit();
+                p.setRef_produit(RS.getString(1));
+                p.setLibelle(RS.getString(2));
+                p.setDescription(RS.getString(3));
+                p.setImage(RS.getString(4));
+                p.setPrix_vente(RS.getFloat(5));
+                p.setQuantite(RS.getInt(6));
+                CategorieCRUD categorieCRUD = new CategorieCRUD();
+                categorie categoriee = categorieCRUD.getCategorieById(idCategorie);
+                p.setCategoriee(categoriee);
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    public List<produit> rechercher(String libelle) throws SQLException {
         List<produit> result = afficherProduit().stream().
                 filter(line -> line.getLibelle().toString().toLowerCase().contains(libelle.toLowerCase()))
                 .collect(Collectors.toList());
@@ -218,87 +222,119 @@ public class ProduitCRUD implements InterfaceProduitCRUD {
         //result.forEach(System.out::println);
         return result;
     }
-        public List<produit>triecroissant () throws SQLException{
-              List<produit> list = new ArrayList<>();
+
+    public List<produit> triecroissant() throws SQLException {
+        List<produit> list = new ArrayList<>();
         try {
             String req = "Select * from produit order by `prix_vente` asc";
             Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             produit p = new produit();
-             p.setRef_produit(RS.getString(1));
-             p.setLibelle(RS.getString(2));
-             p.setDescription(RS.getString(3));
-             p.setImage(RS.getString(4));
-             p.setPrix_vente(RS.getFloat(5));
-             p.setQuantite(RS.getInt(6));
-             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
-             int categorieId = RS.getInt(7);
-             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
-             p.setCategoriee(categoriee);
-             list.add(p);
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                produit p = new produit();
+                p.setRef_produit(RS.getString(1));
+                p.setLibelle(RS.getString(2));
+                p.setDescription(RS.getString(3));
+                p.setImage(RS.getString(4));
+                p.setPrix_vente(RS.getFloat(5));
+                p.setQuantite(RS.getInt(6));
+                CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+                int categorieId = RS.getInt(7);
+                categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+                p.setCategoriee(categoriee);
+                list.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
         return list;
-            
-        }
-         public List<produit>triedec () throws SQLException{
-              List<produit> list = new ArrayList<>();
+
+    }
+
+    public List<produit> triedec() throws SQLException {
+        List<produit> list = new ArrayList<>();
         try {
             String req = "Select * from produit order by `prix_vente` desc";
             Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             produit p = new produit();
-             p.setRef_produit(RS.getString(1));
-             p.setLibelle(RS.getString(2));
-             p.setDescription(RS.getString(3));
-             p.setImage(RS.getString(4));
-             p.setPrix_vente(RS.getFloat(5));
-             p.setQuantite(RS.getInt(6));
-             CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
-             int categorieId = RS.getInt(7);
-             categorie categoriee = categorieCRUD.getCategorieById(categorieId);
-             p.setCategoriee(categoriee);
-             list.add(p);
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                produit p = new produit();
+                p.setRef_produit(RS.getString(1));
+                p.setLibelle(RS.getString(2));
+                p.setDescription(RS.getString(3));
+                p.setImage(RS.getString(4));
+                p.setPrix_vente(RS.getFloat(5));
+                p.setQuantite(RS.getInt(6));
+                CategorieCRUD categorieCRUD = new CategorieCRUD(); // instancier un objet de la classe CategorieCRUD
+                int categorieId = RS.getInt(7);
+                categorie categoriee = categorieCRUD.getCategorieById(categorieId);
+                p.setCategoriee(categoriee);
+                list.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
         return list;
-            
-        }
-         public List<String> listesnumTel() {
-              List<Integer> listInt = new ArrayList<>();
-              try{
-                  String req = "Select numTel from utilisateur";
+
+    }
+
+    public List<String> listesnumTel() {
+        List<Integer> listInt = new ArrayList<>();
+        try {
+            String req = "Select numTel from utilisateur";
             Statement st = conn.createStatement();
-           
-                 ResultSet RS = st.executeQuery(req);
-                 while (RS.next()) {
-                     int numero = RS.getInt("num_tel");
-                     listInt.add(numero);
-                 }
-             } catch (SQLException ex) {
-                 System.out.println(ex.getMessage());
-             }
-             List<String> listString = new ArrayList<>();
-             for (Integer numeroInt : listInt) {
-                 String numString = String.valueOf(numeroInt);
-                 listString.add(numString);
-             }
-             return listString;
 
-         }
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                int numero = RS.getInt("num_tel");
+                listInt.add(numero);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        List<String> listString = new ArrayList<>();
+        for (Integer numeroInt : listInt) {
+            String numString = String.valueOf(numeroInt);
+            listString.add(numString);
+        }
+        return listString;
+
+    }
+    public int prodCount() {
+        int count = 0;
+        try {
+            String req = "SELECT COUNT(*) as produit_count FROM produit ";
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                count = RS.getInt("produit_count");
+                return count;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return count;
+    }
+public  ResultSet categorieprodcount(){
+      try {
+            String req = "SELECT categorie.nom_categorie, COUNT(produit.ref_produit) as product_count FROM categorie JOIN produit ON categorie.id_categorie = produit.id_categorie GROUP BY categorie.nom_categorie";
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            return RS ;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }  
     
-
-
-
     
+    return null;
+    
+}
 }
