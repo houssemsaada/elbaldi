@@ -34,12 +34,12 @@ public class FacebookPublisher {
 
         // Télécharge l'image du produit
         try {
-            URL imageUrl = new URL("URL_DE_L_IMAGE_DU_PRODUIT");
-            Media media = new Media("");
-
-            // Publie le contenu sur la page Facebook
-            facebook.postPhoto(media, message, new Reading().id("139023022421712"));
-            System.out.println("La photo a été publiée avec succès sur votre page Facebook !");
+//            URL imageUrl = new URL("URL_DE_L_IMAGE_DU_PRODUIT");
+//            Media media = new Media("");
+//
+//            // Publie le contenu sur la page Facebook
+//            facebook.postPhoto(media, message, new Reading().id("139023022421712"));
+//            System.out.println("La photo a été publiée avec succès sur votre page Facebook !");
         } catch (Exception e) {
             e.printStackTrace();
         }

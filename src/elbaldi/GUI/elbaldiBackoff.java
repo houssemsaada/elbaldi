@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -21,17 +22,19 @@ import javafx.stage.Stage;
  * @author USER
  */
 public class elbaldiBackoff extends Application {
-       @Override
+
+    @Override
     public void start(Stage primaryStage) {
 
         try {
-     
 
+            Image icon = new Image(getClass().getResourceAsStream("/Ressources/Logo.png"));
 
-      // Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
-               Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            //  Parent root = FXMLLoader.load(getClass().getResource("Client.fxml"));
+            primaryStage.getIcons().add(icon);
 
+            // Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            //    Parent root = FXMLLoader.load(getClass().getResource("Front1.fxml"));
 
 
             Scene scene = new Scene(root);
@@ -50,5 +53,5 @@ public class elbaldiBackoff extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
