@@ -314,5 +314,10 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
+      <Label layoutX="286.0" layoutY="318.0" text="Répartition des produits par catégorie" textFill="#b51616">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

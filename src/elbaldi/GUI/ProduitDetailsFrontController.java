@@ -77,7 +77,7 @@ public class ProduitDetailsFrontController implements Initializable {
         libellefx.setText(produit.getLibelle());
         descfx.setText(produit.getDescription());
         reffx.setText(produit.getRef_produit());
-        prixfx.setText(produit.getPrix_vente() + " ");
+        prixfx.setText(produit.getPrix_vente() +" "+" DT ");
         File f = new File("C:\\xampp\\htdocs\\images\\" + produitt.getImage());
 
         img.setImage(new Image(f.toURI().toString()));

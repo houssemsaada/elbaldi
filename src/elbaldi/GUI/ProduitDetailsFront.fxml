@@ -23,7 +23,7 @@
          <font>
             <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label fx:id="prixfx" layoutX="465.0" layoutY="213.0" prefHeight="31.0" prefWidth="113.0" text="Prix">
+      <Label fx:id="prixfx" layoutX="465.0" layoutY="213.0" prefHeight="31.0" prefWidth="202.0" text="Prix">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font></Label>
@@ -32,10 +32,5 @@
       <Button fx:id="commenterfx" layoutX="956.0" layoutY="412.0" mnemonicParsing="false" text="Commenter" />
       <Button fx:id="ajouterprof" layoutX="492.0" layoutY="482.0" mnemonicParsing="false" onAction="#ajouterproduitaupanier" prefHeight="31.0" prefWidth="254.0" text="Ajouter au panier" />
       <Button fx:id="retourfx" layoutX="8.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />
-      <Label layoutX="537.0" layoutY="218.0" text="dt">
-         <font>
-            <Font name="Arial Black" size="15.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

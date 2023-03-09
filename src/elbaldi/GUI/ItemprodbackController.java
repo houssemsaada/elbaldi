@@ -74,7 +74,7 @@ public class ItemprodbackController implements Initializable {
         this.produit1 = dest;
         Refproduit=dest.getRef_produit();
         this.libellefx.setText(produit1.getLibelle());
-        this.prixfx.setText(produit1.getPrix_vente()+" ");
+        this.prixfx.setText(produit1.getPrix_vente()+" "+" DT ");
 
         //Image f = new Image("C:\\xampp\\htdocs\\images\\" + produit1.getImage());
 

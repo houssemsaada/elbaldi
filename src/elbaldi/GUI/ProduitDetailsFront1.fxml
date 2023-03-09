@@ -27,18 +27,13 @@
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="prixfx" layoutX="427.0" layoutY="211.0" prefHeight="31.0" prefWidth="113.0" text="Prix">
+            <Label fx:id="prixfx" layoutX="427.0" layoutY="211.0" prefHeight="31.0" prefWidth="202.0" text="Prix">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
             <ListView fx:id="listfx" layoutX="419.0" layoutY="246.0" prefHeight="180.0" prefWidth="603.0" />
             <Button fx:id="retourfx" layoutX="8.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />
-            <Label layoutX="499.0" layoutY="216.0" text="dt">
-               <font>
-                  <Font name="Arial Black" size="15.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>

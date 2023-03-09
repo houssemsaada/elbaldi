@@ -11,26 +11,22 @@
    <children>
       <AnchorPane fx:id="dest" layoutX="-3.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="278.0">
          <children>
-            <ImageView fx:id="imagefx" fitHeight="207.0" fitWidth="246.0" layoutX="44.0" onMouseClicked="#details" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagefx" fitHeight="207.0" fitWidth="236.0" layoutX="49.0" layoutY="4.0" onMouseClicked="#details" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/Logo.png" />
                </image>
             </ImageView>
-            <Label fx:id="libellefx" layoutX="16.0" layoutY="213.0" prefHeight="77.0" prefWidth="184.0" text="Libelle Produit" textFill="#753333">
+            <Label fx:id="libellefx" layoutX="11.0" layoutY="213.0" prefHeight="77.0" prefWidth="176.0" text="Libelle Produit" textFill="#753333">
                <font>
                   <Font name="Arial Black" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="prixfx" layoutX="201.0" layoutY="235.0" prefHeight="34.0" prefWidth="53.0" text="Prix">
+            <Label fx:id="prixfx" layoutX="187.0" layoutY="235.0" prefHeight="34.0" prefWidth="89.0" text="Prix">
                <font>
                   <Font name="Arial Black" size="15.0" />
                </font>
             </Label>
             <Button layoutX="44.0" layoutY="302.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-            <Label layoutX="248.0" layoutY="241.0" text="dt" textFill="#222121">
-               <font>
-                  <Font name="Arial Black" size="15.0" />
-               </font></Label>
          </children>
       </AnchorPane>
    </children>

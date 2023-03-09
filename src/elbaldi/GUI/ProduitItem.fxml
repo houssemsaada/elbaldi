@@ -16,14 +16,9 @@
          <font>
             <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label fx:id="prixfx" layoutX="153.0" layoutY="279.0" prefHeight="32.0" prefWidth="62.0" text="Prix">
+      <Label fx:id="prixfx" layoutX="153.0" layoutY="279.0" prefHeight="32.0" prefWidth="115.0" text="Prix">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label layoutX="213.0" layoutY="285.0" text="dt">
-         <font>
-            <Font name="Arial Black" size="15.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

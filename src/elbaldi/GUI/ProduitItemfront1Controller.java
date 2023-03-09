@@ -56,7 +56,7 @@ public void setData(produit dest) {
         this.produit1 = dest;
         Refproduit=dest.getRef_produit();
         this.libellefx.setText(produit1.getLibelle());
-        this.prixfx.setText(produit1.getPrix_vente()+" ");
+        this.prixfx.setText(produit1.getPrix_vente()+" "+" DT ");
 
         File f = new File("C:\\xampp\\htdocs\\images\\" + produit1.getImage());
 
