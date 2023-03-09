@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package elbaldi.GUI;
+
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 import elbaldi.models.categorie;
@@ -101,14 +102,12 @@ public class ProduitFront2Controller implements Initializable {
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("Texte changé : " + oldValue + " -> " + newValue);
-            if(newValue!="")
-            {
+            if (newValue != "") {
                 search(newValue);
-            }
-            else{
+            } else {
                 afficher();
             }
-            
+
         });
 
         afficher();
@@ -260,8 +259,6 @@ public class ProduitFront2Controller implements Initializable {
 
     }
 
-
-
     public void search(String libelle) {
         try {
             grid.getChildren().remove(0, listeProduit.size());
@@ -297,7 +294,7 @@ public class ProduitFront2Controller implements Initializable {
 
     @FXML
     private void decroissant(MouseEvent event) {
-             try {
+        try {
             grid.getChildren().remove(0, listeProduit.size());
             listeProduit = ds.triedec();
 
@@ -327,12 +324,12 @@ public class ProduitFront2Controller implements Initializable {
 
         } catch (IOException ex) {
         }
-        
+
     }
 
     @FXML
     private void croissant(MouseEvent event) {
-             try {
+        try {
             grid.getChildren().remove(0, listeProduit.size());
             listeProduit = ds.triecroissant();
 
@@ -363,7 +360,8 @@ public class ProduitFront2Controller implements Initializable {
         } catch (IOException ex) {
         }
     }
-        @FXML
+
+    @FXML
     private void produitsf(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
@@ -374,7 +372,7 @@ public class ProduitFront2Controller implements Initializable {
 
     @FXML
     private void panierAction(MouseEvent event) {
-                try {
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(commandeGUI.class.getResource("consulterPanier.fxml"));
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene1 = new Scene(fxmlLoader.load());
@@ -389,43 +387,29 @@ public class ProduitFront2Controller implements Initializable {
 
     @FXML
     private void profilAction(ActionEvent event) {
-        grid.getChildren().clear();
-        try {
-            // TODO
-            FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
+        commandeGUI.changeScene(event, "ClientMainScreeen.fxml", "Profile");
 
-            AnchorPane anchorPane = cards.load();
-
-            grid.add(anchorPane, 1, 1);
-
-            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
     @FXML
     private void bonplanAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
 
     }
 
     @FXML
     private void EventAction(ActionEvent event) {
-                    commandeGUI.changeScene(event, "afficherevenFront.fxml", "evenement");
+        commandeGUI.changeScene(event, "afficherevenFront.fxml", "evenement");
 
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "Client.fxml", "commande ");
+        commandeGUI.changeScene(event, "Client.fxml", "commande ");
 
     }
 
     @FXML
     private void deconfx(ActionEvent event) {
     }
-    
 
 }

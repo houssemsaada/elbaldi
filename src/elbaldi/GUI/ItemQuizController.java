@@ -39,8 +39,6 @@ public class ItemQuizController implements Initializable {
     @FXML
     private Label dfiffiLabel;
     @FXML
-    private ImageView imglabel;
-    @FXML
     private Button jouerLabel;
     private quiz qcc;
     private quiz quiz;

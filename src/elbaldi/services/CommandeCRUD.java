@@ -226,12 +226,13 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
     }
 
     @Override
-    public List<commande> filtreByuser(Utilisateur u1) {
+    public List<commande> filtreByuser(panier p ) {
         List<commande> commandes = new ArrayList<>();
         try {
-            String query = "SELECT * FROM commande WHERE id_user = ?";
+            String query = "SELECT * FROM commande WHERE id_panier  = ?";
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, u1.getid_user());
+            
+            ps.setInt(1, p.getId_panier());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 commande c = new commande();

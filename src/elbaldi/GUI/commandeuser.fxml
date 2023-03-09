@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="676.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CommandeuserController">
+   <children>
+      <AnchorPane layoutY="-33.0" prefHeight="706.0" prefWidth="1158.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="689.0" prefWidth="1148.0">
+               <children>
+                  <AnchorPane layoutX="-18.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="1166.0" style="-fx-background-color: F7F1E5;">
+                     <effect>
+                        <DropShadow color="#1b1eeb" />
+                     </effect>
+                     <children>
+                        <ListView fx:id="ListView" layoutX="50.0" layoutY="121.0" prefHeight="461.0" prefWidth="870.0" />
+                        <Label layoutX="62.0" layoutY="79.0" text="Rechercher">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="searchTextField" layoutX="141.0" layoutY="77.0" prefHeight="26.0" prefWidth="358.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

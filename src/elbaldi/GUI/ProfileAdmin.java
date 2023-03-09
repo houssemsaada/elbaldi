@@ -87,6 +87,7 @@ public class ProfileAdmin implements Initializable {
     void updtahost(ActionEvent event) {
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(adminpagedate.getValue());
         UtilisateurCRUD u = new UtilisateurCRUD();
+        
         UserSession session = new UserSession();
         int id = session.getUser().getid_user();
         String email = session.getUser().getEmail();
