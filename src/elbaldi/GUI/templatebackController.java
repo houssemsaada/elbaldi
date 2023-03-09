@@ -70,6 +70,7 @@ public class templatebackController implements Initializable {
     private Label totalsaleslabel;
     CommandeCRUD cc = new CommandeCRUD();
     livraisonCRUD lc = new livraisonCRUD();
+    ProduitCRUD pc=new ProduitCRUD();
     @FXML
     private PieChart piechart;
     ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
@@ -89,6 +90,8 @@ public class templatebackController implements Initializable {
         pendorderlabel.setText("  " + cc.pendingorders());
         livraisonpendlabel.setText("  " + lc.pendingliv());
         totalsaleslabel.setText(cc.totalsales() + " TND");
+        totalproduits.setText(pc.prodCount()+" ");
+        
         pieChartData.clear();
 
         ResultSet rs = prod.categorieprodcount();

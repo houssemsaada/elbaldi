@@ -100,8 +100,13 @@ public class MailerService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(ourMail));
             message.setRecipients(Message.RecipientType.TO, addresses);
-            message.setSubject("Votre collier est en route!");
-            String emailBody = "Cher(e) client, un nouveau produit est disponible dans la catégorie que vous avez achetée auparavant. Visitez notre application ELBALDI le plus tôt possible. Attention : stock limité. Faites vite ! ";
+            message.setSubject("Nouveau produit ajouté à votre catégorie préférée!");
+            String emailBody = "Cher(e) client,\n"
+                    + "J'espère que vous allez bien. Je voulais vous informer que nous avons ajouté un nouveau produit à votre catégorie préférée."
+                    + "Nous avons sélectionné ce produit en pensant à vos besoins et à vos préférences. Nous pensons que cela pourrait être une excellente option pour vous."
+                    + "Merci de votre confiance en notre entreprise. Nous espérons que vous apprécierez le nouveau produit autant que nous."
+                    + "Cordialement,\n"
+                    + "ElBaldi";
             message.setText(emailBody);
 
             Transport.send(message);

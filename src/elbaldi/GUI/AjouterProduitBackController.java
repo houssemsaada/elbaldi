@@ -96,7 +96,6 @@ public class AjouterProduitBackController implements Initializable {
 
     @FXML
     private TextField libellefx;
-    @FXML
     private TextField quantitefx;
     File selectedfile;
 
@@ -148,9 +147,8 @@ public class AjouterProduitBackController implements Initializable {
                     
                     categorie c = categoriefx.getSelectionModel().getSelectedItem();
                     float prixx = Float.parseFloat(prixfx.getText());
-                    int quantite = Integer.parseInt(quantitefx.getText());
                     produit pp = new produit(reffx.getText(), libellefx.getText(), descriptionfx.getText(),
-                            selectedfile.getName(), prixx, quantite, c);
+                            selectedfile.getName(), prixx, c);
                     
                     ProduitCRUD PROD = new ProduitCRUD();
                     try {
@@ -164,15 +162,7 @@ public class AjouterProduitBackController implements Initializable {
                     alert0.setContentText("Ajout avec succes ");
                     alert0.show();
                     ((Node) event.getSource()).getScene().getWindow().hide();
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                                 
                     
                
 //// les ajouter à la liste phoneNumbers
@@ -181,8 +171,12 @@ List<String> phoneNumbers = PROD.getPhoneNumbersByCategoryId(c.getId_categorie()
 //pour tester que tous les numeros sont dans la liste  
 //phoneNumbers.forEach(System.out::println);
 
-SMSNotifier notifier = new SMSNotifier();   // correct one 
-String mess="Cher(e) client, un nouveau produit est disponible dans la catégorie que vous avez achetée auparavant. Visitez notre application ELBALDI le plus tôt possible. Attention : stock limité. Faites vite ! ";
+SMSNotifier notifier = new SMSNotifier(); // correct one
+ String mess = "Cher(e) client,\n"
+                    + "J'espère que vous allez bien. Je voulais vous informer que nous avons ajouté un nouveau produit à votre catégorie préférée.\n"
+                    + "Nous avons sélectionné ce produit en pensant à vos besoins et à vos préférences. Nous pensons que cela pourrait être une excellente option pour vous.\n"
+                    + "Merci de votre confiance en notre entreprise. Nous espérons que vous apprécierez le nouveau produit autant que nous.\n"
+                    + " L'équipe ElBaldi";
 String num_test="+21697618378";
 //notifier.notifyClients(phoneNumbers, mess);    // correct one
   //  String[] phoneNumbersArray = {"+21697618378"};  ////
@@ -212,7 +206,6 @@ ms.sendAjoutProdCategnMail(emails);
                 libellefx.clear();
                 descriptionfx.clear();
                 prixfx.clear();
-                quantitefx.clear();
                 categoriefx.getItems().clear();
                 img.getItems().clear();
 

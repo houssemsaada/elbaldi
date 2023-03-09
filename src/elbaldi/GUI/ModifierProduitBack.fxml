@@ -32,13 +32,13 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="268.0" layoutY="468.0" prefHeight="27.0" prefWidth="89.0" text="Image:">
+            <Label layoutX="268.0" layoutY="423.0" prefHeight="27.0" prefWidth="89.0" text="Image:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <ListView fx:id="img" layoutX="428.0" layoutY="447.0" prefHeight="77.0" prefWidth="174.0" />
-            <Button fx:id="insérer" layoutX="617.0" layoutY="454.0" mnemonicParsing="false" text="Insérer" />
+            <ListView fx:id="img" layoutX="428.0" layoutY="408.0" prefHeight="77.0" prefWidth="174.0" />
+            <Button fx:id="insérer" layoutX="617.0" layoutY="415.0" mnemonicParsing="false" text="Insérer" />
             <Label layoutX="218.0" layoutY="194.0" prefHeight="27.0" prefWidth="174.0" text="Description:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
@@ -51,26 +51,20 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="235.0" layoutY="407.0" prefHeight="27.0" prefWidth="106.0" text="Catégorie :">
+            <Label layoutX="235.0" layoutY="340.0" prefHeight="27.0" prefWidth="106.0" text="Catégorie :">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="categoriefx" layoutX="429.0" layoutY="405.0" prefHeight="25.0" prefWidth="172.0" />
+            <ComboBox fx:id="categoriefx" layoutX="429.0" layoutY="343.0" prefHeight="25.0" prefWidth="172.0" />
             <TextField fx:id="reffx" layoutX="429.0" layoutY="86.0" onMouseClicked="#prefixe" prefHeight="31.0" prefWidth="333.0" />
             <TextField fx:id="libellefx" layoutX="428.0" layoutY="132.0" prefHeight="31.0" prefWidth="333.0" />
-            <Label layoutX="239.0" layoutY="343.0" prefHeight="27.0" prefWidth="106.0" text="Quantite:">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="quantitefx" layoutX="428.0" layoutY="342.0" prefHeight="25.0" prefWidth="174.0" />
             <ImageView fitHeight="50.0" fitWidth="58.0" layoutX="750.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/Logo.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgg" fitHeight="99.0" fitWidth="209.0" layoutX="437.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgg" fitHeight="99.0" fitWidth="209.0" layoutX="437.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

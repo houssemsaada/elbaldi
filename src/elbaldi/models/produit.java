@@ -34,7 +34,16 @@ public class produit {
     }
 
 
+  public produit(String ref_produit, String libelle, String description, String image, float prix_vente,categorie categoriee) {
 
+        this.ref_produit = ref_produit;
+        this.libelle = libelle;
+        this.description = description;
+        this.image = image;
+        this.prix_vente = prix_vente;
+        this.categoriee=categoriee;
+       
+    }
 
 
     public produit(String ref_produit, String libelle, String description, String image, float prix_vente, int quantite,categorie categoriee) {

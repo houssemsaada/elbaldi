@@ -68,7 +68,6 @@ public class ModifierProduitBackController implements Initializable {
     private TextField reffx;
     @FXML
     private TextField libellefx;
-    @FXML
     private TextField quantitefx;
     File selectedfile;
 
@@ -99,7 +98,6 @@ public class ModifierProduitBackController implements Initializable {
         this.reffx.setText(produitP.getRef_produit());
         this.descriptionfx.setText(produitP.getDescription());
         this.libellefx.setText(produitP.getLibelle());
-        this.quantitefx.setText(produitP.getQuantite() + "");
         categoriefx.getSelectionModel().select(produitP.getCategoriee());
         
          String imagePath = "C:\\xampp\\htdocs\\images\\"+ produitP.getImage().toString();
@@ -176,19 +174,18 @@ public class ModifierProduitBackController implements Initializable {
 
                 ProduitCRUD produitcrud = new ProduitCRUD();
 
-                int q = Integer.parseInt(quantitefx.getText());
                 float prixx = Float.parseFloat(prixfx.getText());
 
                 categorie c = categoriefx.getSelectionModel().getSelectedItem();
                 String imgN = img.getItems().toString();
                 imgN = imgN.substring(1, imgN.length() - 1);
-                produit p = new produit(produitP.getRef_produit(), libellefx.getText(), descriptionfx.getText(), imgN, prixx, q, c);
+                produit p = new produit(produitP.getRef_produit(), libellefx.getText(), descriptionfx.getText(), imgN, prixx, c);
                 System.out.println(img.getItems().toString());
                 if (!libellefx.getText().equalsIgnoreCase("")
                         && !descriptionfx.getText().equalsIgnoreCase("")
                         && !reffx.getText().equalsIgnoreCase("")
                         && Float.parseFloat(prixfx.getText()) > 0
-                        && Float.parseFloat(quantitefx.getText()) > 0) {
+                        ) {
 
                     try {
 

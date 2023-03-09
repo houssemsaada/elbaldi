@@ -55,8 +55,6 @@ public class ItemprodbackController implements Initializable {
     private Label prixfx;
     private produit produit1;
  private String Refproduit;
-    @FXML
-    private ImageView sharefx;
     
        public String getRefProduit() {
         return Refproduit;
@@ -141,77 +139,6 @@ if (result.get() == confirmerButton){
 }
 
     }
-/*
-    @FXML
-    private void partagerAction(MouseEvent event) throws FacebookException {
-//        // Créer un objet FacebookFactory en utilisant votre jeton d'accès
-//        FacebookFactory facebookFactory = new FacebookFactory(new OAuthAuthorization(new AccessToken("EAAakIZCni0c8BAPc5ssLTaZCpZCXIr4aLnZCJWrEdIXMmNPSqJf4gTbxOZBs4NesQPwiuwZCV2iLnrKTdKkrFmISLUWAND5D7EUZC9wHogsEfDZCza5HOPq1bj7SsOTBrUzp9xH2X4w8rNqD8hGeZCuPY4mk2MDHWeDXjaj8GBzKSXO8mupsdY4iW")));
-//
-//// Créer un objet Facebook en utilisant FacebookFactory.getInstance()
-//        Facebook facebook = facebookFactory.getInstance();
-//
-//// Créer un objet PostUpdate avec le message que vous voulez partager et l'URL de la page produit
-//        PostUpdate postUpdate = new PostUpdate("Message de partage").setLink(produit1);
-//
-//// Appelez la méthode postFeed avec l'objet PostUpdate pour partager le produit sur Facebook
-//        facebook.postFeed(postUpdate);
-
-
-
-      // configure Facebook4J
-    String appId = "1869324283466191";
-    String appSecret = "d8f014c3aa96d7c15fe58942ad50abe1";
-    String accessTokenString = "EAAakIZCni0c8BACLEiy6i2Tx1t1KKW6KYFkWLMnt9qCSWmhVwFEI24O0vgoPI6I7zaiuY2gszBjVL8LOMR1z9s7CxZB3tlcV0ayho1GB3WqdqOxVkB9hqly3ZC6ef37ZCv4MZCHNmrdNQdG06ePYdL0mXzAi2uSTtS7DcDkx1mEMJIwELAKvlZAg4EhnqJUFpu9OmMwfzvCQZDZD";
-    
-AccessToken accessTokenObj = new AccessToken(accessTokenString);
-    ConfigurationBuilder cb = new ConfigurationBuilder();
-cb.setDebugEnabled(true)
-  .setOAuthAppId(appId)
-  .setOAuthAppSecret(appSecret)
-   .setOAuthAccessToken(accessTokenString);
- // .setOAuthAccessToken(new AccessToken(accessTokenString));
-
-Facebook facebook = new FacebookFactory(cb.build()).getInstance();
-    //Facebook facebook = new FacebookFactory().getInstance(new OAuthAuthorization(appId, appSecret, new AccessToken(accessTokenString)));
-
-    // build the message to share
-    String message = "Découvrez notre produit " + produit1.getLibelle() + " à seulement " + produit1.getPrix_vente() + "€ sur notre site !";
-
-    // share the message
-    try {
-        PostUpdate post = new PostUpdate(new URL("https://www.facebook.com/Elbaldi En Ligne")).message(message);
-        facebook.postFeed(post);
-        JOptionPane.showMessageDialog(null, "Le produit a été partagé sur Facebook !");
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(null, "Une erreur s'est produite lors du partage sur Facebook : " + ex.getMessage());
-    }
-    */
-     @FXML
-    private void partagerAction(MouseEvent event) throws FacebookException {
-//    // configure Facebook4J
-//    String appId = "1869324283466191";
-//    String appSecret = "d8f014c3aa96d7c15fe58942ad50abe1";
-//    String pageId = "l'ID de votre page Facebook";
-//    String accessTokenString = "EAAakIZCni0c8BACLEiy6i2Tx1t1KKW6KYFkWLMnt9qCSWmhVwFEI24O0vgoPI6I7zaiuY2gszBjVL8LOMR1z9s7CxZB3tlcV0ayho1GB3WqdqOxVkB9hqly3ZC6ef37ZCv4MZCHNmrdNQdG06ePYdL0mXzAi2uSTtS7DcDkx1mEMJIwELAKvlZAg4EhnqJUFpu9OmMwfzvCQZDZD";
-//
-//    AccessToken accessTokenObj = new AccessToken(accessTokenString);
-//    Facebook facebook = new FacebookFactory().getInstance();
-//    facebook.setOAuthAppId(appId, appSecret);
-//    facebook.setOAuthAccessToken(accessTokenObj);
-//
-//    // build the message to share
-//    String message = "Découvrez notre produit " + produit1.getLibelle() + " à seulement " + produit1.getPrix_vente() + "€ sur notre site !";
-//
-//    // share the message
-//       PostUpdate post = new PostUpdate(new URL("https://www.example.com"))
-//                .message(message);
-//                
-//        Post postResponse = facebook.postFeed(post);
-//        
-//
-//        System.out.println("Post publié sur Facebook. ID du post : " + postResponse.getId());
-//    }  
-}
 }
 
 
