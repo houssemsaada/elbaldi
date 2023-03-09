@@ -50,15 +50,19 @@
          </font>
       </Label>
       <ImageView fx:id="qrfix" fitHeight="109.0" fitWidth="125.0" layoutX="165.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" />
-      <Label ellipsisString="" layoutX="30.0" layoutY="481.0" lineSpacing="2.0" prefHeight="17.0" prefWidth="588.0" text="Si vous n'arrivez pas à scanner le code QR, vous pouvez cliquer ici " textAlignment="CENTER">
+      <Label ellipsisString="" layoutX="52.0" layoutY="481.0" lineSpacing="2.0" prefHeight="20.0" prefWidth="370.0" text="Si vous n'arrivez pas à scanner le code QR, vous pouvez " textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label layoutX="117.0" layoutY="505.0" text="pour récupérer le code promo par email.">
+      <Label layoutX="125.0" layoutY="505.0" text="pour récupérer le code promo par email.">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="email" layoutX="445.0" layoutY="480.0" text="aaa" />
+      <Hyperlink fx:id="email" layoutX="398.0" layoutY="478.0" onAction="#email" text="cliquer ici">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

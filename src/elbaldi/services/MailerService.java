@@ -89,6 +89,29 @@ public class MailerService {
             throw new RuntimeException(e);
         }
     }
-    
+    public void sendPromo(promotion p) {
+       // session.setDebug(true);
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ourMail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(p.getU().getEmail()));
+            message.setSubject("Code Promo");
+            String emailBody = "Bonjour " + p.getU().getPrenom() + "!,\n\n"
+                    + "Vous avez gagné une reduction de "
+                    + p.getTaux()*100 + "%\n\n"
+                    + "Voici votre code promo.\n\n"
+                    + p.getCode_promo()+"\n\n"
+                    + "A bientôt !\n"
+                    + "L'équipe Elbaldi";
+            message.setText(emailBody);
+
+            Transport.send(message);
+
+            System.out.println("Email sent successfully.");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+            
+        }
+    }
     
 }

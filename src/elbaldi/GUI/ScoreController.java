@@ -46,15 +46,16 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
 
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import elbaldi.services.MailerService;
 import elbaldi.services.UserSession;
 import java.util.Properties;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javax.mail.Message;
@@ -84,25 +85,23 @@ public class ScoreController implements Initializable {
     private Label codeqr;
     @FXML
     private Label echec;
-    
+
     @FXML
     private ImageView qrfix;
     @FXML
     private Hyperlink email;
     @FXML
     private ImageView imgfx;
-    
+
     float taux;
     String promoCode = "ELBALDI";
     PromotionCRUD pc = new PromotionCRUD();
     UserSession userSession = new UserSession();
-    Utilisateur u =  userSession.getUser(); 
-    
+    Utilisateur u = userSession.getUser();
+    promotion promo = new promotion();
     /**
      * Initializes the controller class.
      */
-   
-
     public void setscore(float score) throws IOException, WriterException {
 
         this.score = score;
@@ -113,13 +112,14 @@ public class ScoreController implements Initializable {
 
         if (score == 100.0) {
             bravo.setText(" Bravo !");
-            termine.setText("Quiz terminé avec succés"); 
+            termine.setText("Quiz terminé avec succés");
             codeqr.setText("pour profitez d'une réduction de 15%");
-            String promoCode = generatePromoCode((int) score);
-            
-        // Affichage du code promo généré dans le label codeqr
-        reduction.setText("Scanner ce code QR");
-        // Génération du code QR
+            promo = generatePromoCode((int) score);
+            String promoCode = promo.getCode_promo();
+
+            // Affichage du code promo généré dans le label codeqr
+            reduction.setText("Scanner ce code QR");
+            // Génération du code QR
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             BitMatrix bitMatrix = new QRCodeWriter().encode(promoCode, BarcodeFormat.QR_CODE, 200, 200);
             MatrixToImageWriter.writeToStream(bitMatrix, "png", out);
@@ -131,20 +131,18 @@ public class ScoreController implements Initializable {
 
             // Affichage de l'image dans l'ImageView
             qrfix.setImage(qrImage);
-           // vboxqr.setVisible(true);
-    
-
-           
+            // vboxqr.setVisible(true);
 
         } else if (score >= 75.0 && score <= 99.99) {
             bravo.setText(" Bravo !");
             termine.setText("Quiz terminé avec succés");
             codeqr.setText("pour profitez d'une réduction de 10%");
             //codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
-            String promoCode = generatePromoCode((int) score);
-             // Affichage du code promo généré dans le label codeqr
-        reduction.setText("Scanner ce code QR");
-        // Génération du code QR
+            promo = generatePromoCode((int) score);
+            String promoCode = promo.getCode_promo();
+            // Affichage du code promo généré dans le label codeqr
+            reduction.setText("Scanner ce code QR");
+            // Génération du code QR
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             BitMatrix bitMatrix = new QRCodeWriter().encode(promoCode, BarcodeFormat.QR_CODE, 200, 200);
             MatrixToImageWriter.writeToStream(bitMatrix, "png", out);
@@ -156,19 +154,20 @@ public class ScoreController implements Initializable {
 
             // Affichage de l'image dans l'ImageView
             qrfix.setImage(qrImage);
-           // vboxqr.setVisible(true);
+            // vboxqr.setVisible(true);
 
             // Affichage du code promo généré dans le label codeqr
-           // codeqr.setText("avec le code Promo " + promoCode);
+            // codeqr.setText("avec le code Promo " + promoCode);
         } else if (score >= 0.45 && score <= 74.99) {
             bravo.setText(" Bravo !");
             termine.setText("Quiz terminé avec succés");
             codeqr.setText("pour profitez d'une réduction de 8%");
             //codeqr.setText(" Veuillez scanner ce code QR pour en profiter");
-            String promoCode = generatePromoCode((int) score);
-             // Affichage du code promo généré dans le label codeqr
-        reduction.setText("Scanner ce code QR ");
-        // Génération du code QR
+            promo = generatePromoCode((int) score);
+            String promoCode = promo.getCode_promo();
+            // Affichage du code promo généré dans le label codeqr
+            reduction.setText("Scanner ce code QR ");
+            // Génération du code QR
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             BitMatrix bitMatrix = new QRCodeWriter().encode(promoCode, BarcodeFormat.QR_CODE, 200, 200);
             MatrixToImageWriter.writeToStream(bitMatrix, "png", out);
@@ -180,50 +179,59 @@ public class ScoreController implements Initializable {
 
             // Affichage de l'image dans l'ImageView
             qrfix.setImage(qrImage);
-           // vboxqr.setVisible(true);
+            // vboxqr.setVisible(true);
 
             // Affichage du code promo généré dans le label codeqr
-           // codeqr.setText("avec le code Promo " + promoCode);
+            // codeqr.setText("avec le code Promo " + promoCode);
         } else {
             echec.setText("Désolé, vous n'avez pas réussi le quiz !!!");
         }
 
     }
 
-   public String generatePromoCode(int score) {
-    Random random = new Random();
-    String promoCode = null;
-    boolean codeExiste = true;
-    while (codeExiste) {
-        promoCode = "ELBALDI";
-        for (int i = 0; i < 4; i++) {
-            promoCode += String.valueOf(random.nextInt(10));
+    public promotion generatePromoCode(int score) {
+        Random random = new Random();
+        String promoCode = null;
+        boolean codeExiste = true;
+        while (codeExiste) {
+            promoCode = "ELBALDI";
+            for (int i = 0; i < 4; i++) {
+                promoCode += String.valueOf(random.nextInt(10));
+            }
+            codeExiste = pc.promocodeExiste(promoCode);
         }
-      codeExiste = pc.promocodeExiste(promoCode);
+        if (score == 100) {
+            taux = 0.15f;
+            promotion promo = new promotion(promoCode, taux, u);
+            pc.ajouterpromotion(promo);
+            return promo;
+
+        }
+        if (score >= 75.0 && score <= 99.99) {
+            taux = 0.10f;
+            promotion promo = new promotion(promoCode, taux, u);
+            pc.ajouterpromotion(promo);
+            return promo;
+
+        }
+        if (score >= 0.45 && score <= 74.99) {
+            taux = 0.08f;
+            promotion promo = new promotion(promoCode, taux, u);
+            pc.ajouterpromotion(promo);
+            return promo;
+        }
+
+        return null;
     }
-    if (score == 100) {
-        taux = 0.15f;
-        promotion promo = new promotion(promoCode, taux, u);
-        pc.ajouterpromotion(promo);
-    }
-    if (score >= 75.0 && score <= 99.99) {
-        taux = 0.10f;
-        promotion promo = new promotion(promoCode, taux, u);
-        pc.ajouterpromotion(promo);
-    }
-    if (score >= 0.45 && score <= 74.99) {
-        taux = 0.08f;
-        promotion promo = new promotion(promoCode, taux, u);
-        pc.ajouterpromotion(promo);
-    }
-    return promoCode;
-}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-   
-    
-    
+    @FXML
+    private void email(ActionEvent event) {
+        MailerService ms = new MailerService();
+        ms.sendPromo(promo);
+    }
+
 }

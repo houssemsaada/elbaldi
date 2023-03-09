@@ -135,8 +135,8 @@ private question qcc;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterQuestion.fxml"));
     try {
         Parent root = loader.load();
-        AjouterQuestionController b = new AjouterQuestionController();
-        b = loader.getController();
+        AjouterQuestionController b = loader.getController();
+        System.out.println("questionbackcontroll" + quiz);
         b.setQuizz(quiz);
        
         Scene scene = new Scene(root);

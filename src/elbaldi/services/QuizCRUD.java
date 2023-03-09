@@ -130,11 +130,11 @@ public quiz getById(int id) {
            
          
          UtilisateurCRUD uc = new UtilisateurCRUD();
-         int user = RS.getInt(4);
-         Utilisateur uu = uc.getUserByID(user);
-          q.setNom(RS.getString(5));
-         q.setImgview(RS.getString(6));
-         q.setuser(uu);
+//         int user = RS.getInt(4);
+//         Utilisateur uu = uc.getUserByID(user);
+          q.setNom(RS.getString(4));
+         q.setImgview(RS.getString(5));
+         //q.setuser(uu);
         }
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
