@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ScoreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ScoreController">
    <children>
       <Label fx:id="bravo" layoutX="194.0" layoutY="123.0">
          <font>
@@ -19,7 +19,7 @@
             <Font name="Cambria Bold" size="22.0" />
          </font>
       </Label>
-      <ImageView fitHeight="101.0" fitWidth="120.0" layoutX="176.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgfx" fitHeight="101.0" fitWidth="120.0" layoutX="176.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Ressource/felicitation.png" />
          </image>
@@ -50,7 +50,19 @@
          </font>
       </Label>
       <ImageView fx:id="qrfix" fitHeight="109.0" fitWidth="125.0" layoutX="165.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="22.0" layoutY="481.0" prefHeight="17.0" prefWidth="330.0" text="Label" />
-      <Button fx:id="email" layoutX="404.0" layoutY="477.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" />
+      <Label ellipsisString="" layoutX="52.0" layoutY="481.0" lineSpacing="2.0" prefHeight="20.0" prefWidth="370.0" text="Si vous n'arrivez pas à scanner le code QR, vous pouvez " textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="125.0" layoutY="505.0" text="pour récupérer le code promo par email.">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="email" layoutX="398.0" layoutY="478.0" onAction="#email" text="cliquer ici">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

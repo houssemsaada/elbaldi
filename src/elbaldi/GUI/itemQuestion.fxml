@@ -63,7 +63,7 @@
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>
-      <Label fx:id="quizfx" layoutX="946.0" layoutY="163.0" prefHeight="22.0" prefWidth="220.0">
+      <Label fx:id="quizfx" layoutX="946.0" layoutY="163.0" prefHeight="22.0" prefWidth="220.0" visible="false">
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Label>

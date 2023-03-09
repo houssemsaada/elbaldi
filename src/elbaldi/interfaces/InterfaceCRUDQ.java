@@ -20,6 +20,7 @@ public interface InterfaceCRUDQ {
     public List<quiz> afficherQuiz();
     public quiz getById(int id);
     public List<quiz> filtreByDifficulte(String difficulte);
+     
     
     
 }

@@ -20,5 +20,6 @@ public interface InterfaceCRUDpromotion {
      public List<promotion> afficherpromotion(); 
      public promotion getById(int id);
      public List<promotion> filtreBytaux(float taux);
-     public boolean promocodeExiste(String code);
+     public boolean promocodeExistePourUtilisateur(promotion p, Utilisateur user) ;
+     public boolean promocodeExiste(String code_promo);
 }

@@ -68,12 +68,13 @@ public class ModifierquestionController implements Initializable {
     private question questionn;
     @FXML
     private ComboBox<String> fxdifficultes;
-
+    private quiz quiz;
     /**
      * Initializes the controller class.
      */
-    public void setQuestion(question qu) {
+    public void setQuestion(question qu,quiz q) {
     this.questionn = qu;
+    this.quiz=q;
     this.fxquestionn.setText(qu.getQuestionn());
     this.fxdifficultes.setValue(qu.getDifficulte());
     this.fxreponse1.setText(qu.getReponse1());
@@ -161,10 +162,12 @@ public class ModifierquestionController implements Initializable {
     private void goBack(ActionEvent event) {
            // Redirection vers BrouillonController
     // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionBack.fxml"));
     try {
         Parent root = loader.load();
         Scene scene = new Scene(root);
+        QuestionBackController qbc= loader.getController();
+            qbc.setQuiz(quiz);
         Stage stage = (Stage) backfx.getScene().getWindow(); // backButton est le bouton de retour
         stage.setScene(scene);
         stage.show();

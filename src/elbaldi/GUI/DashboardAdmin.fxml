@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="1384.0" style="-fx-background-color: F7F1E5;" stylesheets="@Styles/style_1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.DashboardAdmin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="1384.0" style="-fx-background-color: #ffffff;" stylesheets="@Styles/style_1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.DashboardAdmin">
    <effect>
       <DropShadow color="#1b1eeb" />
    </effect>
    <children>
-      <ScrollPane layoutX="25.0" layoutY="6.0" prefHeight="830.0" prefWidth="1357.0" style="-fx-background-color: F7F1E5;" stylesheets="@Styles/style.css">
+      <ScrollPane layoutX="25.0" layoutY="6.0" prefHeight="830.0" prefWidth="1357.0" style="-fx-background-color: #ffffff;" stylesheets="@Styles/style.css">
          <content>
             <GridPane fx:id="grid" prefHeight="12.0" prefWidth="15.0">
                <columnConstraints>

@@ -12,6 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CatgeorielistBackController.java</file>
             <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ProduitDetailsFrontController.java</file>
             <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CommentaireCell.java</file>
@@ -39,6 +40,12 @@
             <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
             <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CommandeajoutController.java</file>
             <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/livraisonCRUD.java</file>
+=======
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ItemQuizController.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ClientController.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
+            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/quiz.java</file>
+>>>>>>> origin/selim
         </group>
     </open-files>
 </project-private>

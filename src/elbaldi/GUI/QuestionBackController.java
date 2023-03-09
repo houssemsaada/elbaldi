@@ -52,7 +52,9 @@ public class QuestionBackController implements Initializable {
     private quiz quiz ; 
     @FXML
     private TextField quizid;
-
+private question qcc;
+  
+  QuestionCRUD qc = new QuestionCRUD();
     /**
      *
      * @param quiz
@@ -70,9 +72,7 @@ public class QuestionBackController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("ItemQuestion.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
                ItemQuestionController itemController = fxmlLoader.getController();
-                itemController.setquestion(listeQuestion.get(i)
-                
-                );
+                itemController.setquestion(listeQuestion.get(i),quiz );
                 if (column == 1) {
                     column = 0;
                     row++;
@@ -104,12 +104,13 @@ public class QuestionBackController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+      
     }
         // TODO
 
   
     public void afficher(){
+     
     }
 
     @FXML
@@ -134,13 +135,15 @@ public class QuestionBackController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterQuestion.fxml"));
     try {
         Parent root = loader.load();
-        AjouterQuestionController b = new AjouterQuestionController();
-        b = loader.getController();
+        AjouterQuestionController b = loader.getController();
+        System.out.println("questionbackcontroll" + quiz);
         b.setQuizz(quiz);
+       
         Scene scene = new Scene(root);
         Stage stage = (Stage) back.getScene().getWindow(); // backButton est le bouton de retour
         stage.setScene(scene);
         stage.show();
+          
     } catch (IOException ex) {
         ex.printStackTrace();
     }

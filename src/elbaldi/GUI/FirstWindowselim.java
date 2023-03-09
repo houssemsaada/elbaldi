@@ -18,30 +18,26 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author USER
+ * @author selim
  */
-public class elbaldiBackoff extends Application {
-       @Override
+public class FirstWindowselim extends Application {
+    
+    @Override
     public void start(Stage primaryStage) {
-
+        
+  Parent root;
         try {
-     
-
-      // Parent root = FXMLLoader.load(getClass().getResource("templateBack.fxml"));
-               Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            //  Parent root = FXMLLoader.load(getClass().getResource("Client.fxml"));
-
-
-            Scene scene = new Scene(root);
-            primaryStage.setTitle("login");
-            primaryStage.setScene(scene);
-            primaryStage.show();
+                root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+       
+        
+        Scene scene = new Scene(root);
+        
+        primaryStage.setTitle("QUIZ");
+        primaryStage.setScene(scene);
+        primaryStage.show();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
-
+            System.out.println(ex.getMessage());  }} 
+  
     /**
      * @param args the command line arguments
      */

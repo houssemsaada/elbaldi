@@ -21,11 +21,13 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,12 +64,13 @@ public class ItemQuestionController implements Initializable {
     
     
       private question qcc;
-   
+      private quiz quizz;
   QuestionCRUD qc = new QuestionCRUD();
     
         
-  public void setquestion(question qq) {
+  public void setquestion(question qq,quiz q) {
          this.qcc= qq;   
+         this.quizz=q;
         idLabel.setText(String.valueOf(qq.getId_question()));
          fixdiffculte.setText(qq.getDifficulte());
          fixquestion.setText(qq.getQuestionn());
@@ -102,8 +105,18 @@ public class ItemQuestionController implements Initializable {
       alert.setHeaderText(null);
       alert.setContentText("Question supprimée avec succés!");
       alert.show();
-      Parent loader = FXMLLoader.load(getClass().getResource("QuestionBack.fxml"));
-      idLabel.getScene().setRoot(loader);
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionBack.fxml"));
+    try {
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        QuestionBackController qbc= loader.getController();
+            qbc.setQuiz(quizz);
+        Stage stage = (Stage) idLabel.getScene().getWindow(); // backButton est le bouton de retour
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
     } 
         
       
@@ -117,7 +130,8 @@ public class ItemQuestionController implements Initializable {
         loader.setLocation(getClass().getResource("modifierquestion.fxml"));
         Parent root = loader.load();
         ModifierquestionController qbc = loader.getController();
-        qbc.setQuestion(qcc);
+        qbc.setQuestion(qcc,quizz);
+        
          fixquestion.getScene().setRoot(root);
     } catch (IOException ex) {
         System.out.println(ex.getMessage());

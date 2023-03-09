@@ -36,60 +36,60 @@ public class FirstWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-
-        try {
-            
-            
-           //Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
-           //    Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
-           Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
-           
-           
-           
-            // Parent root = root=FXMLLoader.load(getClass().getResource("catgeorielistBack.fxml"));
-         
-        
-                     
-           
-            
-          //  Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
-            //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
-            Scene scene = new Scene(root);
-            
-            primaryStage.setTitle("Application Elbaldi ");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-
-        
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Inscription.fxml"));
-            
-            
-            Scene scene = new Scene(root);
-            
-            primaryStage.setTitle("Inscription");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex2) {
-            System.out.println(ex2.getMessage());       
-
-        }
-    }
-    Parent root;
-        try {
-                root = FXMLLoader.load(getClass().getResource("client.fxml"));
-       
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("QUIZ");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());  }
-  
+//
+//        try {
+//            
+//            
+//           //Parent root = root=FXMLLoader.load(getClass().getResource("prodbacklist.fxml"));
+//           //    Parent root = root=FXMLLoader.load(getClass().getResource("Front1.fxml"));
+//           Parent root = root=FXMLLoader.load(getClass().getResource("ProduitFront2.fxml"));
+//           
+//           
+//           
+//            // Parent root = root=FXMLLoader.load(getClass().getResource("catgeorielistBack.fxml"));
+//         
+//        
+//                     
+//           
+//            
+//          //  Parent root = root=FXMLLoader.load(getClass().getResource("CommentaireBack.fxml"));
+//            //Parent root = root=FXMLLoader.load(getClass().getResource("ProduitItem.fxml"));
+//            Scene scene = new Scene(root);
+//            
+//            primaryStage.setTitle("Application Elbaldi ");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//
+//        
+//        try {
+//            Parent root = FXMLLoader.load(getClass().getResource("Inscription.fxml"));
+//            
+//            
+//            Scene scene = new Scene(root);
+//            
+//            primaryStage.setTitle("Inscription");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException ex2) {
+//            System.out.println(ex2.getMessage());       
+//
+//        }
+//    }
+//    Parent root;
+//        try {
+//                root = FXMLLoader.load(getClass().getResource("client.fxml"));
+//       
+//        
+//        Scene scene = new Scene(root);
+//        
+//        primaryStage.setTitle("QUIZ");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());  }
+//  
   /*Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("client.fxml"));
@@ -103,9 +103,9 @@ public class FirstWindow extends Application {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());  }} */
     
-    /*Parent root;
+    Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("Acceuil Client.fxml"));
+            root = FXMLLoader.load(getClass().getResource("front.fxml"));
        
         
         Scene scene = new Scene(root);
@@ -116,9 +116,9 @@ public class FirstWindow extends Application {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());  }}
     
-    */
+    
  
-}
+
     /**
      * @param args the command line arguments
      */

@@ -125,5 +125,3 @@ grid.getChildren().clear();
         }    }
         
     }
-
-
