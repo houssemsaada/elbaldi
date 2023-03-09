@@ -173,6 +173,22 @@ List<Evenement> event = new ArrayList<>();
             System.out.println(ex.getMessage());        }
         return C;
     }
+      public  ResultSet participationeventcount(){
+      try {
+            String req = "SELECT evenement.nom, COUNT(participation.id_participation) as participation_count FROM evenement JOIN participation ON evenement.id_event = participation.id_event GROUP BY evenement.nom LIMIT 5";
+            Statement st = cnx.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            return RS ;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }  
+    
+    
+    return null;
+    
+}
 
 
     
