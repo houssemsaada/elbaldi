@@ -79,7 +79,7 @@ public class ClientController implements Initializable {
                 itemController.setquiz(listeQuiz.get(i)
                 
                 );
-                if (column == 4) {
+                if (column == 3) {
                     column = 0;
                     row++;
                 }

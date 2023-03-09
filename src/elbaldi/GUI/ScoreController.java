@@ -54,7 +54,14 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import elbaldi.services.UserSession;
+import java.util.Properties;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * FXML Controller class
@@ -77,23 +84,24 @@ public class ScoreController implements Initializable {
     private Label codeqr;
     @FXML
     private Label echec;
-
-    float taux;
-    String promoCode = "ELBALDI";
-
-    /**
-     * Initializes the controller class.
-     */
-    PromotionCRUD pc = new PromotionCRUD();
-   
-     UserSession userSession = new UserSession();
-       Utilisateur u =  userSession.getUser(); 
+    
     @FXML
     private ImageView qrfix;
     @FXML
-    private Button email;
+    private Hyperlink email;
     @FXML
     private ImageView imgfx;
+    
+    float taux;
+    String promoCode = "ELBALDI";
+    PromotionCRUD pc = new PromotionCRUD();
+    UserSession userSession = new UserSession();
+    Utilisateur u =  userSession.getUser(); 
+    
+    /**
+     * Initializes the controller class.
+     */
+   
 
     public void setscore(float score) throws IOException, WriterException {
 
@@ -182,7 +190,7 @@ public class ScoreController implements Initializable {
 
     }
 
-public String generatePromoCode(int score) {
+   public String generatePromoCode(int score) {
     Random random = new Random();
     String promoCode = null;
     boolean codeExiste = true;
@@ -215,4 +223,7 @@ public String generatePromoCode(int score) {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
+   
+    
+    
 }

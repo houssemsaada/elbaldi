@@ -31,6 +31,7 @@ public class Utilisateur {
 
     private Etat etat;
 
+    private int nombrejouer;
 
     public Utilisateur() {
     }
@@ -107,7 +108,23 @@ public class Utilisateur {
         this.ville = ville;
     }
 
+    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role, Etat etat, int nombrejouer) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+        this.ville = ville;
+        this.mdp = mdp;
+        this.role = role;
+        this.etat = etat;
+        this.nombrejouer = nombrejouer;
+    }
 
+
+    
+    
     public int getid_user() {
         return id_user;
     }
@@ -196,6 +213,14 @@ public class Utilisateur {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public int getNombrejouer() {
+        return nombrejouer;
+    }
+
+    public void setNombrejouer(int nombrejouer) {
+        this.nombrejouer = nombrejouer;
     }
 
     @Override

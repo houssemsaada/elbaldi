@@ -555,6 +555,9 @@ public class UtilisateurCRUD implements InterfaceCRUD<Utilisateur> {
     public boolean Filter_Reclamation(String nom, String iheb) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+   
+
+
+
 } 
  

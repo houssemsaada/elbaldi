@@ -192,9 +192,37 @@ public quiz getById(int id) {
 }
   
     
+    Utilisateur uu = new Utilisateur();
     
-    
-    
+public int getNombreJouer(int id_user) {
+    int nombreJouer = -1;
+    String sql = "SELECT nombrejouer FROM Utilisateur WHERE id_user = ?";
+    try {
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, id_user);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            nombreJouer = rs.getInt("nombrejouer");
+        }
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+    return nombreJouer;
+}
+
+public void setNombreJouer(int id_user, int nombrejouer) {
+    String sql = "UPDATE Utilisateur SET nombrejouer = ? WHERE id_user = ?";
+    try {
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, nombrejouer);
+        pstmt.setInt(2, id_user);
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+
     
     
 }
