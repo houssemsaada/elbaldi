@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="353.0" prefWidth="274.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItembpBackController">
+<AnchorPane id="AnchorPane" prefHeight="353.0" prefWidth="274.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItembpBackController">
    <children>
       <AnchorPane fx:id="dest" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="274.0" stylesheets="@style.css">
          <children>
@@ -16,7 +16,7 @@
                   <Image url="@../../../../../../Desktop/le28/elbaldi/src/Ressources/Logo.png" />
                </image>
             </ImageView>
-            <Label fx:id="titrebp" layoutX="34.0" layoutY="260.0" prefHeight="51.0" prefWidth="216.0" text="          titre bonplan" AnchorPane.bottomAnchor="42.400000000000034" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="24.399999999999977" AnchorPane.topAnchor="260.0">
+            <Label fx:id="titrebp" alignment="CENTER" layoutX="34.0" layoutY="260.0" prefHeight="51.0" prefWidth="216.0" text="          titre bonplan" AnchorPane.bottomAnchor="42.400000000000034" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="24.399999999999977" AnchorPane.topAnchor="260.0">
                <font>
                   <Font name="Arial Black" size="15.0" />
                </font>

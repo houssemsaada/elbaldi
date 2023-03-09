@@ -5,17 +5,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.GerantMainScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.GerantMainScreenController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="656.0" prefWidth="1216.0">
+      <AnchorPane id="AnchorPane" layoutX="14.0" layoutY="14.0" prefHeight="656.0" prefWidth="1216.0">
          <children>
             <Label layoutX="281.0" layoutY="22.0" prefHeight="54.0" prefWidth="422.0" text="Liste des réservations" textFill="#a20812">
                <font>
@@ -86,15 +84,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TableView fx:id="TableView" layoutX="296.0" layoutY="208.0" prefHeight="262.0" prefWidth="629.0">
-               <columns>
-                  <TableColumn fx:id="nombre" prefWidth="70.39996337890625" text="nombre" />
-                  <TableColumn fx:id="statut" prefWidth="131.20001220703125" text="statut" />
-                  <TableColumn fx:id="date" prefWidth="127.19998168945312" text="date" />
-                  <TableColumn fx:id="nom" prefWidth="149.5999755859375" text="nom" />
-                  <TableColumn fx:id="lieu" prefWidth="149.5999755859375" text="lieu" />
-               </columns>
-            </TableView>
+            <AnchorPane fx:id="anchor" layoutX="327.0" layoutY="76.0" prefHeight="537.0" prefWidth="852.0" />
          </children>
          <stylesheets>
             <URL value="@../../style.css" />

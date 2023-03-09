@@ -19,4 +19,6 @@ public interface InterfaceAvisCrud {
    public List<avis> afficherAvis();
    public void supprimerAvis(int id);
    public avis getAvisById(int id);
+   public List<avis>  getAvisByIdUser(int id);
+   public List<avis> getAvisByIdBp(int id);
 }
