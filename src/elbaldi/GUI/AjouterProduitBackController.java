@@ -23,7 +23,9 @@ import elbaldi.models.Utilisateur;
 import elbaldi.models.categorie;
 import elbaldi.models.produit;
 import elbaldi.services.CategorieCRUD;
+import elbaldi.services.MailerService;
 import elbaldi.services.ProduitCRUD;
+import elbaldi.services.SmsServicee;
 import elbaldi.services.Upload;
 import elbaldi.utils.MyConnection;
 import java.awt.Graphics2D;
@@ -142,57 +144,65 @@ public class AjouterProduitBackController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
 
-                categorie c = categoriefx.getSelectionModel().getSelectedItem();
-                float prixx = Float.parseFloat(prixfx.getText());
-                int quantite = Integer.parseInt(quantitefx.getText());
-                produit pp = new produit(reffx.getText(), libellefx.getText(), descriptionfx.getText(),
-                        selectedfile.getName(), prixx, quantite, c);
-                //for example, you can copy the uploaded file to the server
-                //note that you probably don't want to do this in real life!
-                //upload it to a file host like S3 or GCS instead
-//////	    File fileToSave = new File("C:\\xampp\\htdocs\\images" + selectedfile.getName());
-//////            Path path = Paths.get(selectedfile.getAbsolutePath());
-//////                try {
-//////                    Files.copy(path, fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);
-//////                } catch (IOException ex) {
-//////                    Logger.getLogger(AjouterProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
-//////                }
-                ProduitCRUD PROD = new ProduitCRUD();
                 try {
-                    PROD.ajouterProduit(pp);
+                    
+                    categorie c = categoriefx.getSelectionModel().getSelectedItem();
+                    float prixx = Float.parseFloat(prixfx.getText());
+                    int quantite = Integer.parseInt(quantitefx.getText());
+                    produit pp = new produit(reffx.getText(), libellefx.getText(), descriptionfx.getText(),
+                            selectedfile.getName(), prixx, quantite, c);
+                    
+                    ProduitCRUD PROD = new ProduitCRUD();
+                    try {
+                        PROD.ajouterProduit(pp);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AjouterProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
+                    alert0.setTitle("information Dialog");
+                    alert0.setHeaderText(null);
+                    alert0.setContentText("Ajout avec succes ");
+                    alert0.show();
+                    ((Node) event.getSource()).getScene().getWindow().hide();
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+               
+//// les ajouter à la liste phoneNumbers
+
+List<String> phoneNumbers = PROD.getPhoneNumbersByCategoryId(c.getId_categorie());
+//pour tester que tous les numeros sont dans la liste  
+//phoneNumbers.forEach(System.out::println);
+
+SMSNotifier notifier = new SMSNotifier();   // correct one 
+String mess="Cher(e) client, un nouveau produit est disponible dans la catégorie que vous avez achetée auparavant. Visitez notre application ELBALDI le plus tôt possible. Attention : stock limité. Faites vite ! ";
+String num_test="+21697618378";
+//notifier.notifyClients(phoneNumbers, mess);    // correct one
+  //  String[] phoneNumbersArray = {"+21697618378"};  ////
+    //List<String> phoneNumberss = Arrays.asList(phoneNumbersArray);///
+
+     //notifier.notifyClients(phoneNumberss, mess); ///
+//SmsServicee sms =new SmsServicee();
+
+//sms.sendSms(num_test,mess);
+List<String> emails = PROD.getEmailsByCategoryId(c.getId_categorie());
+MailerService ms=new MailerService();
+ms.sendAjoutProdCategnMail(emails);
+
                 } catch (SQLException ex) {
                     Logger.getLogger(AjouterProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
-                alert0.setTitle("information Dialog");
-                alert0.setHeaderText(null);
-                alert0.setContentText("Ajout avec succes ");
-                alert0.show();
-                ((Node) event.getSource()).getScene().getWindow().hide();
-                
-              
-              
+
+               
                
                 
-                
-             
-                
-                                     
-
-
-              /*
-                
-               // String[] phoneNumbersArray = {"+21697618378"};
-////List<String> phoneNumbers = new ArrayList<>("97618378");
-                //List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);
-                List<String> phoneNumbers =PROD.listesnumTel();
-//// récupérer les numéros de téléphone à partir de la base de données ou du fichier
-//// les ajouter à la liste phoneNumbers
-                SMSNotifier notifier = new SMSNotifier();
-                String mess="cher(e) client , Profitez de notre nouveauté ,un nouvelle produit est disponible sur notre application ELBALDI. Attention : stock limité. Faites vite ! ";
-                notifier.notifyClients(phoneNumbers, mess);
-               
-                */
             }
         });
         annulerfx.setOnAction(new EventHandler<ActionEvent>() {

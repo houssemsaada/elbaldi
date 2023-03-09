@@ -337,4 +337,44 @@ public  ResultSet categorieprodcount(){
     return null;
     
 }
+public List<String> getPhoneNumbersByCategoryId(int categoryId) throws SQLException {
+    String sql = "SELECT DISTINCT u.numTel " +
+                 "FROM utilisateur u " +
+                 "JOIN panier p ON u.id_user = p.id_user " +
+                 "JOIN commande c ON p.id_panier = c.id_panier " +
+                 "JOIN command_produit cp ON c.id_cmd = cp.id_cmd " +
+                 "JOIN produit pr ON cp.ref_produit = pr.ref_produit " +
+                 "WHERE pr.id_categorie = ? AND u.numTel IS NOT NULL";
+    PreparedStatement pstmt = conn.prepareStatement(sql);
+    pstmt.setInt(1, categoryId);
+    ResultSet rs = pstmt.executeQuery();
+    List<String> phoneNumbers = new ArrayList<>();
+    while (rs.next()) {
+       String phoneNumber = String.valueOf(rs.getInt("numTel"));
+       phoneNumbers.add(phoneNumber);
+    }
+    rs.close();
+   
+    return phoneNumbers;
+}
+public List<String> getEmailsByCategoryId(int categoryId) throws SQLException {
+    String sql = "SELECT DISTINCT u.email " +
+                 "FROM utilisateur u " +
+                 "JOIN panier p ON u.id_user = p.id_user " +
+                 "JOIN commande c ON p.id_panier = c.id_panier " +
+                 "JOIN command_produit cp ON c.id_cmd = cp.id_cmd " +
+                 "JOIN produit pr ON cp.ref_produit = pr.ref_produit " +
+                 "WHERE pr.id_categorie = ? AND u.email IS NOT NULL";
+    PreparedStatement pstmt = conn.prepareStatement(sql);
+    pstmt.setInt(1, categoryId);
+    ResultSet rs = pstmt.executeQuery();
+    List<String> emails = new ArrayList<>();
+    while (rs.next()) {
+       String email = rs.getString("email");
+       emails.add(email);
+    }
+    rs.close();
+   
+    return emails;
+}
 }

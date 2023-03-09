@@ -89,4 +89,26 @@ public class MailerService {
             throw new RuntimeException(e);
         }
     }
+    public void sendAjoutProdCategnMail(List<String> list) {
+        
+        try {
+            InternetAddress[] addresses = new InternetAddress[list.size()];
+            for (int i =0 ; i < list.size(); i++){
+                addresses[i]= new InternetAddress(list.get(i));
+            }
+            
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ourMail));
+            message.setRecipients(Message.RecipientType.TO, addresses);
+            message.setSubject("Votre collier est en route!");
+            String emailBody = "Cher(e) client, un nouveau produit est disponible dans la catégorie que vous avez achetée auparavant. Visitez notre application ELBALDI le plus tôt possible. Attention : stock limité. Faites vite ! ";
+            message.setText(emailBody);
+
+            Transport.send(message);
+
+            System.out.println("Email sent successfully.");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -188,29 +188,30 @@ Facebook facebook = new FacebookFactory(cb.build()).getInstance();
     */
      @FXML
     private void partagerAction(MouseEvent event) throws FacebookException {
-    // configure Facebook4J
-    String appId = "1869324283466191";
-    String appSecret = "d8f014c3aa96d7c15fe58942ad50abe1";
-    String pageId = "l'ID de votre page Facebook";
-    String accessTokenString = "EAAakIZCni0c8BACLEiy6i2Tx1t1KKW6KYFkWLMnt9qCSWmhVwFEI24O0vgoPI6I7zaiuY2gszBjVL8LOMR1z9s7CxZB3tlcV0ayho1GB3WqdqOxVkB9hqly3ZC6ef37ZCv4MZCHNmrdNQdG06ePYdL0mXzAi2uSTtS7DcDkx1mEMJIwELAKvlZAg4EhnqJUFpu9OmMwfzvCQZDZD";
-
-    AccessToken accessTokenObj = new AccessToken(accessTokenString);
-    Facebook facebook = new FacebookFactory().getInstance();
-    facebook.setOAuthAppId(appId, appSecret);
-    facebook.setOAuthAccessToken(accessTokenObj);
-
-    // build the message to share
-    String message = "Découvrez notre produit " + produit1.getLibelle() + " à seulement " + produit1.getPrix_vente() + "€ sur notre site !";
-
-    // share the message
-       PostUpdate post = new PostUpdate(new URL("https://www.example.com"))
-                .message(message);
-                
-        Post postResponse = facebook.postFeed(post);
-        
-
-        System.out.println("Post publié sur Facebook. ID du post : " + postResponse.getId());
-    }  
+//    // configure Facebook4J
+//    String appId = "1869324283466191";
+//    String appSecret = "d8f014c3aa96d7c15fe58942ad50abe1";
+//    String pageId = "l'ID de votre page Facebook";
+//    String accessTokenString = "EAAakIZCni0c8BACLEiy6i2Tx1t1KKW6KYFkWLMnt9qCSWmhVwFEI24O0vgoPI6I7zaiuY2gszBjVL8LOMR1z9s7CxZB3tlcV0ayho1GB3WqdqOxVkB9hqly3ZC6ef37ZCv4MZCHNmrdNQdG06ePYdL0mXzAi2uSTtS7DcDkx1mEMJIwELAKvlZAg4EhnqJUFpu9OmMwfzvCQZDZD";
+//
+//    AccessToken accessTokenObj = new AccessToken(accessTokenString);
+//    Facebook facebook = new FacebookFactory().getInstance();
+//    facebook.setOAuthAppId(appId, appSecret);
+//    facebook.setOAuthAccessToken(accessTokenObj);
+//
+//    // build the message to share
+//    String message = "Découvrez notre produit " + produit1.getLibelle() + " à seulement " + produit1.getPrix_vente() + "€ sur notre site !";
+//
+//    // share the message
+//       PostUpdate post = new PostUpdate(new URL("https://www.example.com"))
+//                .message(message);
+//                
+//        Post postResponse = facebook.postFeed(post);
+//        
+//
+//        System.out.println("Post publié sur Facebook. ID du post : " + postResponse.getId());
+//    }  
+}
 }
 
 
