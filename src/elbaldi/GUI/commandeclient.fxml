@@ -117,5 +117,10 @@
       </Label>
       <TextField fx:id="addrTF" layoutX="431.0" layoutY="201.0" prefHeight="82.0" prefWidth="200.0" />
       <ListView fx:id="listView" cacheShape="false" layoutX="846.0" layoutY="42.0" prefHeight="343.0" prefWidth="312.0" />
+      <Label fx:id="promometier" layoutX="335.0" layoutY="300.0" prefHeight="18.0" prefWidth="392.0" text="vous êtes un client fidèle ! vous avez obtenu une réduction de 10 %" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

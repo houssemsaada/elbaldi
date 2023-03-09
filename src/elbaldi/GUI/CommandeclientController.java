@@ -26,6 +26,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -77,7 +78,10 @@ public class CommandeclientController implements Initializable {
     private ListView<produit> listView;
     UserSession userSession = new UserSession();
     Utilisateur u = userSession.getUser();
+    CommandeCRUD cc = new CommandeCRUD();
     //ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
+    @FXML
+    private Label promometier;
 
     /**
      * Initializes the controller class.
@@ -96,13 +100,23 @@ public class CommandeclientController implements Initializable {
         System.out.println(produitObservableList);
         listView.setCellFactory(rr -> new MiniPanierListCell());
         listView.setItems(produitObservableList);
-       // totalTF.setText(p.getTotal_panier() + "");
+        // totalTF.setText(p.getTotal_panier() + "");
 
     }
 
     public void setTotalTF(String totalTF) {
-        this.totalTF.setText(totalTF);
         System.out.println(totalTF);
+        total = Float.parseFloat(totalTF);
+        int count = cc.orderCount(p);
+        if (count >= 5) {
+            promometier.setVisible(true);
+            total = (float) (total * 0.9);
+            this.totalTF.setText(total + "");
+        } else {
+            this.totalTF.setText(totalTF);
+
+        }
+
     }
 
     public void setId_panTF(TextField id_panTF) {
@@ -150,7 +164,7 @@ public class CommandeclientController implements Initializable {
 
         commande c = new commande(p);
         c.setAdresse(adress);
-        total = Float.parseFloat(totalTF.getText());
+        //total = Float.parseFloat(totalTF.getText());
         c.setTotal(total);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Are you sure you want to confirm the order?");
@@ -161,24 +175,22 @@ public class CommandeclientController implements Initializable {
             ProduitCRUD pcc = new ProduitCRUD();
             commandeGUI.AlertShow("order added ! ", "order", Alert.AlertType.INFORMATION);
 
-         
-            
             cr.ajouterCommande(c);
             commande c2 = cr.filtreBypanier(p);
-            System.out.println("l'id de nouvelle commande"+c2.getId_cmd());
-               for (int i = 0; i < yasObservableList.size(); i++) {
+            System.out.println("l'id de nouvelle commande" + c2.getId_cmd());
+            for (int i = 0; i < yasObservableList.size(); i++) {
                 produit element1 = yasObservableList.get(i);
-                 produit element2 = produitObservableList.get(i);
+                produit element2 = produitObservableList.get(i);
                 for (int j = 0; j < element2.getQuantite(); j++) {
-                cr.ajouterProdCommande(c2, element2);
-               }
+                    cr.ajouterProdCommande(c2, element2);
+                }
                 try {
                     int quantite = element2.getQuantite();  //qte panier
                     // quantite += element1.getQuantite();
                     // System.out.println(quantite);
                     element1.setQuantite(quantite + element1.getQuantite());
                     pc.supprimerProdPanier(p, element2);
-                    panier p1  = p ;
+                    panier p1 = p;
                     p1.setNombre_article(0);
                     p1.setTotal_panier(0);
                     pc.modifierPanier(p1);
@@ -187,14 +199,15 @@ public class CommandeclientController implements Initializable {
                     Logger.getLogger(CommandeclientController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            PdfOrder pdf = new PdfOrder();
+            pdf.orderPdf(c2);
             MailerService ms = new MailerService();
             try {
                 ms.sendCommandeMail(c2);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            PdfOrder pdf = new PdfOrder();
-            pdf.orderPdf(c2);
+
         }
 
     }

@@ -22,6 +22,8 @@ import elbaldi.services.panierCRUD;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -36,7 +38,7 @@ public class houssem {
         Date date_livr = Date.valueOf(date_liv);
         //    Utilisateur u1 = new Utilisateur(2460, "ben mahmoud", "khaled", "test@test", "10/16/2000", 2345564, "tunis", "test", "test", client);
         UtilisateurCRUD uti = new UtilisateurCRUD();
-        Utilisateur u2 = new Utilisateur(2462);
+        
         // uti.ajouterUtlisateur(u1);
         //   categorie c1 = new categorie(2, "art");
         CategorieCRUD categ = new CategorieCRUD();
@@ -49,19 +51,19 @@ public class houssem {
         //     commande com2 = new commande(129, pan1, "aaaaaa", date_com);
 
         CommandeCRUD comm = new CommandeCRUD();
-        //  System.out.println(comm.totalsales());
-        //  System.out.println(comm.pendingorders());
-        System.out.println(prod.prodCount());
-        // System.out.println());
-        ResultSet rs = prod.categorieprodcount();
-        while (rs.next()) {
-            String category = rs.getString("nom_categorie");
-            int count = rs.getInt("product_count");
-            System.out.println(category + ": " + count);
-        }
-        
-        
-        System.out.println(comm.top5prod());
+//        //  System.out.println(comm.totalsales());
+//        //  System.out.println(comm.pendingorders());
+//        System.out.println(prod.prodCount());
+//        // System.out.println());
+//        ResultSet rs = prod.categorieprodcount();
+//        while (rs.next()) {
+//            String category = rs.getString("nom_categorie");
+//            int count = rs.getInt("product_count");
+//            System.out.println(category + ": " + count);
+//        }
+//        
+//        
+//        System.out.println(comm.top5prod());
         //comm.ajouterCommande(com2);
         //comm.modifierCommande(com1);
         //comm.supprimerCommande(1);
@@ -73,7 +75,7 @@ public class houssem {
         //   livraison l1 = new livraison("le", "nabeul", date_livr, com1);
         //  livraison l2 = new livraison("le", "nabeul", date_livr, com2);
         livraisonCRUD liv = new livraisonCRUD();
-        System.out.println(liv.pendingliv());
+       // System.out.println(liv.pendingliv());
         //liv.ajouterLivraison(l2);
         //liv.modifierLivraison(l1);
         //liv.supprimerLivraison(6);
@@ -84,7 +86,12 @@ public class houssem {
 //----------------------module panier------------------------------------------------------------------------
         panier pan1 = new panier(21);
         panierCRUD pan = new panierCRUD();
-
+        pan1=pan.filtreByidPanier(21);
+        List list = pan.afficherListProduitPanier(pan1);
+        pan1.setList(list);
+        Date date = Date.valueOf(LocalDate.now());
+        Utilisateur u2 = new Utilisateur(2498, "houssem", "saada", "houssem.saada@gmail.com",date, 90000000, "aaaaaaa");
+        
       //  System.out.println(pan.afficherListProduitPanier(pan1));
         // pan1.setU1(u1);
         //pan.ajouterPanier(pan1);
@@ -96,9 +103,10 @@ public class houssem {
         //System.out.println(pan.filtreByuser(u1));
         //System.out.println(pan.afficherListProduitPanier(pan1));
         // pan.modifierQteProdPanier(pan1, p1, 8);
-        commande com1 = new commande(128, pan1, "aaaaaa", date_com);
+        commande com1 = new commande(124, pan1, "aaaaaa", date_com);
+        com1.setAdresse("menzel temime");
 
         PdfOrder pdf = new PdfOrder();
-        // pdf.orderPdf(com1);
+         pdf.orderPdf(com1);
     }
 }

@@ -8,6 +8,8 @@ package elbaldi.services;
 import java.util.*;
 import javax.mail.*;
 import elbaldi.models.*;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.internet.*;
 
 /**
@@ -46,13 +48,31 @@ public class MailerService {
             message.setFrom(new InternetAddress(ourMail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(c.getPan().getU1().getEmail()));
             message.setSubject("Confirmation de commande");
+             // Create the message part
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+
+            // Fill the message
+            
             String emailBody = "Bonjour " + c.getPan().getU1().getPrenom() + "!,\n\n"
                     + "Merci pour votre commande n°:"
                     + c.getId_cmd() + "\n\n"
                     + "Vous recevrez rapidement un mail lorsque celle-ci sera envoyée.\n\n"
                     + "A bientôt !\n"
                     + "L'équipe Elbaldi";
-            message.setText(emailBody);
+            messageBodyPart.setText(emailBody);
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+
+            // Set the file path as a DataSource
+            FileDataSource fileDataSource = new FileDataSource("C:\\ordrePdfn" + c.getId_cmd() + ".pdf");
+            attachmentPart.setDataHandler(new DataHandler(fileDataSource));
+            attachmentPart.setFileName(fileDataSource.getName());
+             MimeMultipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachmentPart);
+
+            // Set the multipart message as the content of the email
+            message.setContent(multipart);
+            //message.setText(emailBody);
 
             Transport.send(message);
 

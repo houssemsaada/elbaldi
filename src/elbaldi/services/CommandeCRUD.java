@@ -301,9 +301,10 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
         return total;
 
     }
-   public int pendingorders(){
- int pend =0; 
- try {
+
+    public int pendingorders() {
+        int pend = 0;
+        try {
             String req = "SELECT COUNT(*) as order_count FROM commande WHERE etat = 'En attente'";
             Statement st = conn.createStatement();
 
@@ -318,37 +319,38 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
         }
 
         return pend;
-   }
- public void ajouterProdCommande(commande c , produit p ){
-                try {
-                String req = "INSERT INTO `command_produit` (`id_cmd`,`ref_produit`) VALUES (?,?)";
-                PreparedStatement ps = conn.prepareStatement(req);
-                ps.setInt(1, c.getId_cmd());
-                ps.setString(2, p.getRef_produit());
-                
-                ps.executeUpdate();
-                System.out.println("produit ajouté au command_produit!!!");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
- }
- 
- public List<produit> top5prod(){
+    }
+
+    public void ajouterProdCommande(commande c, produit p) {
+        try {
+            String req = "INSERT INTO `command_produit` (`id_cmd`,`ref_produit`) VALUES (?,?)";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, c.getId_cmd());
+            ps.setString(2, p.getRef_produit());
+
+            ps.executeUpdate();
+            System.out.println("produit ajouté au command_produit!!!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<produit> top5prod() {
         List<produit> prod = new ArrayList<>();
 
         try {
-           
+
             // Get the current month
             java.util.Date now = new java.util.Date();
             java.sql.Date currentMonth = new java.sql.Date(now.getTime());
-            
+
             // Execute the SQL query
             String sql = "SELECT ref_produit, COUNT(*) as count FROM command_produit WHERE MONTH(date_cmd) = MONTH(?) AND YEAR(date_cmd) = YEAR(?) GROUP BY ref_produit ORDER BY count DESC LIMIT 5";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDate(1, currentMonth);
             stmt.setDate(2, currentMonth);
             ResultSet rs = stmt.executeQuery();
-            
+
             // Print the results
             while (rs.next()) {
                 produit p = new produit();
@@ -356,11 +358,29 @@ public class CommandeCRUD implements commandeInterfaceCRUD {
                 p.setQuantite(rs.getInt("count"));
                 prod.add(p);
             }
-      
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return prod;
     }
 
+    public int orderCount(panier p ) {
+        int count = 0;
+        try {
+            String req = "SELECT COUNT(*) as order_count FROM commande WHERE id_panier  ="+p.getId_panier();
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                count = RS.getInt("order_count");
+                return count;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return count;
+    }
 }
