@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -63,6 +64,8 @@ public class AfficherEvenementController implements Initializable {
     private Button GestUser;
     @FXML
     private Button Decofx;
+    @FXML
+    private PieChart piechart;
     /**
      * Initializes the controller class.
      */
@@ -192,6 +195,7 @@ public class AfficherEvenementController implements Initializable {
     @FXML
     private void decoAction(ActionEvent event) {
     }
+    
     
     
 }

@@ -7,7 +7,9 @@ package elbaldi.GUI;
 
 import elbaldi.models.Evenement;
 import elbaldi.models.Participation;
+import elbaldi.models.Utilisateur;
 import elbaldi.services.ParticipationService;
+import elbaldi.services.UserSession;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -48,7 +50,8 @@ public class EventfrontController implements Initializable {
     private Label awardslbl;
     @FXML
     private Label desclabel;
-
+  UserSession userSession = new UserSession();
+    Utilisateur u = userSession.getUser();
     /**
      * Initializes the controller class.
      */
@@ -85,7 +88,7 @@ public class EventfrontController implements Initializable {
             Participation p = new Participation();
             p.setId_event(e.getId_event());
             //p.setId_user(id_client.getValue());
-            p.setId_user(2498);
+            p.setId_user(u.getId_user());
             
             List<Integer> l = new ArrayList<Integer>();
             l= ps.verif_existance(ps.getidclientt());

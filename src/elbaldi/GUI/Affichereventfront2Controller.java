@@ -20,10 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -32,32 +29,30 @@ import javafx.scene.layout.GridPane;
  *
  * @author MSI
  */
-public class AfficherevenFrontController implements Initializable {
+public class Affichereventfront2Controller implements Initializable {
 
     @FXML
     private GridPane gridpane;
-    EvenementService es = new EvenementService();
-    Evenement e1;
-
     @FXML
     private TextField searchField;
+    @FXML
+    private Button profilfx;
     @FXML
     private Button prodfx;
     @FXML
     private Button bonplanfx;
-    @FXML
-    private Button profilfx;
     @FXML
     private Button Eventfx;
     @FXML
     private Button Quizfx;
     @FXML
     private Button decofx;
-
+EvenementService es = new EvenementService();
+    Evenement e1;
     /**
      * Initializes the controller class.
      */
-    @Override
+   @Override
     public void initialize(URL url, ResourceBundle rb) {
          try {
              
@@ -85,62 +80,48 @@ public class AfficherevenFrontController implements Initializable {
             System.out.println(ex.getMessage());
         } catch (SQLException ex) {
             Logger.getLogger(AfficherevenFrontController.class.getName()).log(Level.SEVERE, null, ex);
-        }    }    
+        }    }     
 
-
-
-
-
-   
+  
     @FXML
     private void produitsf(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("Front1.fxml"));
+        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
         Parent root = loader.load();
         prodfx.getScene().setRoot(root);
     }
 
-       @FXML
-    private void bonplanAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "BpFront1.fxml", "Login");
+   
 
-    }
-
-
-    
-
-    private void eventAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
-
-    }
-
-    private void connecter(ActionEvent event) {
-        commandeGUI.changeScene(event, "Login.fxml", "Login");
-
-    }
-
-    private void inscr(ActionEvent event) {
-        commandeGUI.changeScene(event, "inscription.fxml", "Login");
-
-    }
-
-    @FXML
-    private void profilAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void EventAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void QuizAction(ActionEvent event) {
-    }
 
     @FXML
     private void deconfx(ActionEvent event) {
     }
+    
+      @FXML
+    private void profilAction(ActionEvent event) {
+       
+      
+    }
 
+    @FXML
+    private void bonplanAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
 
+    }
 
+    @FXML
+    private void EventAction(ActionEvent event) {
+                    commandeGUI.changeScene(event, "afficherevenfront2.fxml", "evenement");
+
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "Client.fxml", "commande ");
+
+    }
+
+    
 }

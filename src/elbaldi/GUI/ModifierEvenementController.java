@@ -30,7 +30,7 @@ import elbaldi.services.ParticipationService;
 /**
  * FXML Controller class
  *
- * @author Meddeb sofien
+ * @author MSI
  */
 public class ModifierEvenementController implements Initializable {
 

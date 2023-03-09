@@ -413,7 +413,7 @@ public class ProduitFront2Controller implements Initializable {
 
     @FXML
     private void EventAction(ActionEvent event) {
-                    commandeGUI.changeScene(event, "afficherevenFront.fxml", "evenement");
+                    commandeGUI.changeScene(event, "affichereventfront2.fxml", "evenement");
 
     }
 

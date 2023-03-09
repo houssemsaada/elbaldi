@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/ProfileUser.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/AfficherEvenementController.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/EventfrontController.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/services/ParticipationService.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/services/EvenementService.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/ProfileAdmin.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/NewFXMain.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/AfficherParticipationController.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/ParticipationncontrollerController.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/AfficherevenFrontController.java</file>
-            <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/interfaces/InterfaceParticipationCRUD.java</file>
-=======
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/elbaldi/GUI/ItemprodbackController.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>188</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ItemprodbackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FacebookPublisher.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FirstWindowYasmine.java</file>
->>>>>>> e4383841d45ea9ee753f930f6fa2dae259fc045b
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ProduitItemfront1Controller.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ModifierquestionController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/Affichereventfront2Controller.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/resetpassword.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/NewFXMain.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ModifierEvenementController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AjouterEvenementController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ParticiperitemController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ItemprodbackController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AfficherevenFrontController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AfficherEvenement.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/OnerateviewController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/RatingService.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/EvenementService.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/QuizCRUD.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/rateviewController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ConsulterPanierController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/afficher%20participation.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/proddetailsback.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/commandeinterface.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ProfileAdmin.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/EventfrontController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AjouterEvenement.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/panieritem.fxml</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ProduitFront2Controller.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/QuestionCRUD.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/afficherevenFront.fxml</file>
         </group>
     </open-files>
 </project-private>
