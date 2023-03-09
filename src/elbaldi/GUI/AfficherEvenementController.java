@@ -121,66 +121,77 @@ public class AfficherEvenementController implements Initializable {
     }
 
 
-    @FXML
-    private void prodd(ActionEvent event) {
-    }
 
+   
     @FXML
     private void accueilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "templateBack.fxml", "Acceuil");
+
     }
 
     @FXML
     private void profilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "ProfileAdmin.fxml", "Profile");
+
     }
 
     @FXML
     private void categ(ActionEvent event) {
+        commandeGUI.changeScene(event, "catgeorielistback.fxml", "Categories");
+
+    }
+
+    @FXML
+    private void prodd(ActionEvent event) {
+        commandeGUI.changeScene(event, "prodbacklist.fxml", "Produits");
+
     }
 
     @FXML
     private void commandesAction(ActionEvent event) {
+
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande ");
     }
 
     @FXML
     private void LivraisonAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "livraison ");
+
     }
 
     @FXML
     private void BonpalnsAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "bonplanbacklist.fxml", "bonplans ");
+
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "front.fxml", "quiz ");
+
     }
 
     @FXML
-    private void eventaction(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader();
+    private void eventaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
 
-        loader.setLocation(getClass().getResource("AfficherEvenement.fxml"));
-        Parent root = loader.load();
-        Eventfx.getScene().setRoot(root);
     }
 
     @FXML
-    private void participationaction(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
+    private void participationaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "afficher participation.fxml", "participation ");
 
-        loader.setLocation(getClass().getResource("afficher Participation.fxml"));
-        Parent root = loader.load();
-        participationfx.getScene().setRoot(root);
-        
     }
 
     @FXML
     private void GestuserAction(ActionEvent event) {
+            commandeGUI.changeScene(event, "MenuAdmin.fxml", "gestion utilisateurs ");
+
     }
 
     @FXML
     private void decoAction(ActionEvent event) {
     }
-
-    
     
     
 }

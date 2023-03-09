@@ -48,8 +48,6 @@ public class ConsulterPanierController implements Initializable {
     private Button CommandeBtn;
     ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
     @FXML
-    private TextField panieridTF;
-    @FXML
     private Spinner<Integer> qtescroll;
     @FXML
     private Button ud;
@@ -57,6 +55,9 @@ public class ConsulterPanierController implements Initializable {
     private Button updateBTN;
     @FXML
     private ListView<produit> ListView;
+    UserSession userSession = new UserSession();
+    Utilisateur u = userSession.getUser();
+    panier p = new panier();
 
     public void setTotalTF(TextField totalTF) {
         this.totalTF = totalTF;
@@ -69,8 +70,9 @@ public class ConsulterPanierController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         panierCRUD pc = new panierCRUD();
-        panier p = new panier();
-        p.setId_panier(Integer.parseInt(panieridTF.getText()));
+        p = pc.filtreByuser(u);
+
+//        p.setId_panier(Integer.parseInt(panieridTF.getText()));
         PanierListCell pl = new PanierListCell();
         pl.setP(p);
         produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
@@ -83,15 +85,21 @@ public class ConsulterPanierController implements Initializable {
     }
 
     @FXML
-    private void exitCommandeScene(ActionEvent event) {
+    private void exitCommandeScene(ActionEvent event) throws IOException {
+  FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
+        Parent root = loader.load();
+        updateBTN.getScene().setRoot(root);
+
     }
 
     @FXML
     private void commanderOnAction(ActionEvent event) {
-        panier p = new panier();
+//        panier p = new panier();
         panierCRUD pc = new panierCRUD();
         //p.setId_panier(Integer.parseInt(panieridTF.getText()));
-        p=pc.filtreByidPanier(Integer.parseInt(panieridTF.getText()));
+//        p=pc.filtreByidPanier(Integer.parseInt(panieridTF.getText()));
         try {
             if (p.sommePanier(produitObservableList) == 0) {
                 commandeGUI.AlertShow("panier vide", "vide", Alert.AlertType.ERROR);
@@ -109,12 +117,13 @@ public class ConsulterPanierController implements Initializable {
             CommandeclientController dc = loader.getController();
             //System.out.println(p.getId_panier());
             int id_panier = p.getId_panier();
-        //  dc.setId_panTF(String.valueOf(id_panier));
+            //  dc.setId_panTF(String.valueOf(id_panier));
             // dc.setId_panTF(panieridTF);
-            dc.setTotalTF(somme + "");
+            // dc.setTotalTF(somme + "");
             dc.setP(p);
             dc.setNomTF(p.getU1().getNom());
             dc.setPrenomTF(p.getU1().getPrenom());
+            dc.setTotalTF(totalTF.getText());
             totalTF.getScene().setRoot(root);
 
         } catch (IOException ex) {
@@ -137,8 +146,8 @@ public class ConsulterPanierController implements Initializable {
         }
         try {
             panierCRUD pc = new panierCRUD();
-            panier p = new panier();
-            p.setId_panier(Integer.parseInt(panieridTF.getText()));
+//            panier p = new panier();
+//            p.setId_panier(Integer.parseInt(panieridTF.getText()));
 
             produit prod = new produit();
             prod.setRef_produit(ListView.getSelectionModel().getSelectedItem().getRef_produit());
@@ -164,8 +173,8 @@ public class ConsulterPanierController implements Initializable {
 
     void refreshTable() {
         panierCRUD pc = new panierCRUD();
-        panier p = new panier();
-        p.setId_panier(Integer.parseInt(panieridTF.getText()));
+//        panier p = new panier();
+//        p.setId_panier(Integer.parseInt(panieridTF.getText()));
         produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
         ListView.setCellFactory(lv -> new PanierListCell());
         ListView.setItems(produitObservableList);
@@ -193,8 +202,8 @@ public class ConsulterPanierController implements Initializable {
         }
         try {
             panierCRUD pc = new panierCRUD();
-            panier p = new panier();
-            p.setId_panier(Integer.parseInt(panieridTF.getText()));
+//            panier p = new panier();
+//            p.setId_panier(Integer.parseInt(panieridTF.getText()));
 
             produit prod = new produit();
             prod.setRef_produit(ListView.getSelectionModel().getSelectedItem().getRef_produit());

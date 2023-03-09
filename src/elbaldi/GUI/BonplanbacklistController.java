@@ -191,51 +191,68 @@ public void afficher() {
 
     @FXML
     private void accueilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "templateBack.fxml", "Acceuil");
+
     }
 
     @FXML
     private void profilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "ProfileAdmin.fxml", "Profile");
+
     }
 
     @FXML
     private void categ(ActionEvent event) {
+        commandeGUI.changeScene(event, "catgeorielistback.fxml", "Categories");
+
     }
 
     @FXML
     private void prodd(ActionEvent event) {
+        commandeGUI.changeScene(event, "prodbacklist.fxml", "Produits");
+
     }
 
     @FXML
     private void commandesAction(ActionEvent event) {
+
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande ");
     }
 
     @FXML
     private void LivraisonAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "livraisoninterface.fxml", "livraison ");
+
     }
 
     @FXML
-    private void BonpalnsAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+    private void BonpalnsAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "bonplanbacklist.fxml", "bonplans ");
 
-        loader.setLocation(getClass().getResource("bonplanbacklist.fxml"));
-        Parent root = loader.load();
-        bonp.getScene().setRoot(root);
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "front.fxml", "quiz ");
+
     }
 
     @FXML
     private void eventaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+
     }
 
     @FXML
     private void participationaction(ActionEvent event) {
+        commandeGUI.changeScene(event, "afficher participation.fxml", "participation ");
+
     }
 
     @FXML
     private void GestuserAction(ActionEvent event) {
+            commandeGUI.changeScene(event, "MenuAdmin.fxml", "gestion utilisateurs ");
+
     }
 
     @FXML

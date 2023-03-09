@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author USER
+ * @author Yasmine
  */
 public class ProddetailsbackController implements Initializable {
 
@@ -99,7 +99,7 @@ public class ProddetailsbackController implements Initializable {
     try {
         commentaires = comm.getCommentairesByArticle(produit);
     } catch (SQLException ex) {
-        Logger.getLogger(ProduitDetailsFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(ProddetailsbackController.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     // Définir la cellule personnalisée pour la ListView

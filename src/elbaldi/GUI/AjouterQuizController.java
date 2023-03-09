@@ -47,7 +47,6 @@ public class AjouterQuizController implements Initializable {
     
    
     
-    @FXML
     private ComboBox<Utilisateur> fxid_user;
     @FXML
     private Button backfix;
@@ -64,9 +63,8 @@ public class AjouterQuizController implements Initializable {
         // TODO
        
         
-        UtilisateurCRUD u = new UtilisateurCRUD();
-        List<Utilisateur> users = u.afficherUtilisateur();
-        fxid_user.getItems().addAll(users);
+        
+        
        ObservableList<String> difficultes = FXCollections.observableArrayList("Facile", "Moyenne", "Difficile");
         fxdifficulte.setItems(difficultes);
     }    
@@ -78,7 +76,7 @@ public class AjouterQuizController implements Initializable {
 
      String nom = fxnom.getText();
      String img = imgfx.getText();
-  if (difficulte == null || difficulte.isEmpty() || nom.isEmpty() || fxid_user.getSelectionModel().isEmpty()) {
+  if (difficulte == null || difficulte.isEmpty() || nom.isEmpty() ) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
@@ -88,12 +86,10 @@ public class AjouterQuizController implements Initializable {
     }
     
     
-    Utilisateur u = fxid_user.getSelectionModel().getSelectedItem();
-    int selecteduserId = u.getid_user();
-    
+  
      
     
-    quiz q = new quiz(nom,difficulte,u,img);
+    quiz q = new quiz(nom,difficulte);
     QuizCRUD qc = new QuizCRUD();
      if (qc.quizExiste(nom)) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

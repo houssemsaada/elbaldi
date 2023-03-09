@@ -11,8 +11,11 @@ import elbaldi.models.panier;
 import elbaldi.models.*;
 import elbaldi.services.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,6 +61,7 @@ public class CommandeclientController implements Initializable {
     @FXML
     private TextField totalTF;
     ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
+    ObservableList<produit> yasObservableList = FXCollections.observableArrayList();
 
     @FXML
     private TextField nomTF;
@@ -71,30 +75,34 @@ public class CommandeclientController implements Initializable {
     private TextField id_panTF;
     @FXML
     private ListView<produit> listView;
+    UserSession userSession = new UserSession();
+    Utilisateur u = userSession.getUser();
+    //ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      *
      * @param p
-     * @param totalTF
      */
     public void setP(panier p) {
         this.p = p;
         panierCRUD pc = new panierCRUD();
 
-        p.setId_panier(Integer.parseInt(id_panTF.getText()));
-
-        produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
-
+        //  p.setId_panier(Integer.parseInt(id_panTF.getText()));
+//        p.setId_panier(Integer.parseInt(panieridTF.getText()));
+        yasObservableList = FXCollections.observableList(pc.afficherListProduityasmine(p));
+        //    produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
+        produitObservableList = FXCollections.observableList(p.getList());
+        System.out.println(produitObservableList);
         listView.setCellFactory(rr -> new MiniPanierListCell());
         listView.setItems(produitObservableList);
-
-        totalTF.setText(p.sommePanier(produitObservableList) + "");
+       // totalTF.setText(p.getTotal_panier() + "");
 
     }
 
     public void setTotalTF(String totalTF) {
         this.totalTF.setText(totalTF);
+        System.out.println(totalTF);
     }
 
     public void setId_panTF(TextField id_panTF) {
@@ -137,26 +145,49 @@ public class CommandeclientController implements Initializable {
 
         CommandeCRUD cr = new CommandeCRUD();
         livraisonCRUD lr = new livraisonCRUD();
+        panierCRUD pc = new panierCRUD();
         String adress = addrTF.getText();
 
         commande c = new commande(p);
         c.setAdresse(adress);
+        total = Float.parseFloat(totalTF.getText());
+        c.setTotal(total);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Are you sure you want to confirm the order?");
         alert.setHeaderText("Please confirm your action");
         Optional<ButtonType> result = alert.showAndWait();
         // if the user confirms the update action
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            cr.ajouterCommande(c);
-
-            commande c2 = cr.filtreBypanier(p);
-//            livraison l = new livraison();
-//            l.setC1(c2);
-//            l.setAdresse_livraison(adress);
-//            lr.ajouterLivraison(l);
+            ProduitCRUD pcc = new ProduitCRUD();
             commandeGUI.AlertShow("order added ! ", "order", Alert.AlertType.INFORMATION);
+
+         
+            
+            cr.ajouterCommande(c);
+            commande c2 = cr.filtreBypanier(p);
+            System.out.println("l'id de nouvelle commande"+c2.getId_cmd());
+               for (int i = 0; i < yasObservableList.size(); i++) {
+                produit element1 = yasObservableList.get(i);
+                 produit element2 = produitObservableList.get(i);
+                for (int j = 0; j < element2.getQuantite(); j++) {
+                cr.ajouterProdCommande(c2, element2);
+               }
+                try {
+                    int quantite = element2.getQuantite();  //qte panier
+                    // quantite += element1.getQuantite();
+                    // System.out.println(quantite);
+                    element1.setQuantite(quantite + element1.getQuantite());
+                    pc.supprimerProdPanier(p, element2);
+                    panier p1  = p ;
+                    p1.setNombre_article(0);
+                    p1.setTotal_panier(0);
+                    pc.modifierPanier(p1);
+                    pcc.modifierProduit(element1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommandeclientController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             MailerService ms = new MailerService();
-//              System.out.println(c2);
             try {
                 ms.sendCommandeMail(c2);
             } catch (Exception e) {
@@ -217,8 +248,8 @@ class MiniPanierListCell extends ListCell<produit> {
 
             HBox.setHgrow(leftPane, Priority.ALWAYS);
             Pane rightPane = new Pane(vbox2);
-            leftPane.setMaxWidth(150);
-            leftPane.setMinWidth(150);
+            leftPane.setMaxWidth(190);
+            leftPane.setMinWidth(190);
             HBox.setHgrow(rightPane, Priority.ALWAYS);
 
             HBox graphbox = new HBox(leftPane, rightPane);

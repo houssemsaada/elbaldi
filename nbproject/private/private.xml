@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
@@ -14,6 +15,23 @@
             <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/ParticipationncontrollerController.java</file>
             <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/GUI/AfficherevenFrontController.java</file>
             <file>file:/C:/Users/MSI/Downloads/gestion_evenement/src/elbaldi/interfaces/InterfaceParticipationCRUD.java</file>
+=======
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/elbaldi/GUI/ItemprodbackController.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>188</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ItemprodbackController.java</file>
+            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FacebookPublisher.java</file>
+            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FirstWindowYasmine.java</file>
+>>>>>>> e4383841d45ea9ee753f930f6fa2dae259fc045b
         </group>
     </open-files>
 </project-private>

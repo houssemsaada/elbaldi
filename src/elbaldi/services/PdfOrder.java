@@ -25,7 +25,10 @@ public class PdfOrder {
         try {
 
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("C://ordrePdfn" + c.getId_cmd() + ".pdf"));
+          //  PdfWriter.getInstance(document, new FileOutputStream("C://ordrePdfn" + c.getId_cmd() + ".pdf"));
+                        PdfWriter.getInstance(document, new FileOutputStream("C:\\xampp\\htdocs\\images\\ordrePdfn" + c.getId_cmd() + ".pdf"));
+
+            
             document.open();
             com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
             com.itextpdf.text.Font fontgras = FontFactory.getFont(FontFactory.TIMES_BOLD, 16, BaseColor.BLACK);

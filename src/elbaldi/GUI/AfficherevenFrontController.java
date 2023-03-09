@@ -18,7 +18,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -31,10 +36,12 @@ public class AfficherevenFrontController implements Initializable {
 
     @FXML
     private GridPane gridpane;
+    EvenementService es = new EvenementService();
+    Evenement e1;
     @FXML
+
     private Button retour_btn;
-   EvenementService es = new EvenementService();
-      Evenement e1;
+   
     @FXML
     private Button Home1;
     @FXML
@@ -45,6 +52,19 @@ public class AfficherevenFrontController implements Initializable {
     private Button Home11111;
     @FXML
     private Button Home111111;
+
+    private TextField searchField;
+    @FXML
+    private Button prodfx;
+    @FXML
+    private Button bonplanfx;
+    @FXML
+    private Button eventfx;
+    @FXML
+    private Button cnx;
+    @FXML
+    private Button insc;
+
     /**
      * Initializes the controller class.
      */
@@ -78,13 +98,50 @@ public class AfficherevenFrontController implements Initializable {
             Logger.getLogger(AfficherevenFrontController.class.getName()).log(Level.SEVERE, null, ex);
         }    }    
 
+
+
+
+
+   
     @FXML
-    private void retournerHome(ActionEvent event) {
+    private void produitsf(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("Front1.fxml"));
+        Parent root = loader.load();
+        prodfx.getScene().setRoot(root);
+    }
+
+       @FXML
+    private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront1.fxml", "Login");
+
     }
 
     @FXML
+
     private void bpbtn(ActionEvent event) {
     }
 
     
+
+    private void eventAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
+
+    }
+
+    @FXML
+    private void connecter(ActionEvent event) {
+        commandeGUI.changeScene(event, "Login.fxml", "Login");
+
+    }
+
+    @FXML
+    private void inscr(ActionEvent event) {
+        commandeGUI.changeScene(event, "inscription.fxml", "Login");
+
+    }
+
+
+
 }
