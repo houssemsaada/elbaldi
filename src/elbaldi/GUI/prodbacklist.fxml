@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -14,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProdbacklistController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProdbacklistController">
    <children>
-      <ScrollPane fx:id="scroll" layoutX="285.0" layoutY="117.0" prefHeight="485.0" prefWidth="895.0">
+      <ScrollPane fx:id="scroll" layoutX="292.0" layoutY="117.0" prefHeight="485.0" prefWidth="900.0">
          <content>
-            <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
+            <GridPane fx:id="grid" prefHeight="230.0" prefWidth="268.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
@@ -28,11 +29,11 @@
       <Button fx:id="ajoutfx" layoutX="1048.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouter" stylesheets="@style.css" text="Ajouter produit" />
       <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="1009.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Ressources/ajouter.png" />
+            <Image url="@../../Ressource/ajouter.png" />
          </image>
       </ImageView>
       <Button fx:id="showC" layoutX="1070.0" layoutY="50.0" mnemonicParsing="false" onAction="#refresh" prefHeight="23.0" prefWidth="100.0" stylesheets="@style.css" text="Rafraîchir" />
-      <Label layoutX="281.0" layoutY="22.0" prefHeight="53.0" prefWidth="353.0" text="Gestion Produits" textFill="#a20812">
+      <Label layoutX="283.0" layoutY="11.0" prefHeight="53.0" prefWidth="353.0" text="Gestion Produits" textFill="#a20812">
          <font>
             <Font name="Arial Black" size="33.0" />
          </font>
@@ -66,7 +67,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -237,12 +238,16 @@
             </ScrollPane>
          </children>
       </VBox>
-      <TextField fx:id="searchField" layoutX="285.0" layoutY="81.0" promptText="Recherche..." />
-      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="472.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="searchField" layoutX="285.0" layoutY="81.0" promptText="Rechercher..." />
+      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="476.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Ressources/search.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="categoriesfx" layoutX="838.0" layoutY="81.0" prefHeight="31.0" prefWidth="187.0" promptText="Categories Produits" />
+      <ComboBox fx:id="categoriesfx" layoutX="866.0" layoutY="81.0" prefHeight="31.0" prefWidth="187.0" promptText="Categories Produits">
+         <stylesheets>
+            <URL value="@quiz.css" />
+            <URL value="@quiz.css" />
+         </stylesheets></ComboBox>
    </children>
 </AnchorPane>

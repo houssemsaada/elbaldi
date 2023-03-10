@@ -109,11 +109,11 @@ public class EventcontroleurController implements Initializable {
             
               Alert alert = new Alert(Alert.AlertType.WARNING);
 
-              alert.setTitle("confirmation Dialog");
+              alert.setTitle("Boîte de dialogue de confirmation");
 
               alert.setHeaderText(null);
 
-              alert.setContentText("Voulez vous supprimer cet Evenement!");
+              alert.setContentText("Voulez-vous supprimer cet événement ?");
               ButtonType cancelBtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
              alert.getButtonTypes().setAll(cancelBtn, ButtonType.OK);
               Optional<ButtonType> result = alert.showAndWait();
@@ -123,7 +123,7 @@ public class EventcontroleurController implements Initializable {
            es.supprimer(e);
 } else {
     // User clicked cancel or closed the dialog
-               System.out.println("Suppression Annuler");
+               System.out.println("Suppression annulée");
     
 }
             Parent loader = FXMLLoader.load(getClass().getResource("afficherEvenement.fxml"));
@@ -190,11 +190,11 @@ public class EventcontroleurController implements Initializable {
             ps.ajouter(p,e);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-              alert.setTitle("Information Dialog");
+              alert.setTitle("Boîte de dialogue d'information");
 
               alert.setHeaderText(null);
 
-              alert.setContentText("Evenement insérée avec succés!");
+              alert.setContentText("L'événement a été inséré avec succès !");
 
               alert.show();
            

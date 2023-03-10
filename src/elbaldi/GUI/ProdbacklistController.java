@@ -34,6 +34,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
@@ -133,7 +134,16 @@ public class ProdbacklistController implements Initializable {
                     column = 0;
                     row++;
                 }
+                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
 
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+                GridPane.setMargin(anchorpane, new Insets(10));
+              
                 grid.add(anchorpane, column, row);
                 column++;
                 //GridPane.setMargin(anchorpane, new Insets(10));
@@ -343,7 +353,7 @@ public class ProdbacklistController implements Initializable {
 
     @FXML
     private void eventaction(ActionEvent event) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenements ");
 
     }
 
@@ -361,6 +371,7 @@ public class ProdbacklistController implements Initializable {
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
 
    

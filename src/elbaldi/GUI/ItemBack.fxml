@@ -8,35 +8,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemBackController">
+<AnchorPane id="AnchorPane" prefHeight="257.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF;" styleClass="quiz-item" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ItemBackController">
    <children>
-      <Label layoutX="41.0" layoutY="141.0" text="Nom : ">
+      <Label layoutX="30.0" layoutY="141.0" text="Nom : ">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="176.0" text="Difficulté :">
+      <Label layoutX="31.0" layoutY="176.0" text="Difficulté :">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>
       </Label>
       <Button fx:id="modifierfix" layoutX="50.0" layoutY="207.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
-      <Button fx:id="supprimer" layoutX="170.0" layoutY="207.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="78.0" text="Supprimer" AnchorPane.bottomAnchor="16.0" />
-      <Label fx:id="nomLabell" layoutX="139.0" layoutY="144.0">
+      <Button fx:id="supprimer" layoutX="170.0" layoutY="206.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="95.0" text="Supprimer" AnchorPane.bottomAnchor="20.0" />
+      <Label fx:id="nomLabell" layoutX="99.0" layoutY="144.0" text="aaaaaaaaaa">
          <font>
             <Font name="Cambria" size="16.0" />
          </font></Label>
-      <Label fx:id="di" layoutX="139.0" layoutY="179.0">
+      <Label fx:id="di" layoutX="125.0" layoutY="178.0" text="dfffff">
          <font>
             <Font name="Cambria" size="16.0" />
          </font></Label>
-      <Button fx:id="fxquestion" layoutX="223.0" layoutY="114.0" mnemonicParsing="false" onAction="#question" prefHeight="25.0" prefWidth="44.0" styleClass="quiz-item" stylesheets="@quiz.css" text="&gt;&gt;&gt;" />
+      <Button fx:id="fxquestion" layoutX="211.0" layoutY="113.0" mnemonicParsing="false" onAction="#question" prefHeight="31.0" prefWidth="58.0" styleClass="quiz-item" stylesheets="@quiz.css" text="&gt;&gt;&gt;" />
       <Label fx:id="idLabel" layoutX="304.0" layoutY="29.0" />
-      <ImageView fx:id="imgLabel" fitHeight="100.0" fitWidth="101.0" layoutX="88.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Ressource/chahchia.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="14.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Ressource/modifier.png" />
@@ -45,6 +40,11 @@
       <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="136.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Ressource/supprimer.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="144.0" fitWidth="233.0" layoutX="20.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/Capture-removebg-preview.png" />
          </image>
       </ImageView>
    </children>

@@ -19,7 +19,7 @@
                             <children>
                                 <HBox prefHeight="72.0" prefWidth="320.0">
                                     <children>
-                                        <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="   User Email">
+                                        <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="  Adresse e-mail :">
                                             <HBox.margin>
                                                 <Insets top="20.0" />
                                             </HBox.margin>
@@ -33,7 +33,7 @@
                                 </HBox>
                                 <HBox layoutX="10.0" layoutY="10.0" prefHeight="72.0" prefWidth="320.0">
                                     <children>
-                                        <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="   User Number">
+                                        <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="  Numéro de télèphone :">
                                             <HBox.margin>
                                                 <Insets top="20.0" />
                                             </HBox.margin>
@@ -47,12 +47,12 @@
                                 </HBox>
                                 <HBox layoutX="10.0" layoutY="57.0" prefHeight="72.0" prefWidth="320.0">
                                     <children>
-                                        <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="   User Role">
+                                        <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="  Rôle :">
                                             <HBox.margin>
                                                 <Insets top="20.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <Label fx:id="user_role" alignment="TOP_CENTER" prefHeight="23.0" prefWidth="181.0" styleClass="label1">
+                                        <Label fx:id="user_role" alignment="TOP_LEFT" prefHeight="21.0" prefWidth="116.0" styleClass="label1">
                                             <HBox.margin>
                                                 <Insets left="20.0" top="20.0" />
                                             </HBox.margin>
@@ -61,12 +61,12 @@
                                 </HBox>
                         <HBox layoutX="10.0" layoutY="97.0" prefHeight="103.0" prefWidth="420.0">
                            <children>
-                              <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="   User Status">
+                              <Label prefHeight="27.0" prefWidth="214.0" styleClass="label1" text="  Statut :">
                                  <HBox.margin>
                                     <Insets top="20.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="user_status" alignment="TOP_CENTER" prefHeight="23.0" prefWidth="173.0" styleClass="label1">
+                              <Label fx:id="user_status" alignment="TOP_LEFT" prefHeight="21.0" prefWidth="111.0" styleClass="label1">
                                  <HBox.margin>
                                     <Insets left="20.0" top="20.0" />
                                  </HBox.margin>

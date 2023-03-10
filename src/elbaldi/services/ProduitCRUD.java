@@ -377,4 +377,34 @@ public List<String> getEmailsByCategoryId(int categoryId) throws SQLException {
    
     return emails;
 }
+ public List<produit> min5prod() {
+        List<produit> prod = new ArrayList<>();
+
+        try {
+
+            // Get the current month
+            java.util.Date now = new java.util.Date();
+            java.sql.Date currentMonth = new java.sql.Date(now.getTime());
+
+            // Execute the SQL query
+            String sql = "SELECT ref_produit, COUNT(*) as count FROM command_produit WHERE MONTH(date_cmd) = MONTH(?) AND YEAR(date_cmd) = YEAR(?) GROUP BY ref_produit ORDER BY count ASC LIMIT 5";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setDate(1, currentMonth);
+            stmt.setDate(2, currentMonth);
+            ResultSet rs = stmt.executeQuery();
+
+            // Print the results
+            while (rs.next()) {
+                
+                ProduitCRUD pc = new ProduitCRUD();
+                produit p2 = pc.getByRefProduit(rs.getString("ref_produit"));
+                p2.setQuantite(rs.getInt("count"));
+                prod.add(p2);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return prod;
+    }
 }

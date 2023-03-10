@@ -115,9 +115,9 @@ Optional<ButtonType> result = alert2.showAndWait();
 if (result.get() == confirmerButton){
       categoriecrud.supprimerCategorie(categorie1);       
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Information Dialog");
+      alert.setTitle("Boîte de dialogue d'information");
       alert.setHeaderText(null);
-      alert.setContentText("catégorie a été supprimée avec succés!");
+      alert.setContentText("Catégorie a été supprimée avec succés!");
       alert.show();
      
 //      Alert alert = new Alert(Alert.AlertType.INFORMATION);

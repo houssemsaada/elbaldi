@@ -20,20 +20,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.Commandeupdate2Controller">
+<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.Commandeupdate2Controller">
    <children>
       <Pane layoutX="287.0" layoutY="496.0" prefHeight="152.0" prefWidth="898.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 4px;">
          <children>
-            <Label layoutX="52.0" layoutY="22.0" prefHeight="26.0" prefWidth="175.0" text="Admin Dashboard" textFill="#c90000">
-               <font>
-                  <Font name="System Italic" size="17.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="57.0" fitWidth="59.0" layoutX="384.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/guestwo.png" />
-               </image>
-            </ImageView>
             <Button fx:id="exit" blendMode="SRC_ATOP" layoutX="1085.0" layoutY="96.0" mnemonicParsing="false" onAction="#exitCommandeScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Exit">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
@@ -52,7 +42,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="exit1" blendMode="SRC_ATOP" layoutX="62.0" layoutY="94.0" mnemonicParsing="false" onAction="#backonAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Retour">
+            <Button fx:id="update2Btn" blendMode="SRC_ATOP" layoutX="522.0" layoutY="57.0" mnemonicParsing="false" onAction="#update2OnAction" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #a20812;" text="Modifier">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -70,32 +60,14 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="update2Btn" blendMode="SRC_ATOP" layoutX="549.0" layoutY="51.0" mnemonicParsing="false" onAction="#update2OnAction" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #a20812;" text="Modifier">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
-            <Text layoutX="261.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="veuillez modifier les détails de la commande" wrappingWidth="181.96409606933594">
+            <Text layoutX="56.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez modifier les détails de la commande" wrappingWidth="383.96409606933594">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <GridPane layoutX="426.0" layoutY="144.0" prefHeight="217.0" prefWidth="445.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
+      <GridPane layoutX="446.0" layoutY="144.0" prefHeight="217.0" prefWidth="456.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.400048828125" minWidth="10.0" prefWidth="213.60002441406246" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.39998779296872" minWidth="10.0" prefWidth="215.19997558593747" />
@@ -110,7 +82,7 @@
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
             </Label>
-            <Label prefHeight="22.0" prefWidth="134.0" text="                     état " textAlignment="JUSTIFY">
+            <Label prefHeight="22.0" prefWidth="134.0" text="                     Etat " textAlignment="JUSTIFY">
                <font>
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
@@ -148,7 +120,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -319,10 +291,28 @@
             </ScrollPane>
          </children>
       </VBox>
-      <Label layoutX="829.0" layoutY="25.0" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Gestion commande" textFill="WHITE">
+      <Label layoutX="543.0" layoutY="57.0" text="Modifier commande" textFill="#a20812">
          <font>
-            <Font name="System Italic" size="22.0" />
+            <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
+      <Button fx:id="exit1" blendMode="SRC_ATOP" layoutX="268.0" layoutY="14.0" mnemonicParsing="false" onAction="#backonAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Retour">
+         <textFill>
+            <RadialGradient centerX="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
    </children>
 </AnchorPane>

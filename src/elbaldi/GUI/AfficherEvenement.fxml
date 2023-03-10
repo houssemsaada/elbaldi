@@ -13,17 +13,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AfficherEvenementController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.AfficherEvenementController">
    <children>
-      <Label layoutX="298.0" layoutY="31.0" prefHeight="34.0" prefWidth="197.0" text="Afficher Evenement ">
+      <Label layoutX="446.0" layoutY="32.0" prefHeight="46.0" prefWidth="398.0" text="Afficher Evènements " textFill="#a20812">
          <font>
-            <Font size="17.0" />
+            <Font name="Arial Black" size="31.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="268.0" layoutY="87.0" prefHeight="511.0" prefWidth="684.0">
+      <ScrollPane layoutX="268.0" layoutY="87.0" prefHeight="561.0" prefWidth="684.0">
          <content>
-            <GridPane fx:id="gridpane" prefHeight="514.0" prefWidth="676.0" style="-fx-background-color: #DCDCDC;">
+            <GridPane fx:id="gridpane" prefHeight="555.0" prefWidth="676.0" style="-fx-background-color: #DCDCDC;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,7 +39,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Button fx:id="retour_btn" layoutX="888.0" layoutY="39.0" mnemonicParsing="false" onAction="#retournerHome" text="Retour" />
+      <Button fx:id="retour_btn" layoutX="254.0" layoutY="16.0" mnemonicParsing="false" onAction="#retournerHome" text="Retour" />
       <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="-2.0" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
          <children>
             <ImageView fitHeight="112.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
@@ -68,7 +69,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -239,6 +240,16 @@
             </ScrollPane>
          </children>
       </VBox>
-      <PieChart fx:id="piechart" layoutX="989.0" layoutY="188.0" prefHeight="194.0" prefWidth="187.0" />
+      <PieChart fx:id="piechart" layoutX="962.0" layoutY="231.0" prefHeight="229.0" prefWidth="238.0" />
+      <Text layoutX="964.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de participants par " underline="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="1048.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="évènemennt" underline="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -155,7 +155,7 @@ public class LivraisoninterfaceController implements Initializable {
     private void updateBtnOnAction(ActionEvent event) {
 try {
             if (ListView.getSelectionModel().getSelectedItem() == null) {
-                commandeGUI.AlertShow("Please select an order to update", "No order selected", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Veuillez sélectionner une commande à mettre à jour", "Aucune commande sélectionnée", Alert.AlertType.ERROR);
                 return;
             }
         } catch (Exception ewww) {
@@ -183,7 +183,7 @@ try {
     private void deleteBtnOnAction(ActionEvent event) {
 try {
             if (ListView.getSelectionModel().getSelectedItem() == null) {
-                commandeGUI.AlertShow("Please select an order to delete", "No order selected", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Veuillez sélectionner une commande à supprimer", "Aucune commande sélectionnée", Alert.AlertType.ERROR);
                 return;
             }
 
@@ -197,8 +197,8 @@ try {
           
             liv.setId_livraison(ListView.getSelectionModel().getSelectedItem().getId_livraison());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure you want to delete the order ?");
-            alert.setHeaderText("Please confirm your action");
+            alert.setContentText("Êtes-vous sûr(e) de vouloir supprimer cette commande ?");
+            alert.setHeaderText("Veuillez confirmer votre action");
 
             Optional<ButtonType> result = alert.showAndWait();
 
@@ -292,6 +292,7 @@ try {
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
 
 }

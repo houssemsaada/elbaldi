@@ -22,6 +22,23 @@ and open the template in the editor.
     -fx-background-radius: 30;
 }
 
+.buttonn
+{
+-fx-background-color : #a20812;
+-fx-text-fill : #FFFFFF;
+
+}
+.select {
+  color: #fff; /* Définit la couleur du texte à blanc */
+  background-color: #000; /* Définit la couleur d'arrière-plan à noir */
+  border: none; /* Supprime la bordure */
+  padding: 5px; /* Ajoute un espacement autour de la zone de liste déroulante */
+  font-size: 16px; /* Définit la taille de police */
+  font-family: Arial, sans-serif; /* Définit la police */
+}
+
+
+
 .button
 {
 -fx-background-color : #a20812;

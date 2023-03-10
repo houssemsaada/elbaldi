@@ -119,7 +119,7 @@ public class FrontController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void ajouter(ActionEvent event)  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterQuiz.fxml"));
     try {
         Parent root = loader.load();
@@ -131,6 +131,7 @@ public class FrontController implements Initializable {
         ex.printStackTrace();
     }
     
+
 }
 
 
@@ -154,7 +155,7 @@ public class FrontController implements Initializable {
 
     @FXML
     private void categ(ActionEvent event) {
-        commandeGUI.changeScene(event, "categorielistback.fxml", "Categories");
+        commandeGUI.changeScene(event, "catgeorielistback.fxml", "Categories");
 
     }
 
@@ -178,7 +179,7 @@ public class FrontController implements Initializable {
 
     @FXML
     private void BonpalnsAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "Bpbacklist.fxml", "bonplans ");
+        commandeGUI.changeScene(event, "bonplanbacklist.fxml", "bonplans ");
 
     }
 
@@ -190,7 +191,7 @@ public class FrontController implements Initializable {
 
     @FXML
     private void eventaction(ActionEvent event) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "évenements ");
 
     }
 
@@ -208,6 +209,7 @@ public class FrontController implements Initializable {
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
 
    

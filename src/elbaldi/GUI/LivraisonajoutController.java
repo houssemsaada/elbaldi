@@ -80,8 +80,8 @@ public class LivraisonajoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         statusField.getItems().add("En attente");
-        statusField.getItems().add("en expédition");
-         statusField.getItems().add("livrée");
+        statusField.getItems().add("En expédition");
+         statusField.getItems().add("Livrée");
     }
 
     @FXML
@@ -90,7 +90,7 @@ public class LivraisonajoutController implements Initializable {
 
             try {
                 if (commandeGUI.isTextFieldEmpty( adresseField) || datepicker.getValue() == null || statusField.getValue() == null ) {
-                    commandeGUI.AlertShow("Please fill all fields", "Empty fields", Alert.AlertType.ERROR);
+                    commandeGUI.AlertShow("Veuillez remplir tous les champs!", "Champs vides", Alert.AlertType.ERROR);
                     return;
                 }
             } catch (Exception e) {
@@ -118,10 +118,10 @@ public class LivraisonajoutController implements Initializable {
             try {
                 lv.ajouterLivraison(liv);
             } catch (Exception ex) {
-                commandeGUI.AlertShow("order id not found ! ", "order", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Identifiant de commande introuvable! ", "Commande", Alert.AlertType.ERROR);
             }
 
-            commandeGUI.AlertShow(" added ! ", "shipping", Alert.AlertType.INFORMATION);
+            commandeGUI.AlertShow(" Ajoutée ! ", "Livraison", Alert.AlertType.INFORMATION);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();

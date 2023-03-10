@@ -10,9 +10,7 @@ import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import elbaldi.models.Etat;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
-import elbaldi.models.panier;
 import elbaldi.services.UtilisateurCRUD;
-import elbaldi.services.panierCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -51,9 +49,9 @@ import static sun.security.jgss.GSSUtil.login;
 public class InscriptionController implements Initializable {
 
     private String[] roles = {
-        "client",
-        "livreur",
-        "gerant"
+            "client",
+            "livreur",
+            "gerant"
     };
 
     private Stage stage;
@@ -80,8 +78,10 @@ public class InscriptionController implements Initializable {
     @FXML
     private Button signup;
 
+
     @FXML
     private TextField villetext;
+
 
     @FXML
     private ChoiceBox<String> role;
@@ -90,43 +90,41 @@ public class InscriptionController implements Initializable {
 
     @FXML
     void signup(ActionEvent event) {
-        String confirmMdp = passwordtxt1.getText();
-        String Mdp = passwordtxt.getText();
-        panierCRUD pc = new panierCRUD();
+         String confirmMdp = passwordtxt1.getText();
+         String Mdp = passwordtxt.getText();
+
         Role rolee = Role.valueOf(role.getValue());
         if (event.getSource() == signup) {
-
-            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt) & validateTel(numteltext) & TestDate() & validatenGuest_Password(passwordtxt1)) {
-                java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
-                if (confirmMdp.equals(Mdp)) {
-                    if (rolee.equals(Role.client)) {
-                        user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
-                                emailtext.getText(), gettedDatePickerDate, Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
-                                rolee, Etat.accepted);
-                        cRUD.ajouterUtlisateur(user);
-                        panier p = new panier(cRUD.GetUserByMailSession(emailtext.getText()));
-
-                        pc.ajouterPanier(p);
-
-                    } else {
-                        user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
-                                emailtext.getText(), gettedDatePickerDate, Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
-                                rolee, Etat.pending);
-                        cRUD.ajouterUtlisateur(user);
-                    }
+            
+            if (validatenGuest_Name(nomtext) & validatenGuest_Name(prenomtext) & validatenGuest_Email(emailtext) & validatenGuest_Password(passwordtxt) &validateTel(numteltext) & TestDate() &validatenGuest_Password(passwordtxt1)) {
+                       java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(daten.getValue());
+                       if(confirmMdp.equals(Mdp)){
+                             if(rolee.equals(Role.client)){
+                    user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
+                            emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
+                            rolee, Etat.accepted);
+                    cRUD.ajouterUtlisateur(user);
+                }else {
+                    user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
+                            emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
+                            rolee, Etat.pending);
+                    cRUD.ajouterUtlisateur(user);
                 }
+                       }
+              
+
 
             }
         }
     }
 
-    UtilisateurCRUD cRUD = new UtilisateurCRUD();
+     UtilisateurCRUD cRUD = new UtilisateurCRUD();
     private Button btnValider;
     private Utilisateur user;
 
     /**
      * Initializes the controller class.
-     *
+    
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -162,6 +160,8 @@ public class InscriptionController implements Initializable {
         stage.show();
     }
 
+
+    
     private boolean validatenGuest_Name(TextField name) {
         Pattern p = Pattern.compile("[a-zA-Z_]+");
         Matcher m = p.matcher(name.getText());
@@ -177,13 +177,13 @@ public class InscriptionController implements Initializable {
             return true;
         }
     }
-
+    
     private boolean TestDate() {
         java.sql.Date birthday = java.sql.Date.valueOf(daten.getValue());
         long millis = System.currentTimeMillis();
         java.sql.Date now = new java.sql.Date(millis);
-
-        if (birthday.compareTo(now) < 0) {
+        
+        if ( birthday.compareTo(now) < 0) {
             InnerShadow in = new InnerShadow();
             in.setColor(Color.web("#52FF00"));
 

@@ -120,7 +120,7 @@ public class Commandeupdate2Controller implements Initializable {
 
     @FXML
     private void backonAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "commandeupdate.fxml", "commande update");
+        commandeGUI.changeScene(event, "commandeinterface.fxml", "commande update");
     }
 
     @FXML
@@ -158,8 +158,8 @@ public class Commandeupdate2Controller implements Initializable {
             c.setPan(pan);
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure you want to update the order data?");
-            alert.setHeaderText("Please confirm your action");
+            alert.setContentText("Êtes-vous sûr de vouloir mettre à jour les données de la commande ?");
+            alert.setHeaderText("Veuillez confirmer votre action");
             Optional<ButtonType> result = alert.showAndWait();
             // if the user confirms the update action
             if (result.isPresent() && result.get() == ButtonType.OK) {

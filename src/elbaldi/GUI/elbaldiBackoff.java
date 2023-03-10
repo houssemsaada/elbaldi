@@ -28,7 +28,7 @@ public class elbaldiBackoff extends Application {
 
         try {
 
-            Image icon = new Image(getClass().getResourceAsStream("/Ressources/Logo.png"));
+            Image icon = new Image(getClass().getResourceAsStream("/Ressources/LogoXL.png"));
 
             primaryStage.getIcons().add(icon);
 

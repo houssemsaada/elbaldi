@@ -9,6 +9,7 @@ import elbaldi.models.produit;
 import elbaldi.services.CommandeCRUD;
 import elbaldi.services.ProduitCRUD;
 import elbaldi.services.livraisonCRUD;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,12 +25,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -81,6 +86,8 @@ public class templatebackController implements Initializable {
     private BarChart<String, Integer> barchar;
 
     List<produit> prodlist = new ArrayList<produit>();
+    @FXML
+    private Button prodmin;
 
     /**
      * Initializes the controller class.
@@ -178,7 +185,7 @@ public class templatebackController implements Initializable {
     @FXML
     private void eventaction(ActionEvent event
     ) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "évènements ");
 
     }
 
@@ -199,6 +206,22 @@ public class templatebackController implements Initializable {
     @FXML
     private void decoAction(ActionEvent event
     ) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
+    }
+
+    @FXML
+    private void prodmin(ActionEvent event) throws IOException {
+             FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("minprods.fxml"));
+        Parent root = loader.load();
+
+        MinprodsController cb = loader.getController();
+
+        Stage stage = new Stage();
+        stage.setTitle("Les produits les moins vendus");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
 }

@@ -14,16 +14,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BonplanbacklistController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BonplanbacklistController">
    <children>
-      <Button fx:id="ajoutfx" layoutX="1046.0" layoutY="19.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="138.0" text="ajouter bonplan" />
-      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="1020.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="ajoutfx" layoutX="1046.0" layoutY="19.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="138.0" text="Ajouter bonplan" />
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="1018.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../ressources/ajouter.png" />
+            <Image url="@../../Ressource/ajouter.png" />
          </image>
       </ImageView>
       <Button fx:id="showC" layoutX="1097.0" layoutY="53.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="87.0" text="Rafraîchir" />
-      <Label layoutX="291.0" layoutY="32.0" prefHeight="53.0" prefWidth="353.0" text="Gestion bons plans" textFill="#a20812">
+      <Label layoutX="291.0" layoutY="22.0" prefHeight="53.0" prefWidth="353.0" text="Gestion bons plans" textFill="#a20812">
          <font>
             <Font name="Arial Black" size="33.0" />
          </font>
@@ -57,7 +57,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -228,16 +228,16 @@
             </ScrollPane>
          </children>
       </VBox>
-      <ComboBox fx:id="Typefx" layoutX="830.0" layoutY="91.0" onAction="#filtrer" prefHeight="31.0" prefWidth="187.0" promptText="Les bons plans " stylesheets="@style.css" />
-      <TextField fx:id="searchField" layoutX="295.0" layoutY="91.0" promptText="Recherche..." />
-      <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="457.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+      <ComboBox fx:id="Typefx" layoutX="895.0" layoutY="91.0" onAction="#filtrer" prefHeight="31.0" prefWidth="187.0" promptText="Type bons plans " stylesheets="@style.css" />
+      <TextField fx:id="searchField" layoutX="295.0" layoutY="91.0" promptText="Rechercher..." />
+      <ImageView fitHeight="31.0" fitWidth="23.0" layoutX="487.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../ressources/search.png" />
          </image>
       </ImageView>
-      <ScrollPane fx:id="scroll" layoutX="295.0" layoutY="127.0" prefHeight="485.0" prefWidth="895.0" stylesheets="@style.css">
+      <ScrollPane fx:id="scroll" layoutX="290.0" layoutY="132.0" prefHeight="511.0" prefWidth="906.0" stylesheets="@style.css">
          <content>
-            <GridPane fx:id="grid" prefHeight="17.0" prefWidth="37.0">
+            <GridPane fx:id="grid" prefHeight="199.0" prefWidth="210.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>

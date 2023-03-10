@@ -73,7 +73,7 @@ public class AjoutBonplanBackController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        typeFx.getItems().add("restaurant");
+        typeFx.getItems().add("Restaurant");
         typeFx.getItems().add("Hotel");
         // TODO
 

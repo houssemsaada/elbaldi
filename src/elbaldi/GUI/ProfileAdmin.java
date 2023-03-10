@@ -16,7 +16,10 @@ import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class ProfileAdmin implements Initializable {
 
@@ -87,7 +90,6 @@ public class ProfileAdmin implements Initializable {
     void updtahost(ActionEvent event) {
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(adminpagedate.getValue());
         UtilisateurCRUD u = new UtilisateurCRUD();
-        
         UserSession session = new UserSession();
         int id = session.getUser().getid_user();
         String email = session.getUser().getEmail();
@@ -97,7 +99,17 @@ public class ProfileAdmin implements Initializable {
         int tel = Integer.parseInt(adminpagetel.getText());
         String ville = adminpageaddress.getText();
         Utilisateur user = new Utilisateur(id,name, lastname,email, gettedDatePickerDate, tel, ville );
-        u.UpdateUser(user);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Êtes-vous sûr de vouloir modifier vos informations ?");
+        alert.setHeaderText("Veuillez confirmer votre action");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // if the user confirms the deletion
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            u.UpdateUser(user);
+        }
+        
 
     }
 
@@ -152,7 +164,7 @@ public class ProfileAdmin implements Initializable {
 
     @FXML
     private void eventaction(ActionEvent event) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "évènements ");
 
     }
 
@@ -170,6 +182,7 @@ public class ProfileAdmin implements Initializable {
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
 
 }

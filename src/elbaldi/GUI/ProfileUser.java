@@ -15,10 +15,12 @@ import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class ProfileUser implements Initializable {
-
 
     @FXML
     private TextField adminpageaddress;
@@ -57,8 +59,18 @@ public class ProfileUser implements Initializable {
         String lastname = adminpagelastname.getText();
         int tel = Integer.parseInt(adminpagetel.getText());
         String ville = adminpageaddress.getText();
-        Utilisateur user = new Utilisateur(Integer.parseInt(String.valueOf(id)),name, lastname,email, gettedDatePickerDate, tel, ville );
-        u.UpdateUser(user);
+        Utilisateur user = new Utilisateur(Integer.parseInt(String.valueOf(id)), name, lastname, email, gettedDatePickerDate, tel, ville);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Êtes-vous sûr de vouloir modifier vos informations ?");
+        alert.setHeaderText("Veuillez confirmer votre action");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // if the user confirms the deletion
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            u.UpdateUser(user);
+        }
+
     }
 
     @Override

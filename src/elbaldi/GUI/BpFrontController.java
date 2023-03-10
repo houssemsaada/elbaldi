@@ -53,12 +53,15 @@ public class BpFrontController implements Initializable {
     private TextField search;
     private Button bonplan1;
     @FXML
+
     private Button profilfx;
     @FXML
     private Button prodfx;
     @FXML
+
     private Button bonplanfx;
     @FXML
+
     private Button Eventfx;
     @FXML
     private Button Quizfx;
@@ -197,7 +200,10 @@ public class BpFrontController implements Initializable {
         bonplan1.getScene().setRoot(root);
     }
 
-           @FXML
+
+
+    @FXML
+
     private void produitsf(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
@@ -237,22 +243,26 @@ public class BpFrontController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+
     }
 
     @FXML
     private void bonplanAction(ActionEvent event) {
+
                 commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
 
     }
 
     @FXML
     private void EventAction(ActionEvent event) {
+
                     commandeGUI.changeScene(event, "afficherevenFront.fxml", "evenement");
 
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
+
                 commandeGUI.changeScene(event, "Client.fxml", "commande ");
 
     }
@@ -260,7 +270,7 @@ public class BpFrontController implements Initializable {
     @FXML
     private void deconfx(ActionEvent event) {
     }
-    
+
 
     
 

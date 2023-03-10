@@ -143,7 +143,7 @@ public class MenuAdmin implements Initializable{
         dialog.initModality(Modality.WINDOW_MODAL);
 
 
-        dialogVbox.getChildren().add(new Text("Deleted"));
+        dialogVbox.getChildren().add(new Text("Désactivé"));
         Scene dialogScene = new Scene(dialogVbox, 200, 200);
         dialog.setScene(dialogScene);
         dialog.show();
@@ -160,7 +160,7 @@ public class MenuAdmin implements Initializable{
         dialog.initModality(Modality.WINDOW_MODAL);
 
 
-        dialogVbox.getChildren().add(new Text("Approuved"));
+        dialogVbox.getChildren().add(new Text("Approuvé avec succés"));
         Scene dialogScene = new Scene(dialogVbox, 200, 200);
         dialog.setScene(dialogScene);
         dialog.show();
@@ -241,7 +241,7 @@ public class MenuAdmin implements Initializable{
 
     @FXML
     private void eventaction(ActionEvent event) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "évènements ");
 
     }
 
@@ -259,6 +259,7 @@ public class MenuAdmin implements Initializable{
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
 
     @Override

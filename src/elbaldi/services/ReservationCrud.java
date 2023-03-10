@@ -40,7 +40,8 @@ public class ReservationCrud implements InterfaceReservationCrud {
              ps.executeUpdate();
             System.out.println("reservation ajouté");
         } catch (SQLException ex) {
-           System.out.println("reservation non ajouté");                 
+           System.out.println("reservation non ajouté");   
+           System.out.println(ex.getMessage());
         }   
     }
 
@@ -125,6 +126,7 @@ public class ReservationCrud implements InterfaceReservationCrud {
     
     } 
     
+
     
     @Override
     public List<Reservation> filtreByDate(Date date_reservation) {
@@ -185,6 +187,35 @@ public class ReservationCrud implements InterfaceReservationCrud {
             Statement st = connection.createStatement();
            
             ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Reservation R = new Reservation();
+             R.setId_reservation(RS.getInt("id_reservation"));
+             R.setNombre_personnes(RS.getInt("nombre_personnes"));
+             R.setDate_reservation(RS.getDate("date_reservation"));
+             R.setStatut_reservation(RS.getString("statut_reservation"));
+             R.setBonplan2(bp.getByIdBonplan(RS.getInt("id_bonplan")));
+             R.setUser2(user.getUserByID(RS.getInt("id_user")));
+             
+            
+             list.add(R);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+   public List<Reservation> afficherReservation(Date date) {
+       List<Reservation> list = new ArrayList<>();
+       BonplanCrud bp=new BonplanCrud();
+       UtilisateurCRUD user=new UtilisateurCRUD();
+        try {
+            String req = "Select * from Reservation WHERE date_reservation = ?";
+            System.out.println(req);
+          PreparedStatement ps = connection.prepareStatement(req);
+        ps.setDate(1, date);
+        System.out.println(ps);
+        ResultSet RS = ps.executeQuery();
             while(RS.next()){
              Reservation R = new Reservation();
              R.setId_reservation(RS.getInt("id_reservation"));

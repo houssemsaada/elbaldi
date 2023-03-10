@@ -79,8 +79,8 @@ public class Livraisonupdate2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         statusField.getItems().add("En attente");
-        statusField.getItems().add("en expédition");
-         statusField.getItems().add("livrée");
+        statusField.getItems().add("En expédition");
+         statusField.getItems().add("Livrée");
     }
 
     public void setLivrai(livraison livrai) {
@@ -104,7 +104,7 @@ public class Livraisonupdate2Controller implements Initializable {
     @FXML
     private void update2OnAction(ActionEvent event) {
       if ( datepicker.getValue().isBefore(LocalDate.now())) {
-                commandeGUI.AlertShow("Please enter a valid date", "invalid date", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Veuillez entrer une date valide.", "Date invalide", Alert.AlertType.ERROR);
                 return;}
              else {
         try {
@@ -130,8 +130,8 @@ public class Livraisonupdate2Controller implements Initializable {
             livrai.setAdresse_livraison(adresse);
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure you want to update the shipping data?");
-            alert.setHeaderText("Please confirm your action");
+            alert.setContentText("Êtes-vous sûr(e) de vouloir mettre à jour les données d'expédition ?");
+            alert.setHeaderText("Veuillez confirmer votre action");
             Optional<ButtonType> result = alert.showAndWait();
             // if the user confirms the update action
             if (result.isPresent() && result.get() == ButtonType.OK) {

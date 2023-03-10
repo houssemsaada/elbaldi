@@ -29,6 +29,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
@@ -83,7 +84,7 @@ public class BonplanbacklistController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            Typefx.getItems().add("restaurant");
+            Typefx.getItems().add("Restaurant");
             Typefx.getItems().add("Hotel");
             Typefx.getItems().add("Tous");
         
@@ -129,8 +130,17 @@ public void afficher() {
                     column = 0;
                     row++;
                 }
+                //grid.add(anchorpane, column++, row);
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
 
-                grid.add(anchorpane, column, row);
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+                GridPane.setMargin(anchorpane, new Insets(10));
+               grid.add(anchorpane, column, row);
                 column++;
                 //GridPane.setMargin(anchorpane, new Insets(10));
             }
@@ -239,7 +249,7 @@ public void afficher() {
 
     @FXML
     private void eventaction(ActionEvent event) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "évènements ");
 
     }
 
@@ -257,6 +267,7 @@ public void afficher() {
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
 
     @FXML

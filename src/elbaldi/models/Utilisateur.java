@@ -123,8 +123,6 @@ public class Utilisateur {
     }
 
 
-    
-    
     public int getid_user() {
         return id_user;
     }

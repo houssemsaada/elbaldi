@@ -115,11 +115,11 @@ public class AjouterEvenementController implements Initializable {
                 //showMessageDialog(null, "Vérifier Vos Champs" ); 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
 
-              alert.setTitle("Information Dialog");
+              alert.setTitle("Boîte de dialogue d'information");
 
               alert.setHeaderText(null);
 
-              alert.setContentText("Vérifier Vos Champs");
+              alert.setContentText("Vérifiez que tous les champs nécessaires ont été remplis correctement");
 
               alert.show();
             }
@@ -133,11 +133,11 @@ public class AjouterEvenementController implements Initializable {
                //showMessageDialog(null, "Evenement Ajouté Avec Succès" );  
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-              alert.setTitle("Information Dialog");
+              alert.setTitle("Boîte de dialogue d'information");
 
               alert.setHeaderText(null);
 
-              alert.setContentText("Evenement insérée avec succés!");
+              alert.setContentText("Evènement insérée avec succés!");
 
               alert.show();
                reset();
@@ -236,7 +236,7 @@ public class AjouterEvenementController implements Initializable {
 
     @FXML
     private void eventaction(ActionEvent event) {
-        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "evenemets ");
+        commandeGUI.changeScene(event, "AjouterEvenement.fxml", "évènements ");
 
     }
 
@@ -254,6 +254,7 @@ public class AjouterEvenementController implements Initializable {
 
     @FXML
     private void decoAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
     
 }

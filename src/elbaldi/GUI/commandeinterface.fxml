@@ -16,16 +16,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CommandeinterfaceController">
+<AnchorPane prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #FFFFFF;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CommandeinterfaceController">
    <children>
-      <Pane layoutX="279.0" layoutY="494.0" prefHeight="158.0" prefWidth="898.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 4px;">
+      <Pane layoutX="279.0" layoutY="515.0" prefHeight="137.0" prefWidth="898.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 4px;">
          <children>
-            <Label layoutX="52.0" layoutY="22.0" prefHeight="26.0" prefWidth="175.0" text="Admin Dashboard" textFill="#c90000">
-               <font>
-                  <Font name="System Italic" size="17.0" />
-               </font>
-            </Label>
-            <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitCommandeScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Exit">
+            <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="97.0" mnemonicParsing="false" onAction="#exitCommandeScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Exit" visible="false">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -43,7 +38,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="227.0" layoutY="64.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: #a20812;" text="Modifier">
+            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="68.0" layoutY="49.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="31.0" prefWidth="163.0" style="-fx-background-color: #a20812;" text="Modifier commande">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -61,7 +56,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="449.0" layoutY="64.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: #a20812;" text="Supprimer">
+            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="349.0" layoutY="49.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #a20812;" text="Supprimer commande">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -79,7 +74,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="addBtn1" blendMode="SRC_ATOP" layoutX="655.0" layoutY="64.0" mnemonicParsing="false" onAction="#addlivraisonOnAction" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #a20812;" text="Ajouter livraison">
+            <Button fx:id="addBtn1" blendMode="SRC_ATOP" layoutX="657.0" layoutY="49.0" mnemonicParsing="false" onAction="#addlivraisonOnAction" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: #a20812;" text="Ajouter livraison">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -99,12 +94,7 @@
             </Button>
          </children>
       </Pane>
-      <Label layoutX="320.0" layoutY="22.0" text="Rechercher">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="searchTextField" layoutX="399.0" layoutY="20.0" prefHeight="26.0" prefWidth="358.0" />
+      <TextField fx:id="searchTextField" layoutX="704.0" layoutY="35.0" prefHeight="31.0" prefWidth="303.0" promptText="Rechercher..." />
       <Button fx:id="refreshbtn" blendMode="SRC_ATOP" layoutX="1092.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshOnAction" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="rafraîchir">
          <textFill>
             <RadialGradient centerX="0.5" radius="0.5">
@@ -123,8 +113,8 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <ListView fx:id="ListView" layoutX="279.0" layoutY="59.0" prefHeight="431.0" prefWidth="898.0" />
-      <VBox alignment="TOP_CENTER" layoutY="2.0" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
+      <ListView fx:id="ListView" layoutX="279.0" layoutY="75.0" prefHeight="431.0" prefWidth="898.0" />
+      <VBox alignment="TOP_CENTER" layoutY="2.0" prefHeight="656.0" prefWidth="268.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
          <children>
             <ImageView fitHeight="112.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -153,7 +143,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -324,10 +314,15 @@
             </ScrollPane>
          </children>
       </VBox>
-      <Label layoutX="801.0" layoutY="3.0" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Gestion commande" textFill="WHITE">
+      <Label layoutX="282.0" layoutY="12.0" prefHeight="42.0" prefWidth="416.0" text="Gestion commandes" textFill="#a20816">
          <font>
-            <Font name="System Italic" size="22.0" />
+            <Font name="Arial Black" size="36.0" />
          </font>
       </Label>
+      <ImageView fitHeight="37.0" fitWidth="29.0" layoutX="1011.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Ressources/search.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

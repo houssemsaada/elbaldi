@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CatgeorielistBackController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.CatgeorielistBackController">
    <children>
-      <HBox layoutX="281.0" layoutY="93.0" prefHeight="511.0" prefWidth="924.0">
+      <HBox layoutX="281.0" layoutY="93.0" prefHeight="556.0" prefWidth="924.0">
          <children>
-            <ScrollPane fx:id="scroll" prefHeight="511.0" prefWidth="925.0">
+            <ScrollPane fx:id="scroll" prefHeight="530.0" prefWidth="925.0">
                <content>
                   <GridPane id="monGridPane" fx:id="gridfx" onMouseClicked="#se" prefHeight="211.0" prefWidth="204.0">
                      <columnConstraints>
@@ -32,13 +32,13 @@
             </ScrollPane>
          </children>
       </HBox>
-      <Button fx:id="ajoutfx" layoutX="1055.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouter" stylesheets="@style.css" text="Ajouter categorie" />
-      <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="1010.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="ajoutfx" layoutX="1055.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouter" stylesheets="@style.css" text="Ajouter catégorie" />
+      <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="1017.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Ressources/ajouter.png" />
+            <Image url="@../../Ressource/ajouter.png" />
          </image>
       </ImageView>
-      <Label layoutX="284.0" layoutY="12.0" prefHeight="53.0" prefWidth="373.0" text="Gestion Catégories " textFill="#a20812">
+      <Label layoutX="291.0" layoutY="12.0" prefHeight="53.0" prefWidth="373.0" text="Gestion Catégories " textFill="#a20812">
          <font>
             <Font name="Arial Black" size="33.0" />
          </font>
@@ -73,7 +73,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

@@ -147,11 +147,11 @@ private static int idd;
                es.modifier(e);
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-              alert.setTitle("Information Dialog");
+              alert.setTitle("Boîte de dialogue d'information");
 
               alert.setHeaderText(null);
 
-              alert.setContentText("Evenement Modifier avec succés!");
+              alert.setContentText("L'événement a été modifié avec succès !");
 
               alert.show();
                //reset();

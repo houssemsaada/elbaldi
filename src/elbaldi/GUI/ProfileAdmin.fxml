@@ -14,28 +14,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="668.0" prefWidth="1232.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProfileAdmin">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProfileAdmin">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #FFFFFF;" stylesheets="@style.css">
          <children>
-            <Pane fx:id="pnlOverview" layoutX="108.0" layoutY="24.0" prefHeight="656.0" prefWidth="1114.0" style="-fx-background-color: #FFFFFF;" stylesheets="@style.css">
+            <Pane fx:id="pnlOverview" layoutX="6.0" prefHeight="680.0" prefWidth="1216.0" style="-fx-background-color: #FFFFFF;" stylesheets="@style.css">
                <children>
-                  <Label layoutX="357.0" layoutY="39.0" prefHeight="65.0" prefWidth="1002.0" text="Profile">
+                  <Label layoutX="568.0" layoutY="48.0" prefHeight="65.0" prefWidth="329.0" text="PROFILE ADMIN" textFill="#bf1c1c">
                      <font>
-                        <Font size="44.0" />
+                        <Font name="Arial Black" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="318.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Prénom" />
-                  <Label layoutX="531.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Nom" />
-                  <Label layoutX="745.0" layoutY="243.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Numéro de téléphone" />
-                  <TextField fx:id="adminpagename" layoutX="318.0" layoutY="292.0" />
-                  <TextField fx:id="adminpagelastname" layoutX="531.0" layoutY="292.0" />
-                  <TextField fx:id="adminpagetel" layoutX="745.0" layoutY="292.0" />
-                  <Label layoutX="531.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Ville" />
-                  <TextField fx:id="adminpageaddress" layoutX="531.0" layoutY="412.0" />
-                  <DatePicker fx:id="adminpagedate" layoutX="745.0" layoutY="412.0" />
-                  <Label layoutX="746.0" layoutY="375.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Date de naissance" />
-                  <Button fx:id="updateadmin" layoutX="432.0" layoutY="570.0" mnemonicParsing="false" onAction="#updtahost" prefHeight="37.0" prefWidth="198.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Modifier" />
+                  <Label layoutX="470.0" layoutY="226.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Prénom" />
+                  <Label layoutX="476.0" layoutY="326.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Nom" />
+                  <Label layoutX="813.0" layoutY="229.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Numéro de téléphone" />
+                  <TextField fx:id="adminpagename" layoutX="470.0" layoutY="275.0" />
+                  <TextField fx:id="adminpagelastname" layoutX="471.0" layoutY="380.0" />
+                  <TextField fx:id="adminpagetel" layoutX="813.0" layoutY="272.0" prefHeight="25.0" prefWidth="175.0" />
+                  <Label layoutX="484.0" layoutY="439.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Ville" />
+                  <TextField fx:id="adminpageaddress" layoutX="470.0" layoutY="491.0" />
+                  <DatePicker fx:id="adminpagedate" layoutX="810.0" layoutY="382.0" />
+                  <Label layoutX="814.0" layoutY="330.0" styleClass="label1" stylesheets="@Styles/controls.css" text="Date de naissance" />
+                  <Button fx:id="updateadmin" layoutX="636.0" layoutY="570.0" mnemonicParsing="false" onAction="#updtahost" prefHeight="37.0" prefWidth="198.0" styleClass="button1" stylesheets="@Styles/controls.css" text="Modifier profile" />
+                  <ImageView fitHeight="73.0" fitWidth="82.0" layoutX="486.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/user-removebg-preview.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <VBox alignment="TOP_CENTER" layoutX="-3.0" layoutY="4.0" prefHeight="680.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
@@ -67,7 +72,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                              <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profile" textFill="#e7e5e5">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>

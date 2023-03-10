@@ -23,8 +23,6 @@ public class ResetPassword {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    @FXML
-    private ImageView anchorPane;
 
     @FXML
     private Button btnid;
@@ -35,6 +33,8 @@ public class ResetPassword {
     @FXML
     private PasswordField newPassword1;
     private Utilisateur u;
+    @FXML
+    private Button Back2;
 
     @FXML
     void ResetPassword(ActionEvent event) throws IOException {
@@ -55,23 +55,36 @@ public class ResetPassword {
         }
     }
 
-    @FXML
     private void mini(MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.setIconified(true);
     }
 
-    @FXML
     private void max(MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.setFullScreen(true);
     }
 
-    @FXML
     private void close(javafx.scene.input.MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.close();
 
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+          // Redirection vers BrouillonController
+    // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Code.fxml"));
+    try {
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) Back2.getScene().getWindow(); // backButton est le bouton de retour
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
     }
 
 }

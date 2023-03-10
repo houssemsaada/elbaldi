@@ -41,6 +41,7 @@ public class BonplanCrud implements InterfaceBonplanCrud {
             System.out.println("Bonplan ajouté avec succes ");
         } catch (SQLException ex) {
             System.out.println("Bonplan non ajoutee !!");
+             System.out.println(ex.getMessage());
         }
     }
 

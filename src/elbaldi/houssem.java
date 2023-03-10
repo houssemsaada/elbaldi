@@ -45,6 +45,8 @@ public class houssem {
         // categ.ajouterCategorie(c1);
         produit p1 = new produit("f03");
         ProduitCRUD prod = new ProduitCRUD();
+        System.out.println("aa");
+        System.out.println( prod.min5prod());
         // prod.ajouterProduit(p1);
 //---------------------- module commande--------------------------------------------------------------------        
 //             commande com1 = new commande(128, pan1, "aaaaaa", date_com);
@@ -86,27 +88,27 @@ public class houssem {
 //----------------------module panier------------------------------------------------------------------------
         panier pan1 = new panier(21);
         panierCRUD pan = new panierCRUD();
-        pan1=pan.filtreByidPanier(21);
-        List list = pan.afficherListProduitPanier(pan1);
-        pan1.setList(list);
-        Date date = Date.valueOf(LocalDate.now());
-        Utilisateur u2 = new Utilisateur(2498, "houssem", "saada", "houssem.saada@gmail.com",date, 90000000, "aaaaaaa");
-        
-      //  System.out.println(pan.afficherListProduitPanier(pan1));
-        // pan1.setU1(u1);
-        //pan.ajouterPanier(pan1);
-        //pan.ajouterProdPanier(pan1, p1,10);
-        //pan.supprimerProdPanier(pan1,p1) ; 
-        //  pan.modifierPanier(pan1);
-        //pan.supprimerPanier(3);
-        //System.out.println(pan.afficherPanier());
-        //System.out.println(pan.filtreByuser(u1));
-        //System.out.println(pan.afficherListProduitPanier(pan1));
-        // pan.modifierQteProdPanier(pan1, p1, 8);
-        commande com1 = new commande(124, pan1, "aaaaaa", date_com);
-        com1.setAdresse("menzel temime");
-
-        PdfOrder pdf = new PdfOrder();
-         pdf.orderPdf(com1);
+//        pan1=pan.filtreByidPanier(21);
+//        List list = pan.afficherListProduitPanier(pan1);
+//        pan1.setList(list);
+//        Date date = Date.valueOf(LocalDate.now());
+//        Utilisateur u2 = new Utilisateur(2498, "houssem", "saada", "houssem.saada@gmail.com",date, 90000000, "aaaaaaa");
+//        
+//      //  System.out.println(pan.afficherListProduitPanier(pan1));
+//        // pan1.setU1(u1);
+//        //pan.ajouterPanier(pan1);
+//        //pan.ajouterProdPanier(pan1, p1,10);
+//        //pan.supprimerProdPanier(pan1,p1) ; 
+//        //  pan.modifierPanier(pan1);
+//        //pan.supprimerPanier(3);
+//        //System.out.println(pan.afficherPanier());
+//        //System.out.println(pan.filtreByuser(u1));
+//        //System.out.println(pan.afficherListProduitPanier(pan1));
+//        // pan.modifierQteProdPanier(pan1, p1, 8);
+//        commande com1 = new commande(124, pan1, "aaaaaa", date_com);
+//        com1.setAdresse("menzel temime");
+//        
+//        PdfOrder pdf = new PdfOrder();
+//         pdf.orderPdf(com1);
     }
 }

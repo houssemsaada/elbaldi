@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="1066.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.templatebackController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.templatebackController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="656.0" prefWidth="256.0" style="-fx-background-color: #ffff; -fx-padding: 12; -fx-border-style: solid inside; -fx-border-width: 4; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: #000000;">
          <children>
@@ -49,7 +49,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
+                        <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-10.0" layoutY="45.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../../Downloads/Nouveau%20dossier/Nouveau%20dossier/style.css" text="Profile" textFill="#e7e5e5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -221,16 +221,16 @@
          </children>
       </VBox>
       <Accordion layoutX="281.0" layoutY="118.0" prefWidth="0.0" />
-      <Text fill="#bc2222" layoutX="256.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tableau de bord d'administration" wrappingWidth="293.01025390625">
+      <Text fill="#bc2222" layoutX="265.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tableau de bord d'administration" wrappingWidth="460.00000858306885">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Black" size="24.0" />
          </font>
       </Text>
-      <HBox layoutX="256.0" layoutY="58.0" prefHeight="150.0" prefWidth="802.0" style="-fx-background-color: #a20812;">
+      <HBox layoutX="256.0" layoutY="58.0" prefHeight="150.0" prefWidth="929.0" style="-fx-background-color: #a20812;">
          <children>
-            <AnchorPane prefHeight="154.0" prefWidth="802.0">
+            <AnchorPane prefHeight="150.0" prefWidth="930.0">
                <children>
-                  <VBox layoutX="39.0" layoutY="10.0" prefHeight="129.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF;">
+                  <VBox layoutX="79.0" layoutY="10.0" prefHeight="129.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -248,7 +248,7 @@
                         </Pane>
                      </children>
                   </VBox>
-                  <VBox layoutX="292.0" layoutY="10.0" prefHeight="129.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF;">
+                  <VBox layoutX="361.0" layoutY="10.0" prefHeight="129.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -266,11 +266,11 @@
                         </Pane>
                      </children>
                   </VBox>
-                  <VBox layoutX="549.0" layoutY="10.0" prefHeight="129.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF;">
+                  <VBox layoutX="644.0" layoutY="10.0" prefHeight="129.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="48.0" layoutY="14.0" text="ventes totales">
+                              <Label layoutX="48.0" layoutY="14.0" text="Ventes totales">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
@@ -288,7 +288,7 @@
             </AnchorPane>
          </children>
       </HBox>
-      <PieChart fx:id="piechart" layoutX="292.0" layoutY="340.0" prefHeight="280.0" prefWidth="303.0" />
+      <PieChart fx:id="piechart" layoutX="292.0" layoutY="340.0" prefHeight="280.0" prefWidth="341.0" />
       <Pane layoutX="279.0" layoutY="222.0" prefHeight="83.0" prefWidth="234.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="17.0" layoutY="14.0" text="Nombre Total de produits" textFill="#bc1212">
@@ -301,7 +301,7 @@
                </font></Label>
          </children>
       </Pane>
-      <BarChart fx:id="barchar" layoutX="633.0" layoutY="280.0" prefHeight="328.0" prefWidth="405.0">
+      <BarChart fx:id="barchar" layoutX="710.0" layoutY="280.0" prefHeight="328.0" prefWidth="435.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -309,15 +309,16 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <Label layoutX="670.0" layoutY="241.0" text="Top 5 des produits les plus vendus du mois" textFill="#b90e0e">
+      <Label layoutX="755.0" layoutY="241.0" text="Top 5 des produits les plus vendus du mois" textFill="#b90e0e">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="286.0" layoutY="318.0" text="Répartition des produits par catégorie" textFill="#b51616">
+      <Label layoutX="300.0" layoutY="318.0" text="Répartition des produits par catégorie" textFill="#b51616">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
+      <Button fx:id="prodmin" layoutX="953.0" layoutY="605.0" mnemonicParsing="false" onAction="#prodmin" text="Les produits les moins vendus" />
    </children>
 </AnchorPane>

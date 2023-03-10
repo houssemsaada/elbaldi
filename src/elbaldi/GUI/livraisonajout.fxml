@@ -21,9 +21,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="656.0" prefWidth="1186.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.LivraisonajoutController">
+<AnchorPane prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.LivraisonajoutController">
    <children>
-      <GridPane layoutX="433.0" layoutY="83.0" prefHeight="314.0" prefWidth="434.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
+      <GridPane layoutX="465.0" layoutY="106.0" prefHeight="314.0" prefWidth="471.0" style="-fx-background-color: #EBEAEA; -fx-border-color: #a20812; -fx-border-width: 2px;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.400048828125" minWidth="10.0" prefWidth="213.60002441406246" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.39998779296872" minWidth="10.0" prefWidth="215.19997558593747" />
@@ -39,17 +39,17 @@
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
             </Label>
-            <Label prefHeight="22.0" prefWidth="156.0" text="                   status" textAlignment="JUSTIFY">
+            <Label prefHeight="22.0" prefWidth="156.0" text="                   Statut" textAlignment="JUSTIFY">
                <font>
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="12.0" layoutY="199.0" prefHeight="22.0" prefWidth="209.0" text="                 adresse" GridPane.rowIndex="2">
+            <Label contentDisplay="CENTER" layoutX="12.0" layoutY="199.0" prefHeight="22.0" prefWidth="209.0" text="                 Adresse" GridPane.rowIndex="2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="adresseField" blendMode="SRC_ATOP" layoutX="227.0" layoutY="192.0" prefHeight="77.0" prefWidth="215.0" promptText="adresse" style="-fx-background-color: #808080; -fx-border-color: #a20812; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="adresseField" blendMode="SRC_ATOP" layoutX="227.0" layoutY="192.0" prefHeight="77.0" prefWidth="215.0" promptText="Adresse" style="-fx-background-color: #808080; -fx-border-color: #a20812; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="13.0" />
                </font>
@@ -60,12 +60,7 @@
       </GridPane>
       <Pane layoutX="278.0" layoutY="492.0" prefHeight="158.0" prefWidth="898.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 4px;">
          <children>
-            <Label layoutX="52.0" layoutY="22.0" prefHeight="26.0" prefWidth="175.0" text="Admin Dashboard" textFill="#c90000">
-               <font>
-                  <Font name="System Italic" size="17.0" />
-               </font>
-            </Label>
-            <Button fx:id="exit1" blendMode="SRC_ATOP" layoutX="52.0" layoutY="101.0" mnemonicParsing="false" onAction="#backonAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Retour">
+            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="554.0" layoutY="60.0" mnemonicParsing="false" onAction="#addOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #a20812;" text="Ajouter">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -83,25 +78,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="637.0" layoutY="49.0" mnemonicParsing="false" onAction="#addOnAction" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #a20812;" text="Ajouter">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
-            <Text layoutX="351.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="veuillez entrer les détails de livraison" wrappingWidth="195.99999999999994">
+            <Text layoutX="110.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer les détails de livraison" wrappingWidth="286.99999999999994">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -308,10 +285,28 @@
             </ScrollPane>
          </children>
       </VBox>
-      <Label layoutX="905.0" layoutY="32.0" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #a20812;" stylesheets="@style.css" text="Gestion livraison" textFill="WHITE">
+      <Label layoutX="562.0" layoutY="37.0" text="Gestion livraison" textFill="#a20812">
          <font>
-            <Font name="System Italic" size="22.0" />
+            <Font name="Arial Black" size="30.0" />
          </font>
       </Label>
+      <Button fx:id="exit1" blendMode="SRC_ATOP" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" onAction="#backonAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a20812;" text="Retour">
+         <textFill>
+            <RadialGradient centerX="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
    </children>
 </AnchorPane>

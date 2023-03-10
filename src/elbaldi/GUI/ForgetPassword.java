@@ -39,13 +39,12 @@ public class ForgetPassword {
     //UserSession userSession;
 
     @FXML
-    private ImageView anchorPane;
-
-    @FXML
     private Button btnid;
 
     @FXML
     private TextField mailid;
+    @FXML
+    private Button Back;
 
     @FXML
     void SendMail(ActionEvent event) throws IOException {
@@ -82,13 +81,11 @@ public class ForgetPassword {
 
     }
 
-    @FXML
     private void mini(MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.setIconified(true);
     }
 
-    @FXML
     private void max(MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.setFullScreen(true);
@@ -106,11 +103,26 @@ public class ForgetPassword {
         return saltStr;
     }
 
-    @FXML
     private void close(javafx.scene.input.MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.close();
 
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+          // Redirection vers BrouillonController
+    // Vous pouvez remplacer "Brouillon.fxml" par le nom de votre fichier FXML
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+    try {
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) Back.getScene().getWindow(); // backButton est le bouton de retour
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
     }
 
 }

@@ -61,16 +61,16 @@ public class CategorieBackAjoutController implements Initializable {
                     if (!nom.getText().equalsIgnoreCase("") && !descriptionC.getText().equalsIgnoreCase("") && !categorieCRUD.NomExiste(nom.getText())) {
                         categorieCRUD.ajouterCategorie(cat);
                         Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
-                        alert0.setTitle("information Dialog");
+                        alert0.setTitle("Boîte de dialogue d'information");
                         alert0.setHeaderText(null);
-                        alert0.setContentText("Ajout avec succes ");
+                        alert0.setContentText("Ajoutée avec succès");
                         alert0.show();
                         ((Node) event.getSource()).getScene().getWindow().hide();
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Echec de l'ajout");
                         alert.setHeaderText(null);
-                        alert.setContentText("Attention ! Verifier les données saisie (Pas de champs vides)");
+                        alert.setContentText("Attention ! Vérifier les données saisies (pas de champs vides)");
                         alert.showAndWait();
                     }
                 } 

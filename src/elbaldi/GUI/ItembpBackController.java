@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -105,13 +107,23 @@ public class ItembpBackController implements Initializable {
       bonplancrud.supprimerbonplan(id_bonplan);
   
      
+        Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert1.setContentText("Êtes-vous sûr(e) de vouloir supprimer ce bon plan?");
+        alert1.setHeaderText("Veuillez confirmer votre action");
+
+        Optional<ButtonType> result = alert1.showAndWait();
+
+        // if the user confirms the deletion
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            bonplancrud.supprimerbonplan(id_bonplan);
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Information Dialog");
+      alert.setTitle("Boîte de dialogue d'information");
       alert.setHeaderText(null);
-      alert.setContentText("bonplan a été supprimé avec succés!");
+      alert.setContentText("Bon plan a été supprimé avec succès !");
       alert.show();
    Parent loader = FXMLLoader.load(getClass().getResource("bonplanbacklist.fxml"));
     titrebp.getScene().setRoot(loader);
     }
     
+}
 }

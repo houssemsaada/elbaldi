@@ -138,7 +138,7 @@ public class ModifierBonplanBackController implements Initializable {
                 Alert alert0 = new Alert(Alert.AlertType.INFORMATION);
                 alert0.setTitle("information Dialog");
                 alert0.setHeaderText(null);
-                alert0.setContentText("Votre modification est enregistrée avec succes ");
+                alert0.setContentText("Votre modification a été enregistrée avec succés ");
                 alert0.show();
                 ((Node) event.getSource()).getScene().getWindow().hide();
                 
