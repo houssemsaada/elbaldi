@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -90,6 +91,8 @@ public class AjouReservationFront1Controller implements Initializable {
             alert0.setHeaderText(null);
             alert0.setContentText("Ajout avec succes ");
             alert0.show();
+                        ((Node) event.getSource()).getScene().getWindow().hide();
+
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause(); }

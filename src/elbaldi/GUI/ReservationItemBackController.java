@@ -7,12 +7,14 @@ package elbaldi.GUI;
 
 import elbaldi.models.Reservation;
 import elbaldi.models.bonplan;
+import elbaldi.services.ReservationCrud;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -46,26 +48,25 @@ public class ReservationItemBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    public void setData(Reservation dest) {
-       this.reservation = dest;
-        id_res=dest.getId_reservation();
-        this.nomBp.setText(reservation.getUser2().getNom()+" "+reservation.getUser2().getPrenom());
-        this.lieuBp.setText(reservation.getBonplan2().getTitre_bonplan());
-        this.nombrePersonne.setText(reservation.getNombre_personnes()+"");
-        this.statutBp.setText(reservation.getStatut_reservation());
-        
-        
-        //Image f = new Image("C:\\xampp\\htdocs\\images\\" + bonplan1.getImage_bonplan());
+    }
 
+    public void setData(Reservation dest) {
+        this.reservation = dest;
+        id_res = dest.getId_reservation();
+        this.nomBp.setText(reservation.getUser2().getNom() + " " + reservation.getUser2().getPrenom());
+        this.lieuBp.setText(reservation.getBonplan2().getTitre_bonplan());
+        this.nombrePersonne.setText(reservation.getNombre_personnes() + "");
+        this.statutBp.setText(reservation.getStatut_reservation());
+
+        //Image f = new Image("C:\\xampp\\htdocs\\images\\" + bonplan1.getImage_bonplan());
         //imagefx.setImage(f);
-         String imagePath = "C:\\xampp\\htdocs\\images\\"+ reservation.getBonplan2().getImage_bonplan().toString();
-       
+        String imagePath = "C:\\xampp\\htdocs\\images\\" + reservation.getBonplan2().getImage_bonplan().toString();
+
         // Create an ImageView object
         ImageView imageView = new ImageView();
         // Create a File object with the path of your image
         File file = new File(imagePath);
-       
+
         // Check if the file exists
         if (file.exists()) {
             // Create an Image object with the file path
@@ -77,30 +78,25 @@ public class ReservationItemBackController implements Initializable {
         }
 
     }
+
     @FXML
-    private void confirmerRes(ActionEvent event) {if (TableView.getSelectionModel().getSelectedItem() != null) {
-////             
-////            Reservation r=TableView.getSelectionModel().getSelectedItem();
-////            ReservationCrud resvS = new ReservationCrud();
-////            System.out.println(r.getId_reservation());
-////            r.setStatut_reservation("confrimee");
-////            resvS.modifierReservation(r);
-////            Alert alert = new Alert(Alert.AlertType.ERROR);
-////            alert.setTitle("information Dialog");
-////            alert.setHeaderText(null);
-////            alert.setContentText("confirmation de reservation");
-////            alert.show();
-////         
-////              Afficher();   
-////           
-////        
-////         } else {
-////            Alert alert = new Alert(Alert.AlertType.ERROR);
-////            alert.setTitle("information Dialog");
-////            alert.setHeaderText(null);
-////            alert.setContentText("Vous devez selectionner une categorie");
-////            alert.show();
-////        }
+    private void confirmerRes(ActionEvent event) {
+        if (reservation != null) {
+            ReservationCrud resvS = new ReservationCrud();
+            reservation.setStatut_reservation("confirmee");
+            resvS.modifierReservation(reservation);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Confirmation de réservation");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Vous devez sélectionner une réservation");
+            alert.showAndWait();
+        }
     }
-    
+
 }
