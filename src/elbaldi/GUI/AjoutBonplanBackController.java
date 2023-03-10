@@ -221,7 +221,10 @@ public class AjoutBonplanBackController implements Initializable {
         //loader.setLocation(getClass().getResource("AfficherBonplan.fxml"));
        // Parent root = loader.load();
        // annuler.getScene().setRoot(root);
+                   ((Node) event.getSource()).getScene().getWindow().hide();
+
     }
+
     
      public void resizeFile(String imagePathToRead,
                               String imagePathToWrite, int resizeWidth, int resizeHeight)

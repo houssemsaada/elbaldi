@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BpFrontController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BpFrontController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="656.0" prefWidth="1216.0" stylesheets="@../../../../../../Desktop/le%206/elbaldi/src/elbaldi/GUI/style.css">
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../../../../Desktop/le%206/elbaldi/src/elbaldi/GUI/style.css">
          <children>
             <ImageView fitHeight="449.0" fitWidth="798.0" layoutX="261.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
             <ScrollPane fx:id="scroll" layoutX="232.0" layoutY="121.0" prefHeight="518.0" prefWidth="915.0">
@@ -33,10 +33,10 @@
                   <Image url="@../../ressources/Logo.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="Typefx" layoutX="953.0" layoutY="89.0" onAction="#filtrer" prefHeight="31.0" prefWidth="193.0" promptText="Type Bon plan" />
+            <ComboBox fx:id="Typefx" layoutX="953.0" layoutY="89.0" onAction="#filtrer" prefHeight="31.0" prefWidth="195.0" promptText="Type Bon plan" />
             <Accordion layoutX="14.0" layoutY="231.0" />
             <HBox layoutX="571.0" layoutY="91.0" prefHeight="42.0" prefWidth="287.0" />
-            <TextField fx:id="search" layoutX="231.0" layoutY="91.0" />
+            <TextField fx:id="search" layoutX="308.0" layoutY="91.0" prefHeight="31.0" prefWidth="214.0" promptText="Rechercher..." />
             <AnchorPane layoutX="-2.0" layoutY="78.0" prefHeight="250.0" prefWidth="195.0">
                <children>
                   <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="2.0" layoutY="45.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#profilAction" prefHeight="41.0" prefWidth="193.0" stylesheets="@../../../../../../Downloads/style.css" text="Profil" textFill="#e7e5e5">
@@ -131,7 +131,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="361.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="33.0" layoutX="526.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../ressources/search.png" />
                </image>

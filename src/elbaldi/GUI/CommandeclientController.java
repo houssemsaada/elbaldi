@@ -82,6 +82,11 @@ public class CommandeclientController implements Initializable {
     //ObservableList<produit> produitObservableList = FXCollections.observableArrayList();
     @FXML
     private Label promometier;
+    @FXML
+    private TextField codepromo;
+    PromotionCRUD prc = new PromotionCRUD();
+    @FXML
+    private Button validerpromo;
 
     /**
      * Initializes the controller class.
@@ -149,7 +154,7 @@ public class CommandeclientController implements Initializable {
     private void confirmerOnAction(ActionEvent event) {
         try {
             if (commandeGUI.isTextFieldEmpty(nomTF, prenomTF, addrTF)) {
-                commandeGUI.AlertShow("Please fill all fields", "Empty fields", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Veuillez remplir tous les champs!", "Champs vides!", Alert.AlertType.ERROR);
                 return;
             }
         } catch (Exception e) {
@@ -167,17 +172,17 @@ public class CommandeclientController implements Initializable {
         //total = Float.parseFloat(totalTF.getText());
         c.setTotal(total);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Are you sure you want to confirm the order?");
-        alert.setHeaderText("Please confirm your action");
+        alert.setContentText("Êtes-vous sûr(e) de vouloir confirmer la commande ?");
+        alert.setHeaderText("Veuillez confirmer votre action");
         Optional<ButtonType> result = alert.showAndWait();
         // if the user confirms the update action
         if (result.isPresent() && result.get() == ButtonType.OK) {
             ProduitCRUD pcc = new ProduitCRUD();
-            commandeGUI.AlertShow("order added ! ", "order", Alert.AlertType.INFORMATION);
+            commandeGUI.AlertShow("Commande ajoutée! ", "commande", Alert.AlertType.INFORMATION);
 
             cr.ajouterCommande(c);
             commande c2 = cr.filtreBypanier(p);
-            System.out.println("l'id de nouvelle commande" + c2.getId_cmd());
+            System.out.println("l'id de la nouvelle commande" + c2.getId_cmd());
             for (int i = 0; i < yasObservableList.size(); i++) {
                 produit element1 = yasObservableList.get(i);
                 produit element2 = produitObservableList.get(i);
@@ -210,6 +215,20 @@ public class CommandeclientController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void codeOnAction(ActionEvent event) {
+        String code = codepromo.getText();
+        promotion promo = new promotion();
+        promo.setCode_promo(code);
+        if (prc.promocodeExistePourUtilisateur(promo, u)) {
+           promo = prc.getBypromo(code) ;
+           total=total*(1-promo.getTaux());
+           this.totalTF.setText(total + "");
+           validerpromo.setText((int)(promo.getTaux()*100)+"%");
+           validerpromo.setDisable(true);
+        }
     }
 
 }

@@ -102,7 +102,7 @@ public class ConsulterPanierController implements Initializable {
 //        p=pc.filtreByidPanier(Integer.parseInt(panieridTF.getText()));
         try {
             if (p.sommePanier(produitObservableList) == 0) {
-                commandeGUI.AlertShow("panier vide", "vide", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Panier vide", "vide", Alert.AlertType.ERROR);
                 return;
             }
         } catch (Exception ewww) {
@@ -136,7 +136,7 @@ public class ConsulterPanierController implements Initializable {
     private void DeleteOnAction(ActionEvent event) {
         try {
             if (ListView.getSelectionModel().getSelectedItem() == null) {
-                commandeGUI.AlertShow("Please select a product to delete", "No product selected", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Veuillez sélectionner un produit à supprimer.", "Aucun produit sélectionné.", Alert.AlertType.ERROR);
                 return;
             }
 
@@ -153,8 +153,8 @@ public class ConsulterPanierController implements Initializable {
             prod.setRef_produit(ListView.getSelectionModel().getSelectedItem().getRef_produit());
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure you want to delete the order ?");
-            alert.setHeaderText("Please confirm your action");
+            alert.setContentText("Êtes-vous sûr(e) de vouloir supprimer la commande ?");
+            alert.setHeaderText("Veuillez confirmer votre action.");
 
             Optional<ButtonType> result = alert.showAndWait();
 
@@ -192,7 +192,7 @@ public class ConsulterPanierController implements Initializable {
     private void updateOnAction(ActionEvent event) {
         try {
             if (ListView.getSelectionModel().getSelectedItem() == null) {
-                commandeGUI.AlertShow("Please select a product to update", "No product selected", Alert.AlertType.ERROR);
+                commandeGUI.AlertShow("Veuillez sélectionner un produit à mettre à jour.", "Aucun produit sélectionné.", Alert.AlertType.ERROR);
                 return;
             }
 

@@ -18,11 +18,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 
 /**
  * FXML Controller class
@@ -75,6 +77,8 @@ EvenementService es = new EvenementService();
                     column = 0;
                     row++;
                 }
+                
+                
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -83,45 +87,46 @@ EvenementService es = new EvenementService();
         }    }     
 
   
-    @FXML
+   @FXML
     private void produitsf(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
         Parent root = loader.load();
         prodfx.getScene().setRoot(root);
     }
 
-   
-
-
     @FXML
-    private void deconfx(ActionEvent event) {
-    }
-    
-      @FXML
     private void profilAction(ActionEvent event) {
-       
-      
+        commandeGUI.changeScene(event, "ClientMainScreeen.fxml", "Profile");
+
     }
 
     @FXML
     private void bonplanAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
+        commandeGUI.changeScene(event, "BpFront.fxml", "Bons plans");
 
     }
 
     @FXML
     private void EventAction(ActionEvent event) {
-                    commandeGUI.changeScene(event, "afficherevenfront2.fxml", "evenement");
+
+        commandeGUI.changeScene(event, "affichereventfront2.fxml", "évènement");
 
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "Client.fxml", "commande ");
+        commandeGUI.changeScene(event, "Client.fxml", "Quiz ");
 
     }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
+       commandeGUI.changeScene(event, "Front1.fxml", "Profile");
+
+    }
+
 
     
 }

@@ -46,12 +46,10 @@ import javafx.util.Callback;
 public class GerantMainScreenController implements Initializable {
 
     @FXML
-    private Button profilfx;
-    @FXML
     private Button deconnexionfx;
     @FXML
     private Button reservationfx;
-    
+   
     @FXML
     private AnchorPane anchor;
 
@@ -72,27 +70,28 @@ public class GerantMainScreenController implements Initializable {
 
          
     }
-    
-  
+   
+ 
        
 
 
 
     @FXML
-    private void profilAction(ActionEvent event) {
-    }
+    private void deconnexionAction(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
 
-    @FXML
-    private void deconnexionAction(ActionEvent event) {
+        loader.setLocation(getClass().getResource("Front1.fxml"));
+        Parent root = loader.load();
+       deconnexionfx.getScene().setRoot(root);
     }
 
     @FXML
     private void reservationAction(ActionEvent event) throws IOException {
            FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("AfficherReservationBack.fxml"));
+        loader.setLocation(getClass().getResource("GerantMainScreen.fxml"));
         Parent root = loader.load();
         reservationfx.getScene().setRoot(root);
     }
-    
+   
 }

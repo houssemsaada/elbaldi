@@ -46,13 +46,11 @@ public class AfficherevenFrontController implements Initializable {
     @FXML
     private Button bonplanfx;
     @FXML
-    private Button profilfx;
+    private Button eventfx;
     @FXML
-    private Button Eventfx;
+    private Button cnx;
     @FXML
-    private Button Quizfx;
-    @FXML
-    private Button decofx;
+    private Button insc;
 
     /**
      * Initializes the controller class.
@@ -66,11 +64,11 @@ public class AfficherevenFrontController implements Initializable {
             int column = 0;
             for (int i = 0; i < events.size(); i++) {
                 //chargement dynamique d'une interface
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("eventfront.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("eventfront1.fxml"));
                 AnchorPane pane = loader.load();
                
                 //passage de parametres
-                EventfrontController controller = loader.getController();
+                Eventfront1Controller controller = loader.getController();
                 controller.setEvenement(events.get(i));
                 
 
@@ -110,36 +108,24 @@ public class AfficherevenFrontController implements Initializable {
 
     
 
+    @FXML
     private void eventAction(ActionEvent event) {
                 commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
 
     }
 
+    @FXML
     private void connecter(ActionEvent event) {
         commandeGUI.changeScene(event, "Login.fxml", "Login");
 
     }
 
+    @FXML
     private void inscr(ActionEvent event) {
         commandeGUI.changeScene(event, "inscription.fxml", "Login");
 
     }
 
-    @FXML
-    private void profilAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void EventAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void QuizAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void deconfx(ActionEvent event) {
-    }
 
 
 

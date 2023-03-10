@@ -101,13 +101,44 @@ public class ClientController implements Initializable {
         }
     }
 
-           @FXML
+ @FXML
     private void produitsf(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
         Parent root = loader.load();
         prodfx.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void profilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "ClientMainScreeen.fxml", "Profile");
+
+    }
+
+    @FXML
+    private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront.fxml", "Bons plans");
+
+    }
+
+    @FXML
+    private void EventAction(ActionEvent event) {
+
+        commandeGUI.changeScene(event, "affichereventfront2.fxml", "évènement");
+
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Client.fxml", "Quiz ");
+
+    }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
+       commandeGUI.changeScene(event, "Front1.fxml", "Profile");
+
     }
 
     @FXML
@@ -125,46 +156,7 @@ public class ClientController implements Initializable {
         }
     }
 
-    @FXML
-    private void profilAction(ActionEvent event) {
-        grid.getChildren().clear();
-        try {
-            // TODO
-            FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
-
-            AnchorPane anchorPane = cards.load();
-
-            grid.add(anchorPane, 1, 1);
-
-            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    @FXML
-    private void bonplanAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
-
-    }
-
-    @FXML
-    private void EventAction(ActionEvent event) {
-                    commandeGUI.changeScene(event, "afficherevenFront.fxml", "evenement");
-
-    }
-
-    @FXML
-    private void QuizAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "Client.fxml", "commande ");
-
-    }
-
-    @FXML
-    private void deconfx(ActionEvent event) {
-    }
-    
+  
 
     
 }

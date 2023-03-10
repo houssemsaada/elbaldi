@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProduitFront2Controller">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProduitFront2Controller">
    <children>
       <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffff">
          <children>
@@ -149,8 +149,8 @@
             <HBox layoutX="670.0" layoutY="80.0" prefHeight="42.0" prefWidth="287.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="86.0" text="Prix entre :" />
-                  <TextField fx:id="prixmin" prefHeight="31.0" prefWidth="74.0" />
-                  <TextField fx:id="prixmax" prefHeight="31.0" prefWidth="80.0" />
+                  <TextField fx:id="prixmin" prefHeight="31.0" prefWidth="74.0" promptText="min" />
+                  <TextField fx:id="prixmax" prefHeight="31.0" prefWidth="80.0" promptText="max" />
                   <Button fx:id="filtrefx" mnemonicParsing="false" onAction="#filtrerparprix" prefHeight="31.0" prefWidth="50.0" stylesheets="@style.css" text="Ok" />
                </children>
             </HBox>
@@ -165,7 +165,7 @@
                   <Image url="@../../Ressources/croiss.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="418.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="419.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/search.png" />
                </image>

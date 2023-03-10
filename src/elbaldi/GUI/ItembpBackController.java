@@ -99,31 +99,28 @@ public class ItembpBackController implements Initializable {
     imagefx.getScene().setRoot(root);
 
     }
+@FXML
 
-    @FXML
-    
-         private void supprimer(ActionEvent event) throws SQLException, IOException {
-           BonplanCrud bonplancrud = new BonplanCrud();
-      bonplancrud.supprimerbonplan(id_bonplan);
-  
-     
+    private void supprimer(ActionEvent event) throws SQLException, IOException {
+        BonplanCrud bonplancrud = new BonplanCrud();
         Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
-        alert1.setContentText("Êtes-vous sûr(e) de vouloir supprimer ce bon plan?");
-        alert1.setHeaderText("Veuillez confirmer votre action");
+        alert1.setContentText("Are you sure you want to delete the order ?");
+        alert1.setHeaderText("Please confirm your action");
 
         Optional<ButtonType> result = alert1.showAndWait();
 
         // if the user confirms the deletion
         if (result.isPresent() && result.get() == ButtonType.OK) {
             bonplancrud.supprimerbonplan(id_bonplan);
-      Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Boîte de dialogue d'information");
-      alert.setHeaderText(null);
-      alert.setContentText("Bon plan a été supprimé avec succès !");
-      alert.show();
-   Parent loader = FXMLLoader.load(getClass().getResource("bonplanbacklist.fxml"));
-    titrebp.getScene().setRoot(loader);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("bonplan a été supprimé avec succés!");
+        alert.show();
+        Parent loader = FXMLLoader.load(getClass().getResource("bonplanbacklist.fxml"));
+        titrebp.getScene().setRoot(loader);
+        }
+
+       
     }
-    
-}
 }

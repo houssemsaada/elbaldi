@@ -7,22 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProduitDetailsFront1Controller">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1216.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.ProduitDetailsFront1Controller">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1222.0" stylesheets="@style.css">
+      <AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1222.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css">
          <children>
             <ImageView fx:id="img" fitHeight="223.0" fitWidth="202.0" layoutX="178.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="reffx" layoutX="422.0" layoutY="78.0" prefHeight="31.0" prefWidth="516.0" stylesheets="@style.css" text="Reference">
                <font>
-                  <Font name="Arial Black" size="15.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="libellefx" layoutX="427.0" layoutY="113.0" prefHeight="38.0" prefWidth="516.0" text="libelle" textFill="#8d2a2a">
+            <Label fx:id="libellefx" layoutX="422.0" layoutY="113.0" prefHeight="38.0" prefWidth="516.0" text="Libelle">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="descfx" layoutX="424.0" layoutY="151.0" prefHeight="61.0" prefWidth="533.0" text="description">
+            <Label fx:id="descfx" layoutX="424.0" layoutY="151.0" prefHeight="61.0" prefWidth="533.0" text="Description">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>

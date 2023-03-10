@@ -48,11 +48,10 @@ public class MailerService {
             message.setFrom(new InternetAddress(ourMail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(c.getPan().getU1().getEmail()));
             message.setSubject("Confirmation de commande");
-             // Create the message part
+            // Create the message part
             MimeBodyPart messageBodyPart = new MimeBodyPart();
 
             // Fill the message
-            
             String emailBody = "Bonjour " + c.getPan().getU1().getPrenom() + "!,\n\n"
                     + "Merci pour votre commande n°:"
                     + c.getId_cmd() + "\n\n"
@@ -66,7 +65,7 @@ public class MailerService {
             FileDataSource fileDataSource = new FileDataSource("C:\\ordrePdfn" + c.getId_cmd() + ".pdf");
             attachmentPart.setDataHandler(new DataHandler(fileDataSource));
             attachmentPart.setFileName(fileDataSource.getName());
-             MimeMultipart multipart = new MimeMultipart();
+            MimeMultipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
             multipart.addBodyPart(attachmentPart);
 
@@ -161,6 +160,31 @@ public class MailerService {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
 
+        }
+    }
+
+    public void sendParticipationMail(Participation p, Evenement e,Utilisateur u ) {
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ourMail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(u.getEmail()));
+            message.setSubject("Votre participation est confirmé!");
+            String emailBody
+                    = "cher(e)"+ u .getPrenom() + 
+                    "Nous vous remercions d'avoir fait votre participation. Votre numéro de participation :"
+                    + p.getId_participation() + "\n"
+                    + "Nom de l'événement : \n"
+                    + e.getNom()+"\n"
+                    + "Cordialement,\n"
+                    + "L'équipe Elbaldi";
+            message.setText(emailBody);
+
+            Transport.send(message);
+
+            System.out.println("Email sent successfully.");
+        } catch (MessagingException ex) {
+            throw new RuntimeException(ex);
         }
     }
 

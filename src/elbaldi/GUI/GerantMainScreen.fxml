@@ -30,31 +30,11 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ScrollPane prefHeight="492.0" prefWidth="263.0" style="-fx-background-color: #FFFFFF;" />
+                  <ScrollPane prefHeight="268.0" prefWidth="234.0" style="-fx-background-color: #FFFFFF;" />
                </children>
             </VBox>
-            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="472.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Desktop/Ressources/search.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="profilfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="252.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Profil" textFill="#e7e5e5">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../ressources/utilisateur.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="deconnexionfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="337.0" mnemonicParsing="false" onAction="#deconnexionAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Déconnexion" textFill="#e7e5e5">
+            <Button fx:id="deconnexionfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="315.0" mnemonicParsing="false" onAction="#deconnexionAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Déconnexion" textFill="#e7e5e5">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -69,7 +49,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="reservationfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="295.0" mnemonicParsing="false" onAction="#reservationAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Réservations" textFill="#e7e5e5">
+            <Button fx:id="reservationfx" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="251.0" mnemonicParsing="false" onAction="#reservationAction" prefHeight="45.0" prefWidth="234.0" stylesheets="@../../../../../../Desktop/design/Nouveau%20dossier/style.css" text="Réservations" textFill="#e7e5e5">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

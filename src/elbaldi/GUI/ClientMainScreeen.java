@@ -63,13 +63,7 @@ public class ClientMainScreeen implements Initializable{
 
 
     @FXML
-    private void QuizAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "Client.fxml", "commande ");
-
-    }
-
-    @FXML
-    private void prodd(ActionEvent event) throws IOException {
+    private void produitsf(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
@@ -78,16 +72,36 @@ public class ClientMainScreeen implements Initializable{
     }
 
     @FXML
-    private void BonpalnsAction(ActionEvent event) {
-                        commandeGUI.changeScene(event, "BpFront.fxml", "Bon Plan");
+    private void profilAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "ClientMainScreeen.fxml", "Profile");
 
     }
 
     @FXML
-    private void eventaction(ActionEvent event) {
-                            commandeGUI.changeScene(event, "affichereventFront2.fxml", "evenement");
+    private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront.fxml", "Bons plans");
 
     }
+
+    @FXML
+    private void EventAction(ActionEvent event) {
+
+        commandeGUI.changeScene(event, "affichereventfront2.fxml", "évènement");
+
+    }
+
+    @FXML
+    private void QuizAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "Client.fxml", "Quiz ");
+
+    }
+
+    @FXML
+    private void deconfx(ActionEvent event) {
+       commandeGUI.changeScene(event, "Front1.fxml", "Profile");
+
+    }
+
 
     @FXML
     private void histcommandes(ActionEvent event) {

@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,23 +132,39 @@ public class ItemQuizController implements Initializable {
 
     Optional<ButtonType> result = dialog.showAndWait();
     if (result.isPresent() && result.get() == jouerButtonType) {
-    qc.setNombreJouer(u.getId_user(), (qc.getNombreJouer(u.getId_user()) + 1)); // i
- 
-  
-   
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("JouerQuiz.fxml"));
-    try {
-            Parent root = loader.load();
-            JouerQuizController qbc= loader.getController();
-            qbc.setQuiz(qcc);
-            //nomLabel.getScene().setRoot(root);
-            Scene scene = new Scene(root);
-        Stage stage = (Stage) nomLabel.getScene().getWindow(); // backButton est le bouton de retour
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        ex.printStackTrace();
-    }
+        try {
+            qc.setNombreJouer(u.getId_user(), (qc.getNombreJouer(u.getId_user()) + 1)); // i
+            
+            
+            
+//    FXMLLoader loader = new FXMLLoader(getClass().getResource("JouerQuiz.fxml"));
+//    try {
+//            Parent root = loader.load();
+//            JouerQuizController qbc= loader.getController();
+//            qbc.setQuiz(qcc);
+//            //nomLabel.getScene().setRoot(root);
+//            Scene scene = new Scene(root);
+//        Stage stage = (Stage) nomLabel.getScene().getWindow(); // backButton est le bouton de retour
+//        stage.setScene(scene);
+//        stage.show();
+//    } catch (IOException ex) {
+//        ex.printStackTrace();
+//    }
+
+FXMLLoader loader = new FXMLLoader();
+loader.setLocation(getClass().getResource("JouerQuiz.fxml"));
+Parent root = loader.load();
+
+JouerQuizController cb = loader.getController();
+  cb.setQuiz(qcc);
+Stage stage = new Stage();
+stage.setTitle("Quiz");
+Scene scene = new Scene(root);
+stage.setScene(scene);
+stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(ItemQuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
    
     

@@ -5,12 +5,15 @@
  */
 package elbaldi.GUI;
 
+import static com.barcodelib.barcode.a.i.pc;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
 import elbaldi.models.Etat;
 import elbaldi.models.Role;
 import elbaldi.models.Utilisateur;
+import elbaldi.models.panier;
 import elbaldi.services.UtilisateurCRUD;
+import elbaldi.services.panierCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -82,7 +85,7 @@ public class InscriptionController implements Initializable {
     @FXML
     private TextField villetext;
 
-
+panierCRUD pc=new panierCRUD();
     @FXML
     private ChoiceBox<String> role;
     @FXML
@@ -104,6 +107,8 @@ public class InscriptionController implements Initializable {
                             emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),
                             rolee, Etat.accepted);
                     cRUD.ajouterUtlisateur(user);
+                    panier p = new panier(cRUD.GetUserByMailSession(emailtext.getText())); 
+                    pc.ajouterPanier(p);
                 }else {
                     user = new Utilisateur(nomtext.getText(), prenomtext.getText(),
                             emailtext.getText(),gettedDatePickerDate,Integer.parseInt(numteltext.getText()), villetext.getText(), passwordtxt.getText(),

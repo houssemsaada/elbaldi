@@ -22,7 +22,7 @@
             <Image url="@../../Ressource/ajouter.png" />
          </image>
       </ImageView>
-      <Button fx:id="showC" layoutX="1097.0" layoutY="53.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="87.0" text="Rafraîchir" />
+      <Button fx:id="showC" layoutX="1097.0" layoutY="89.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="87.0" text="Rafraîchir" />
       <Label layoutX="291.0" layoutY="22.0" prefHeight="53.0" prefWidth="353.0" text="Gestion bons plans" textFill="#a20812">
          <font>
             <Font name="Arial Black" size="33.0" />
@@ -244,5 +244,6 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <Button fx:id="stat" layoutX="1088.0" layoutY="53.0" mnemonicParsing="false" onAction="#stataction" text="Statistiques" />
    </children>
 </AnchorPane>

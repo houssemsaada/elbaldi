@@ -78,6 +78,8 @@ public class BonplanbacklistController implements Initializable {
     private ComboBox<String> Typefx;
     @FXML
     private TextField searchField;
+    @FXML
+    private Button stat;
 
     /**
      * Initializes the controller class.
@@ -327,6 +329,21 @@ public void afficher() {
         } catch (IOException ex) {
         }
         
+    }
+
+    @FXML
+    private void stataction(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("statbp.fxml"));
+        Parent root = loader.load();
+
+        StatbpController cb = loader.getController();
+
+        Stage stage = new Stage();
+        stage.setTitle("Tops 3 bons plans");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
     

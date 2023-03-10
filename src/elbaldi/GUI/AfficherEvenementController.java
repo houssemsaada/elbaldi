@@ -5,30 +5,51 @@
  */
 package elbaldi.GUI;
 
+
 import elbaldi.models.Evenement;
 import elbaldi.models.Participation;
 import elbaldi.services.EvenementService;
 import elbaldi.services.ParticipationService;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox; 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import elbaldi.services.EvenementService;
+import java.awt.Desktop;
+import java.sql.ResultSet;
+import javafx.collections.FXCollections;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.GridPane;
-
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -217,6 +238,59 @@ public class AfficherEvenementController implements Initializable {
         commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
     
-    
+     @FXML
+    private void excel(ActionEvent event) throws SQLException {
+        List<Evenement> list =  es.recuperer();
+
+        // Create a new workbook and sheet
+        // Create a new workbook and sheet
+XSSFWorkbook workbook = new XSSFWorkbook();
+String sheetName = "Evenement";
+workbook.createSheet(sheetName);
+
+// Create the header row
+String[] headers = {"ID", "NOM", "DESCRIPTION", "AWARDS ", "Date de début", "Date de FIN"};
+Row headerRow = workbook.getSheet(sheetName).createRow(0);
+for (int i = 0; i < headers.length; i++) {
+    Cell cell = headerRow.createCell(i);
+    cell.setCellValue(headers[i]);
+}
+
+// Create the data rows
+int rowNum = 1;
+
+for (int i=0 ; i<list.size() ; i++) {
+    Row row = workbook.getSheet(sheetName).createRow(rowNum++);
+    row.createCell(0).setCellValue(list.get(i).getId_event());
+    row.createCell(1).setCellValue(list.get(i).getNom());
+    row.createCell(2).setCellValue(list.get(i).getDescription());
+    row.createCell(3).setCellValue(list.get(i).getAwards());
+    row.createCell(4).setCellValue(list.get(i).getDate_debut());
+    row.createCell(5).setCellValue(list.get(i).getDate_fin());
+}
+
+// Show the file chooser dialog
+Stage stage = (Stage) gridpane.getScene().getWindow();
+FileChooser fileChooser = new FileChooser();
+fileChooser.setTitle("Save Events");
+fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel files (*.xlsx)", "*.xlsx"));
+File file = fileChooser.showSaveDialog(stage);
+if (file != null) {
+    // Save the workbook to the selected file
+    try {
+        FileOutputStream outputStream = new FileOutputStream(file);
+        workbook.write(outputStream);
+        workbook.close();
+        outputStream.close();
+        
+        // Open the saved file using Desktop API
+        if (Desktop.isDesktopSupported()) {
+            Desktop.getDesktop().open(file);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+    }
     
 }

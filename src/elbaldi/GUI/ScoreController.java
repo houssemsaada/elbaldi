@@ -99,6 +99,12 @@ public class ScoreController implements Initializable {
     UserSession userSession = new UserSession();
     Utilisateur u = userSession.getUser();
     promotion promo = new promotion();
+    @FXML
+    private ImageView sadfx;
+    @FXML
+    private Label a;
+    @FXML
+    private Label aa;
     /**
      * Initializes the controller class.
      */
@@ -184,6 +190,11 @@ public class ScoreController implements Initializable {
             // Affichage du code promo généré dans le label codeqr
             // codeqr.setText("avec le code Promo " + promoCode);
         } else {
+            imgfx.setVisible(false);
+            sadfx.setVisible(true);
+            a.setVisible(false);
+            email.setVisible(false);
+            aa.setVisible(false);
             echec.setText("Désolé, vous n'avez pas réussi le quiz !!!");
         }
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="746.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BpDetailsFrontController">
+<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="746.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elbaldi.GUI.BpDetailsFrontController">
    <children>
       <ImageView fx:id="img" fitHeight="256.0" fitWidth="254.0" layoutX="93.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="titrefx" alignment="CENTER" layoutX="110.0" layoutY="383.0" prefHeight="22.0" prefWidth="254.0" text="Titre Bon plan" textFill="#d73535" underline="true">

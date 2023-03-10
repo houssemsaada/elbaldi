@@ -7,12 +7,14 @@ package elbaldi.GUI;
 
 import elbaldi.models.Reservation;
 import elbaldi.models.bonplan;
+import elbaldi.services.ReservationCrud;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -79,29 +81,23 @@ public class ReservationItemBackController implements Initializable {
     }
     @FXML
     private void confirmerRes(ActionEvent event) {
-//        if (TableView.getSelectionModel().getSelectedItem() != null) {
-////             
-////            Reservation r=TableView.getSelectionModel().getSelectedItem();
-////            ReservationCrud resvS = new ReservationCrud();
-////            System.out.println(r.getId_reservation());
-////            r.setStatut_reservation("confrimee");
-////            resvS.modifierReservation(r);
-////            Alert alert = new Alert(Alert.AlertType.ERROR);
-////            alert.setTitle("information Dialog");
-////            alert.setHeaderText(null);
-////            alert.setContentText("confirmation de reservation");
-////            alert.show();
-////         
-////              Afficher();   
-////           
-////        
-////         } else {
-////            Alert alert = new Alert(Alert.AlertType.ERROR);
-////            alert.setTitle("information Dialog");
-////            alert.setHeaderText(null);
-////            alert.setContentText("Vous devez selectionner une categorie");
-////            alert.show();
-////        }
+        if (reservation != null) {
+            ReservationCrud resvS = new ReservationCrud();
+            reservation.setStatut_reservation("confirmee");
+            resvS.modifierReservation(reservation);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Confirmation de réservation");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Vous devez sélectionner une réservation");
+            alert.showAndWait();
+        }
     }
+
     
 }

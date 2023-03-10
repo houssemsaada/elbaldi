@@ -180,4 +180,21 @@ public class BonplanCrud implements InterfaceBonplanCrud {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      */
+      
+        public  ResultSet ReservationBpcount(){
+      try {
+            String req = "SELECT bonplan.titre_bonplan, COUNT(reservation.id_reservation) as reservation_count FROM bonplan JOIN reservation ON bonplan.id_bonplan = reservation.id_bonplan GROUP BY bonplan.titre_bonplan LIMIT 3";
+            Statement st = connection.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            return RS ;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }  
+    
+    
+    return null;
+    
+}
 }

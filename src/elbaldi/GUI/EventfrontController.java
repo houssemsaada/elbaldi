@@ -8,6 +8,7 @@ package elbaldi.GUI;
 import elbaldi.models.Evenement;
 import elbaldi.models.Participation;
 import elbaldi.models.Utilisateur;
+import elbaldi.services.MailerService;
 import elbaldi.services.ParticipationService;
 import elbaldi.services.UserSession;
 import java.io.IOException;
@@ -101,6 +102,8 @@ public class EventfrontController implements Initializable {
 
             System.out.println(e.getDate_debut());
 ps.ajouter(p,e);
+            MailerService ms = new MailerService();
+            ms.sendParticipationMail(p, e, u);
 Alert alert = new Alert(Alert.AlertType.INFORMATION);
 alert.setTitle("Information Dialog");
 alert.setHeaderText(null);

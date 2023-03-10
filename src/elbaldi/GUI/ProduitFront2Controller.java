@@ -361,14 +361,7 @@ public class ProduitFront2Controller implements Initializable {
         }
     }
 
-    @FXML
-    private void produitsf(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
-        Parent root = loader.load();
-        prodfx.getScene().setRoot(root);
-    }
 
     @FXML
     private void panierAction(MouseEvent event) {
@@ -384,6 +377,14 @@ public class ProduitFront2Controller implements Initializable {
             e.printStackTrace();
         }
     }
+        @FXML
+    private void produitsf(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
+        Parent root = loader.load();
+        prodfx.getScene().setRoot(root);
+    }
 
     @FXML
     private void profilAction(ActionEvent event) {
@@ -393,24 +394,27 @@ public class ProduitFront2Controller implements Initializable {
 
     @FXML
     private void bonplanAction(ActionEvent event) {
+        commandeGUI.changeScene(event, "BpFront.fxml", "Bons plans");
 
     }
 
     @FXML
     private void EventAction(ActionEvent event) {
 
-        commandeGUI.changeScene(event, "affichereventfront2.fxml", "evenement");
+        commandeGUI.changeScene(event, "affichereventfront2.fxml", "évènement");
 
     }
 
     @FXML
     private void QuizAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "Client.fxml", "commande ");
+        commandeGUI.changeScene(event, "Client.fxml", "Quiz ");
 
     }
 
     @FXML
     private void deconfx(ActionEvent event) {
+       commandeGUI.changeScene(event, "Front1.fxml", "Profile");
+
     }
 
 }

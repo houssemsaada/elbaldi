@@ -183,4 +183,24 @@ public void modifierpromotion(promotion p) {
     }
     return false;
 }
+  public promotion getBypromo(String promo) {
+      promotion p = new promotion();
+    try {
+        String req = "SELECT * FROM promotion WHERE code_promo = ?";
+        PreparedStatement ps = conn.prepareStatement(req);
+        ps.setString(1, promo);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            
+            p.setId_promotion(rs.getInt("id_promotion"));
+            p.setCode_promo(rs.getString("code_promo"));
+            p.setTaux(rs.getFloat("taux"));
+           
+            
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return p ;
+}
 }
