@@ -78,7 +78,7 @@ public class BpFront1Controller implements Initializable {
 
                 search(newValue);
             } catch (SQLException ex) {
-                Logger.getLogger(BpFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BpFront1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 //            } else {
 //                afficher();
@@ -99,9 +99,9 @@ public class BpFront1Controller implements Initializable {
             int row = 1;
             for (int i = 0; i < listebonplan.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront1.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ItembpFrontController itemController = fxmlLoader.getController();
+                ItembpFront1Controller itemController = fxmlLoader.getController();
                 itemController.setData(listebonplan.get(i));
                 if (column == 3) {
                     column = 0;

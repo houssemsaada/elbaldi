@@ -41,6 +41,7 @@ public class ItembpFront1Controller implements Initializable {
     private int id_bonplan;
     @FXML
     private Label note;
+    
 
 
     /**
@@ -100,7 +101,7 @@ public class ItembpFront1Controller implements Initializable {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("BpDetailsFront1.fxml"));
         Parent root = loader.load();
-        BpDetailsFrontController controller = loader.getController();
+        BpDetailsFront1Controller controller = loader.getController();
         controller.setbonplan(bonplan1);
         controller.initialize(null, null);
         imagefx.getScene().setRoot(root);
