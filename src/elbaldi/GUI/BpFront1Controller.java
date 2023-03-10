@@ -59,7 +59,6 @@ public class BpFront1Controller implements Initializable {
     @FXML
     private Button eventfx;
 
-
     /**
      * Initializes the controller class.
      */
@@ -74,13 +73,13 @@ public class BpFront1Controller implements Initializable {
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("Texte changé : " + oldValue + " -> " + newValue);
 //            if (!"".equals(newValue)) {
-                try {
-                    grid.getChildren().remove(0, listebonplan.size());
+            try {
+                grid.getChildren().remove(0, listebonplan.size());
 
-                    search(newValue);
-                } catch (SQLException ex) {
-                    Logger.getLogger(BpFrontController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                search(newValue);
+            } catch (SQLException ex) {
+                Logger.getLogger(BpFrontController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 //            } else {
 //                afficher();
 //            }
@@ -92,7 +91,7 @@ public class BpFront1Controller implements Initializable {
     }
 
     public void afficher() {
-        try {
+         try {
 
             listebonplan = bp.afficherBonplan();
 
@@ -100,9 +99,9 @@ public class BpFront1Controller implements Initializable {
             int row = 1;
             for (int i = 0; i < listebonplan.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront1.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/elbaldi/GUI/itembpFront.fxml"));
                 AnchorPane anchorpane = fxmlLoader.load();
-                ItembpFront1Controller itemController = fxmlLoader.getController();
+                ItembpFrontController itemController = fxmlLoader.getController();
                 itemController.setData(listebonplan.get(i));
                 if (column == 3) {
                     column = 0;
@@ -113,6 +112,7 @@ public class BpFront1Controller implements Initializable {
                 GridPane.setMargin(anchorpane, new Insets(10));
             }
         } catch (IOException ex) {
+             System.out.println(ex.getMessage());
         }
     }
 
@@ -153,7 +153,6 @@ public class BpFront1Controller implements Initializable {
 
             //listebonplan = bp.afficherBonplan();
             //grid.getChildren().remove(0, listebonplan.size());
-
             int column = 0;
             int row = 1;
             for (int i = 0; i < listebonplan.size(); i++) {
@@ -172,9 +171,9 @@ public class BpFront1Controller implements Initializable {
             }
         } catch (IOException ex) {
         }
-        
+
     }
-    
+
 //    private void bpbtn(ActionEvent event) throws IOException {
 //         FXMLLoader loader = new FXMLLoader();
 //
@@ -182,8 +181,6 @@ public class BpFront1Controller implements Initializable {
 //        Parent root = loader.load();
 //        bonplan1.getScene().setRoot(root);
 //    }
-
-
     private void bpbtn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
@@ -192,9 +189,7 @@ public class BpFront1Controller implements Initializable {
         bonplan1.getScene().setRoot(root);
     }
 
-  
-
-       @FXML
+    @FXML
     private void produitsf(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
@@ -203,7 +198,7 @@ public class BpFront1Controller implements Initializable {
         prodfx.getScene().setRoot(root);
     }
 
-       @FXML
+    @FXML
     private void bonplanAction(ActionEvent event) {
         commandeGUI.changeScene(event, "BpFront1.fxml", "Login");
 
@@ -211,7 +206,7 @@ public class BpFront1Controller implements Initializable {
 
     @FXML
     private void eventAction(ActionEvent event) {
-                commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
+        commandeGUI.changeScene(event, "afficherevenFront.fxml", "Login");
 
     }
 
@@ -226,9 +221,5 @@ public class BpFront1Controller implements Initializable {
         commandeGUI.changeScene(event, "inscription.fxml", "Login");
 
     }
-
-
-
-    
 
 }
