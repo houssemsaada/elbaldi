@@ -104,8 +104,8 @@ public class ItembpBackController implements Initializable {
     private void supprimer(ActionEvent event) throws SQLException, IOException {
         BonplanCrud bonplancrud = new BonplanCrud();
         Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
-        alert1.setContentText("Are you sure you want to delete the order ?");
-        alert1.setHeaderText("Please confirm your action");
+        alert1.setContentText("Vous etes sure de supprimer ce bon plan ?");
+        alert1.setHeaderText("s'il vous plait confirmer votre action");
 
         Optional<ButtonType> result = alert1.showAndWait();
 

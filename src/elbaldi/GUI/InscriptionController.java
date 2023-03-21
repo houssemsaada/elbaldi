@@ -53,7 +53,7 @@ public class InscriptionController implements Initializable {
 
     private String[] roles = {
             "client",
-            "livreur",
+            
             "gerant"
     };
 

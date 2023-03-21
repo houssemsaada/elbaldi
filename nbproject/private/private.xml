@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>src/elbaldi/GUI/ItemprodbackController.java</url>
@@ -13,84 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CatgeorielistBackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ProduitDetailsFrontController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CommentaireCell.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/models/SMSNotifier.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CategorieBackModifierController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/panierCRUD.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ModifierProduitBackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CategorieBackAjoutController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/MailerService.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/models/produit.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CommandeListCell.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/Front1Controller.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/templatebackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/SmsServicee.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CommentaireBackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FirstWindowYasmine.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/CommandeCRUD.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FrontController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ItemprodbackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/AjouterProduitBackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ItemcategbackController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/ProdbacklistController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/ProduitCRUD.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/FirstWindow.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/GUI/CommandeajoutController.java</file>
-            <file>file:/C:/Users/USER/Desktop/VVVV/elbaldi/src/elbaldi/services/livraisonCRUD.java</file>
-=======
-            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ItemQuizController.java</file>
-            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ClientController.java</file>
-            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
-            <file>file:/C:/Users/selim/Documents/NetBeansProjects/elbaldi/src/elbaldi/models/quiz.java</file>
->>>>>>> origin/selim
-=======
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ProduitItemfront1Controller.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ModifierquestionController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/Affichereventfront2Controller.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/resetpassword.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/NewFXMain.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ModifierEvenementController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AjouterEvenementController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ParticiperitemController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ItemprodbackController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AfficherevenFrontController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AfficherEvenement.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/OnerateviewController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/RatingService.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/EvenementService.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/QuizCRUD.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/rateviewController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ConsulterPanierController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/afficher%20participation.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/proddetailsback.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/commandeinterface.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ProfileAdmin.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/EventfrontController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AjouterEvenement.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/panieritem.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ProduitFront2Controller.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/QuestionCRUD.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/afficherevenFront.fxml</file>
->>>>>>> origin/skander
-=======
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/elbaldi.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/BpDetailsFrontController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/AvisCrud.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/UserSession.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/ItembpFrontController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AnchorPaneNode.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/GUI/AfficherReservationBackController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/elbaldi/src/elbaldi/services/UtilisateurCRUD.java</file>
->>>>>>> origin/norchene
+            <file>file:/C:/Users/USER/Desktop/Application%20Java%20desktop%20ElBaldi/elbaldi/src/elbaldi/GUI/elbaldiBackoff.java</file>
         </group>
     </open-files>
 </project-private>

@@ -40,8 +40,6 @@ public class MenuAdmin implements Initializable{
     private GridPane grid;
 
     @FXML
-    private Pane pnlCustomer;
-    @FXML
     private Button Accueilfx;
     @FXML
     private Button categoriefx;
@@ -108,7 +106,7 @@ public class MenuAdmin implements Initializable{
                 cardController.setData(utilisateurCRUD.afficherUtilisateur().get(i), sup, app);
 
 
-                if (column == 3) {
+                if (column == 2) {
                     column = 1;
                     row++;
 
@@ -164,6 +162,65 @@ public class MenuAdmin implements Initializable{
         Scene dialogScene = new Scene(dialogVbox, 200, 200);
         dialog.setScene(dialogScene);
         dialog.show();
+        grid.getChildren().clear();
+        for (int i = 0; i < utilisateurCRUD.afficherUtilisateur().size(); i++) {
+
+            listUsers.addAll(utilisateurCRUD.afficherUtilisateur().get(i));
+        }
+        int row = 0;
+        int column = 1;
+
+        for (int i = 0; i < utilisateurCRUD.afficherUtilisateur().size(); i++) {
+
+            try {
+
+                sup = new SupprimerCard() {
+                    @Override
+                    public void supprimer(Utilisateur utilisateur) {
+                        supprimerr(utilisateur);
+                    }
+
+                };
+                app = new Approve() {
+                    @Override
+                    public void approve(Utilisateur utilisateur) {
+                        approvee(utilisateur);
+                    }
+
+                };
+                FXMLLoader cards = new FXMLLoader();
+                cards.setLocation(getClass().getResource("UserCard.fxml"));
+
+                AnchorPane anchorPane = cards.load();
+
+                UserCard cardController = cards.getController();
+
+                cardController.setData(utilisateurCRUD.afficherUtilisateur().get(i), sup, app);
+
+
+                if (column == 3) {
+                    column = 1;
+                    row=row+1;
+
+                }
+                grid.add(anchorPane, column++, row); //(child,column,row)
+//                //set grid width
+//                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+//                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+//                grid.setMaxWidth(Region.USE_PREF_SIZE);
+//
+//                //set grid height
+//                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+//                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+//                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
+
+////
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 
     }
     
@@ -197,7 +254,6 @@ public class MenuAdmin implements Initializable{
 
     }
 
-    @FXML
     private void profilAction(ActionEvent event) {
         commandeGUI.changeScene(event, "ProfileAdmin.fxml", "Profile");
 
@@ -251,13 +307,11 @@ public class MenuAdmin implements Initializable{
 
     }
 
-    @FXML
     private void GestuserAction(ActionEvent event) {
             commandeGUI.changeScene(event, "MenuAdmin.fxml", "gestion utilisateurs ");
 
     }
 
-    @FXML
     private void decoAction(ActionEvent event) {
         commandeGUI.changeScene(event, "Front1.fxml", "Visiteur ");
     }
@@ -301,7 +355,7 @@ for (int i = 0; i < utilisateurCRUD.afficherUtilisateur().size(); i++) {
 
                 if (column == 3) {
                     column = 1;
-                    row++;
+                    row=row+1;
 
                 }
                 grid.add(anchorPane, column++, row); //(child,column,row)
@@ -315,7 +369,7 @@ for (int i = 0; i < utilisateurCRUD.afficherUtilisateur().size(); i++) {
 //                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
 //                grid.setMaxHeight(Region.USE_PREF_SIZE);
 
-                GridPane.setMargin(anchorPane, new javafx.geometry.Insets(20));
+                GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
 
 ////
             } catch (IOException ex) {

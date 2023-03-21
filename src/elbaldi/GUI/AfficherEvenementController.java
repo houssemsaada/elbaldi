@@ -6,6 +6,7 @@
 package elbaldi.GUI;
 
 
+
 import elbaldi.models.Evenement;
 import elbaldi.models.Participation;
 import elbaldi.services.EvenementService;
@@ -51,10 +52,14 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+//import javax.swing.DefaultRowSorter.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
 /**
  * FXML Controller class
  *
- * @author Meddeb sofien
+ * 
  */
 public class AfficherEvenementController implements Initializable {
 

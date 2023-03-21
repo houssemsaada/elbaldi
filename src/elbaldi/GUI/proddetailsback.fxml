@@ -15,7 +15,7 @@
             <Button fx:id="modifierfx" layoutX="528.0" layoutY="527.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="190.0" text="Modifier produit" />
             <Button fx:id="retourfx" layoutX="8.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />
             <ListView fx:id="listefx" layoutX="399.0" layoutY="261.0" prefHeight="190.0" prefWidth="638.0" />
-            <Label fx:id="prixfx" layoutX="393.0" layoutY="213.0" prefHeight="31.0" prefWidth="92.0" text="Prix">
+            <Label fx:id="prixfx" layoutX="393.0" layoutY="213.0" prefHeight="31.0" prefWidth="217.0" text="Prix">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>

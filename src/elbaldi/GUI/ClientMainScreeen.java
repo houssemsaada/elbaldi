@@ -44,46 +44,25 @@ public class ClientMainScreeen implements Initializable{
 
     @FXML
     void ProfileUser(ActionEvent event) {
-        grid.getChildren().clear();
-        try {
-            // TODO
-            FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ProfileUser.fxml"));
+                commandeGUI.changeScene(event, "ClientMainScreeen.fxml", "Profile");
 
-            AnchorPane anchorPane = cards.load();
-
-            grid.add(anchorPane, 1, 1);
-
-            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
  
 
 
-    @FXML
     private void produitsf(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
-        Parent root = loader.load();
-        produitfx.getScene().setRoot(root);
+        
     }
 
-    @FXML
     private void profilAction(ActionEvent event) {
-        commandeGUI.changeScene(event, "ClientMainScreeen.fxml", "Profile");
 
     }
 
-    @FXML
     private void bonplanAction(ActionEvent event) {
         commandeGUI.changeScene(event, "BpFront.fxml", "Bons plans");
 
     }
 
-    @FXML
     private void EventAction(ActionEvent event) {
 
         commandeGUI.changeScene(event, "affichereventfront2.fxml", "évènement");
@@ -96,7 +75,6 @@ public class ClientMainScreeen implements Initializable{
 
     }
 
-    @FXML
     private void deconfx(ActionEvent event) {
        commandeGUI.changeScene(event, "Front1.fxml", "Profile");
 
@@ -137,5 +115,25 @@ grid.getChildren().clear();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }    }
+
+    @FXML
+    private void prodd(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("ProduitFront2.fxml"));
+        Parent root = loader.load();
+        produitfx.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void BonpalnsAction(ActionEvent event) {
+                commandeGUI.changeScene(event, "BpFront.fxml", "Bons plans");
+
+    }
+
+    @FXML
+    private void eventaction(ActionEvent event) {
+        
+    }
         
     }

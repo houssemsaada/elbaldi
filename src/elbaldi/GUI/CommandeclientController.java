@@ -12,6 +12,7 @@ import elbaldi.models.*;
 import elbaldi.services.*;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -87,6 +88,7 @@ public class CommandeclientController implements Initializable {
     PromotionCRUD prc = new PromotionCRUD();
     @FXML
     private Button validerpromo;
+    String formattedNum;
 
     /**
      * Initializes the controller class.
@@ -113,12 +115,20 @@ public class CommandeclientController implements Initializable {
         System.out.println(totalTF);
         total = Float.parseFloat(totalTF);
         int count = cc.orderCount(p);
-        if (count >= 5) {
+        if (count >= 10) {
             promometier.setVisible(true);
             total = (float) (total * 0.9);
-            this.totalTF.setText(total + "");
+            DecimalFormat df = new DecimalFormat("#.##");
+
+// format the number using the DecimalFormat object
+            formattedNum = df.format(total);
+            this.totalTF.setText(formattedNum);
         } else {
-            this.totalTF.setText(totalTF);
+            DecimalFormat df = new DecimalFormat("#.##");
+
+// format the number using the DecimalFormat object
+            formattedNum = df.format(total);
+            this.totalTF.setText(formattedNum);
 
         }
 
@@ -182,6 +192,7 @@ public class CommandeclientController implements Initializable {
 
             cr.ajouterCommande(c);
             commande c2 = cr.filtreBypanier(p);
+            cr.modifierCommande(c, c2);
             System.out.println("l'id de la nouvelle commande" + c2.getId_cmd());
             for (int i = 0; i < yasObservableList.size(); i++) {
                 produit element1 = yasObservableList.get(i);
@@ -223,11 +234,15 @@ public class CommandeclientController implements Initializable {
         promotion promo = new promotion();
         promo.setCode_promo(code);
         if (prc.promocodeExistePourUtilisateur(promo, u)) {
-           promo = prc.getBypromo(code) ;
-           total=total*(1-promo.getTaux());
-           this.totalTF.setText(total + "");
-           validerpromo.setText((int)(promo.getTaux()*100)+"%");
-           validerpromo.setDisable(true);
+            promo = prc.getBypromo(code);
+            total = total * (1 - promo.getTaux());
+            DecimalFormat df = new DecimalFormat("#.##");
+
+// format the number using the DecimalFormat object
+            formattedNum = df.format(total);
+            this.totalTF.setText(formattedNum);
+            validerpromo.setText((int) (promo.getTaux() * 100) + "%");
+            validerpromo.setDisable(true);
         }
     }
 

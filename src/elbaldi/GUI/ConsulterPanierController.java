@@ -10,6 +10,7 @@ import elbaldi.services.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
@@ -78,8 +79,12 @@ public class ConsulterPanierController implements Initializable {
         produitObservableList = FXCollections.observableList(pc.afficherListProduitPanier(p));
         ListView.setCellFactory(lv -> new PanierListCell());
         ListView.setItems(produitObservableList);
+        DecimalFormat df = new DecimalFormat("#.##");
 
-        totalTF.setText(p.sommePanier(produitObservableList) + "");
+// format the number using the DecimalFormat object
+           String formattedNum = df.format(p.sommePanier(produitObservableList));
+            totalTF.setText(formattedNum);
+        //totalTF.setText(p.sommePanier(produitObservableList) + "");
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
         this.qtescroll.setValueFactory(valueFactory);
     }
@@ -98,6 +103,7 @@ public class ConsulterPanierController implements Initializable {
     private void commanderOnAction(ActionEvent event) {
 //        panier p = new panier();
         panierCRUD pc = new panierCRUD();
+        pc.modifierPanier(p);
         //p.setId_panier(Integer.parseInt(panieridTF.getText()));
 //        p=pc.filtreByidPanier(Integer.parseInt(panieridTF.getText()));
         try {
@@ -123,7 +129,7 @@ public class ConsulterPanierController implements Initializable {
             dc.setP(p);
             dc.setNomTF(p.getU1().getNom());
             dc.setPrenomTF(p.getU1().getPrenom());
-            dc.setTotalTF(totalTF.getText());
+            dc.setTotalTF(p.sommePanier(produitObservableList) + "");
             totalTF.getScene().setRoot(root);
 
         } catch (IOException ex) {

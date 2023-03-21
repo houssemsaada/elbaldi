@@ -136,8 +136,8 @@ public class Livraisonupdate2Controller implements Initializable {
             // if the user confirms the update action
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 lv.modifierLivraison(livrai);
-                commandeGUI.AlertShow("updated !", "update", Alert.AlertType.INFORMATION);
-                if ( statusField.getValue() == "en expédition"){
+                commandeGUI.AlertShow("Modifié !", "modifier", Alert.AlertType.INFORMATION);
+                if ( statusField.getValue() == "En expédition"){
                     MailerService ms = new MailerService();
                     ms.sendLivraisonMail(livrai, livrai.getC1());
                     SmsServicee sms = new SmsServicee();
@@ -152,7 +152,8 @@ public class Livraisonupdate2Controller implements Initializable {
                     + "Valeur des produits :" + livrai.getC1().getTotal() + "TND \n"
                     + "Cordialement,\n"
                     + "L'équipe Elbaldi";
-                 // sms.sendSms(phone, message);
+                    
+                  sms.sendSms(phone, message);
                 }
 
             }

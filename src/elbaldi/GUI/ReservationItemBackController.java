@@ -48,26 +48,25 @@ public class ReservationItemBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    public void setData(Reservation dest) {
-       this.reservation = dest;
-        id_res=dest.getId_reservation();
-        this.nomBp.setText(reservation.getUser2().getNom()+" "+reservation.getUser2().getPrenom());
-        this.lieuBp.setText(reservation.getBonplan2().getTitre_bonplan());
-        this.nombrePersonne.setText(reservation.getNombre_personnes()+"");
-        this.statutBp.setText(reservation.getStatut_reservation());
-        
-        
-        //Image f = new Image("C:\\xampp\\htdocs\\images\\" + bonplan1.getImage_bonplan());
+    }
 
+    public void setData(Reservation dest) {
+        this.reservation = dest;
+        id_res = dest.getId_reservation();
+        this.nomBp.setText(reservation.getUser2().getNom() + " " + reservation.getUser2().getPrenom());
+        this.lieuBp.setText(reservation.getBonplan2().getTitre_bonplan());
+        this.nombrePersonne.setText(reservation.getNombre_personnes() + "");
+        this.statutBp.setText(reservation.getStatut_reservation());
+
+        //Image f = new Image("C:\\xampp\\htdocs\\images\\" + bonplan1.getImage_bonplan());
         //imagefx.setImage(f);
-         String imagePath = "C:\\xampp\\htdocs\\images\\"+ reservation.getBonplan2().getImage_bonplan().toString();
-       
+        String imagePath = "C:\\xampp\\htdocs\\images\\" + reservation.getBonplan2().getImage_bonplan().toString();
+
         // Create an ImageView object
         ImageView imageView = new ImageView();
         // Create a File object with the path of your image
         File file = new File(imagePath);
-       
+
         // Check if the file exists
         if (file.exists()) {
             // Create an Image object with the file path
@@ -79,6 +78,7 @@ public class ReservationItemBackController implements Initializable {
         }
 
     }
+
     @FXML
     private void confirmerRes(ActionEvent event) {
         if (reservation != null) {
@@ -90,6 +90,9 @@ public class ReservationItemBackController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Confirmation de réservation");
             alert.showAndWait();
+            resvS.getReservationById(id_res);
+            this.statutBp.setText(reservation.getStatut_reservation());
+
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Information Dialog");
@@ -99,5 +102,4 @@ public class ReservationItemBackController implements Initializable {
         }
     }
 
-    
 }

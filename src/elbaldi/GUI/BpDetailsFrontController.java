@@ -171,6 +171,7 @@ public class BpDetailsFrontController implements Initializable {
         cb.setBonplan1(bonplan1);
         Stage stage = new Stage();
         Scene scene = new Scene(root);
+        
         stage.setScene(scene);
         stage.showAndWait();
     }

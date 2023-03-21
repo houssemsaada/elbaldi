@@ -46,12 +46,12 @@ public class ProfileUser implements Initializable {
     void image_admin(MouseEvent event) {
 
     }
-
+UserSession session = new UserSession();
     @FXML
     void updtahost(ActionEvent event) {
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(adminpagedate.getValue());
         UtilisateurCRUD u = new UtilisateurCRUD();
-        UserSession session = new UserSession();
+        
         int id = session.getUser().getid_user();
         String email = session.getUser().getEmail();
 
@@ -75,13 +75,12 @@ public class ProfileUser implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        UserSession userSession = new UserSession();
         UtilisateurCRUD userService = new UtilisateurCRUD();
-        LocalDate ddn = userSession.getUser().getDateNaissance().toLocalDate();
-        adminpagename.setText(userSession.getUser().getNom());
-        adminpagelastname.setText(userSession.getUser().getPrenom());
-        adminpagetel.setText(String.valueOf(userSession.getUser().getNumTel()));
-        adminpageaddress.setText(userSession.getUser().getVille());
+        LocalDate ddn = session.getUser().getDateNaissance().toLocalDate();
+        adminpagename.setText(session.getUser().getNom());
+        adminpagelastname.setText(session.getUser().getPrenom());
+        adminpagetel.setText(String.valueOf(session.getUser().getNumTel()));
+        adminpageaddress.setText(session.getUser().getVille());
         adminpagedate.setValue(ddn);
     }
 }

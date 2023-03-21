@@ -62,7 +62,7 @@ public class MailerService {
             MimeBodyPart attachmentPart = new MimeBodyPart();
 
             // Set the file path as a DataSource
-            FileDataSource fileDataSource = new FileDataSource("C:\\ordrePdfn" + c.getId_cmd() + ".pdf");
+            FileDataSource fileDataSource = new FileDataSource("C:\\xampp\\htdocs\\images\\ordrePdfn" + c.getId_cmd() + ".pdf");
             attachmentPart.setDataHandler(new DataHandler(fileDataSource));
             attachmentPart.setFileName(fileDataSource.getName());
             MimeMultipart multipart = new MimeMultipart();

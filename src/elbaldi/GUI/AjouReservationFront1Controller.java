@@ -47,7 +47,7 @@ public class AjouReservationFront1Controller implements Initializable {
     private bonplan bonplan1;
     BonplanCrud bp= new BonplanCrud();
         UserSession user = new UserSession();
-        Utilisateur u = new Utilisateur();
+        Utilisateur u = user.getUser();
     public void setBonplan1(bonplan bonplan1) {
         this.bonplan1 = bonplan1;
     }
@@ -63,7 +63,7 @@ public class AjouReservationFront1Controller implements Initializable {
     @FXML
     private void confirmerReservation(ActionEvent event) {
         try {
-
+            System.out.println(u);
             try {
                 if (nombreR.getText().isEmpty() || dateR.getValue() == null) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -86,7 +86,7 @@ public class AjouReservationFront1Controller implements Initializable {
              UtilisateurCRUD uti = new UtilisateurCRUD();
 
            Reservation res = new Reservation(nombre_personnes, date_reservation,"En attente",bonplan1,u);
-
+            System.out.println(res);
              R.ajouterReservation(res);
                
             Alert alert0 = new Alert(Alert.AlertType.INFORMATION);

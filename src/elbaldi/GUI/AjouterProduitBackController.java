@@ -178,12 +178,12 @@ SMSNotifier notifier = new SMSNotifier(); // correct one
                     + "Merci de votre confiance en notre entreprise. Nous espérons que vous apprécierez le nouveau produit autant que nous.\n"
                     + " L'équipe ElBaldi";
 String num_test="+21697618378";
-//notifier.notifyClients(phoneNumbers, mess);    // correct one
-  //  String[] phoneNumbersArray = {"+21697618378"};  ////
-    //List<String> phoneNumberss = Arrays.asList(phoneNumbersArray);///
+notifier.notifyClients(phoneNumbers, mess);    // correct one
+    String[] phoneNumbersArray = {"+21697618378"};  ////
+    List<String> phoneNumberss = Arrays.asList(phoneNumbersArray);///
 
-     //notifier.notifyClients(phoneNumberss, mess); ///
-//SmsServicee sms =new SmsServicee();
+     notifier.notifyClients(phoneNumberss, mess); ///
+SmsServicee sms =new SmsServicee();
 
 //sms.sendSms(num_test,mess);
 List<String> emails = PROD.getEmailsByCategoryId(c.getId_categorie());
