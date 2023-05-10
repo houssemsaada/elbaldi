@@ -12,15 +12,12 @@ import java.time.LocalDate;
  *
  * @author mEtrOpOliS
  */
-
-
 public class Utilisateur {
+
     private int id_user;
     private String nom;
     private String prenom;
     private String email;
-
-
 
     private Date dateNaissance;
     private int numTel;
@@ -40,17 +37,11 @@ public class Utilisateur {
         this.email = email;
     }
 
-
-
-
-  
     public Utilisateur(int id_user) {
         this.id_user = id_user;
     }
-    
 
-
-    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role,Etat etat) {
+    public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp, Role role, Etat etat) {
 
         this.id_user = id_user;
         this.nom = nom;
@@ -86,7 +77,6 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
-
     public Utilisateur(int id_user, String nom, String prenom, String email, Date dateNaissance, int numTel, String ville, String mdp) {
         this.id_user = id_user;
         this.nom = nom;
@@ -121,7 +111,6 @@ public class Utilisateur {
         this.etat = etat;
         this.nombrejouer = nombrejouer;
     }
-
 
     public int getid_user() {
         return id_user;
@@ -179,8 +168,6 @@ public class Utilisateur {
         this.numTel = numTel;
     }
 
-
-
     public String getVille() {
         return ville;
     }
@@ -188,7 +175,6 @@ public class Utilisateur {
     public void setVille(String ville) {
         this.ville = ville;
     }
-
 
     public String getMdp() {
         return mdp;
@@ -198,6 +184,22 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
+    public Role reformRole(String role) {
+        String extractedWord = role.replaceAll("[^a-zA-Z]+", "");
+        Role Roles = Role.valueOf(extractedWord);
+        System.out.println(Roles);
+        return Roles;
+
+    }
+    
+    public Etat reformEtat(String etat) {
+        String extractedWord = etat.replaceAll("[^a-zA-Z]+", "");
+        Etat etats = Etat.valueOf(extractedWord);
+        System.out.println(etats);
+        return etats;
+
+    }
+
     public Role getRole() {
         return role;
     }
@@ -205,6 +207,7 @@ public class Utilisateur {
     public void setEtat(Etat etat) {
         this.etat = etat;
     }
+
     public Etat getEtat() {
         return etat;
     }
@@ -224,13 +227,8 @@ public class Utilisateur {
     @Override
     public String toString() {
 
-        return  nom ;
+        return nom;
 
     }
 
- 
- 
-    
 }
-
-

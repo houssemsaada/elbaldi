@@ -73,11 +73,14 @@ public class Login implements Initializable {
     void attempteToLogin(ActionEvent event) throws IOException {
         if (event.getSource() == login_button) {
             if (validatenGuest_Email(emailLogin) & validatenGuest_Password(PasswordLogin)) {
-
+                
                 Utilisateur utilisateur = userService.GetUserByMail(emailLogin.getText(), PasswordLogin.getText());
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                 System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaa"+utilisateur.getRole());
                 UtilisateurCRUD.userSession = new UserSession();
 
                 Role role = utilisateur.getRole();
+                System.out.println("aaa"+utilisateur.getRole());
                 if (null != role) {
                     switch (role) {
                         case client:
@@ -100,7 +103,7 @@ public class Login implements Initializable {
                                 stage.show();
                             }
                             break;
-                        case gerant:
+                        case agent:
                             if (!remember_me.isSelected()) {
                                 userService.Deleteinfo(path, path, path);
                                 UtilisateurCRUD.userSession.setUserEmail(utilisateur.getEmail());
